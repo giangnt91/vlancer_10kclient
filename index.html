@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- <base href="/dev/Coupon/client/"> -->
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <title>Coupon 10K</title>
+
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  <!-- <script defer src="js/fontawesome.js"></script> -->
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/style.css" media="screen,projection" />
+
+  <div id="fb-root"></div>
+  <script>(function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/vi_VN/all.js#xfbml=1&version=v2.10&appId=1946240225621730';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+</head>
+
+<body ng-app="coupon10k">
+
+  <div ng-include='"templates/nav.html"'></div>
+  <div ng-include='"templates/header.html"'></div>
+  <div ng-view></div>
+  <div ng-include='"templates/footer.html"'></div>
+
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+
+  <!-- Angularjs Library -->
+  <script src="js/angular-1-2-32.min.js"></script>
+  <script src="js/angular-route-1-2-18.min.js"></script>
+  <script src="node_modules/angular-sanitize/angular-sanitize.js"></script>
+  <script src="node_modules/ngstorage/ngStorage.min.js"></script>
+  <link rel="stylesheet" href="node_modules/ng-dialog/css/ngDialog.min.css">
+  <link rel="stylesheet" href="node_modules/ng-dialog/css/ngDialog-theme-default.min.css">
+  <script src="node_modules/ng-dialog/js/ngDialog.min.js"></script>
+
+  <!-- Angularjs Module -->
+  <script src="center/service.js"></script>
+  <script src="center/main.js"></script>
+  <script src="center/controller.js"></script>
+  <script src="center/controller/actionCtrl.js"></script>
+  <script src="center/controller/accountCtrl.js"></script>
+  <script src="center/controller/productCtrl.js"></script>
+
+</body>
+
+</html>

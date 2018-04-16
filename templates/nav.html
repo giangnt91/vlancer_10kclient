@@ -1,0 +1,39 @@
+<ul id="slide-out" class="side-nav" ng-controller="HomeCtrl">
+    <li>
+        <center>
+            <div class="user-view">
+                <div class="background">
+                    <img src="img/user-bg.jpg" class="responsive">
+                </div>
+                <a href="">
+                    <img class="circle" src="{{auth[0].user_img}}">
+                </a>
+                <a class="white-text">
+                    <span class="name">{{auth[0].info[0].fulname}}</span>
+                </a>
+                <a href=""><span class="white-text email"></span></a>
+            </div>
+        </center>
+
+    </li>
+    <li>
+        <a href="" style="width: 60% ">Hạng:
+            <span class="new badge" data-badge-caption="">{{auth[0].user_class[0].name}}</span>
+        </a>
+    </li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li>
+        <a href="">Điểm Hôm Nay: {{auth[0].point_per_today}}</a>
+    </li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li>
+        <a class="">Slot Trống: {{auth[0].empty_slot}}</a>
+    </li>
+    <li>
+        <a class="waves-effect waves-light btn" style="background:#EC407A; box-shadow: none" ng-click="logout()">Logout</a>
+    </li>
+</ul>

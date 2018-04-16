@@ -1,0 +1,125 @@
+<div ng-include='"templates/slider.html"'></div>
+
+<div class="container">
+    <div class="row">
+
+        <!-- detail product -->
+        <div class="col s12 m12 l12">
+
+            <blockquote ng-show="!show_basic">
+                <h4 style="display: unset;" ng-show="show_kind_1">Mua Sắm</h4>
+                <h4 style="display: unset;" ng-show="!show_kind_1">Ăn Uống</h4>
+            </blockquote>
+
+            <blockquote ng-show="show_basic">
+                <h4 style="display: unset;">Mã Giảm Giá</h4>
+            </blockquote>
+
+            <div class="row" ng-init="limit= 4" ng-show="!show_basic">
+
+                <div class="col s6 m4 l3" ng-repeat="content in kind_1 | limitTo : limit" ng-show="show_kind_1">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{{content.shop_info[0].shop_avatar}}">
+                        </div>
+                        <div class="card-content center">
+                            <span class="card-title activator grey-text text-darken-4 shop_name"> {{content.shop_info[0].shop_name}}</span>
+                            <p>
+                                <a href="" ng-show="content.shop_coupon.length > 0 || content.server_coupon.length > 0">Còn {{content.shop_coupon.length + content.server_coupon.length}} Coupon</a>
+                                <a href="" ng-show="content.shop_coupon.length === 0 && content.server_coupon.length === 0">Comming soon</a>
+                            </p>
+                            <a class="waves-effect waves-light btn btn-coupon" href="#/mua-sam/{{content._id}}" ng-show="content.shop_coupon.length > 0 || content.server_coupon.length > 0" ng-click="go_pro_detail()">Nhận Coupon</a>
+                            <a class="waves-effect waves-light btn btn-coupon disabled" href="" ng-show="content.shop_coupon.length === 0 && content.server_coupon.length === 0">Nhận Coupon</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s6 m4 l3" ng-repeat="content in kind_2 | limitTo : limit" ng-show="!show_kind_1">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{{content.shop_info[0].shop_avatar}}">
+                        </div>
+                        <div class="card-content center">
+                            <span class="card-title activator grey-text text-darken-4 shop_name"> {{content.shop_info[0].shop_name}}</span>
+                            <p>
+                                <a href="" ng-show="content.shop_coupon.length > 0 || content.server_coupon.length > 0">Còn {{content.shop_coupon.length + content.server_coupon.length}} Coupon</a>
+                                <a href="" ng-show="content.shop_coupon.length === 0 && content.server_coupon.length === 0">Comming soon</a>
+                            </p>
+                            <a class="waves-effect waves-light btn btn-coupon" href="#/an-uong/{{content._id}}" ng-show="content.shop_coupon.length > 0 || content.server_coupon.length > 0" ng-click="go_pro_detail()">Nhận Coupon</a>
+                            <a class="waves-effect waves-light btn btn-coupon disabled" href="" ng-show="content.shop_coupon.length === 0 && content.server_coupon.length === 0">Nhận Coupon</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row" ng-init="limit_basic= 3" ng-show="show_basic">
+
+                <div class="row hide-on-large-only">
+                    <div class="col s12 m4 l3" ng-repeat="content in basic | limitTo : limit_basic">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="{{content.shopImg}}">
+                            </div>
+                            <div class="card-content center">
+                                <span class="card-title activator grey-text text-darken-4"></span>
+                                <a class="waves-effect waves-light btn btn-coupon" href="{{content.shopUrl}}" target="blank">Mua Ngay</a>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">
+                                    <i class="material-icons right">close</i>
+                                    <b style="margin-right:5px">Mã:</b>
+                                    <a class="code" style="padding-left:0px">{{content.code_coupon}}</a>
+                                    <span class="expired">Hết hạn: {{content.expire_day}}</span>
+                                    <br>
+                                    <span class="black-text">{{content.info_coupon}}</span>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 m12 offset-m2 l12 hide-on-med-and-down" style="padding:0">
+                        <div class="card-panel grey lighten-5 z-depth-1" style="padding:0" ng-repeat="content in basic | limitTo : limit_basic">
+                            <div class="row valign-wrapper">
+                                <div class="col s2">
+                                    <img src="{{content.shopImg}}" alt="" class="responsive-img s2-img" style="margin-left:0">
+                                </div>
+                                <div class="col s7 center">
+                                    <h5 class="black-text shop_name" style="font-weight:300">{{content.info_coupon}}</h5>
+                                    <br>
+                                    <b>Mã:</b>
+                                    <a class="code">{{content.code_coupon}}</a>
+                                    <span class="expired">Hết hạn: {{content.expire_day}}</span>
+                                </div>
+                                <div class="col s3 center">
+                                    <a class="waves-effect waves-light btn btn-coupon" href="{{content.shopUrl}}" target="blank">Mua Ngay</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+
+        </div>
+        <!-- end detail product -->
+
+    </div>
+
+    <div ng-show="!show_basic">
+        <center style="margin-bottom: 50px; margin-top:30px" ng-show="show_kind_1">
+            <a class="waves-effect waves-light btn btn-xt pulse" ng-show="!viewall" ng-click="limit= kind_1.length; hide_view_all();">Xem Thêm</a>
+        </center>
+
+        <center style="margin-bottom: 50px; margin-top:30px" ng-show="!show_kind_1">
+            <a class="waves-effect waves-light btn btn-xt pulse" ng-show="!viewall" ng-click="limit= kind_2.length; hide_view_all();">Xem Thêm</a>
+        </center>
+    </div>
+
+    <center style="margin-bottom: 50px; margin-top:30px" ng-show="show_basic">
+        <a class="waves-effect waves-light btn btn-xt pulse" ng-show="!viewall" ng-click="limit_basic= kind_1.length; hide_view_all();">Xem Thêm</a>
+    </center>
+
+
+</div>

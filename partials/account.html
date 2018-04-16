@@ -1,0 +1,137 @@
+<div class="container" style="margin-top: 30px">
+    <div class="card-panel" ng-show="!auth">
+        <div class="card-panel alert">
+            <h4 class="text-darken-2" style="">Đăng nhập để xem thông tin tài khoản !</h4>
+        </div>
+    </div>
+
+    <div class="card-panel" ng-show="auth">
+        <div class="card-panel alert" ng-show="auth[0].info[0].full_update === 0">
+            <span class="text-darken-2">Cập nhật đầy đủ thông tin để nhận 500 điểm</span>
+        </div>
+        <div class="row">
+            <div class="col s12 m5 l3">
+                <center>
+                    <img src="{{auth[0].user_img}}" alt="">
+                </center>
+                <div class="person-info">
+                    <h5>
+                        <i class="material-icons _i">stars</i>
+                        <span class="span_account">{{auth[0].user_class[0].name}}</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="col s12 m7 l9">
+                <!-- <h4 class="about-subtitle" style="margin:0; text-align: center">Thông tin</h4> -->
+                <div class="person-info">
+                    <h5>
+                        <i class="material-icons _i">account_box</i>
+                        <span class="span_account">{{auth[0].info[0].fulname}}</span>
+                    </h5>
+                    <h5>
+                        <i class="material-icons _i">email</i>
+                        <span class="span_account">{{auth[0].info[0].email}}</span>
+                    </h5>
+                    <h5>
+                        <i class="material-icons _i">face</i>
+                        <span class="span_account">{{auth[0].info[0].sex}}</span>
+                    </h5>
+                    <h5>
+                        <i class="material-icons _i">phone_iphone</i>
+                        <span class="span_account">{{auth[0].info[0].mobile}}</span>
+                    </h5>
+                    <h5>
+                        <i class="material-icons _i">work</i>
+                        <span class="span_account">{{auth[0].info[0].work}}</span>
+                    </h5>
+                    <h5>
+                        <i class="material-icons _i">cake</i>
+                        <span class="span_account">{{auth[0].info[0].bith_day}}</span>
+                    </h5>
+                </div>
+                <center>
+                    <a class="waves-effect waves-light btn btn-xt pulse modal-trigger" data-target="update">
+                        <i class="material-icons left">border_color</i>Cập Nhật</a>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="update" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="about-subtitle center">Cập nhật thông tin</h5>
+        </div>
+
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <!-- <i class="material-icons prefix">email</i> -->
+                        <input id="email" type="email" class="validate" ng-model="data.email">
+                        <label for="email" data-error="Địa chỉ email không hợp lệ">Địa Chỉ Email</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <!-- <i class="material-icons prefix">phone_iphone</i> -->
+                        <input id="sdt" type="number" class="validate" ng-model="data.mobile">
+                        <label for="sdt" data-error="Số điện thoại không hợp lệ">Số Điện Thoại</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <!-- <i class="material-icons prefix">work</i> -->
+                        <input id="work" type="text" class="validate" ng-model="data.work">
+                        <label for="work">Công Việc</label>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="input-field col s6">
+                        <select ng-model="data.sex">
+                            <option value="" disabled selected>Chọn Giới Tính</option>
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                    <div class="input-field col s6">
+                        <!-- <i class="material-icons prefix">cake</i> -->
+                        <input id="bday" type="text" class="datepicker" ng-model="data.bithday">
+                        <label for="bday">Ngày Sinh</label>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn waves-effect waves-light cyan modal-action modal-close">Hủy</button>
+        <button class="btn waves-effect waves-light pink modal-action modal-close" ng-click="update(data)">Cập Nhật</button>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.modal').modal({
+            dismissible: false
+        });
+
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 100, // Creates a dropdown of 15 years to control year,
+            today: false,
+            clear: false,
+            close: 'Chọn',
+            format: 'dd/mm/yyyy',
+            monthsFull: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12']
+            // closeOnSelect: false, // Close upon selecting a date,
+            // container: undefined, // ex. 'body' will append picker to body
+        });
+
+        $('select').material_select();
+    });
+</script>

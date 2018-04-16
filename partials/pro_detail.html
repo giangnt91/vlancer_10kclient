@@ -1,0 +1,196 @@
+<div class="container">
+    <div class="row" style="margin-top:3px">
+
+        <div class="carousel carousel-slider">
+            <div class="carousel-fixed-item">
+                <h4 class="left white-text shop_name hide-on-small-only">{{shop.shop_info[0].shop_name}}
+                    <small style="font-weight: 200;">( {{shop.shop_info[0].service}} )</small>
+                </h4>
+                <h5 class="left white-text shop_name hide-on-med-and-up">{{shop.shop_info[0].shop_name}}</h5>
+
+                <!-- <a class="waves-effect waves-light right btn like-pro pulse"> </a> -->
+                <div ng-show="!condition && auth">
+                    <button class="btn waves-effect waves-light like-pro right modal-trigger" data-target="like" ng-show="show_like" ng-click="open_like()">Like
+                        <i class="material-icons right">thumb_up</i>
+                    </button>
+			    </div>
+				
+				<div ng-show="condition">
+					<button class="btn waves-effect waves-light like-pro right disabled">Like
+                        <i class="material-icons right">thumb_up</i>
+                    </button>
+				</div>
+
+
+            </div>
+            <a class="carousel-item waves-effect waves-block waves-light" href="">
+                <img class="responsive" src="{{shop.shop_info[0].shop_cover}}" style="hight:100%">
+            </a>
+        </div>
+        <div class="col s12 card-panel">
+            <ul class="tabs">
+                <li class="tab col s3">
+                    <a class="active" href="#thongtin">Thông Tin Cửa Hàng</a>
+                </li>
+                <li class="tab col s3">
+                    <a href="#dieukien">Điều Kiện</a>
+                </li>
+                <li class="tab col s3">
+                    <a href="#album">Album</a>
+                </li>
+                <li class="tab col s3">
+                    <a href="#danhgia">Đánh Giá (4)</a>
+                </li>
+            </ul>
+            <div id="thongtin" class="col s12">
+                <div class="person-info">
+                    <h5>
+                        <i class="material-icons">location_on</i>
+                        <span>{{shop.shop_info[0].address}}</span>
+                    </h5>
+                    <h5>
+                        <i class="material-icons">access_time</i>
+                        <span>{{shop.shop_info[0].time}}</span>
+                    </h5>
+                    <h5 class="red-text">
+                        <i class="material-icons">new_releases</i>
+                        <span>Thích trang để nhận Coupon</span>
+                    </h5>
+                    <h5 class="green-text">
+                        <i class="material-icons">account_balance_wallet</i>
+                        <span>Còn {{total_coupon}} Coupon</span>
+                    </h5>
+                    <h5 class="red-text" ng-show="condition">
+                        <i class="material-icons">block</i>
+                        <span>Bạn chưa đủ điều kiện nhận Coupon</span>
+                       
+						<div ng-show="_get">
+							<br>
+							<span class="grey-text" style="padding-left: 27px">- Bạn đã nhận Coupon này rồi.</span>
+						</div>
+						<div ng-show="enable_point">
+							<br>
+							<span class="grey-text" style="padding-left: 27px">- Bạn chưa đủ điểm (>1000đ).</span>
+						</div>
+                       <div ng-show="feedback_count.length > 0">
+							<br>
+							<span class="grey-text" style="padding-left: 27px">- Bạn chưa thực hiện Feedback ({{feedback_count}}).</span>
+					    </div>
+						<div ng-show="auth[0].empty_slot === 0">
+							<br>
+							<span class="grey-text" style="padding-left: 27px">- Bạn đã hết slot.</span>
+						</div>
+                        
+                    </h5>
+                    <div ng-show="!condition">
+                        <h5 ng-show="!show_like">
+                            <center>
+                                <a class="waves-effect waves-light btn pulse" ng-click="get_coupon()" style="background:#EC407A; color:#fff">Nhận Coupon</a>
+                            </center>
+                        </h5>
+						<h5 ng-show="show_like">
+                            <center>
+                                <a class="waves-effect waves-light btn disabled" style="background:#EC407A; color:#fff">Nhận Coupon</a>
+                            </center>
+                        </h5>
+                    </div>
+
+                </div>
+            </div>
+            <div id="dieukien" class="col s12">
+                <div class="person-info">
+                    <h5>
+                        <span>{{coupon_info}}</span>
+                    </h5>
+                    <h5>
+                        <span>Hạn sử dụng: {{coupon_expire}}</span>
+                    </h5>
+                    <h5>
+                        <span>Yêu cầu Feedback: Có</span>
+                    </h5>
+                </div>
+            </div>
+            <div id="album" class="col s12">
+                <div class="col s6 m6 l3" ng-repeat="content in shop.shop_info[0].shop_album">
+                    <img src="{{content.url}}" class="materialboxed responsive-img g-img" alt="">
+                </div>
+            </div>
+            <div id="danhgia" class="col s12">
+                <div class="person-info">
+                    <h5>
+                        <div class="chip">
+                            <img src="{{auth[0].user_img}}"> Jane Doe
+                        </div>
+                        <div ng-include='"templates/rating.html"'></div>
+                        <span>Coupon xài rất tốt, cửa hàng phục vụ tốt. Mình rất thích
+                            <3</span>
+                    </h5>
+                    <h5>
+                        <div class="chip">
+                            <img src="{{auth[0].user_img}}"> Jane Doe
+                        </div>
+                        <div ng-include='"templates/rating.html"'></div>
+                        <span>Coupon xài rất tốt, cửa hàng phục vụ tốt. Mình rất thích
+                            <3</span>
+                    </h5>
+                    <h5>
+                        <div class="chip">
+                            <img src="{{auth[0].user_img}}"> Jane Doe
+                        </div>
+                        <div ng-include='"templates/rating.html"'></div>
+                        <span>Coupon xài rất tốt, cửa hàng phục vụ tốt. Mình rất thích
+                            <3</span>
+                    </h5>
+                    <h5>
+                        <div class="chip">
+                            <img src="{{auth[0].user_img}}"> Jane Doe
+                        </div>
+                        <div ng-include='"templates/rating.html"'></div>
+                        <span>Coupon xài rất tốt, cửa hàng phục vụ tốt. Mình rất thích
+                            <3</span>
+                    </h5>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<!-- Modal Structure -->
+<div id="like" class="modal">
+    <div class="modal-content">
+        <!-- <div class="modal-header">
+            <h4>Fanpage của {{shop.shop_info[0].shop_name}}</h4>
+        </div> -->
+        <center>
+		<div ng-show="!load_fa">
+			<h4 class="flow-text center">Đang cập nhật dữ liệu</h4>  <div class="progress"> <div class="indeterminate"></div> </div>
+		</div>
+			
+            <div class="fb-page" data-href="https://www.facebook.com/{{shop.shopId}}" data-adapt-container-width="false" data-width="510"></div>
+        </center>
+    </div>
+    <div class="modal-footer">
+        <button class="btn waves-effect waves-light btn-xt modal-action modal-close    background: rgba(255, 255, 255, .85);" ng-click="close_like()">Xong</button>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('ul.tabs').tabs({});
+        $('.collapsible').collapsible();
+        $('.carousel.carousel-slider').carousel({ fullWidth: true });
+        $('.modal').modal({
+            dismissible: false
+        });
+		setTimeout(function(){
+			 $('.materialboxed').materialbox();
+			  $(':radio').change(function () {
+				console.log('New star rating: ' + this.value);
+			});
+		}, 500);
+    });
+</script>

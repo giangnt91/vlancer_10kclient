@@ -1,0 +1,137 @@
+<div class="container" style="margin-top: 30px">
+    <div class="row">
+        <div class="card-panel" ng-show="!auth">
+            <div class="card-panel alert">
+                <h4 class="text-darken-2" style="">Đăng nhập để thực hiện tác vụ !</h4>
+            </div>
+        </div>
+
+
+        <div class="card-panel" ng-show="auth">
+            <div ng-show="!full_point">
+                <div ng-show="!empty_slot">
+                    <div class="center" ng-show="!com_ac">
+                        <h4 class="about-subtitle">Thực hiện tác vụ</h4>
+                        <span class="grey-text">Like Post: 10 điểm, Comment: 10 điểm</span>
+                        <br>
+                        <br>
+
+                        <div ng-show="!show_action">
+                            <a class="waves-effect waves-light btn btn-xt pulse disabled" ng-show="condition">Nhận tác vụ ({{list_action_per_day.length}})</a>
+                            <a class="waves-effect waves-light btn btn-xt pulse" ng-click="next_action()" ng-show="!condition">Nhận tác vụ ({{list_action_per_day.length}})</a>
+                            <br>
+                            <br>
+                            <div class="card-panel alert" ng-show="condition">
+                                <span class="text-darken-2" style="font-size:17px !important">Feedback về dịch vụ bạn đã sử dụng để có thể nhận Tác vụ mới (vào app để Feedback)</span>
+                            </div>
+                        </div>
+
+                        <div class="center" ng-show="show_action">
+                            <div class="fb-post" data-href="{{data.action_url}}" data-adapt-container-width="true" data-width="{{width_post}}"></div>
+                            <br>
+                            <br>
+                            <a class="waves-effect waves-light btn btn-action" ng-click="next_action()" ng-show="!off_next">Tác vụ tiếp theo</a>
+                            <a class="waves-effect waves-light btn btn-action" ng-click="complete()" ng-show="off_next">Hoàn thành</a>
+                            <br>
+                            <br>
+                            <div class="card-panel alert">
+                                <span class="text-darken-2" style="font-size:15px !important">Nếu bạn không thích bài Post nào, xin cứ nhấn nút "Tiếp theo". Chúng tôi sẽ cung cấp những
+                                    bài khác cho bạn ở lần tiếp theo.</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div ng-show="com_ac">
+                        <center>
+                            <h4 class="about-subtitle">Thông tin chi tiết</h4>
+                            <!-- <span class="grey-text">Bạn thực hiện
+                        <a>{{array_like.length}}</a> Like,
+                        <a>{{array_com.length}}</a> Comment,
+                        <a>{{array_skip.length}}</a> Bỏ qua,
+                        <a>{{array_error.length}}</a> Lỗi
+                    </span> -->
+                        </center>
+
+                        <ul class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">thumb_up</i>Bài post đã Like
+                                    <span class="new badge" data-badge-caption="">{{array_like.length}}</span>
+                                </div>
+                                <div class="collapsible-body" ng-repeat="content in array_like track by $index" style="text-overflow: ellipsis;
+                        overflow: hidden;">
+                                    <a target="blank" href="{{content}}">{{content}}</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">border_color</i>Bài post đã Comment
+                                    <span class="new badge" data-badge-caption="">{{array_com.length}}</span>
+                                </div>
+                                <div class="collapsible-body" ng-repeat="content in array_com track by $index" style="text-overflow: ellipsis;
+                        overflow: hidden;">
+                                    <a target="blank" href="{{content}}">{{content}}</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">sort</i>Bài post đã Bỏ qua
+                                    <span class="new badge" data-badge-caption="">{{array_skip.length}}</span>
+                                </div>
+                                <div class="collapsible-body" ng-repeat="content in array_skip track by $index" style="text-overflow: ellipsis;
+                        overflow: hidden;">
+                                    <a target="blank" href="{{content}}">{{content}}</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">error</i>Lỗi
+                                    <span class="new badge" data-badge-caption="">{{array_error.length}}</span>
+                                </div>
+                                <div class="collapsible-body" ng-repeat="content in array_error track by $index" style="text-overflow: ellipsis;
+                        overflow: hidden;">
+                                    <a target="blank" href="{{content}}">{{content}}</a>
+                                </div>
+                            </li>
+							<li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">local_atm</i>Tổng Điểm
+                                    <span class="new badge" data-badge-caption="">{{(array_like.length + array_com.length)*10}}</span>
+                                </div>
+                            </li>
+                        </ul>
+
+
+                        <center>
+                            <a class="waves-effect waves-light btn" ng-click="xacnhan()" style="background:#EC407A; color:#fff">Xác Nhận</a>
+                        </center>
+
+                    </div>
+                </div>
+
+                <div ng-show="empty_slot">
+                    <div class="card-panel alert">
+                        <h4 class="text-darken-2" style="">Hệ thống đang cập nhật danh sách tác vụ vui lòng quay lại sau !</h4>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div ng-show="full_point">
+                <div class="card-panel alert">
+                    <h4 class="text-darken-2" style="color: green !important">Bạn đã nhận đủ điểm cho ngày hôm nay !</h4>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.collapsible').collapsible();
+    });
+</script>
