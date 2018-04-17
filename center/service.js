@@ -1,15 +1,16 @@
 angular.module('CouponService', [])
     .factory('DataServices', function ($http, $q) {
-        var api_gateway_url = 'http://35.200.236.251:2018';
+        // var api_gateway_url = 'http://35.200.236.251:2018';
+        var api_gateway_url = 'http://localhost:2018';
         var parameter;
         var url;
         var header = { header: { 'Conntent-Type': 'application/x-www-form-urlencoded' } };
 
         return {
-            signIn: function (user_id, avatar) {
+            signIn: function (user_id, user_img) {
                 parameter = JSON.stringify({ 
 					user_id: user_id,
-					avatar: avatar
+					user_img: user_img
 				});
                 url = api_gateway_url + '/signin';
                 return $http.post(url, parameter, header);
