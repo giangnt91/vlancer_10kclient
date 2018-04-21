@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=1,initial-scale=1,user-scalable=1" />
 	<title>Coupon 10K</title>
 
-	<link href="http://fonts.googleapis.com/css?family=Lato:100italic,100,300italic,300,400italic,400,700italic,700,900italic,900" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Lato:100italic,100,300italic,300,400italic,400,700italic,700,900italic,900"
+	 rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="assets/css/login.css" />
-	
+
 </head>
+
 <body>
 	<section class="container login-form">
 		<section class="card-panel">
@@ -20,25 +23,33 @@
 				<div class="fbspan">
 					<span class="fbspan">***</span>
 				</div>
-				
+
+				<div class="alert alert-warning" ng-show="_error_login">
+					<strong>Cảnh báo!</strong> Tài khoản của bạn hiện đang bị khóa liên hệ Admin để được hỗ trợ!
+				</div>
+
 				<div class="form-group">
-						<div class="preloader-wrapper big active" ng-show="!load_f">
-							<div class="spinner-layer spinner-blue-only">
-							  <div class="circle-clipper left">
+					<div class="preloader-wrapper big active" ng-show="!load_f">
+						<div class="spinner-layer spinner-blue-only">
+							<div class="circle-clipper left">
 								<div class="circle"></div>
-							  </div><div class="gap-patch">
-								<div class="circle"></div>
-							  </div><div class="circle-clipper right">
-								<div class="circle"></div>
-							  </div>
 							</div>
-						  </div>
-  
-                        <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
-                </div>
+							<div class="gap-patch">
+								<div class="circle"></div>
+							</div>
+							<div class="circle-clipper right">
+								<div class="circle"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true"
+					 data-use-continue-as="true"></div>
+				</div>
 			</form>
 		</section>
 	</section>
 
 </body>
+
 </html>

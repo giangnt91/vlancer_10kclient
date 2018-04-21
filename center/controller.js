@@ -2,13 +2,13 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 coupon
     .controller('LoginCtrl', function ($scope, $window, DataServices) {
         $window.fbAsyncInit = function () {
-			// check load facebook login button
-			var finished_rendering = function() {
-			  $scope.load_f = true;
-			  $scope.$apply();
-			}
-			FB.Event.subscribe('xfbml.render', finished_rendering);
-			
+            // check load facebook login button
+            var finished_rendering = function () {
+                $scope.load_f = true;
+                $scope.$apply();
+            }
+            FB.Event.subscribe('xfbml.render', finished_rendering);
+
             FB.Event.subscribe('auth.login', function (response) {
                 if (response) {
 
@@ -37,16 +37,16 @@ coupon
                                         id: 4,
                                         name: "Thường"
                                     }
-									
-									var _role ={
-										id: 0,
-										name: "Thường"
-									}
-									
-									var _status = {
-										id: 0,
-										name: "Active"
-									}
+
+                                    var _role = {
+                                        id: 0,
+                                        name: "Thường"
+                                    }
+
+                                    var _status = {
+                                        id: 0,
+                                        name: "Active"
+                                    }
 
                                     DataServices.signUp(res.id, res.picture.data.url, JSON.stringify($scope.info), 0, 0, 5, JSON.stringify(_class), false, 1, 0, 0, null, 5, [], null, JSON.stringify(_role), JSON.stringify(_status)).then(function (signup_res) {
                                         var signup_result = signup_res.data;
@@ -66,7 +66,7 @@ coupon
                                     localStorage.setItem('auth', JSON.stringify(signin_result.auth));
                                     window.location.href = '#/';
                                     window.location.reload(true);
-                                }else if (signin_result.error_code === 5) {
+                                } else if (signin_result.error_code === 5) {
                                     $scope._error_login = true;
                                     $timeout(function () {
                                         $scope._error_login = false;
@@ -82,24 +82,24 @@ coupon
     .controller('HomeCtrl', function ($scope, $window, $timeout, DataServices) {
         if ($scope.auth) {
             // check access time per day
-            DataServices.signIn($scope.auth[0].user_id).then(function (response) {
-				var signin_result = response.data;
-				localStorage.setItem('auth', JSON.stringify(signin_result.auth));
-				// if(response.data.error_code === 0){
-					// localStorage.setItem('auth', JSON.stringify(response.auth));
-					// $scope.auth = JSON.parse(localStorage.getItem('auth'));
-					// $scope.$apply();
-				// }				
-			})
+            DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (response) {
+                var signin_result = response.data;
+                localStorage.setItem('auth', JSON.stringify(signin_result.auth));
+                // if(response.data.error_code === 0){
+                // localStorage.setItem('auth', JSON.stringify(response.auth));
+                // $scope.auth = JSON.parse(localStorage.getItem('auth'));
+                // $scope.$apply();
+                // }				
+            })
         }
-		
-		$scope.auth = JSON.parse(localStorage.getItem('auth'));
+
+        $scope.auth = JSON.parse(localStorage.getItem('auth'));
         DataServices.getshopvip().then(function (response) {
             if (response.data.error_code === 0) {
                 $scope.vip = response.data.vip;
             }
         });
-		
+
         // go menu
         $scope.go_action = function () {
             window.location.href = '#/action';
@@ -127,9 +127,9 @@ coupon
 
         $scope.go_pro_detail = function () {
             $window.scrollTo(0, 0);
-			FB.XFBML.parse();
+            FB.XFBML.parse();
             // $timeout(function () {
-                // window.location.reload(true);
+            // window.location.reload(true);
             // }, 100);
         }
         // end go menu
@@ -146,7 +146,7 @@ coupon
 
         $scope.logout = function () {
             window.location.href = '#/login';
-			FB.XFBML.parse();
+            FB.XFBML.parse();
             $window.scrollTo(0, 0);
             $timeout(function () {
                 window.location.reload(true);
@@ -176,15 +176,26 @@ coupon
             if (response.data.error_code === 0) {
                 $scope.kind_result_1 = [];
                 $scope.kind_result_2 = [];
+                $scope.kind_result_3 = [];
+
                 for (var i = 0; i < response.data.shop.length; i++) {
                     if (response.data.shop[i].shop_info[0].kind[0].id === 2) {
-                        $scope.kind_result_1.push(response.data.shop[i]);
-                    } else {
-                        $scope.kind_result_2.push(response.data.shop[i]);
+                        if (response.data.shop[i].shop_status[0].id === 1) {
+                            $scope.kind_result_1.push(response.data.shop[i]);
+                        }
+                    } else if (response.data.shop[i].shop_info[0].kind[0].id === 1) {
+                        if (response.data.shop[i].shop_status[0].id === 1) {
+                            $scope.kind_result_2.push(response.data.shop[i]);
+                        }
+                    } else if (response.data.shop[i].shop_info[0].kind[0].id === 3) {
+                        if (response.data.shop[i].shop_status[0].id === 1) {
+                            $scope.kind_result_3.push(response.data.shop[i]);
+                        }
                     }
                 }
                 localStorage.setItem('kind_1', JSON.stringify($scope.kind_result_1));
                 localStorage.setItem('kind_2', JSON.stringify($scope.kind_result_2));
+                localStorage.setItem('kind_3', JSON.stringify($scope.kind_result_3));
             }
         });
 
@@ -198,6 +209,14 @@ coupon
 
         $scope.detail_kind_2 = function () {
             window.location.href = '#/cua-hang/an-uong';
+            $window.scrollTo(0, 0);
+            $timeout(function () {
+                // window.location.reload(true);
+            }, 100);
+        }
+
+        $scope.detail_kind_3 = function () {
+            window.location.href = '#/cua-hang/du-lich';
             $window.scrollTo(0, 0);
             $timeout(function () {
                 // window.location.reload(true);

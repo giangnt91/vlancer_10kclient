@@ -13,13 +13,13 @@
                     <button class="btn waves-effect waves-light like-pro right modal-trigger" data-target="like" ng-show="show_like" ng-click="open_like()">Like
                         <i class="material-icons right">thumb_up</i>
                     </button>
-			    </div>
-				
-				<div ng-show="condition">
-					<button class="btn waves-effect waves-light like-pro right disabled">Like
+                </div>
+
+                <div ng-show="condition">
+                    <button class="btn waves-effect waves-light like-pro right disabled">Like
                         <i class="material-icons right">thumb_up</i>
                     </button>
-				</div>
+                </div>
 
 
             </div>
@@ -44,11 +44,11 @@
             </ul>
             <div id="thongtin" class="col s12">
                 <div class="person-info">
-                    <h5>
+                    <h5 class="blue-text">
                         <i class="material-icons">location_on</i>
                         <span>{{shop.shop_info[0].address}}</span>
                     </h5>
-                    <h5>
+                    <h5 class="purple-text">
                         <i class="material-icons">access_time</i>
                         <span>{{shop.shop_info[0].time}}</span>
                     </h5>
@@ -63,24 +63,28 @@
                     <h5 class="red-text" ng-show="condition">
                         <i class="material-icons">block</i>
                         <span>Bạn chưa đủ điều kiện nhận Coupon</span>
-                       
-						<div ng-show="_get">
-							<br>
-							<span class="grey-text" style="padding-left: 27px">- Bạn đã nhận Coupon này rồi.</span>
-						</div>
-						<div ng-show="enable_point">
-							<br>
-							<span class="grey-text" style="padding-left: 27px">- Bạn chưa đủ điểm (>1000đ).</span>
-						</div>
-                       <div ng-show="feedback_count.length > 0">
-							<br>
-							<span class="grey-text" style="padding-left: 27px">- Bạn chưa thực hiện Feedback ({{feedback_count}}).</span>
-					    </div>
-						<div ng-show="auth[0].empty_slot === 0">
-							<br>
-							<span class="grey-text" style="padding-left: 27px">- Bạn đã hết slot.</span>
-						</div>
-                        
+
+                        <div ng-show="_get">
+                            <br>
+                            <span class="grey-text" style="padding-left: 27px">- Bạn đã nhận Coupon này rồi.</span>
+                        </div>
+                        <div ng-show="enable_point">
+                            <br>
+                            <span class="grey-text" style="padding-left: 27px">- Bạn chưa đủ điểm (>1000đ).</span>
+                        </div>
+                        <div ng-show="feedback_count.length > 0">
+                            <br>
+                            <span class="grey-text" style="padding-left: 27px">- Bạn chưa thực hiện Feedback ({{feedback_count}}).</span>
+                        </div>
+                        <div ng-show="auth[0].empty_slot === 0">
+                            <br>
+                            <span class="grey-text" style="padding-left: 27px">- Bạn đã hết slot.</span>
+                        </div>
+                        <div ng-show="_rank">
+                            <br>
+                            <span class="grey-text" style="padding-left: 27px">- Yêu cầu thành viên {{rank_user.name}} trở lên để nhận coupon này.</span>
+                        </div>
+
                     </h5>
                     <div ng-show="!condition">
                         <h5 ng-show="!show_like">
@@ -88,7 +92,7 @@
                                 <a class="waves-effect waves-light btn pulse" ng-click="get_coupon()" style="background:#EC407A; color:#fff">Nhận Coupon</a>
                             </center>
                         </h5>
-						<h5 ng-show="show_like">
+                        <h5 ng-show="show_like">
                             <center>
                                 <a class="waves-effect waves-light btn disabled" style="background:#EC407A; color:#fff">Nhận Coupon</a>
                             </center>
@@ -102,10 +106,13 @@
                     <h5>
                         <span>{{coupon_info}}</span>
                     </h5>
-                    <h5>
+                    <h5 class="red-text">
+                        <span>Hạng User: {{rank_user.name}}</span>
+                    </h5>
+                    <h5 class="blue-text">
                         <span>Hạn sử dụng: {{coupon_expire}}</span>
                     </h5>
-                    <h5>
+                    <h5 class="red-text">
                         <span>Yêu cầu Feedback: Có</span>
                     </h5>
                 </div>
@@ -165,10 +172,13 @@
             <h4>Fanpage của {{shop.shop_info[0].shop_name}}</h4>
         </div> -->
         <center>
-		<div ng-show="!load_fa">
-			<h4 class="flow-text center">Đang cập nhật dữ liệu</h4>  <div class="progress"> <div class="indeterminate"></div> </div>
-		</div>
-			
+            <div ng-show="!load_fa">
+                <h4 class="flow-text center">Đang cập nhật dữ liệu</h4>
+                <div class="progress">
+                    <div class="indeterminate"></div>
+                </div>
+            </div>
+
             <div class="fb-page" data-href="https://www.facebook.com/{{shop.shopId}}" data-adapt-container-width="false" data-width="510"></div>
         </center>
     </div>
@@ -186,11 +196,11 @@
         $('.modal').modal({
             dismissible: false
         });
-		setTimeout(function(){
-			 $('.materialboxed').materialbox();
-			  $(':radio').change(function () {
-				console.log('New star rating: ' + this.value);
-			});
-		}, 500);
+        setTimeout(function () {
+            $('.materialboxed').materialbox();
+            $(':radio').change(function () {
+                console.log('New star rating: ' + this.value);
+            });
+        }, 500);
     });
 </script>

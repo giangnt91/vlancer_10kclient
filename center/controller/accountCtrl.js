@@ -76,14 +76,14 @@ coupon
                                 closeByDocument: false
                             }).then(function (comfirm) {
                                 $timeout(function () {
-                                    DataServices.signIn($scope.auth[0].user_id).then(function (signin_res_2) {
+                                    DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (signin_res_2) {
                                         var signin_result_2 = signin_res_2.data;
 										
                                         if (signin_result_2.error_code === 0) {
                                             if (signin_result_2.auth[0].info[0].full_update === 1) {
                                                 DataServices.Point($scope.auth[0]._id, point, 1).then(function (response_2) {
                                                     if (response_2.data.error_code === 0) {
-                                                        DataServices.signIn($scope.auth[0].user_id).then(function (signin_res_3) {
+                                                        DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (signin_res_3) {
                                                             var signin_result_3 = signin_res_3.data;
                                                             localStorage.setItem('auth', JSON.stringify(signin_result_3.auth));
                                                             $window.scrollTo(0, 0);
