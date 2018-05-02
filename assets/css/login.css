@@ -38,7 +38,7 @@ body {
 		border-radius: 5px;
 	}
 	.login-form a {
-		color: #BDBEC0;
+		/* color: #BDBEC0; */
 	}
 	.login-form img {
 		display: block;

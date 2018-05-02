@@ -1,93 +1,109 @@
-#nav-web li{
+#nav-web li {
     float: none !important;
 }
-.logoa{
+
+.logoa {
     padding-top: 5px;
     margin-bottom: -20px;
 }
-.logoa img{
+
+.logoa img {
     border-radius: 50px;
     width: 50px;
 }
-.side-nav li>a>i{
+
+.side-nav li>a>i {
     margin-right: 20px !important;
 }
-body{
+
+body {
     background: #fff;
 }
-.brand-logo{
+
+.brand-logo {
     color: #fff;
-	text-transform: uppercase;
-	font-family: monospace;
+    text-transform: uppercase;
+    font-family: monospace;
     font-size: 40px;
 }
-.card-content{
+
+.card-content {
     /* border-top: 1px solid rgba(160,160,160,0.2); */
     margin-top: 10px;
     padding: 5px !important;
 }
-.card-content p{
+
+.card-content p {
     padding-bottom: 7px;
 }
 
-.card-content p a{
+.card-content p a {
     color: rgb(104, 212, 58);
 }
 
-.btn-coupon{
+.btn-coupon {
     background: #EA4177;
     margin-bottom: 7px;
 }
 
-.btn-coupon:hover{
+.btn-coupon:hover {
     background-color: #F0F0F0;
     border: 1px solid #EA4177;
     color: #EA4177;
 }
 
-.card .card-content .card-title{
+.card .card-content .card-title {
     margin-bottom: 0px !important;
 }
-.img-gift{
+
+.img-gift {
     left: 20px;
     width: 70px;
     height: 70px;
     position: absolute;
 }
-.content-gift{
+
+.content-gift {
     margin-left: 40px;
     margin-top: 12px;
 }
-.code{
+
+.code {
     text-transform: uppercase;
     padding: 10px;
     margin-right: 100px;
 }
-.expired{
+
+.expired {
     color: #C1C1C1;
 }
-.s2-img{
+
+.s2-img {
     margin-bottom: -6px;
     margin-left: -12px;
 }
-.row{
+
+.row {
     margin-bottom: 10px !important;
 }
-.btn-xt{
+
+.btn-xt {
     border: 1px solid #EC407A;
     color: #EC407A;
     background: transparent;
 }
-.btn-xt:hover{
+
+.btn-xt:hover {
     background-color: #EA4177;
     color: #F0F0F0;
 }
 
-.btn-action{
+.btn-action {
     background-color: #EA4177;
     color: #F0F0F0;
 }
-.btn-action:hover{
+
+.btn-action:hover {
     border: 1px solid #EC407A;
     color: #EC407A;
     background: transparent;
@@ -98,58 +114,70 @@ body{
     margin-top: 2px;
     max-width: 1280px;
     width: 100% !important;
-  }
-.person-info{
+}
+
+.person-info {
     padding: 30px;
     padding-top: 0;
 }
-  .person-info h5 {
+
+.person-info h5 {
     border-bottom: 1px solid #eeeeee;
     color: #727272;
     font-size: 14px;
     margin-bottom: 12px;
     padding-bottom: 12px;
 }
-.person-info h5 span{
+
+.person-info h5 span {
     vertical-align: super;
 }
-.coupon{
+
+.coupon {
     color: rgb(28, 236, 28);
 }
 
-  .about-subtitle {
+.about-subtitle {
     /* font-size: 24px; */
     font-weight: 600;
     margin-bottom: 20px;
     text-transform: uppercase;
     color: #EA4177;
 }
-.page-footer{
+
+.page-footer {
     background: #F4F4F4 !important;
     color: #727272 !important;
 }
-.carousel{
+
+.carousel {
     height: 400px !important;
 }
-.carousel.carousel-slider .carousel-fixed-item{
+
+.carousel.carousel-slider .carousel-fixed-item {
     bottom: 0px;
-    background: linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,1));
+    background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1));
 }
-.carousel-fixed-item h4{
+
+.carousel-fixed-item h4 {
     padding-left: 30px;
     text-transform: capitalize;
 }
-.tabs .indicator{
+
+.tabs .indicator {
     background-color: transparent;
 }
-.carousel .carousel-item{
+
+.carousel .carousel-item {
     height: auto;
 }
-.fb-button{
+
+.fb-button {
     padding: 20px;
     margin-right: 10px;
 }
-.g-img{
+
+.g-img {
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -161,156 +189,166 @@ body{
     line-height: 50px;
     font-size: 50px;
     margin-top: -10px;
-  }
-  
-  .rating label {
+}
+
+.rating label {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     cursor: pointer;
     font-size: 25px;
-  }
-  
-  .rating label:last-child {
+}
+
+.rating label:last-child {
     position: static;
-  }
-  
-  .rating label:nth-child(1) {
+}
+
+.rating label:nth-child(1) {
     z-index: 5;
-  }
-  
-  .rating label:nth-child(2) {
+}
+
+.rating label:nth-child(2) {
     z-index: 4;
-  }
-  
-  .rating label:nth-child(3) {
+}
+
+.rating label:nth-child(3) {
     z-index: 3;
-  }
-  
-  .rating label:nth-child(4) {
+}
+
+.rating label:nth-child(4) {
     z-index: 2;
-  }
-  
-  .rating label:nth-child(5) {
+}
+
+.rating label:nth-child(5) {
     z-index: 1;
-  }
-  
-  .rating label input {
+}
+
+.rating label input {
     position: absolute;
     top: 0;
     left: 0;
     opacity: 0;
-  }
-  
-  .rating label .icon {
+}
+
+.rating label .icon {
     float: left;
     color: transparent;
-  }
-  
-  .rating label:last-child .icon {
+}
+
+.rating label:last-child .icon {
     color: #000;
-  }
-  
-  .rating:not(:hover) label input:checked ~ .icon,
-  .rating:hover label:hover input ~ .icon {
+}
+
+.rating:not(:hover) label input:checked~.icon, .rating:hover label:hover input~.icon {
     color: #FFCA00;
-  }
-  
-  .rating label input:focus:not(:checked) ~ .icon:last-child {
+}
+
+.rating label input:focus:not(:checked)~.icon:last-child {
     color: #000;
     text-shadow: 0 0 5px #FFCA00;
-  }
+}
 
-  .shop_name{
+.shop_name {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
+}
 
-  .like-pro{
+.like-pro {
     /* padding: 20px; */
     margin-right: 30px;
     margin-top: 15px;
     background: #4267B2;
-  }
+}
 
-  .like-pro:hover{
-      background: rgb(87, 130, 216);
-  }
-
-  .like-pro:focus{
+.like-pro:hover {
     background: rgb(87, 130, 216);
-  }
-  
-  .span_account{
+}
+
+.like-pro:focus {
+    background: rgb(87, 130, 216);
+}
+
+.span_account {
     margin-left: 40px;
     font-size: 17px;
-  }
+}
 
-  .alert{
+.alert {
     margin-top: 0;
     box-shadow: none;
     color: #8a6d3b;
     background-color: #fcf8e3;
     text-align: center;
-  }
-  .alert span{
-      color: #EC407A !important;
-      font-size: 20px !important;
-  }
+}
 
-  .alert h4{
+.alert span {
     color: #EC407A !important;
-  }
-  ._i{
-      color: #EC407A;
-  }
-  .slider .indicators{
+    font-size: 20px !important;
+}
+
+.alert h4 {
+    color: #EC407A !important;
+}
+
+._i {
+    color: #EC407A;
+}
+
+.slider .indicators {
     bottom: 50px !important;
     z-index: 2;
-  }
-  .slider .indicators .indicator-item.active{
+}
+
+.slider .indicators .indicator-item.active {
     background-color: #EC407A !important;
-  }
-  .slider .slides li .caption{
-      text-transform: uppercase !important;
-      background: rgba(0,0,0,0.4);
-  }
-  .slider .slides li img{
+}
+
+.slider .slides li .caption {
+    text-transform: uppercase !important;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.slider .slides li img {
     background-position: unset !important;
     background-repeat: no-repeat;
-  }
-  @media only screen and (min-width: 601px){
-        .container_2 {
+}
+
+.lgbuton {
+    background: #EC407A !important;
+    box-shadow: none !important;
+    color: #fff !important;
+    border-radius: 5px !important;
+    font-size: 17px !important;
+    border: 1px solid !important;
+}
+
+@media only screen and (min-width: 601px) {
+    .container_2 {
         width: 85% !important;
     }
-  }
-    
-  @media only screen and (min-width: 993px){
-        .container_2 {
+}
+
+@media only screen and (min-width: 993px) {
+    .container_2 {
         width: 75% !important;
     }
-  }
-    
-
-@media only screen and (max-width: 48em) {
-
 }
+
+@media only screen and (max-width: 48em) {}
 
 @media only screen and (max-width: 48em) {
     /*************** ADD MOBILE ONLY CSS HERE  ***************/
-        .carousel{
-            height: 175px !important;
-        }
-
-        .carousel-fixed-item h5{
-            margin-left: 5px !important;
-        }
-
-        .like-pro{
-            margin-top: 0px !important;
-            margin-right: 5px !important;
-        }
-
+    .carousel {
+        height: 175px !important;
     }
+    .carousel-fixed-item h5 {
+        margin-left: 5px !important;
+    }
+    .like-pro {
+        margin-top: 0px !important;
+        margin-right: 5px !important;
+    }
+    .fbspan>span:before,.fbspan>span:after{width:110px !important}
+}

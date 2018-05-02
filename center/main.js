@@ -1,5 +1,5 @@
 angular.module('coupon10k', ['ngRoute', 'CouponController', 'CouponService'])
-    .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+    .config(['$routeProvider', '$locationProvider', 'socialProvider', function ($routeProvider, $locationProvider, socialProvider) {
         $routeProvider
 
             //Url
@@ -18,5 +18,7 @@ angular.module('coupon10k', ['ngRoute', 'CouponController', 'CouponService'])
         //         enabled: true,
         //         requireBase: false
         //     });
+
+        socialProvider.setFbKey({appId: "1946240225621730", apiVersion:"v2.10"})
 
     }])

@@ -1,13 +1,13 @@
-var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSanitize', 'CouponService', 'ngDialog'])
+var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSanitize', 'CouponService', 'ngDialog', 'socialLogin'])
 coupon
     .controller('LoginCtrl', function ($scope, $window, DataServices) {
         $window.fbAsyncInit = function () {
             // check load facebook login button
-            var finished_rendering = function () {
-                $scope.load_f = true;
-                $scope.$apply();
-            }
-            FB.Event.subscribe('xfbml.render', finished_rendering);
+            // var finished_rendering = function () {
+            //     $scope.load_f = true;
+            //     $scope.$apply();
+            // }
+            // FB.Event.subscribe('xfbml.render', finished_rendering);
 
             FB.Event.subscribe('auth.login', function (response) {
                 if (response) {
@@ -79,7 +79,7 @@ coupon
             });
         }
     })
-    .controller('HomeCtrl', function ($scope, $window, $timeout, DataServices) {
+    .controller('HomeCtrl', function ($scope, $window, $timeout, DataServices, socialLoginService ) {
         if ($scope.auth) {
             // check access time per day
             DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (response) {
@@ -146,7 +146,8 @@ coupon
 
         $scope.logout = function () {
             window.location.href = '#/login';
-            FB.XFBML.parse();
+            // FB.XFBML.parse();
+            socialLoginService.logout();
             $window.scrollTo(0, 0);
             $timeout(function () {
                 window.location.reload(true);
