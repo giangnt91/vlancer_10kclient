@@ -9,7 +9,7 @@ coupon
                 localStorage.setItem('accessToken', res.access_token);
             });
 
-            DataServices.signIn(userDetails.uid, userDetails.imageUrl).then(function (signin_res) {
+            DataServices.signIn(userDetails.uid, userDetails.imageUrl, userDetails.name).then(function (signin_res) {
                 var signin_result = signin_res.data;
                 if (signin_result.error_code === 2) {
 
@@ -40,7 +40,7 @@ coupon
                     DataServices.signUp(userDetails.uid, userDetails.imageUrl, JSON.stringify($scope.info), 0, 0, 5, JSON.stringify(_class), false, 1, 0, 0, null, 5, [], null, JSON.stringify(_role), JSON.stringify(_status)).then(function (signup_res) {
                         var signup_result = signup_res.data;
                         if (signup_result.error_code === 0) {
-                            DataServices.signIn(userDetails.uid, userDetails.imageUrl).then(function (signin_res_2) {
+                            DataServices.signIn(userDetails.uid, userDetails.imageUrl, userDetails.name).then(function (signin_res_2) {
                                 var signin_result_2 = signin_res_2.data;
                                 if (signin_result_2.error_code === 0) {
                                     localStorage.setItem('auth', JSON.stringify(signin_result_2.auth));
@@ -145,7 +145,7 @@ coupon
     .controller('HomeCtrl', function ($scope, $window, $timeout, DataServices, socialLoginService) {
         if ($scope.auth) {
             // check access time per day
-            DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (response) {
+            DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img, $scope.auth[0].info[0].fulname).then(function (response) {
                 var signin_result = response.data;
                 localStorage.setItem('auth', JSON.stringify(signin_result.auth));
                 // if(response.data.error_code === 0){

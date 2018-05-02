@@ -6,7 +6,7 @@ coupon
         var today = $filter('date')(new Date(), 'dd/MM/yyyy');
 		
 		$scope.xacnhan = function(){
-			DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (response) {
+			DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img, $scope.auth[0].info[0].fulname).then(function (response) {
 				var signin_result = response.data;
 				localStorage.setItem('auth', JSON.stringify(signin_result.auth));
 				// $scope.auth = JSON.parse(localStorage.getItem('auth'));
