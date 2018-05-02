@@ -28,7 +28,7 @@
     }(document, 'script', 'facebook-jssdk'));</script> -->
 </head>
 
-<body ng-app="coupon10k">
+<body ng-app="coupon10k" ng-csp="default-src">
 
   <div ng-include='"templates/nav.html"'></div>
   <div ng-include='"templates/header.html"'></div>
@@ -40,7 +40,7 @@
   <script type="text/javascript" src="js/materialize.min.js"></script>
 
   <!-- Angularjs Library -->
-  <script src="js/angular-1-2-32.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
   <script src="js/angular-route-1-2-18.min.js"></script>
   <script src="node_modules/angular-sanitize/angular-sanitize.js"></script>
   <script src="node_modules/ngstorage/ngStorage.min.js"></script>
