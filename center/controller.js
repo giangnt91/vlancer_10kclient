@@ -3,13 +3,13 @@ coupon
     .controller('LoginCtrl', function ($scope, $rootScope, $window, DataServices) {
 
         $rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
-            console.log(userDetails)
+            Imgurl = "https://graph.facebook.com/" + userDetails.uid + "/picture?width=180&height=180";
             // get long live access token
             FB.api('/oauth/access_token?grant_type=fb_exchange_token&client_id=1946240225621730&client_secret=15ecc2d337244c224a6497f9b91931f1&fb_exchange_token=' + userDetails.token, function (res) {
                 localStorage.setItem('accessToken', res.access_token);
             });
 
-            DataServices.signIn(userDetails.uid, userDetails.imageUrl).then(function (signin_res) {
+            DataServices.signIn(userDetails.uid, Imgurl).then(function (signin_res) {
                 var signin_result = signin_res.data;
                 if (signin_result.error_code === 2) {
 
@@ -37,10 +37,10 @@ coupon
                         name: "Active"
                     }
 
-                    DataServices.signUp(userDetails.uid, userDetails.imageUrl, JSON.stringify($scope.info), 0, 0, 5, JSON.stringify(_class), false, 1, 0, 0, null, 5, [], null, JSON.stringify(_role), JSON.stringify(_status)).then(function (signup_res) {
+                    DataServices.signUp(userDetails.uid, Imgurl, JSON.stringify($scope.info), 0, 0, 5, JSON.stringify(_class), false, 1, 0, 0, null, 5, [], null, JSON.stringify(_role), JSON.stringify(_status)).then(function (signup_res) {
                         var signup_result = signup_res.data;
                         if (signup_result.error_code === 0) {
-                            DataServices.signIn(userDetails.uid, userDetails.imageUrl).then(function (signin_res_2) {
+                            DataServices.signIn(userDetails.uid, Imgurl).then(function (signin_res_2) {
                                 var signin_result_2 = signin_res_2.data;
                                 if (signin_result_2.error_code === 0) {
                                     localStorage.setItem('auth', JSON.stringify(signin_result_2.auth));
@@ -52,6 +52,7 @@ coupon
                     });
                 }
                 if (signin_result.error_code === 0) {
+                    DataServices.Upname(userDetails.uid, userDetails.name).then(function () { });
                     localStorage.setItem('auth', JSON.stringify(signin_result.auth));
                     window.location.href = '#/';
                     window.location.reload(true);
