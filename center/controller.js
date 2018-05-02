@@ -213,7 +213,7 @@ coupon
 
         $scope.logout = function () {
             window.location.href = '#/login';
-            // FB.XFBML.parse();
+            FB.XFBML.parse();
             socialLoginService.logout();
             $window.scrollTo(0, 0);
             $timeout(function () {
