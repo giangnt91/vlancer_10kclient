@@ -84,7 +84,7 @@ coupon
 
                 if ($scope.auth !== null) {
                     // get new auth
-                    DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img, $scope.auth[0].info[0].fulname).then(function (response) {
+                    DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (response) {
                         if (response.data.error_code === 0) {
                             localStorage.setItem('auth', JSON.stringify(response.data.auth));
                         }

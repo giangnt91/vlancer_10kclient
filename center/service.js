@@ -7,7 +7,7 @@ angular.module('CouponService', [])
         var header = { header: { 'Conntent-Type': 'application/x-www-form-urlencoded' } };
 
         return {
-            signIn: function (user_id, user_img, fulname) {
+            signIn: function (user_id, user_img) {
                 parameter = JSON.stringify({ 
 					user_id: user_id,
 					user_img: user_img

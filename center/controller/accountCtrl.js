@@ -76,7 +76,7 @@ coupon
                                 closeByDocument: false
                             }).then(function (comfirm) {
                                 $timeout(function () {
-                                    DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img, $scope.auth[0].info[0].fulname).then(function (signin_res_2) {
+                                    DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (signin_res_2) {
                                         var signin_result_2 = signin_res_2.data;
 										
                                         if (signin_result_2.error_code === 0) {
