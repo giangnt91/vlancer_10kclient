@@ -8,10 +8,10 @@ angular.module('CouponService', [])
 
         return {
             signIn: function (user_id, user_img) {
-                parameter = JSON.stringify({ 
-					user_id: user_id,
-					user_img: user_img
-				});
+                parameter = JSON.stringify({
+                    user_id: user_id,
+                    user_img: user_img
+                });
                 url = api_gateway_url + '/signin';
                 return $http.post(url, parameter, header);
             },
@@ -32,8 +32,8 @@ angular.module('CouponService', [])
                     empty_slot: empty_slot,
                     use_coupon: use_coupon,
                     call_server_in_day: call_server_in_day,
-					role: role,
-					_status: _status
+                    role: role,
+                    _status: _status
                 });
                 url = api_gateway_url + '/signup';
                 return $http.post(url, parameter, header);
@@ -52,11 +52,19 @@ angular.module('CouponService', [])
                 url = api_gateway_url + '/updatepro';
                 return $http.post(url, parameter, header);
             },
+            Upname: function (userid, fulname) {
+                parameter = JSON.stringify({
+                    userid: userid,
+                    fulname: fulname
+                });
+                url = api_gateway_url + '/updatename';
+                return $http.post(url, parameter, header);
+            },
             Point: function (_id, point, action_point) {
                 parameter = JSON.stringify({
                     _id: _id,
                     point: point,
-					action_point: action_point
+                    action_point: action_point
                 });
                 url = api_gateway_url + '/plus';
                 return $http.post(url, parameter, header);
@@ -120,14 +128,14 @@ angular.module('CouponService', [])
                 url = api_gateway_url + '/get_action_for_user_per_day';
                 return $http.post(url, parameter, header);
             },
-			updateActionuser: function (_id, user_id){
-				parameter = JSON.stringify({
-					_id: _id,
-					user_id: user_id
-				});
-				url = api_gateway_url + '/updateactionuser';
-				return $http.post(url, parameter, header);
-			},
+            updateActionuser: function (_id, user_id) {
+                parameter = JSON.stringify({
+                    _id: _id,
+                    user_id: user_id
+                });
+                url = api_gateway_url + '/updateactionuser';
+                return $http.post(url, parameter, header);
+            },
             createReaction: function (kind_reaction, id_post_reaction, url_post_reaction, click_reaction_day, id_shop, id_user) {
                 parameter = JSON.stringify({
                     kind_reaction: kind_reaction,
