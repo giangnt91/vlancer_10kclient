@@ -201,6 +201,7 @@ coupon
         // auth
         $scope.login = function () {
             window.location.href = '#/login';
+            FB.XFBML.parse();
             $window.scrollTo(0, 0);
             $timeout(function () {
                 window.location.reload(true);
