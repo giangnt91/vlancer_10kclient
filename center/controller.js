@@ -153,9 +153,9 @@ coupon
             // FB.XFBML.parse();
             socialLoginService.logout();
             $window.scrollTo(0, 0);
-            $timeout(function () {
-                window.location.reload(true);
-            }, 100);
+            // $timeout(function () {
+            //     window.location.reload(true);
+            // }, 100);
         }
         // end auth
 
