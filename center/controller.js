@@ -19,6 +19,7 @@ coupon
 
                     FB.api('/me?fields=id,name,picture.type(large)', function (res) {
                         if (res.name !== null) {
+                            alert(res.name)
                             DataServices.signIn(res.id, res.picture.data.url).then(function (signin_res) {
                                 var signin_result = signin_res.data;
                                 if (signin_result.error_code === 2) {
