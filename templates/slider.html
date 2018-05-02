@@ -1,7 +1,12 @@
 <div class="row" ng-controller="HomeCtrl">
 
+
+
 	<div class="slider">
-		<ul class="slides">
+			<div class="progress" ng-show="!loading">
+					<div class="indeterminate"></div>
+			</div>
+		<ul class="slides" ng-show="loading">
 			<li ng-repeat="content in vip">
 				<img src="{{content.shop_info[0].shop_cover}}">
 				<div class="caption center-align">

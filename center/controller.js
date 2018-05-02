@@ -79,7 +79,7 @@ coupon
             });
         }
     })
-    .controller('HomeCtrl', function ($scope, $window, $timeout, DataServices, socialLoginService ) {
+    .controller('HomeCtrl', function ($scope, $window, $timeout, DataServices, socialLoginService) {
         if ($scope.auth) {
             // check access time per day
             DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (response) {
@@ -142,6 +142,10 @@ coupon
                 window.location.reload(true);
             }, 100);
         }
+
+        $timeout(function () {
+            $scope.loading = true;
+        }, 2500)
 
 
         $scope.logout = function () {
