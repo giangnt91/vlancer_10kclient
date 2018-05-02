@@ -169,7 +169,7 @@ coupon
             window.location.href = '#/action';
             $window.scrollTo(0, 0);
             $timeout(function () {
-                // window.location.reload(true);
+                window.location.reload(true);
             }, 100);
         }
 
