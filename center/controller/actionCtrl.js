@@ -69,6 +69,7 @@ coupon
                         $scope.array_error = [];
 
                         $scope.next_action = function () {
+                            FB.XFBML.parse();
                             var reaction_kind = [];
                             $scope.reaction_point = 0;
                             $scope.show_action = true;
