@@ -65,7 +65,8 @@ coupon
 
                         $scope.array_like = [];
                         $scope.array_com = [];
-                        $scope.array_skip = [];
+                        $scope.array_like_skip = [];
+                        $scope.array_com_skip = [];
                         $scope.array_error = [];
 
                         $scope.next_action = function () {
@@ -130,7 +131,7 @@ coupon
                                                     }
                                                     DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, last_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
                                                         if (response.data.error_code === 0) {
-                                                            $scope.array_skip.push(last_data.action_url);
+                                                            $scope.array_like_skip.push(last_data.action_url);
                                                         } else {
                                                             $scope.array_error.push(last_data.action_url);
                                                         }
@@ -167,7 +168,7 @@ coupon
                                                     }
                                                     DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, last_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
                                                         if (response.data.error_code === 0) {
-                                                            $scope.array_skip.push(last_data.action_url);
+                                                            $scope.array_com_skip.push(last_data.action_url);
                                                         } else {
                                                             $scope.array_error.push(last_data.action_url);
                                                         }
@@ -238,7 +239,7 @@ coupon
                                                     }
                                                     DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, last_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
                                                         if (response.data.error_code === 0) {
-                                                            $scope.array_skip.push(last_data.action_url);
+                                                            $scope.array_like_skip.push(last_data.action_url);
                                                         } else {
                                                             $scope.array_error.push(last_data.action_url);
                                                         }
@@ -278,7 +279,7 @@ coupon
                                                     }
                                                     DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, last_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
                                                         if (response.data.error_code === 0) {
-                                                            $scope.array_skip.push(last_data.action_url);
+                                                            $scope.array_com_skip.push(last_data.action_url);
                                                         } else {
                                                             $scope.array_error.push(last_data.action_url);
                                                         }
@@ -384,7 +385,7 @@ coupon
                                         }
                                         DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, last_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
                                             if (response.data.error_code === 0) {
-                                                $scope.array_skip.push(last_data.action_url);
+                                                $scope.array_like_skip.push(last_data.action_url);
                                             } else {
                                                 $scope.array_error.push(last_data.action_url);
                                             }
@@ -424,7 +425,7 @@ coupon
                                         }
                                         DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, last_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
                                             if (response.data.error_code === 0) {
-                                                $scope.array_skip.push(last_data.action_url);
+                                                $scope.array_com_skip.push(last_data.action_url);
                                             } else {
                                                 $scope.array_error.push(last_data.action_url);
                                             }

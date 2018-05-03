@@ -74,14 +74,30 @@
                                     <a target="blank" href="{{content}}">{{content}}</a>
                                 </div>
                             </li>
-                            <li hidden>
+                            <li>
                                 <div class="collapsible-header">
                                     <i class="material-icons">sort</i>Bài post đã Bỏ qua
-                                    <span class="new badge" data-badge-caption="">{{array_skip.length}}</span>
+                                    <span class="new badge" data-badge-caption="">{{array_like_skip.length + array_com_skip.length}}</span>
                                 </div>
-                                <div class="collapsible-body" ng-repeat="content in array_skip track by $index" style="text-overflow: ellipsis;
-                        overflow: hidden;">
-                                    <a target="blank" href="{{content}}">{{content}}</a>
+                                <div class="collapsible-body">
+                                    <div ng-if="array_like_skip.length > 0" style="text-overflow: ellipsis;
+                                            overflow: hidden;">
+                                        <i class="material-icons">thumb_up</i>
+                                        <hr>
+                                        <div ng-repeat="content in array_like_skip track by $index">
+                                           {{$index + 1}}. <a target="blank" href="{{content}}" >{{content}}</a>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div ng-if="array_com_skip.length > 0" style="text-overflow: ellipsis;
+                                            overflow: hidden;">
+                                        <i class="material-icons">border_color</i>
+                                        <hr>
+                                        <div ng-repeat="content in array_com_skip track by $index">
+                                            {{$index + 1}}. <a target="blank" href="{{content}}">{{content}}</a>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </li>
                             <li>
