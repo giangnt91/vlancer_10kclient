@@ -8,7 +8,7 @@
 
 
         <div class="card-panel" ng-show="auth">
-            <div ng-show="!full_point">
+            <div ng-if="!full_point">
                 <div ng-show="!empty_slot">
                     <div class="center" ng-show="!com_ac">
                         <h4 class="about-subtitle">Thực hiện tác vụ</h4>
@@ -119,7 +119,7 @@
 
             </div>
 
-            <div ng-show="full_point">
+            <div ng-if="full_point">
                 <div class="card-panel alert">
                     <h4 class="text-darken-2" style="color: green !important">Bạn đã nhận đủ điểm cho ngày hôm nay !</h4>
                 </div>
