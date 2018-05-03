@@ -24,12 +24,12 @@
 					<span class="fbspan">***</span>
 				</div>
 
-				<div class="alert alert-warning" ng-show="_error_login">
+				<div class="alert alert-warning" ng-if="_error_login">
 					<strong>Cảnh báo!</strong> Tài khoản của bạn hiện đang bị khóa liên hệ Admin để được hỗ trợ!
 				</div>
 
 				<div class="form-group">
-					<div class="preloader-wrapper big active" ng-show="!load_f">
+					<div class="preloader-wrapper big active" ng-if="!load_f">
 						<div class="spinner-layer spinner-blue-only">
 							<div class="circle-clipper left">
 								<div class="circle"></div>
@@ -42,7 +42,7 @@
 							</div>
 						</div>
 					</div>
-					<button class="btn lgbuton" ng-show="load_f" fb-login type="button" style="line-height: 0.428571; font-weight: lighter; font-family: monospace;">
+					<button class="btn lgbuton" ng-if="load_f" fb-login type="button" style="line-height: 0.428571; font-weight: lighter; font-family: monospace;">
 						<i class="fa fa-facebook" aria-hidden="true" style="font-size: 2rem;"></i>
 						Login With Facebook</button>
 

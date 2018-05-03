@@ -3,10 +3,10 @@
 
 
 	<div class="slider">
-			<div class="progress" ng-show="!loading">
+			<div class="progress" ng-if="!loading">
 					<div class="indeterminate"></div>
 			</div>
-		<ul class="slides" ng-show="loading">
+		<ul class="slides" ng-if="loading">
 			<li ng-repeat="content in vip">
 				<img src="{{content.shop_info[0].shop_cover}}">
 				<div class="caption center-align">

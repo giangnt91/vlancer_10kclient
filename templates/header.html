@@ -5,25 +5,25 @@
             <i class="material-icons">menu</i>
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li ng-show="auth">
+            <li ng-if="auth">
                 <h5 style="padding-top: 7px;">{{auth[0].point_plus}}đ</h3>
             </li>
-            <li ng-show="auth">
+            <li ng-if="auth">
                 <a href="" data-activates="slide-out" class="button-collapse logoa" style="margin:0 !important; display: block !important;">
                     <img src="{{auth[0].user_img}}">
                 </a>
             </li>
-            <li ng-show="!auth">
+            <li ng-if="!auth">
                 <a class="waves-effect waves-light btn" style="background:#0084FF; box-shadow: none" ng-click="login()">Login</a>
             </li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
-            <li ng-show="auth" class="center">
+            <li ng-if="auth" class="center">
                 <a href="" class="logoa" style="margin: 0 auto; margin-top: 5px">
                     <img src="{{auth[0].user_img}}">
                 </a>
             </li>
-            <li ng-show="auth">
+            <li ng-if="auth">
                 <a href="">
                     <i class="material-icons">attach_money</i>{{auth[0].point_plus}}đ</a>
                 <!-- <h6 style="padding-top: 7px; color:black; margin-left: 30px;"><i class="material-icons">attach_money</i> 300đ</h6> -->
@@ -48,10 +48,10 @@
                 <a href="">
                     <i class="material-icons">add_location</i> Liên hệ</a>
             </li>
-            <li ng-show="!auth">
+            <li ng-if="!auth">
                 <a class="waves-effect waves-light btn" style="background:#0084FF; box-shadow: none" ng-click="login()">Login</a>
             </li>
-            <li ng-show="auth">
+            <li ng-if="auth">
                 <a class="waves-effect waves-light btn" style="background:#EC407A; box-shadow: none" ng-click="logout()">Logout</a>
             </li>
         </ul>
