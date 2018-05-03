@@ -1,6 +1,9 @@
 coupon
     .controller('AccountCtrl', function ($scope, $window, DataServices, $timeout, ngDialog) {
         $scope.auth = JSON.parse(localStorage.getItem('auth'));
+        $timeout(function () {
+            alert($scope.auth)
+        }, 1500)
         $scope.update = function (data) {
 
             $scope.dialog = ngDialog.open({
@@ -78,7 +81,7 @@ coupon
                                 $timeout(function () {
                                     DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (signin_res_2) {
                                         var signin_result_2 = signin_res_2.data;
-										
+
                                         if (signin_result_2.error_code === 0) {
                                             if (signin_result_2.auth[0].info[0].full_update === 1) {
                                                 DataServices.Point($scope.auth[0]._id, point, 1).then(function (response_2) {
@@ -87,21 +90,21 @@ coupon
                                                             var signin_result_3 = signin_res_3.data;
                                                             localStorage.setItem('auth', JSON.stringify(signin_result_3.auth));
                                                             $window.scrollTo(0, 0);
-															$scope.auth = JSON.parse(localStorage.getItem('auth'));
-															$timeout(function () {
-																$scope.$apply();
-															}, 100);
+                                                            $scope.auth = JSON.parse(localStorage.getItem('auth'));
+                                                            $timeout(function () {
+                                                                $scope.$apply();
+                                                            }, 100);
                                                             window.location.reload(true);
                                                         });
                                                     }
                                                 });
-												 // function update class user
-												DataServices.updateClass($scope.auth[0]._id).then(function (response) {
-												});
+                                                // function update class user
+                                                DataServices.updateClass($scope.auth[0]._id).then(function (response) {
+                                                });
                                             } else {
                                                 localStorage.setItem('auth', JSON.stringify(signin_result_2.auth));
                                                 $window.scrollTo(0, 0);
-												$scope.auth = JSON.parse(localStorage.getItem('auth'));
+                                                $scope.auth = JSON.parse(localStorage.getItem('auth'));
                                                 $timeout(function () {
                                                     $scope.$apply();
                                                 }, 100);
