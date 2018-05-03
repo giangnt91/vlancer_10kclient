@@ -1,9 +1,6 @@
 coupon
     .controller('AccountCtrl', function ($scope, $window, DataServices, $timeout, ngDialog) {
         $scope.auth = JSON.parse(localStorage.getItem('auth'));
-        $timeout(function () {
-            alert($scope.auth)
-        }, 1500)
         $scope.update = function (data) {
 
             $scope.dialog = ngDialog.open({
