@@ -1,6 +1,6 @@
 <div class="container" style="margin-top: 30px">
     <div class="row">
-      <h1>{{auth}}</h1>  
+      <h1 ng-if="load">{{auth}}</h1>  
         <div class="card-panel" ng-if="!auth">
             <div class="card-panel alert">
                 <h4 class="text-darken-2">Đăng nhập để thực hiện tác vụ !</h4>
@@ -9,30 +9,30 @@
 
 
         <div class="card-panel" ng-if="auth">
-            <div ng-show="!full_point">
-                <div ng-show="!empty_slot">
-                    <div class="center" ng-show="!com_ac">
+            <div ng-if="!full_point">
+                <div ng-if="!empty_slot">
+                    <div class="center" ng-if="!com_ac">
                         <h4 class="about-subtitle">Thực hiện tác vụ</h4>
                         <span class="grey-text">Like Post: 10 điểm, Comment: 10 điểm</span>
                         <br>
                         <br>
 
-                        <div ng-show="!show_action">
-                            <a class="waves-effect waves-light btn btn-xt pulse disabled" ng-show="condition">Nhận tác vụ ({{list_action_per_day.length}})</a>
-                            <a class="waves-effect waves-light btn btn-xt pulse" ng-click="next_action()" ng-show="!condition">Nhận tác vụ ({{list_action_per_day.length}})</a>
+                        <div ng-if="!show_action">
+                            <a class="waves-effect waves-light btn btn-xt pulse disabled" ng-if="condition">Nhận tác vụ ({{list_action_per_day.length}})</a>
+                            <a class="waves-effect waves-light btn btn-xt pulse" ng-click="next_action()" ng-if="!condition">Nhận tác vụ ({{list_action_per_day.length}})</a>
                             <br>
                             <br>
-                            <div class="card-panel alert" ng-show="condition">
+                            <div class="card-panel alert" ng-if="condition">
                                 <span class="text-darken-2" style="font-size:17px !important">Feedback về dịch vụ bạn đã sử dụng để có thể nhận Tác vụ mới (vào app để Feedback)</span>
                             </div>
                         </div>
 
-                        <div class="center" ng-show="show_action">
+                        <div class="center" ng-if="show_action">
                             <div class="fb-post" data-href="{{data.action_url}}" data-adapt-container-width="true" data-width="{{width_post}}"></div>
                             <br>
                             <br>
-                            <a class="waves-effect waves-light btn btn-action" ng-click="next_action()" ng-show="!off_next">Tác vụ tiếp theo</a>
-                            <a class="waves-effect waves-light btn btn-action" ng-click="complete()" ng-show="off_next">Hoàn thành</a>
+                            <a class="waves-effect waves-light btn btn-action" ng-click="next_action()" ng-if="!off_next">Tác vụ tiếp theo</a>
+                            <a class="waves-effect waves-light btn btn-action" ng-click="complete()" ng-if="off_next">Hoàn thành</a>
                             <br>
                             <br>
                             <div class="card-panel alert">
@@ -43,7 +43,7 @@
 
                     </div>
 
-                    <div ng-show="com_ac">
+                    <div ng-if="com_ac">
                         <center>
                             <h4 class="about-subtitle">Thông tin chi tiết</h4>
                             <!-- <span class="grey-text">Bạn thực hiện
@@ -111,7 +111,7 @@
                     </div>
                 </div>
 
-                <div ng-show="empty_slot">
+                <div ng-if="empty_slot">
                     <div class="card-panel alert">
                         <h4 class="text-darken-2">Hệ thống đang cập nhật danh sách tác vụ vui lòng quay lại sau !</h4>
                     </div>
@@ -120,7 +120,7 @@
 
             </div>
 
-            <div ng-show="full_point">
+            <div ng-if="full_point">
                 <div class="card-panel alert">
                     <h4 class="text-darken-2" style="color: green !important">Bạn đã nhận đủ điểm cho ngày hôm nay !</h4>
                 </div>

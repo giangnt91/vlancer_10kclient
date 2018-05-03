@@ -1,12 +1,12 @@
 <div class="container" style="margin-top: 30px">
-    <div class="card-panel" ng-show="!auth">
+    <div class="card-panel" ng-if="!auth">
         <div class="card-panel alert">
             <h4 class="text-darken-2">Đăng nhập để xem thông tin tài khoản !</h4>
         </div>
     </div>
 
-    <div class="card-panel" ng-show="auth">
-        <div class="card-panel alert" ng-show="auth[0].info[0].full_update === 0">
+    <div class="card-panel" ng-if="auth">
+        <div class="card-panel alert" ng-if="auth[0].info[0].full_update === 0">
             <span class="text-darken-2">Cập nhật đầy đủ thông tin để nhận 500 điểm</span>
         </div>
         <div class="row">
