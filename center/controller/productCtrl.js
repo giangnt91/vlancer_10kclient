@@ -91,15 +91,14 @@ coupon
                     });
 
                     // check point
-                    if ($scope.auth[0].point_plus < 1000) {
-                        $scope.condition = true;
-                        $scope.enable_point = true;
-                        // $scope.show_like = false;
-                    } else {
-                        $scope.condition = false;
-                        $scope.enable_point = false;
-                        $scope.show_like = true;
-                    }
+                    // if ($scope.auth[0].point_plus < 1000) {
+                    //     $scope.condition = true;
+                    //     $scope.enable_point = true;
+                    // } else {
+                    //     $scope.condition = false;
+                    //     $scope.enable_point = false;
+                    //     $scope.show_like = true;
+                    // }
 
 
                     // check feedback
