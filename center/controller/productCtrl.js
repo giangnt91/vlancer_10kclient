@@ -386,7 +386,10 @@ coupon
                         class_user: $scope.shop.shop_coupon[0].coupon[0].class_user,
                         value: $scope.shop.shop_coupon[0].coupon[0].value,
                         coupon_info: $scope.shop.shop_coupon[0].coupon[0].coupon_info,
-                        shop_id: $scope.shop.shop_coupon[0].coupon[0].shop_id
+                        shop_id: $scope.shop.shop_coupon[0].coupon[0].shop_id,
+                        shop_avatar: $scope.shop.shop_coupon[0].coupon[0].shop_avatar,
+                        shop_cover: $scope.shop.shop_coupon[0].coupon[0].shop_cover,
+                        shop_name: $scope.shop.shop_coupon[0].coupon[0].shop_name
                     };
                     new_list = $scope.shop.shop_coupon[0].coupon.slice(1);
                     the_issuer = first_coupon.shop_id;
@@ -406,7 +409,10 @@ coupon
                             class_user: $scope.shop.server_coupon[0].coupon[0].class_user,
                             value: $scope.shop.server_coupon[0].coupon[0].value,
                             coupon_info: $scope.shop.server_coupon[0].coupon[0].coupon_info,
-                            shop_id: $scope.shop.server_coupon[0].coupon[0].shop_id
+                            shop_id: $scope.shop.server_coupon[0].coupon[0].shop_id,
+                            shop_avatar: $scope.shop.server_coupon[0].coupon[0].shop_avatar,
+                            shop_cover: $scope.shop.server_coupon[0].coupon[0].shop_cover,
+                            shop_name: $scope.shop.server_coupon[0].coupon[0].shop_name
                         };
                         new_list = $scope.shop.server_coupon[0].coupon.slice(1);
                         the_issuer = 1;
