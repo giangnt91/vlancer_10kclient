@@ -19,24 +19,10 @@ coupon
         $scope.go_pro_detail = function () {
             $window.scrollTo(0, 0);
             FB.XFBML.parse();
-            // $timeout(function () {
-            // window.location.reload(true);
-            // }, 100);
         }
 
         $scope.viewall = false;
         $scope.hide_view_all = function () {
-            // $scope.dialog = ngDialog.open({
-            //     template:
-            //         '<h4 class="flow-text center">Đang tải dữ liệu</h4>  <div class="progress"> <div class="indeterminate"></div> </div>',
-            //     plain: true,
-            //     showClose: false,
-            //     closeByDocument: false
-            // });
-            // $timeout(function () {
-            //     $scope.dialog.close();
-            //     $scope.viewall = true;
-            // }, 3000);
             $scope.viewall = true;
         }
 
@@ -73,6 +59,11 @@ coupon
                     }
                     $scope.total_coupon = tmp_server + tmp_shop;
 
+                    if($scope.total_coupon === 0){
+                        $scope.condition = true;
+                        $scope.show_like = true;
+                    }
+
                     check_user_have_coupon();
 
                 }
@@ -90,24 +81,12 @@ coupon
                         }
                     });
 
-                    // check point
-                    // if ($scope.auth[0].point_plus < 1000) {
-                    //     $scope.condition = true;
-                    //     $scope.enable_point = true;
-                    // } else {
-                    //     $scope.condition = false;
-                    //     $scope.enable_point = false;
-                    //     $scope.show_like = true;
-                    // }
-
-
                     // check feedback
                     if ($scope.auth[0].use_coupon.length > 0) {
                         $scope.feedback_count = 0;
                         for (var i = 0; i < $scope.auth[0].use_coupon.length; i++) {
                             if ($scope.auth[0].use_coupon[i].feedback === null) {
                                 $scope.condition = true;
-                                // $scope.show_like = false;
                                 $scope.feedback_count = + 1;
                             } else {
                                 $scope.condition = false;
@@ -127,7 +106,9 @@ coupon
                                     $scope.condition = true;
                                 } else {
                                     $scope._get = false;
-                                    $scope.condition = false;
+                                    if ($scope.condition !== true) {
+                                        $scope.condition = false;
+                                    }
                                     if ($scope.shop.user_like_shop.length > 0) {
                                         $scope.shop.user_like_shop.forEach(element => {
                                             if (element.id === $scope.auth[0].user_id) {
@@ -145,7 +126,9 @@ coupon
                                         $scope.condition = true;
                                     } else {
                                         $scope._get = false;
-                                        $scope.condition = false;
+                                        if ($scope.condition !== true) {
+                                            $scope.condition = false;
+                                        }
                                         if ($scope.shop.user_like_shop.length > 0) {
                                             $scope.shop.user_like_shop.forEach(element => {
                                                 if (element.id === $scope.auth[0].user_id) {
@@ -166,7 +149,9 @@ coupon
                                     $scope.condition = true;
                                 } else {
                                     $scope._get = false;
-                                    $scope.condition = false;
+                                    if ($scope.condition !== true) {
+                                        $scope.condition = false;
+                                    }
                                     if ($scope.shop.user_like_shop.length > 0) {
                                         $scope.shop.user_like_shop.forEach(element => {
                                             if (element.id === $scope.auth[0].user_id) {
@@ -184,7 +169,9 @@ coupon
                                         $scope.condition = true;
                                     } else {
                                         $scope._get = false;
-                                        $scope.condition = false;
+                                        if ($scope.condition !== true) {
+                                            $scope.condition = false;
+                                        }
                                         if ($scope.shop.user_like_shop.length > 0) {
                                             $scope.shop.user_like_shop.forEach(element => {
                                                 if (element.id === $scope.auth[0].user_id) {
@@ -211,7 +198,9 @@ coupon
                                     $scope._get = true;
                                 } else {
                                     $scope._get = false;
-                                    $scope.condition = false;
+                                    if ($scope.condition !== true) {
+                                        $scope.condition = false;
+                                    }
                                     if ($scope.shop.user_like_shop.length > 0) {
                                         $scope.shop.user_like_shop.forEach(element => {
                                             if (element.id === $scope.auth[0].user_id) {
@@ -228,7 +217,9 @@ coupon
                                     $scope._get = true;
                                 } else {
                                     $scope._get = false;
-                                    $scope.condition = false;
+                                    if ($scope.condition !== true) {
+                                        $scope.condition = false;
+                                    }
                                     if ($scope.shop.user_like_shop.length > 0) {
                                         $scope.shop.user_like_shop.forEach(element => {
                                             if (element.id === $scope.auth[0].user_id) {
@@ -262,7 +253,10 @@ coupon
                             $scope._rank = true;
                             $scope.condition = true;
                         } else {
-                            $scope.condition = false;
+                            // $scope.condition = false;
+                            if ($scope.condition !== true) {
+                                $scope.condition = false;
+                            }
                             $scope._rank = false;
                             // $scope.show_like = true;
                         }
@@ -272,7 +266,10 @@ coupon
                                 $scope._rank = true;
                                 $scope.condition = true;
                             } else {
-                                $scope.condition = false;
+                                // $scope.condition = false;
+                                if ($scope.condition !== true) {
+                                    $scope.condition = false;
+                                }
                                 $scope._rank = false;
                                 // $scope.show_like = true;
                             }
@@ -336,6 +333,7 @@ coupon
 
                 $timeout(function () {
                     FB.api('/' + $scope.shop.shopId + '?access_token=' + accessToken, { fields: 'fan_count' }, (response) => {
+                        console.log(response)
                         if ($scope.pre_fan_count < response.fan_count) {
                             $scope.show_like = false;
                             $scope.$apply();
