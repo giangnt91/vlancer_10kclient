@@ -28,7 +28,7 @@ coupon
 
     })
 
-    .controller('ProdetailCtrl', function ($scope, $routeParams, $timeout, ngDialog, DataServices) {
+    .controller('ProdetailCtrl', function ($scope, $filter, $routeParams, $timeout, ngDialog, DataServices) {
         $scope.auth = JSON.parse(localStorage.getItem('auth'));
         $scope.kind_1 = JSON.parse(localStorage.getItem('kind_1'));
         $scope.kind_2 = JSON.parse(localStorage.getItem('kind_2'));
@@ -59,7 +59,7 @@ coupon
                     }
                     $scope.total_coupon = tmp_server + tmp_shop;
 
-                    if($scope.total_coupon === 0){
+                    if ($scope.total_coupon === 0) {
                         $scope.condition = true;
                         $scope.show_like = true;
                     }
@@ -366,18 +366,24 @@ coupon
                 var first_coupon;
                 var new_list = [];
                 var day = new Date();
-                var day_get = day.getDate() + '/' + (day.getMonth() + 1) + '/' + day.getFullYear();
+                $scope._today = $filter('date')(new Date(), 'dd/MM/yyyy');
+                // var day_get = day.getDate() + '/' + (day.getMonth() + 1) + '/' + day.getFullYear();
+                var the_auth = [{
+                    id: $scope.auth[0].user_id,
+                    name: $scope.auth[0].info[0].fulname
+                }]
 
                 // create new coupon for user and update list and check issuer
                 if ($scope.shop.shop_coupon !== null && $scope.shop.shop_coupon.length > 0) {
                     first_coupon = {
                         _id: $scope.shop.shop_coupon[0].coupon[0]._id,
                         approved: $scope.shop.shop_coupon[0].coupon[0].approved,
+                        rfeedback: $scope.shop.shop_coupon[0].coupon[0].rfeedback,
                         feedback: $scope.shop.shop_coupon[0].coupon[0].feedback,
                         rating: $scope.shop.shop_coupon[0].coupon[0].rating,
                         time_user_use: $scope.shop.shop_coupon[0].coupon[0].time_user_use,
-                        time_user_get: day_get,
-                        userid_get_coupon: $scope.auth[0].user_id,
+                        time_user_get: $scope._today,
+                        userid_get_coupon: the_auth,
                         status_coupon: $scope.shop.shop_coupon[0].coupon[0].status_coupon,
                         the_issuer: $scope.shop.shop_coupon[0].coupon[0].the_issuer,
                         time_expire: $scope.shop.shop_coupon[0].coupon[0].time_expire,
@@ -397,11 +403,12 @@ coupon
                         first_coupon = {
                             _id: $scope.shop.server_coupon[0].coupon[0]._id,
                             approved: $scope.shop.server_coupon[0].coupon[0].approved,
+                            rfeedback: $scope.shop.server_coupon[0].coupon[0].rfeedback,
                             feedback: $scope.shop.server_coupon[0].coupon[0].feedback,
                             rating: $scope.shop.server_coupon[0].coupon[0].rating,
                             time_user_use: $scope.shop.server_coupon[0].coupon[0].time_user_use,
-                            time_user_get: day_get,
-                            userid_get_coupon: $scope.auth[0].user_id,
+                            time_user_get: $scope._today,
+                            userid_get_coupon: the_auth,
                             status_coupon: $scope.shop.server_coupon[0].coupon[0].status_coupon,
                             the_issuer: $scope.shop.server_coupon[0].coupon[0].the_issuer,
                             time_expire: $scope.shop.server_coupon[0].coupon[0].time_expire,
