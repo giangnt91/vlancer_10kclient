@@ -1,25 +1,66 @@
 coupon
-    .controller('ProductCtrl', function ($scope, $routeParams, $timeout, ngDialog, $window) {
+    .controller('ProductCtrl', function ($scope, $location, $routeParams, $timeout, ngDialog, $window) {
         $scope.kind_1 = JSON.parse(localStorage.getItem('kind_1'));
         $scope.kind_2 = JSON.parse(localStorage.getItem('kind_2'));
         $scope.kind_3 = JSON.parse(localStorage.getItem('kind_3'));
         $scope.basic = JSON.parse(localStorage.getItem('basic'));
+        $scope.all_shop = JSON.parse(localStorage.getItem('all_shop'));
 
-        if ($routeParams.name === "mua-sam") {
+        function bo_dau_tv(key) {
+            var str = key;
+            str = str.toLowerCase();
+            str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+            str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+            str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+            str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+            str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+            str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+            str = str.replace(/đ/g, "d");
+            str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g, " ");
+            str = str.replace(/ + /g, " ");
+            str = str.trim();
+            return str;
+        }
+        
+        // find name in string
+        if ($routeParams.danhmuc === 'mua-sam') {
             $scope.show_kind_1 = true;
-        } else if ($routeParams.name === "an-uong") {
+        } else if ($routeParams.danhmuc === 'an-uong') {
             $scope.show_kind_2 = true;
-        } else if ($routeParams.name === "du-lich") {
+        } else if ($routeParams.danhmuc === 'du-lich') {
             $scope.show_kind_3 = true;
         }
-        if ($routeParams.name === "ma-giam-gia-pho-thong") {
+        if ($routeParams.danhmuc === 'ma-giam-gia-pho-thong') {
             $scope.show_basic = true;
         }
 
-        $scope.go_pro_detail = function () {
-            $window.scrollTo(0, 0);
-            FB.XFBML.parse();
+        $scope.go_shop_by_id = function (id) {
+            $scope.all_shop.forEach(element => {
+                if (element._id === id) {
+                    var slug = bo_dau_tv(element.shop_info[0].shop_name).split(' ').join('-');
+                    var _id = element._id.slice(-5);
+                    
+                    if (element.shop_info[0].kind[0].id === 1) {
+                        $location.path('/an-uong/cua-hang/' + slug + '-' + _id);
+                        $window.scrollTo(0, 0);
+                        FB.XFBML.parse();
+                    } else if (element.shop_info[0].kind[0].id === 2) {
+                        $location.path('/mua-sam/cua-hang/' + slug + '-' + _id);
+                        $window.scrollTo(0, 0);
+                        FB.XFBML.parse();
+                    } else {
+                        $location.path('/du-lich/cua-hang/' + slug + '-' + _id);
+                        $window.scrollTo(0, 0);
+                        FB.XFBML.parse();
+                    }
+                }
+            });
         }
+
+        // $scope.go_pro_detail = function () {
+        //     $window.scrollTo(0, 0);
+        //     FB.XFBML.parse();
+        // }
 
         $scope.viewall = false;
         $scope.hide_view_all = function () {
@@ -30,13 +71,17 @@ coupon
 
     .controller('ProdetailCtrl', function ($scope, $filter, $routeParams, $timeout, ngDialog, DataServices) {
         $scope.auth = JSON.parse(localStorage.getItem('auth'));
-        $scope.kind_1 = JSON.parse(localStorage.getItem('kind_1'));
-        $scope.kind_2 = JSON.parse(localStorage.getItem('kind_2'));
-        $scope.kind_3 = JSON.parse(localStorage.getItem('kind_3'));
+        $scope.all_shop = JSON.parse(localStorage.getItem('all_shop'));
         var accessToken = localStorage.getItem('accessToken');
 
-        var shopId = $routeParams.shopid;
-        var name = $routeParams.name;
+        var _id = $routeParams.id;
+        var shopId;
+        $scope.all_shop.forEach(element => {
+            if (element._id.indexOf(_id) > 0) {
+                shopId = element._id;
+            }
+        });
+        // var name = $routeParams.name;
         $scope.show_like = false;
 
         if (shopId) {

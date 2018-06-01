@@ -26,7 +26,7 @@
                                 <a href="" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">Còn {{content.shop_coupon[0].coupon.length + content.server_coupon[0].coupon.length}} Coupon</a>
                                 <a href="" ng-if="(content.shop_coupon.length === 0 || content.shop_coupon[0].approved !== true) && content.server_coupon.length === 0">Comming soon</a>
                             </p>
-                            <a class="waves-effect waves-light btn btn-coupon" href="#/mua-sam/{{content._id}}" ng-click="go_pro_detail()" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">Nhận Coupon</a>
+                            <a class="waves-effect waves-light btn btn-coupon" ng-click="go_shop_by_id(content._id)" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">Nhận Coupon</a>
                             <a class="waves-effect waves-light btn btn-coupon disabled" href="" ng-if="(content.shop_coupon.length === 0 || content.shop_coupon[0].approved !== true) && content.server_coupon.length === 0">Nhận Coupon</a>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                                 <a href="" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">Còn {{content.shop_coupon[0].coupon.length + content.server_coupon[0].coupon.length}} Coupon</a>
                                 <a href="" ng-if="(content.shop_coupon.length === 0 || content.shop_coupon[0].approved !== true) && content.server_coupon.length === 0">Comming soon</a>
                             </p>
-                            <a class="waves-effect waves-light btn btn-coupon" href="#/an-uong/{{content._id}}" ng-click="go_pro_detail()" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">Nhận Coupon</a>
+                            <a class="waves-effect waves-light btn btn-coupon" ng-click="go_shop_by_id(content._id)" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">Nhận Coupon</a>
                             <a class="waves-effect waves-light btn btn-coupon disabled" href="" ng-if="(content.shop_coupon.length === 0 || content.shop_coupon[0].approved !== true) && content.server_coupon.length === 0">Nhận Coupon</a>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                                 <a href="" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">Còn {{content.shop_coupon[0].coupon.length + content.server_coupon[0].coupon.length}} Coupon</a>
                                 <a href="" ng-if="(content.shop_coupon.length === 0 || content.shop_coupon[0].approved !== true) && content.server_coupon.length === 0">Comming soon</a>
                             </p>
-                            <a class="waves-effect waves-light btn btn-coupon" href="#/du-lich/{{content._id}}" ng-click="go_pro_detail()" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">Nhận Coupon</a>
+                            <a class="waves-effect waves-light btn btn-coupon" ng-click="go_shop_by_id(content._id)" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">Nhận Coupon</a>
                             <a class="waves-effect waves-light btn btn-coupon disabled" href="" ng-if="(content.shop_coupon.length === 0 || content.shop_coupon[0].approved !== true) && content.server_coupon.length === 0">Nhận Coupon</a>
                         </div>
                     </div>
@@ -201,6 +201,6 @@
                 }
             }
         ];
-        Materialize.scrollFire(options);
+        Materialize.scrollFire(options);     
     })
 </script>

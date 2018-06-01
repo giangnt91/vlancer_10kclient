@@ -1,5 +1,5 @@
 coupon
-    .controller('ActionCtrl', function ($scope, ngDialog, DataServices, $timeout, $filter, $window) {
+    .controller('ActionCtrl', function ($scope, $location, ngDialog, DataServices, $timeout, $filter, $window) {
        $scope.auth = JSON.parse(localStorage.getItem('auth'));
         var accessToken = localStorage.getItem('accessToken');
         var date = new Date();
@@ -16,7 +16,8 @@ coupon
 				// $window.scrollTo(0, 0);
 				window.location.reload(true);
             });
-			window.location.href = '#/action';
+            // window.location.href = '#/action';
+            $location.path('/thuc-hien-tac-vu')
 			$window.scrollTo(0, 0);
 			// window.location.reload(true);
 		}
@@ -475,8 +476,6 @@ coupon
                     //     }, 100);
                     // });
                 }
-
-
             });
         }
     })

@@ -1,6 +1,6 @@
 var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSanitize', 'CouponService', 'ngDialog', 'socialLogin'])
 coupon
-    .controller('LoginCtrl', function ($scope, $rootScope, $window, DataServices) {
+    .controller('LoginCtrl', function ($scope, $location, $rootScope, $window, DataServices) {
 
         $rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
             Imgurl = "https://graph.facebook.com/" + userDetails.uid + "/picture?width=180&height=180";
@@ -44,7 +44,8 @@ coupon
                                 var signin_result_2 = signin_res_2.data;
                                 if (signin_result_2.error_code === 0) {
                                     localStorage.setItem('auth', JSON.stringify(signin_result_2.auth));
-                                    window.location.href = '#/';
+                                    // window.location.href = '#/';
+                                    $location.path('/');
                                     window.location.reload(true);
                                 }
                             });
@@ -54,7 +55,8 @@ coupon
                 if (signin_result.error_code === 0) {
                     DataServices.Upname(userDetails.uid, userDetails.name).then(function () { });
                     localStorage.setItem('auth', JSON.stringify(signin_result.auth));
-                    window.location.href = '#/';
+                    // window.location.href = '#/';
+                    $location.path('/');
                     window.location.reload(true);
                 } else if (signin_result.error_code === 5) {
                     $scope._error_login = true;
@@ -74,7 +76,7 @@ coupon
             FB.Event.subscribe('xfbml.render', finished_rendering);
         }
     })
-    .controller('HomeCtrl', function ($scope, $window, $timeout, DataServices, socialLoginService) {
+    .controller('HomeCtrl', function ($scope, $location, $window, $timeout, DataServices, socialLoginService) {
         if ($scope.auth) {
             // check access time per day
             DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (response) {
@@ -97,7 +99,8 @@ coupon
 
         // go menu
         $scope.go_action = function () {
-            window.location.href = '#/action';
+            // window.location.href = '#/action';
+            $location.path('/thuc-hien-tac-vu');
             $window.scrollTo(0, 0);
             $timeout(function () {
                 // window.location.reload(true);
@@ -105,7 +108,8 @@ coupon
         }
 
         $scope.go_account = function () {
-            window.location.href = '#/account';
+            // window.location.href = '#/account';
+            $location.path('/quan-ly-tai-khoan');
             $window.scrollTo(0, 0);
             $timeout(function () {
                 // window.location.reload(true);
@@ -113,27 +117,61 @@ coupon
         }
 
         $scope.go_home = function () {
-            window.location.href = '#/';
+            // window.location.href = '#/';
+            $location.path('/');
             $window.scrollTo(0, 0);
             $timeout(function () {
                 window.location.reload(true);
             }, 100);
         }
 
-        $scope.go_pro_detail = function () {
-            $window.scrollTo(0, 0);
-            FB.XFBML.parse();
-            // $timeout(function () {
-            // window.location.reload(true);
-            // }, 100);
+        function bo_dau_tv(key) {
+            var str = key;
+            str = str.toLowerCase();
+            str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+            str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+            str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+            str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+            str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+            str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+            str = str.replace(/đ/g, "d");
+            str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g, " ");
+            str = str.replace(/ + /g, " ");
+            str = str.trim();
+            return str;
         }
+
+        $scope.go_shop_by_id = function (id) {
+            $scope.all_shop.forEach(element => {
+                if (element._id === id) {
+                    var slug = bo_dau_tv(element.shop_info[0].shop_name).split(' ').join('-');
+                    var _id = element._id.slice(-5);
+
+                    if (element.shop_info[0].kind[0].id === 1) {
+                        $location.path('/an-uong/cua-hang/' + slug + '-' + _id);
+                        $window.scrollTo(0, 0);
+                        FB.XFBML.parse();
+                    } else if (element.shop_info[0].kind[0].id === 2) {
+                        $location.path('/mua-sam/cua-hang/' + slug + '-' + _id);
+                        $window.scrollTo(0, 0);
+                        FB.XFBML.parse();
+                    } else {
+                        $location.path('/du-lich/cua-hang/' + slug + '-' + _id);
+                        $window.scrollTo(0, 0);
+                        FB.XFBML.parse();
+                    }
+                }
+            });
+        }
+
         // end go menu
 
         // auth
         $scope.login = function () {
-            window.location.href = '#/login';
+            // window.location.href = '#/login';
             FB.XFBML.parse();
             $window.scrollTo(0, 0);
+            $location.path('/dang-nhap');
             $timeout(function () {
                 window.location.reload(true);
             }, 100);
@@ -145,13 +183,12 @@ coupon
 
 
         $scope.logout = function () {
-            window.location.href = '#/login';
-            FB.XFBML.parse();
+            // window.location.href = '#/login';
             socialLoginService.logout();
+            FB.XFBML.parse();
             $window.scrollTo(0, 0);
-            $timeout(function () {
-                window.location.reload(true);
-            }, 100);
+            $location.path('/dang-nhap');
+
         }
         // end auth
 
@@ -164,7 +201,8 @@ coupon
         });
 
         $scope.detail_basic = function () {
-            window.location.href = '#/cua-hang/ma-giam-gia-pho-thong';
+            // window.location.href = '#/cua-hang/ma-giam-gia-pho-thong';
+            $location.path('/ma-giam-gia-pho-thong/danh-sach-ma-giam-gia');
             $window.scrollTo(0, 0);
             $timeout(function () {
                 // window.location.reload(true);
@@ -175,6 +213,7 @@ coupon
         // get all shop
         DataServices.getAllshop().then(function (response) {
             if (response.data.error_code === 0) {
+                $scope.all_shop = response.data.shop;
                 $scope.kind_result_1 = [];
                 $scope.kind_result_2 = [];
                 $scope.kind_result_3 = [];
@@ -197,11 +236,13 @@ coupon
                 localStorage.setItem('kind_1', JSON.stringify($scope.kind_result_1));
                 localStorage.setItem('kind_2', JSON.stringify($scope.kind_result_2));
                 localStorage.setItem('kind_3', JSON.stringify($scope.kind_result_3));
+                localStorage.setItem('all_shop', JSON.stringify($scope.all_shop));
             }
         });
 
         $scope.detail_kind_1 = function () {
-            window.location.href = '#/cua-hang/mua-sam';
+            // window.location.href = '#/cua-hang/mua-sam';
+            $location.path('/mua-sam/danh-sach-cua-hang')
             $window.scrollTo(0, 0);
             $timeout(function () {
                 // window.location.reload(true);
@@ -209,7 +250,8 @@ coupon
         }
 
         $scope.detail_kind_2 = function () {
-            window.location.href = '#/cua-hang/an-uong';
+            // window.location.href = '#/cua-hang/an-uong';
+            $location.path('/an-uong/danh-sach-cua-hang');
             $window.scrollTo(0, 0);
             $timeout(function () {
                 // window.location.reload(true);
@@ -217,7 +259,8 @@ coupon
         }
 
         $scope.detail_kind_3 = function () {
-            window.location.href = '#/cua-hang/du-lich';
+            // window.location.href = '#/cua-hang/du-lich';
+            $location.path('/du-lich/danh-sach-cua-hang');
             $window.scrollTo(0, 0);
             $timeout(function () {
                 // window.location.reload(true);

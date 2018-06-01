@@ -1,24 +1,21 @@
 angular.module('coupon10k', ['ngRoute', 'CouponController', 'CouponService'])
-    .config(['$routeProvider', '$locationProvider', 'socialProvider', function ($routeProvider, $locationProvider, socialProvider) {
+    .config(['$routeProvider', '$locationProvider', 'socialProvider' , function ($routeProvider, $locationProvider, socialProvider) {
         $routeProvider
 
             //Url
             .when('/', { templateUrl: 'partials/home.html', controller: 'HomeCtrl' })
-            .when("/login", { templateUrl: "partials/login.html", controller: "LoginCtrl" })
-            .when("/cua-hang/:name", { templateUrl: "partials/all_pro.html", controller: "ProductCtrl" })
-            .when("/:name/:shopid", { templateUrl: "partials/pro_detail.html", controller: "ProdetailCtrl" })
-            .when("/action", { templateUrl: "partials/action.html", controller: "ActionCtrl" })
-            .when("/account", { templateUrl: "partials/account.html", controller: "AccountCtrl" })
+            .when("/dang-nhap", { templateUrl: "partials/login.html", controller: "LoginCtrl" })
+            .when("/:danhmuc/:cuahang", { templateUrl: "partials/all_pro.html", controller: "ProductCtrl" })
+            .when("/:danhmuc/:cuahang/:slug-:id", { templateUrl: "partials/pro_detail.html", controller: "ProdetailCtrl" })
+            .when("/thuc-hien-tac-vu", { templateUrl: "partials/action.html", controller: "ActionCtrl" })
+            .when("/quan-ly-tai-khoan", { templateUrl: "partials/account.html", controller: "AccountCtrl" })
 
             //Otherwise
-            .otherwise({ redirectTo: '/login' });
+            .otherwise({ redirectTo: '/dang-nhap' });
 
-        // $locationProvider
-        //     .html5Mode({
-        //         enabled: true,
-        //         requireBase: false
-        //     });
+            $locationProvider
+            $locationProvider.html5Mode(true);
 
-        socialProvider.setFbKey({appId: "1946240225621730", apiVersion:"v2.10"})
+        socialProvider.setFbKey({ appId: "1946240225621730", apiVersion: "v2.10" })
 
     }])
