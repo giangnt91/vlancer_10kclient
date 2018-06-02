@@ -174,7 +174,7 @@ coupon
             $location.path('/dang-nhap');
             $timeout(function () {
                 window.location.reload(true);
-            }, 100);
+            }, 10);
         }
 
         $timeout(function () {
@@ -184,11 +184,14 @@ coupon
 
         $scope.logout = function () {
             // window.location.href = '#/login';
+            localStorage.clear();
             socialLoginService.logout();
-            FB.XFBML.parse();
             $window.scrollTo(0, 0);
             $location.path('/dang-nhap');
-
+            FB.XFBML.parse();
+            $timeout(function () {
+                window.location.reload(true);
+            }, 10);
         }
         // end auth
 
@@ -200,7 +203,19 @@ coupon
             }
         });
 
-        $scope.detail_basic = function () {
+        $scope.get_basic_detail = function(id){
+            $scope.basicResult.forEach(element => {
+                if(element._id === id){
+                   $scope.detail_basic = element;
+                }
+            });
+        }
+
+        $scope.go_ma_giam_gia = function(url){
+            window.open(url,'_blank');
+        }
+
+        $scope.go_detail_basic = function () {
             // window.location.href = '#/cua-hang/ma-giam-gia-pho-thong';
             $location.path('/ma-giam-gia-pho-thong/danh-sach-ma-giam-gia');
             $window.scrollTo(0, 0);

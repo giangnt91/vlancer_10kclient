@@ -21,7 +21,7 @@ coupon
             str = str.trim();
             return str;
         }
-        
+
         // find name in string
         if ($routeParams.danhmuc === 'mua-sam') {
             $scope.show_kind_1 = true;
@@ -39,7 +39,7 @@ coupon
                 if (element._id === id) {
                     var slug = bo_dau_tv(element.shop_info[0].shop_name).split(' ').join('-');
                     var _id = element._id.slice(-5);
-                    
+
                     if (element.shop_info[0].kind[0].id === 1) {
                         $location.path('/an-uong/cua-hang/' + slug + '-' + _id);
                         $window.scrollTo(0, 0);
@@ -55,6 +55,18 @@ coupon
                     }
                 }
             });
+        }
+
+        $scope.get_basic_detail = function (id) {
+            $scope.basic.forEach(element => {
+                if (element._id === id) {
+                    $scope.detail_basic = element;
+                }
+            });
+        }
+
+        $scope.go_ma_giam_gia = function (url) {
+            window.open(url, '_blank');
         }
 
         // $scope.go_pro_detail = function () {

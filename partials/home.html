@@ -7,9 +7,9 @@
         <!-- detail product -->
         <div class="col s12 m12 l12">
             <blockquote>
-                <h4 style="display: unset;">Mua Sắm</h4>
+                <h5 style="display: unset;">Mua Sắm</h5>
                 <a class="right" href="" ng-click="detail_kind_1()">
-                    <h6>Xem tất cả</h6>
+                    <h6 style="font-size: 1.1rem; font-weight: 300">Xem tất cả</h6>
                 </a>
             </blockquote>
 
@@ -18,16 +18,21 @@
                 <div class="col s6 m4 l3" ng-repeat="content in kind_result_1 | limitTo : 4">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
+                            <div class="price" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">
+                                <span ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true)">{{content.shop_coupon[0].coupon[0].value}}</span>
+                                <span ng-if="content.server_coupon.length > 0">{{content.server_coupon[0].coupon[0].value}}</span>
+                                VNĐ
+                            </div>
                             <img class="activator" src="{{content.shop_info[0].shop_avatar}}">
                         </div>
                         <div class="card-content center">
-                            <span class="card-title activator grey-text text-darken-4 shop_name"> {{content.shop_info[0].shop_name}}</span>
+                            <span class="card-title activator shop_name"> {{content.shop_info[0].shop_name}}</span>
                             <p>
                                 <a href="" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">Còn {{content.shop_coupon[0].coupon.length + content.server_coupon[0].coupon.length}} Coupon</a>
                                 <a href="" ng-if="(content.shop_coupon.length === 0 || content.shop_coupon[0].approved !== true) && content.server_coupon.length === 0">Comming soon</a>
                             </p>
                             <a class="waves-effect waves-light btn btn-coupon" ng-click="go_shop_by_id(content._id)" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">Nhận Coupon</a>
-                            <a class="waves-effect waves-light btn btn-coupon disabled" href="" ng-if="(content.shop_coupon.length === 0 || content.shop_coupon[0].approved !== true) && content.server_coupon.length === 0">Nhận Coupon</a>
+                            <a class="waves-effect waves-light btn btn-coupon disabled" style="background-color: #F0F0F0 !important;" href="" ng-if="(content.shop_coupon.length === 0 || content.shop_coupon[0].approved !== true) && content.server_coupon.length === 0">Nhận Coupon</a>
                         </div>
                     </div>
                 </div>
@@ -44,16 +49,21 @@
         <!-- detail product -->
         <div class="col s12 m12 l12">
             <blockquote>
-                <h4 style="display: unset;">Ăn Uống</h4>
+                <h5 style="display: unset;">Ăn Uống</h5>
                 <a class="right" href="" ng-click="detail_kind_2()">
-                    <h6>Xem tất cả</h6>
+                    <h6 style="font-size: 1.1rem; font-weight: 300">Xem tất cả</h6>
                 </a>
             </blockquote>
-            <div class="row">
 
+            <div class="row">
                 <div class="col s6 m4 l3" ng-repeat="content in kind_result_2 | limitTo : 4">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
+                            <div class="price" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">
+                                <span ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true)">{{content.shop_coupon[0].coupon[0].value}}</span>
+                                <span ng-if="content.server_coupon.length > 0">{{content.server_coupon[0].coupon[0].value}}</span>
+                                VNĐ
+                            </div>
                             <img class="activator" src="{{content.shop_info[0].shop_avatar}}">
                         </div>
                         <div class="card-content center">
@@ -63,12 +73,12 @@
                                 <a href="" ng-if="(content.shop_coupon.length === 0 || content.shop_coupon[0].approved !== true) && content.server_coupon.length === 0">Comming soon</a>
                             </p>
                             <a class="waves-effect waves-light btn btn-coupon" ng-click="go_shop_by_id(content._id)" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">Nhận Coupon</a>
-                            <a class="waves-effect waves-light btn btn-coupon disabled" href="" ng-if="(content.shop_coupon.length === 0 || content.shop_coupon[0].approved !== true) && content.server_coupon.length === 0">Nhận Coupon</a>
+                            <a class="waves-effect waves-light btn btn-coupon disabled" style="background-color: #F0F0F0 !important;" href="" ng-if="(content.shop_coupon.length === 0 || content.shop_coupon[0].approved !== true) && content.server_coupon.length === 0">Nhận Coupon</a>
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
         <!-- end detail product -->
 
@@ -79,16 +89,21 @@
         <!-- detail product -->
         <div class="col s12 m12 l12">
             <blockquote>
-                <h4 style="display: unset;">Du Lịch</h4>
+                <h5 style="display: unset;">Du Lịch</h5>
                 <a class="right" href="" ng-click="detail_kind_3()">
-                    <h6>Xem tất cả</h6>
+                    <h6 style="font-size: 1.1rem; font-weight: 300">Xem tất cả</h6>
                 </a>
             </blockquote>
             <div class="row">
 
-                <div class="col s6 m4 l3" ng-repeat="content in kind_result_3 | limitTo : 4">
+                <div class="col s6 m4 l3" ng-repeat="content in kind_result_3 | limitTo : 8">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
+                            <div class="price" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">
+                                <span ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true)">{{content.shop_coupon[0].coupon[0].value}}</span>
+                                <span ng-if="content.server_coupon.length > 0">{{content.server_coupon[0].coupon[0].value}}</span>
+                                VNĐ
+                            </div>
                             <img class="activator" src="{{content.shop_info[0].shop_avatar}}">
                         </div>
                         <div class="card-content center">
@@ -98,7 +113,7 @@
                                 <a href="" ng-if="(content.shop_coupon.length === 0 || content.shop_coupon[0].approved !== true) && content.server_coupon.length === 0">Comming soon</a>
                             </p>
                             <a class="waves-effect waves-light btn btn-coupon" ng-click="go_shop_by_id(content._id)" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">Nhận Coupon</a>
-                            <a class="waves-effect waves-light btn btn-coupon disabled" href="" ng-if="(content.shop_coupon.length === 0 || content.shop_coupon[0].approved !== true) && content.server_coupon.length === 0">Nhận Coupon</a>
+                            <a class="waves-effect waves-light btn btn-coupon disabled" style="background-color: #F0F0F0 !important;" href="" ng-if="(content.shop_coupon.length === 0 || content.shop_coupon[0].approved !== true) && content.server_coupon.length === 0">Nhận Coupon</a>
                         </div>
                     </div>
                 </div>
@@ -112,17 +127,41 @@
     <div class="row" id="basic">
         <div class="col s12 m12 l12">
             <blockquote>
-                <h4 style="display: unset;">Mã Giảm Giá</h4>
-                <a class="right" href="" ng-click="detail_basic()">
-                    <h6>Xem tất cả</h6>
+                <h5 style="display: unset;">Mã Giảm Giá</h5>
+                <a class="right" href="" ng-click="go_detail_basic()">
+                    <h6 style="font-size: 1.1rem; font-weight: 300">Xem tất cả</h6>
                 </a>
             </blockquote>
 
             <!-- Hide desktop -->
 
-            <div class="row hide-on-large-only">
+            <div class="row">
 
-                <div class="col s12 m4 l3" ng-repeat="content in basicResult | limitTo : 3">
+                <div class="col s6 m4 l3" ng-repeat="content in basicResult">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <div class="price">
+                                Giảm
+                                <span ng-if="content.value[0].id === 1">{{content.value[0].value}} {{content.value[0].name}}</span>
+                                <span ng-if="content.value[0].id === 2">{{content.value[0].value}}{{content.value[0].name}}</span>
+                            </div>
+                            <img class="activator" src="{{content.shopImg}}">
+                        </div>
+                        <div class="card-content center">
+                            <!-- <span class="card-title activator grey-text text-darken-4 shop_name">{{content.info_coupon}}</span> -->
+                            <p class="info_code">
+                                {{content.info_coupon}}
+                            </p>
+                            <a class="waves-effect waves-light btn btn-coupon modal-trigger" data-target="mymodal" ng-click="get_basic_detail(content._id)">Nhận Coupon</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- <div class="row">
+
+                <div class="col s12 m4 l3" ng-repeat="content in basicResult">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
                             <img class="activator" src="{{content.shopImg}}">
@@ -145,12 +184,13 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
+
+
 
 
             <!-- Show desktop -->
-
-            <div class="col s12 m12 offset-m2 l12 hide-on-med-and-down" style="padding:0">
+            <!-- <div class="col s12 m12 offset-m2 l12 hide-on-med-and-down" style="padding:0">
 
                 <div class="card-panel grey lighten-5 z-depth-1" style="padding:0" ng-repeat="content in basicResult | limitTo : 4">
                     <div class="row valign-wrapper">
@@ -158,7 +198,7 @@
                             <img src="{{content.shopImg}}" alt="" class="responsive-img s2-img">
                         </div>
                         <div class="col s7 center">
-                            <h5 class="black-text shop_name" style="font-weight:300">{{content.info_coupon}}</h5>
+                            <h5 class="black-text shop_name_2" style="font-weight:300">{{content.info_coupon}}</h5>
                             <br>
                             <b>Mã:</b>
                             <a class="code">{{content.code_coupon}}</a>
@@ -170,11 +210,29 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
 
         </div>
     </div>
+</div>
 
+<!-- Modal Structure -->
+<div id="mymodal" class="modal modal_2">
+    <div class="modal-content">
+        <h5>NHẬN MÃ GIẢM GIÁ</h5>
+        <p>Copy mã giảm giá phía dưới, sau đó nhập mã trước khi thanh toán để nhận ưu đãi giảm giá. Xin đọc kỹ quy định sử dụng.</p>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="first_name" type="text" ng-model="detail_basic.code_coupon" class="validate">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <button class="btn btn-coupon modal-close" type="submit" name="action" style="right: 35px; position: absolute;" ng-click="go_ma_giam_gia(detail_basic.shopUrl)">Đồng Ý
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -201,6 +259,11 @@
                 }
             }
         ];
-        Materialize.scrollFire(options);     
+        Materialize.scrollFire(options);
+
+        $('.modal').modal({
+            dismissible: false,
+            opacity: .7
+        });
     })
 </script>
