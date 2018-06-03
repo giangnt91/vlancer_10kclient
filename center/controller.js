@@ -184,9 +184,9 @@ coupon
 
         $scope.logout = function () {
             // window.location.href = '#/login';
-            localStorage.clear();
             socialLoginService.logout();
             $window.scrollTo(0, 0);
+            localStorage.clear();
             $location.path('/dang-nhap');
             FB.XFBML.parse();
             $timeout(function () {

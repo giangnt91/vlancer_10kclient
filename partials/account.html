@@ -9,6 +9,29 @@
         <div class="card-panel alert" ng-if="auth[0].info[0].full_update === 0">
             <span class="text-darken-2">Cập nhật đầy đủ thông tin để nhận 500 điểm</span>
         </div>
+        <div class="row" style="margin-bottom: 30px !important">
+            <div class="col s12">
+                <strong class="level" style="padding-left: 10px">Hạng {{auth[0].user_class[0].name}}</strong>
+                <strong class="right level" style="padding-right: 10px" ng-if="auth[0].user_class[0].id === 4">Hạng Bạc</strong>
+                <strong class="right level" style="padding-right: 10px" ng-if="auth[0].user_class[0].id === 3">Hạng Vàng</strong>
+                <strong class="right level" style="padding-right: 10px" ng-if="auth[0].user_class[0].id === 2">Hạng Bạch Kim</strong>
+                <div class="container_3">
+                    <div class="skills html" ng-if="auth[0].user_class[0].id === 4" style="width: {{(auth[0].point_plus/1000)*100}}%">
+                        <!-- {{auth[0].point_plus}} điểm -->
+                        {{(auth[0].point_plus/1000)*100}}%
+                    </div>
+                    <div class="skills html" ng-if="auth[0].user_class[0].id === 3" style="width: {{(auth[0].point_plus/1500)*100}}%">
+                        <!-- {{auth[0].point_plus}} điểm -->
+                        {{(auth[0].point_plus/1500)*100}}%
+                    </div>
+                    <div class="skills html" ng-if="auth[0].user_class[0].id === 2" style="width: {{(auth[0].point_plus/2000)*100}}%">
+                        <!-- {{auth[0].point_plus}} điểm -->
+                        {{(auth[0].point_plus/2000)*100}}%
+                    </div>
+                </div>
+
+            </div>
+        </div>
         <div class="row">
             <div class="col s12 m5 l3">
                 <center>
@@ -48,9 +71,17 @@
                         <i class="material-icons _i">cake</i>
                         <span class="span_account">{{auth[0].info[0].bith_day}}</span>
                     </h5>
+                    <h5>
+                        <i class="material-icons _i">assignment_turned_in</i>
+                        <span class="span_account">{{auth[0].total_list_coupon.length}} Coupon đã lấy</span>
+                    </h5>
+                    <h5>
+                        <i class="material-icons _i">assignment_returned</i>
+                        <span class="span_account">{{auth[0].empty_slot}} Coupon còn có thể lấy</span>
+                    </h5>
                 </div>
                 <center>
-                    <a class="waves-effect waves-light btn btn-xt pulse modal-trigger" data-target="update">
+                    <a class="waves-effect waves-light btn btn-coupon modal-trigger" data-target="update">
                         <i class="material-icons left">border_color</i>Cập Nhật</a>
                 </center>
             </div>

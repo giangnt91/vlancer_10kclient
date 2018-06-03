@@ -18,7 +18,7 @@
 
                         <div ng-show="!show_action">
                             <a class="waves-effect waves-light btn btn-xt pulse disabled" ng-show="condition">Nhận tác vụ ({{list_action_per_day.length}})</a>
-                            <a class="waves-effect waves-light btn btn-xt pulse" ng-click="next_action()" ng-show="!condition">Nhận tác vụ ({{list_action_per_day.length}})</a>
+                            <a class="waves-effect waves-light btn btn-coupon" ng-click="next_action()" ng-show="!condition">Nhận tác vụ ({{list_action_per_day.length}})</a>
                             <br>
                             <br>
                             <div class="card-panel alert" ng-show="condition">
@@ -30,8 +30,8 @@
                             <div class="fb-post" data-href="{{data.action_url}}" data-adapt-container-width="true" data-width="{{width_post}}"></div>
                             <br>
                             <br>
-                            <a class="waves-effect waves-light btn btn-action" ng-click="next_action()" ng-show="!off_next">Tác vụ tiếp theo</a>
-                            <a class="waves-effect waves-light btn btn-action" ng-click="complete()" ng-show="off_next">Hoàn thành</a>
+                            <a class="waves-effect waves-light btn btn-coupon" ng-click="next_action()" ng-show="!off_next">Tác vụ tiếp theo</a>
+                            <a class="waves-effect waves-light btn btn-coupon" ng-click="complete()" ng-show="off_next">Hoàn thành</a>
                             <br>
                             <br>
                             <div class="card-panel alert">
@@ -56,7 +56,7 @@
                         <ul class="collapsible" data-collapsible="accordion">
                             <li>
                                 <div class="collapsible-header">
-                                    <i class="material-icons">thumb_up</i>Bài post đã Like
+                                    <i class="material-icons">thumb_up</i>Tác vụ đã Like
                                     <span class="new badge" data-badge-caption="">{{array_like.length}}</span>
                                 </div>
                                 <div class="collapsible-body" ng-repeat="content in array_like track by $index" style="text-overflow: ellipsis;
@@ -66,7 +66,7 @@
                             </li>
                             <li>
                                 <div class="collapsible-header">
-                                    <i class="material-icons">border_color</i>Bài post đã Comment
+                                    <i class="material-icons">border_color</i>Tác vụ đã Comment
                                     <span class="new badge" data-badge-caption="">{{array_com.length}}</span>
                                 </div>
                                 <div class="collapsible-body" ng-repeat="content in array_com track by $index" style="text-overflow: ellipsis;
@@ -76,7 +76,7 @@
                             </li>
                             <li>
                                 <div class="collapsible-header">
-                                    <i class="material-icons">sort</i>Bài post đã Bỏ qua
+                                    <i class="material-icons">sort</i>Tác vụ đã Bỏ qua
                                     <span class="new badge" data-badge-caption="">{{array_like_skip.length + array_com_skip.length}}</span>
                                 </div>
                                 <div class="collapsible-body">
@@ -85,7 +85,8 @@
                                         <i class="material-icons">thumb_up</i>
                                         <hr>
                                         <div ng-repeat="content in array_like_skip track by $index">
-                                           {{$index + 1}}. <a target="blank" href="{{content}}" >{{content}}</a>
+                                            {{$index + 1}}.
+                                            <a target="blank" href="{{content}}">{{content}}</a>
                                         </div>
                                     </div>
                                     <br>
@@ -94,7 +95,8 @@
                                         <i class="material-icons">border_color</i>
                                         <hr>
                                         <div ng-repeat="content in array_com_skip track by $index">
-                                            {{$index + 1}}. <a target="blank" href="{{content}}">{{content}}</a>
+                                            {{$index + 1}}.
+                                            <a target="blank" href="{{content}}">{{content}}</a>
                                         </div>
                                     </div>
 
@@ -111,7 +113,7 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="collapsible-header">
+                                <div class="collapsible-header" style="border-bottom: none;">
                                     <i class="material-icons">local_atm</i>Tổng Điểm
                                     <span class="new badge" data-badge-caption="">{{(array_like.length + array_com.length)*10}}</span>
                                 </div>
@@ -120,7 +122,7 @@
 
 
                         <center>
-                            <a class="waves-effect waves-light btn" ng-click="xacnhan()" style="background:#EC407A; color:#fff">Xác Nhận</a>
+                            <a class="waves-effect waves-light btn btn-coupon" ng-click="xacnhan()">Xác Nhận</a>
                         </center>
 
                     </div>
