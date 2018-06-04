@@ -96,7 +96,7 @@
             </blockquote>
             <div class="row">
 
-                <div class="col s6 m4 l3" ng-repeat="content in kind_result_3 | limitTo : 8">
+                <div class="col s6 m4 l3" ng-repeat="content in kind_result_3 | limitTo : 4">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
                             <div class="price" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">
@@ -137,7 +137,7 @@
 
             <div class="row">
 
-                <div class="col s6 m4 l3" ng-repeat="content in basicResult">
+                <div class="col s6 m4 l3" ng-repeat="content in basicResult | limitTo : 8">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
                             <div class="price">
