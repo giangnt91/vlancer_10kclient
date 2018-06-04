@@ -86,6 +86,7 @@ coupon
         $scope.all_shop = JSON.parse(localStorage.getItem('all_shop'));
         var accessToken = localStorage.getItem('accessToken');
 
+        $scope.danh_muc = $routeParams.danhmuc;
         var _id = $routeParams.id;
         var shopId;
         $scope.all_shop.forEach(element => {
@@ -103,14 +104,28 @@ coupon
                     $scope.shop = response.data.shop;
                     var tmp_shop;
                     var tmp_server;
+                    $scope.all_feed = [];
+
+                    //get all feedback
+                    if ($scope.shop.shop_use_coupon.length > 0) {
+                        $scope.shop.shop_use_coupon.forEach(element => {
+                            if (element.feedback !== "") {
+                                $scope.all_feed.push(element);
+                            }
+                        });
+                    }
+
                     if ($scope.shop.shop_coupon.length > 0) {
                         tmp_shop = $scope.shop.shop_coupon[0].coupon.length;
+                        $scope.o_coupon = $scope.shop.shop_coupon[0].coupon[0];
                     } else {
                         tmp_shop = 0;
                     }
 
                     if ($scope.shop.server_coupon.length > 0) {
+                        $scope.o_coupon = "";
                         tmp_server = $scope.shop.server_coupon[0].coupon.length;
+                        $scope.o_coupon = $scope.shop.server_coupon[0].coupon[0];
                     } else {
                         tmp_server = 0;
                     }
@@ -146,7 +161,9 @@ coupon
                                 $scope.condition = true;
                                 $scope.feedback_count = + 1;
                             } else {
-                                $scope.condition = false;
+                                if ($scope.condition !== true) {
+                                    $scope.condition = false;
+                                }
                                 $scope.show_like = true;
                             }
                         }
@@ -427,7 +444,8 @@ coupon
                 // var day_get = day.getDate() + '/' + (day.getMonth() + 1) + '/' + day.getFullYear();
                 var the_auth = [{
                     id: $scope.auth[0].user_id,
-                    name: $scope.auth[0].info[0].fulname
+                    name: $scope.auth[0].info[0].fulname,
+                    img: $scope.auth[0].user_img
                 }]
 
                 // create new coupon for user and update list and check issuer
@@ -491,8 +509,9 @@ coupon
                         check_user_have_coupon();
                         $scope.dialog = ngDialog.openConfirm({
                             template:
-                                '<h4 class="flow-text green-text center">Nhận Coupon thành công</h4> <br>' +
-                                '<center><button type="button" class="waves-effect waves-light btn" style="" ng-click="confirm(confirmValue)">Ok</button></center>',
+                                '<h4 class="flow-text green-text center">Nhận Coupon thành công</h4>' +
+                                '<p style="text-align: center; margin-top: 0px;">Tải App Coupon để sử dụng coupon vừa nhận được !</p>' +
+                                '<center><button type="button" class="waves-effect waves-light btn btn-coupon" ng-click="confirm(confirmValue)">Ok</button></center>',
                             plain: true,
                             showClose: false,
                             closeByDocument: false
@@ -506,5 +525,4 @@ coupon
             }
             // end get coupon
         }
-
     })

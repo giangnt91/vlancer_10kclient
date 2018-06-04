@@ -1,81 +1,83 @@
 var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSanitize', 'CouponService', 'ngDialog', 'socialLogin'])
 coupon
+    .filter('unsafe', function ($sce) { return $sce.trustAsHtml; })
+    
     .controller('LoginCtrl', function ($scope, $location, $rootScope, $window, DataServices) {
 
-        $rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
-            Imgurl = "https://graph.facebook.com/" + userDetails.uid + "/picture?width=180&height=180";
-            // get long live access token
-            FB.api('/oauth/access_token?grant_type=fb_exchange_token&client_id=1946240225621730&client_secret=15ecc2d337244c224a6497f9b91931f1&fb_exchange_token=' + userDetails.token, function (res) {
-                localStorage.setItem('accessToken', res.access_token);
-            });
+    $rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
+        Imgurl = "https://graph.facebook.com/" + userDetails.uid + "/picture?width=180&height=180";
+        // get long live access token
+        FB.api('/oauth/access_token?grant_type=fb_exchange_token&client_id=1946240225621730&client_secret=15ecc2d337244c224a6497f9b91931f1&fb_exchange_token=' + userDetails.token, function (res) {
+            localStorage.setItem('accessToken', res.access_token);
+        });
 
-            DataServices.signIn(userDetails.uid, Imgurl).then(function (signin_res) {
-                var signin_result = signin_res.data;
-                if (signin_result.error_code === 2) {
+        DataServices.signIn(userDetails.uid, Imgurl).then(function (signin_res) {
+            var signin_result = signin_res.data;
+            if (signin_result.error_code === 2) {
 
-                    $scope.info = [{
-                        fulname: userDetails.name,
-                        bith_day: 'Chưa cập nhật',
-                        sex: 'Chưa cập nhật',
-                        work: 'Chưa cập nhật',
-                        mobile: 'Chưa cập nhật',
-                        email: 'Chưa cập nhật',
-                        full_update: 0
-                    }];
-                    var _class = {
-                        id: 4,
-                        name: "Thường"
-                    }
-
-                    var _role = {
-                        id: 0,
-                        name: "Thường"
-                    }
-
-                    var _status = {
-                        id: 0,
-                        name: "Active"
-                    }
-
-                    DataServices.signUp(userDetails.uid, Imgurl, JSON.stringify($scope.info), 0, 0, 5, JSON.stringify(_class), false, 1, 0, 0, null, 5, [], null, JSON.stringify(_role), JSON.stringify(_status)).then(function (signup_res) {
-                        var signup_result = signup_res.data;
-                        if (signup_result.error_code === 0) {
-                            DataServices.signIn(userDetails.uid, Imgurl).then(function (signin_res_2) {
-                                var signin_result_2 = signin_res_2.data;
-                                if (signin_result_2.error_code === 0) {
-                                    localStorage.setItem('auth', JSON.stringify(signin_result_2.auth));
-                                    // window.location.href = '#/';
-                                    $location.path('/');
-                                    window.location.reload(true);
-                                }
-                            });
-                        }
-                    });
+                $scope.info = [{
+                    fulname: userDetails.name,
+                    bith_day: 'Chưa cập nhật',
+                    sex: 'Chưa cập nhật',
+                    work: 'Chưa cập nhật',
+                    mobile: 'Chưa cập nhật',
+                    email: 'Chưa cập nhật',
+                    full_update: 0
+                }];
+                var _class = {
+                    id: 4,
+                    name: "Thường"
                 }
-                if (signin_result.error_code === 0) {
-                    DataServices.Upname(userDetails.uid, userDetails.name).then(function () { });
-                    localStorage.setItem('auth', JSON.stringify(signin_result.auth));
-                    // window.location.href = '#/';
-                    $location.path('/');
-                    window.location.reload(true);
-                } else if (signin_result.error_code === 5) {
-                    $scope._error_login = true;
-                    $timeout(function () {
-                        $scope._error_login = false;
-                    }, 5000)
-                }
-            });
 
-        })
-        $window.fbAsyncInit = function () {
-            // check load facebook login button
-            var finished_rendering = function () {
-                $scope.load_f = true;
-                $scope.$apply();
+                var _role = {
+                    id: 0,
+                    name: "Thường"
+                }
+
+                var _status = {
+                    id: 0,
+                    name: "Active"
+                }
+
+                DataServices.signUp(userDetails.uid, Imgurl, JSON.stringify($scope.info), 0, 0, 5, JSON.stringify(_class), false, 1, 0, 0, null, 5, [], null, JSON.stringify(_role), JSON.stringify(_status)).then(function (signup_res) {
+                    var signup_result = signup_res.data;
+                    if (signup_result.error_code === 0) {
+                        DataServices.signIn(userDetails.uid, Imgurl).then(function (signin_res_2) {
+                            var signin_result_2 = signin_res_2.data;
+                            if (signin_result_2.error_code === 0) {
+                                localStorage.setItem('auth', JSON.stringify(signin_result_2.auth));
+                                // window.location.href = '#/';
+                                $location.path('/');
+                                window.location.reload(true);
+                            }
+                        });
+                    }
+                });
             }
-            FB.Event.subscribe('xfbml.render', finished_rendering);
-        }
+            if (signin_result.error_code === 0) {
+                DataServices.Upname(userDetails.uid, userDetails.name).then(function () { });
+                localStorage.setItem('auth', JSON.stringify(signin_result.auth));
+                // window.location.href = '#/';
+                $location.path('/');
+                window.location.reload(true);
+            } else if (signin_result.error_code === 5) {
+                $scope._error_login = true;
+                $timeout(function () {
+                    $scope._error_login = false;
+                }, 5000)
+            }
+        });
+
     })
+    $window.fbAsyncInit = function () {
+        // check load facebook login button
+        var finished_rendering = function () {
+            $scope.load_f = true;
+            $scope.$apply();
+        }
+        FB.Event.subscribe('xfbml.render', finished_rendering);
+    }
+})
     .controller('HomeCtrl', function ($scope, $location, $window, $timeout, DataServices, socialLoginService) {
         if ($scope.auth) {
             // check access time per day
@@ -203,16 +205,16 @@ coupon
             }
         });
 
-        $scope.get_basic_detail = function(id){
+        $scope.get_basic_detail = function (id) {
             $scope.basicResult.forEach(element => {
-                if(element._id === id){
-                   $scope.detail_basic = element;
+                if (element._id === id) {
+                    $scope.detail_basic = element;
                 }
             });
         }
 
-        $scope.go_ma_giam_gia = function(url){
-            window.open(url,'_blank');
+        $scope.go_ma_giam_gia = function (url) {
+            window.open(url, '_blank');
         }
 
         $scope.go_detail_basic = function () {

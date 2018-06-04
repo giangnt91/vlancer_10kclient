@@ -1,0 +1,243 @@
+<div class="container_4" style="margin-bottom: 0">
+    <div class="row" style="margin-bottom: 0px !important">
+        <nav class="brum">
+            <div class="nav-wrapper">
+                <div class="col s10 push-s1">
+                    <a href="/" class="breadcrumb">Trang Chủ</a>
+                    <a href="{{danh_muc}}/danh-sach-cua-hang" class="breadcrumb">{{shop.shop_info[0].kind[0].name}}</a>
+                    <a href="" class="breadcrumb">Cửa hàng {{shop.shop_info[0].shop_name}}</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="container_5" style="margin-bottom: 0">
+    <div class="row card-panel" style="margin-top: 0; box-shadow: none; padding-left: 0; padding-right: 0">
+
+        <div class="col s12 m6 l6" style="height: 200px;">
+            <img class="responsive-img waves-effect waves-light" src="{{shop.shop_info[0].shop_cover}}">
+            <div class="like_button">
+                <!-- <a class="waves-effect waves-light right btn like-pro pulse"> </a> -->
+                <div ng-if="!condition && auth">
+                    <button class="btn waves-effect waves-light like-pro right modal-trigger" data-target="like" ng-if="show_like" ng-click="open_like()">Like
+                        <i class="material-icons right">thumb_up</i>
+                    </button>
+                </div>
+
+                <div ng-if="condition">
+                    <button class="btn waves-effect waves-light like-pro right disabled">Like
+                        <i class="material-icons right">thumb_up</i>
+                    </button>
+                </div>
+            </div>
+            <!-- <div class="person-info" style="padding: 0; position: relative; bottom: 58px;" ng-if="show_like">
+                <h5 style="font-size: 18px; color: #EC407A; border: none">
+                    <i class="material-icons" style="position: relative; top: 5px;">new_releases</i>
+                    Thích trang để nhận Coupon
+                </h5>
+            </div> -->
+        </div>
+        <div class="col s12 m6 l6">
+            <!-- <div id="thongtin" class="col s12"> -->
+            <div class="person-info" style="padding: 0">
+                <h5 class="white-text shop_name_3">{{shop.shop_info[0].shop_name}}
+                </h5>
+                <h5 class="orange-text">
+                    <i class="material-icons">extension</i>
+                    <span>{{shop.shop_info[0].service}}</span>
+                </h5>
+                <h5 class="blue-text">
+                    <i class="material-icons">location_on</i>
+                    <span>{{shop.shop_info[0].address}}</span>
+                </h5>
+                <h5 class="purple-text">
+                    <i class="material-icons">access_time</i>
+                    <span>{{shop.shop_info[0].time}}</span>
+                </h5>
+                <h5 class="green-text">
+                    <i class="material-icons">account_balance_wallet</i>
+                    <span>Còn {{total_coupon}} Coupon</span>
+                </h5>
+                <h5 class="pink-text" ng-if="show_like">
+                    <i class="material-icons">new_releases</i>
+                    <span>Thích trang để nhận Coupon</span>
+                </h5>
+                <h5 class="red-text" ng-if="condition" style="border-bottom: none">
+                    <i class="material-icons">block</i>
+                    <span>Bạn chưa đủ điều kiện nhận Coupon</span>
+                    <div ng-if="total_coupon === 0">
+                        <br>
+                        <span class="grey-text" style="padding-left: 27px">- Hiện tại Shop không phát hành Coupon.</span>
+                    </div>
+
+                    <div ng-if="_get">
+                        <br>
+                        <span class="grey-text" style="padding-left: 27px">- Bạn đã nhận Coupon này rồi.</span>
+                    </div>
+                    <div ng-if="feedback_count.length > 0">
+                        <br>
+                        <span class="grey-text" style="padding-left: 27px">- Bạn chưa thực hiện Feedback ({{feedback_count}}).</span>
+                    </div>
+                    <div ng-if="auth[0].empty_slot === 0">
+                        <br>
+                        <span class="grey-text" style="padding-left: 27px">- Bạn đã hết slot.</span>
+                    </div>
+                    <div ng-if="_rank">
+                        <br>
+                        <span class="grey-text" style="padding-left: 27px">- Yêu cầu thành viên {{rank_user.name}} trở lên để nhận coupon này.</span>
+                    </div>
+
+                </h5>
+                <div ng-if="!condition">
+                    <h5 ng-if="!show_like" style="border-bottom: none">
+                        <center>
+                            <a class="waves-effect waves-light btn btn-coupon" ng-click="get_coupon()">Nhận Coupon</a>
+                        </center>
+                    </h5>
+                    <h5 ng-if="show_like" style="border-bottom: none">
+                        <center>
+                            <a class="waves-effect waves-light btn disabled" style="background:#EC407A; color:#fff">Nhận Coupon</a>
+                        </center>
+                    </h5>
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+
+        <div class="col s12">
+            <blockquote>
+                <h5 style="display: unset;">Cửa Hàng</h5>
+            </blockquote>
+            <ul class="tabs">
+                <li class="tab col s2">
+                    <a class="active" style="text-align: left;" href="#dieukien">Điều kiện áp dụng</a>
+                </li>
+                <li class="tab col s2">
+                    <a href="#info" style="text-align: left;">Giới thiệu</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row">
+            <div id="dieukien" class="col s12 m8 l8">
+                <div class="person-info" style="padding: 0">
+                    <h5>
+                        <div ng-if="total_coupon > 0">
+                            <i class="material-icons">chevron_right</i>
+                            <span ng-bind-html="coupon_info | unsafe"></span>
+                        </div>
+                        <div ng-if="total_coupon === 0">
+                            <i class="material-icons">chevron_right</i>
+                            <span>Đang cập nhật.</span>
+                        </div>
+                    </h5>
+                    <h5 class="red-text">
+                        <div ng-if="total_coupon > 0">
+                            <i class="material-icons">chevron_right</i>
+                            <span ng-if="rank_user.id === 4">Coupon này dành cho mọi thành viên</span>
+                            <span ng-if="rank_user.id === 3">Coupon này dành cho thành viên hạng Bạc trở lên ( trên 1000 điểm)</span>
+                            <span ng-if="rank_user.id === 2">Coupon này dành cho thành viên hạng Vàng trở lên ( trên 1500 điểm)</span>
+                            <span ng-if="rank_user.id === 1">Coupon này dành cho thành viên hạng Bạch Kim trở lên ( trên 2000 điểm)</span>
+                        </div>
+                        <div ng-if="total_coupon === 0">
+                            <i class="material-icons">chevron_right</i>
+                            <span>Đang cập nhật.</span>
+                        </div>
+
+                    </h5>
+                    <h5 class="blue-text">
+                        <div ng-if="total_coupon > 0">
+                            <i class="material-icons">chevron_right</i>
+                            <span>Hạn sử dụng: {{coupon_expire}} Tháng</span>
+                        </div>
+                        <div ng-if="total_coupon === 0">
+                            <i class="material-icons">chevron_right</i>
+                            <span>Đang cập nhật.</span>
+                        </div>
+                    </h5>
+                    <h5>
+                        <div ng-if="total_coupon > 0">
+                            <i class="material-icons">chevron_right</i>
+                            <span class="red-text" ng-if="o_coupon.rfeedback[0].id === 1">
+                                Yêu cầu Feedback sau khi sử dụng dịch vụ (thực hiện trong app).
+                            </span>
+                            <span class="green-text" ng-if="o_coupon.rfeedback[0].id === 2">
+                                Coupon này không yêu cầu Feedback sau khi sử dụng.
+                            </span>
+                        </div>
+                        <div ng-if="total_coupon === 0">
+                            <i class="material-icons">chevron_right</i>
+                            <span>Đang cập nhật.</span>
+                        </div>
+                    </h5>
+                </div>
+            </div>
+
+            <div id="info" class="col s12 m8 l8">
+                <div class="person-info" style="padding: 0; min-height: 202px">
+                    <p ng-bind-html="shop.shop_info[0].info | unsafe" style="margin-top: 0px"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s12">
+            <blockquote>
+                <h5 style="display: unset;">Album Hình</h5>
+            </blockquote>
+            <div class="col s6 m6 l3" ng-repeat="content in shop.shop_info[0].shop_album">
+                <img src="{{content.url}}" class="responsive-img materialboxed g-img" alt="">
+            </div>
+        </div>
+
+        <div class="col s12">
+            <blockquote>
+                <h5 style="display: unset;">Đánh Giá Dịch Vụ ({{all_feed.length}})</h5>
+            </blockquote>
+            <div class="col s12">
+                <div class="person-info" style="padding: 0">
+                    <h5 ng-repeat="content in all_feed" ng-if="all_feed.length > 0">
+                        <div class="chip">
+                            <img src="{{content.coupon.userid_get_coupon[0].img}}"> {{content.coupon.userid_get_coupon[0].name}}
+                        </div>
+                        <div ng-include='"templates/rating.html"'></div>
+                        <span>{{content.coupon.feedback}}</span>
+                    </h5>
+                    <h5 ng-if="all_feed.length === 0" style="border: none">Chưa có đánh giá nào về dịch vụ của cửa hàng.</h5>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="like" class="modal">
+    <div class="modal-content">
+        <center>
+            <div ng-if="!load_fa">
+                <h4 class="flow-text center">Đang cập nhật dữ liệu</h4>
+                <div class="progress">
+                    <div class="indeterminate"></div>
+                </div>
+            </div>
+
+            <div class="fb-page" data-href="https://www.facebook.com/{{shop.shopId}}" data-adapt-container-width="false" data-width="510"></div>
+        </center>
+    </div>
+    <div class="modal-footer">
+        <button class="btn waves-effect waves-light btn-xt modal-action modal-close    background: rgba(255, 255, 255, .85);" ng-click="close_like()">Xong</button>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('ul.tabs').tabs({});
+        $('.materialboxed').materialbox();
+        $('.modal').modal({
+            dismissible: false
+        });
+        setTimeout(function () {
+            $('.materialboxed').materialbox();
+        }, 500);
+    });
+</script>
