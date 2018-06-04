@@ -7,7 +7,7 @@ angular.module('coupon10k', ['ngRoute', 'CouponController', 'CouponService'])
             .when("/dang-nhap", { templateUrl: "partials/login.html", controller: "LoginCtrl" })
             .when("/:danhmuc/:cuahang", { templateUrl: "partials/all_pro.html", controller: "ProductCtrl" })
             // .when("/:danhmuc/:cuahang/:slug-:id", { templateUrl: "partials/pro_detail.html", controller: "ProdetailCtrl" })
-            .when("/:danhmuc/:cuahang/:slug-:id", { templateUrl: "partials/test.html", controller: "ProdetailCtrl" })
+            .when("/:danhmuc/:cuahang/:slug-:id", { templateUrl: "partials/prov2.html", controller: "ProdetailCtrl" })
             .when("/thuc-hien-tac-vu", { templateUrl: "partials/action.html", controller: "ActionCtrl" })
             .when("/quan-ly-tai-khoan", { templateUrl: "partials/account.html", controller: "AccountCtrl" })
 
