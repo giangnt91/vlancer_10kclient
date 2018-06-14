@@ -313,6 +313,7 @@ coupon
                         for (var i = 0; i < $scope.shop.user_like_shop.length; i++) {
                             if ($scope.auth[0].user_id === $scope.shop.user_like_shop[i].id) {
                                 $scope.show_like = false;
+                                break;
                             } else {
                                 $scope.show_like = true;
                             }
