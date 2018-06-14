@@ -407,7 +407,6 @@ coupon
 
                 $timeout(function () {
                     FB.api('/' + $scope.shop.shopId + '?access_token=' + accessToken, { fields: 'fan_count' }, (response) => {
-                        console.log(response)
                         if ($scope.pre_fan_count < response.fan_count) {
                             $scope.show_like = false;
                             $scope.$apply();
