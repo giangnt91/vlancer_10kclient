@@ -210,9 +210,13 @@
     </div>
 </div>
 
+<button class="btn waves-effect waves-light like-pro right modal-trigger" data-target="like" ng-click="open_like()">Like
+    <i class="material-icons right">thumb_up</i>
+</button>
+
 <!-- Modal Structure -->
 <div id="like" class="modal">
-    <div class="modal-content">
+    <div class="modal-content" style="padding-bottom: 0; padding-top: 10px;">
         <center>
             <div ng-if="!load_fa">
                 <h4 class="flow-text center">Đang cập nhật dữ liệu</h4>
@@ -222,6 +226,23 @@
             </div>
 
             <div class="fb-page" data-href="https://www.facebook.com/{{shop.shopId}}" data-adapt-container-width="false" data-width="510"></div>
+
+            <div ng-if="load_fa">
+                <div class="person-info" style="padding: 0; text-align: left">
+                    <h5>
+                        <i class="material-icons blue-text">chevron_right</i>
+                        <span>Nếu Bạn đã like page này trước đây (không phải trên website của chúng tôi) vui lòng Unlike
+                            <a target="blank"
+                                href="https://www.facebook.com/{{shop.shopId}}">tại đây</a> sau đó quay lại và reload trang để thực hiện like page. </span>
+                    </h5>
+                    <h5>
+                        <i class="material-icons blue-text">chevron_right</i>
+                        <span>Nếu gặp lỗi
+                            <strong class="blue-text">Có lỗi trong quá trình sử lý</strong>, bạn vui lòng Unlike trang
+                            <a target="blank" href="https://www.facebook.com/{{shop.shopId}}">tại đây</a> sau đó quay lại và reload trang để thực hiện lại.</span>
+                    </h5>
+                </div>
+            </div>
         </center>
     </div>
     <div class="modal-footer">
