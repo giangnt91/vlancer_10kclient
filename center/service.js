@@ -15,7 +15,7 @@ angular.module('CouponService', [])
                 url = api_gateway_url + '/signin';
                 return $http.post(url, parameter, header);
             },
-            signUp: function (user_id, user_img, info, point_per_day, point_per_today, total_slot, _class, download, count_access_time, point_plus, point_bad, total_list_coupon, empty_slot, use_coupon, call_server_in_day, role, _status) {
+            signUp: function (user_id, user_img, info, point_per_day, point_per_today, total_slot, _class, download, access_time_per_day, point_plus, point_bad, total_list_coupon, empty_slot, use_coupon, call_server_in_day, role, _status) {
                 parameter = JSON.stringify({
                     user_id: user_id,
                     user_img: user_img,
@@ -25,7 +25,7 @@ angular.module('CouponService', [])
                     total_slot: total_slot,
                     user_class: _class,
                     download: download,
-                    count_access_time: count_access_time,
+                    access_time_per_day: access_time_per_day,
                     point_plus: point_plus,
                     point_bad: point_bad,
                     total_list_coupon: total_list_coupon,
