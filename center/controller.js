@@ -47,7 +47,7 @@ coupon
                         id: 0,
                         name: "Active"
                     }
-
+                    
                     DataServices.signUp(userDetails.uid, Imgurl, JSON.stringify($scope.info), 0, 0, 5, JSON.stringify(_class), false, [], 0, 0, null, 5, [], null, JSON.stringify(_role), JSON.stringify(_status)).then(function (signup_res) {
                         var signup_result = signup_res.data;
                         if (signup_result.error_code === 0) {
@@ -91,12 +91,14 @@ coupon
                 // $scope.$apply();
                 // }				
             })
+
+            if($scope.auth[0].access_time_per_day[0].id === 1){
+                Materialize.toast('Bạn được cộng 50 điểm cho lần đăng nhập đầu tiên trong ngày!', 3000, 'rounded') // 'rounded' is the class I'm applying to the toast
+            }
         }
 
         $scope.auth = JSON.parse(localStorage.getItem('auth'));
-        if($scope.auth[0].access_time_per_day[0].id === 1){
-            Materialize.toast('Bạn được cộng 50 điểm cho lần đăng nhập đầu tiên trong ngày!', 3000, 'rounded') // 'rounded' is the class I'm applying to the toast
-        }
+       
         DataServices.getshopvip().then(function (response) {
             if (response.data.error_code === 0) {
                 $scope.vip = response.data.vip;
