@@ -93,7 +93,8 @@ coupon
             })
 
             if($scope.auth[0].access_time_per_day[0].id === 1){
-                Materialize.toast('Bạn được cộng 50 điểm cho lần đăng nhập đầu tiên trong ngày!', 3000, 'rounded') // 'rounded' is the class I'm applying to the toast
+                var $toastContent = $('<center>Bạn được cộng 50 điểm cho lần đầu đăng nhập trong ngày.</center>');
+                Materialize.toast($toastContent, 4500);
             }
         }
 
