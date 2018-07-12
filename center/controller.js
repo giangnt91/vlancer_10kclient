@@ -79,7 +79,7 @@ coupon
 
         })
     })
-    .controller('HomeCtrl', function ($scope, $location, $window, $timeout, DataServices, socialLoginService) {
+    .controller('HomeCtrl', function ($scope, $location, $window, $timeout, DataServices, socialLoginService, $filter) {
         if ($scope.auth) {
             // check access time per day
             DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (response) {
@@ -257,6 +257,12 @@ coupon
                         }
                     }
                 }
+
+                $scope.kind_result_1 = $filter('orderBy')($scope.kind_result_1, ['server_coupon','shop_coupon'], true); 
+                $scope.kind_result_2 = $filter('orderBy')($scope.kind_result_2, ['server_coupon','shop_coupon'], true); 
+                $scope.kind_result_3 = $filter('orderBy')($scope.kind_result_3, ['server_coupon','shop_coupon'], true); 
+
+
                 localStorage.setItem('kind_1', JSON.stringify($scope.kind_result_1));
                 localStorage.setItem('kind_2', JSON.stringify($scope.kind_result_2));
                 localStorage.setItem('kind_3', JSON.stringify($scope.kind_result_3));
