@@ -64,6 +64,10 @@ coupon
                     });
                 }
                 if (signin_result.error_code === 0) {
+                    // function update class user
+                    DataServices.updateClass(signin_result.auth[0]._id).then(function (response) {
+                    });
+                    // end function
                     DataServices.Upname(userDetails.uid, userDetails.name).then(function () { });
                     localStorage.setItem('auth', JSON.stringify(signin_result.auth));
                     // window.location.href = '#/';
