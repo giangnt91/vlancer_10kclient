@@ -444,7 +444,7 @@ coupon
                                 $window.scrollTo(0, 0);
                                 $scope.dialog.close();
                                 $scope.com_ac = true;
-                            }, action_point0)
+                            }, 500)
                             // function update class user
                             DataServices.updateClass($scope.auth[0]._id).then(function (response) {
                             });
