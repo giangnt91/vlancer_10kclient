@@ -89,7 +89,7 @@
 
                 </h5>
                 <div ng-if="!condition">
-                    <h5 ng-if="!show_like" style="border-bottom: none">
+                    <h5 id="af2" ng-if="!show_like" style="border-bottom: none">
                         <center>
                             <a class="waves-effect waves-light btn btn-coupon" ng-click="get_coupon()">Nhận Coupon</a>
                         </center>
@@ -256,5 +256,6 @@
         setTimeout(function () {
             $('.materialboxed').materialbox();
         }, 500);
+        $("#af2").show().delay(2000).fadeOut();
     });
 </script>
