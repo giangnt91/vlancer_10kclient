@@ -4,6 +4,8 @@ coupon
         var accessToken = localStorage.getItem('accessToken');
         var date = new Date();
         var today = $filter('date')(new Date(), 'dd/MM/yyyy');
+        //thay đổi điểm tại đây
+        var action_point = 500;
 		
 		$scope.xacnhan = function(){
 			DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (response) {
@@ -115,9 +117,9 @@ coupon
                                                 if (compare_reaction !== 0) {
                                                     DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, $scope.pre_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
                                                         if (response.data.error_code === 0) {
-                                                            DataServices.Point($scope.auth[0]._id, 500, 0).then(function (response) {
+                                                            DataServices.Point($scope.auth[0]._id, action_point, 0).then(function (response) {
                                                                 if (response.data.error_code === 0) {
-                                                                    $scope.reaction_point = $scope.reaction_point + 500;
+                                                                    $scope.reaction_point = $scope.reaction_point + action_point;
                                                                 }
                                                             });
                                                             $scope.array_like.push(last_data.action_url);
@@ -157,9 +159,9 @@ coupon
                                                             $scope.array_com.push(last_data.action_url);
                                                         }
                                                     });
-                                                    DataServices.Point($scope.auth[0]._id, 500, 0).then(function (response) {
+                                                    DataServices.Point($scope.auth[0]._id, action_point, 0).then(function (response) {
                                                         if (response.data.error_code === 0) {
-                                                            $scope.reaction_point = $scope.reaction_point + 500;
+                                                            $scope.reaction_point = $scope.reaction_point + action_point;
                                                         }
                                                     });
                                                 } else {
@@ -223,9 +225,9 @@ coupon
                                                 if (compare_reaction !== 0) {
                                                     DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, $scope.pre_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
                                                         if (response.data.error_code === 0) {
-                                                            DataServices.Point($scope.auth[0]._id, 500, 0).then(function (response) {
+                                                            DataServices.Point($scope.auth[0]._id, action_point, 0).then(function (response) {
                                                                 if (response.data.error_code === 0) {
-                                                                    $scope.reaction_point = $scope.reaction_point + 500;
+                                                                    $scope.reaction_point = $scope.reaction_point + action_point;
                                                                 }
                                                             });
                                                             $scope.array_like.push(last_data.action_url);
@@ -268,9 +270,9 @@ coupon
 
                                                     });
 
-                                                    DataServices.Point($scope.auth[0]._id, 500, 0).then(function (response) {
+                                                    DataServices.Point($scope.auth[0]._id, action_point, 0).then(function (response) {
                                                         if (response.data.error_code === 0) {
-                                                            $scope.reaction_point = $scope.reaction_point + 500;
+                                                            $scope.reaction_point = $scope.reaction_point + action_point;
                                                         }
                                                     });
                                                 } else {
@@ -369,9 +371,9 @@ coupon
                                     if (compare_reaction !== 0) {
                                         DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, $scope.pre_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
                                             if (response.data.error_code === 0) {
-                                                DataServices.Point($scope.auth[0]._id, 500, 0).then(function (response) {
+                                                DataServices.Point($scope.auth[0]._id, action_point, 0).then(function (response) {
                                                     if (response.data.error_code === 0) {
-                                                        $scope.reaction_point = $scope.reaction_point + 500;
+                                                        $scope.reaction_point = $scope.reaction_point + action_point;
                                                     }
                                                 });
                                                 $scope.array_like.push(last_data.action_url);
@@ -414,9 +416,9 @@ coupon
 
                                         });
 
-                                        DataServices.Point($scope.auth[0]._id, 500, 0).then(function (response) {
+                                        DataServices.Point($scope.auth[0]._id, action_point, 0).then(function (response) {
                                             if (response.data.error_code === 0) {
-                                                $scope.reaction_point = $scope.reaction_point + 500;
+                                                $scope.reaction_point = $scope.reaction_point + action_point;
                                             }
                                         });
                                     } else {
@@ -442,7 +444,7 @@ coupon
                                 $window.scrollTo(0, 0);
                                 $scope.dialog.close();
                                 $scope.com_ac = true;
-                            }, 5000)
+                            }, action_point0)
                             // function update class user
                             DataServices.updateClass($scope.auth[0]._id).then(function (response) {
                             });
