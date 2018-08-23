@@ -421,12 +421,13 @@ coupon
                 $timeout(function () {
                     FB.api('/' + $scope.shop.shopId + '?access_token=' + accessToken, { fields: 'fan_count' }, (response) => {
                         if ($scope.pre_fan_count < response.fan_count) {
-                            $scope.show_like = false;
+                            // $scope.show_like = false;
+                            $("#af2").hide();
                             $scope.$apply();
 
                             DataServices.updateshopLike($scope.shop._id, $scope.auth[0].user_id, $scope.auth[0].info[0].fulname).then(function (response) {
                                 if (response.error_code === 0) {
-                                    $scope.show_like = false;
+                                    // $scope.show_like = false;
                                 }
                             });
 
