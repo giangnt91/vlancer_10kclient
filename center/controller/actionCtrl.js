@@ -186,7 +186,7 @@ coupon
 
                                         // function update class user
                                         DataServices.updateClass($scope.auth[0]._id).then(function (response) {
-                                            console.log(response.data)
+                                            console.log($scope.auth[0])
                                         });
                                         // end function
 
