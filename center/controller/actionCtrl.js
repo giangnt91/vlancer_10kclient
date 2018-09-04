@@ -1,28 +1,28 @@
 coupon
     .controller('ActionCtrl', function ($scope, $location, ngDialog, DataServices, $timeout, $filter, $window) {
-       $scope.auth = JSON.parse(localStorage.getItem('auth'));
+        $scope.auth = JSON.parse(localStorage.getItem('auth'));
         var accessToken = localStorage.getItem('accessToken');
         var date = new Date();
         var today = $filter('date')(new Date(), 'dd/MM/yyyy');
         //thay đổi điểm tại đây
         var action_point = 500;
-		
-		$scope.xacnhan = function(){
-			DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (response) {
-				var signin_result = response.data;
-				localStorage.setItem('auth', JSON.stringify(signin_result.auth));
-				// $scope.auth = JSON.parse(localStorage.getItem('auth'));
-				// $timeout(function () {
-                    // $scope.$apply();
+
+        $scope.xacnhan = function () {
+            DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (response) {
+                var signin_result = response.data;
+                localStorage.setItem('auth', JSON.stringify(signin_result.auth));
+                // $scope.auth = JSON.parse(localStorage.getItem('auth'));
+                // $timeout(function () {
+                // $scope.$apply();
                 // }, 100);
-				// $window.scrollTo(0, 0);
-				window.location.reload(true);
+                // $window.scrollTo(0, 0);
+                window.location.reload(true);
             });
             // window.location.href = '#/action';
             $location.path('/thuc-hien-tac-vu')
-			$window.scrollTo(0, 0);
-			// window.location.reload(true);
-		}
+            $window.scrollTo(0, 0);
+            // window.location.reload(true);
+        }
 
         if (!$scope.auth) {
             // $scope.dialog = ngDialog.openConfirm({
@@ -90,18 +90,18 @@ coupon
                                         // console.log('binh luan 1 truoc khi comment: ' + $scope.pre_comment, 'shop id: ' + last_data.action_shop_id);
                                         // }
                                     });
-									
-									//update action user
-									DataServices.updateActionuser(last_data._id ,$scope.auth[0].user_id).then(function (response){});
+
+                                    //update action user
+                                    DataServices.updateActionuser(last_data._id, $scope.auth[0].user_id).then(function (response) { });
                                 } else {
                                     if ($scope.index < $scope.next_arr.length) {
 
                                         // function check face
                                         var last_data = $scope.pre_data;
-										
-										//update action user
-										DataServices.updateActionuser(last_data._id ,$scope.auth[0].user_id).then(function (response){});
-										
+
+                                        //update action user
+                                        DataServices.updateActionuser(last_data._id, $scope.auth[0].user_id).then(function (response) { });
+
                                         function check_face() {
                                             //CHECK LIKE
                                             FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/reactions?summary=true&access_token=' + accessToken, (response) => {
@@ -179,15 +179,14 @@ coupon
                                                 }
                                             });
                                             //END CHECK COMMENT
+
+                                            // function update class user
+                                            DataServices.updateClass($scope.auth[0]._id).then(function (response) {
+                                            });
+                                            // end function
                                         }
 
                                         check_face();
-                                        // end function
-
-                                        // function update class user
-                                        DataServices.updateClass($scope.auth[0]._id).then(function (response) {
-                                            console.log(response.data)
-                                        });
                                         // end function
 
                                         $scope.pre_data = $scope.next_arr[$scope.index - 1];
@@ -207,10 +206,10 @@ coupon
 
                                         // function check face
                                         var last_data = $scope.pre_data;
-										
-										//update action user
-										DataServices.updateActionuser(last_data._id ,$scope.auth[0].user_id).then(function (response){});
-										
+
+                                        //update action user
+                                        DataServices.updateActionuser(last_data._id, $scope.auth[0].user_id).then(function (response) { });
+
                                         function check_face() {
                                             //CHECK LIKE
                                             FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/reactions?summary=true&access_token=' + accessToken, (response) => {
@@ -291,16 +290,16 @@ coupon
                                                 }
                                             });
                                             //END CHECK COMMENT
+
+                                            // function update class user
+                                            DataServices.updateClass($scope.auth[0]._id).then(function (response) {
+                                            });
+                                            // end function
                                         }
 
                                         check_face();
                                         // end function
 
-                                        // function update class user
-                                        DataServices.updateClass($scope.auth[0]._id).then(function (response) {
-                                            console.log(response.data)
-                                        });
-                                        // end function
 
                                         $scope.pre_data = $scope.list_action_per_day[$scope.index];
 
@@ -317,10 +316,10 @@ coupon
                             } else {
                                 $scope.pre_data = $scope.data;
                                 var last_data = $scope.data;
-								
-								//update action user
-								DataServices.updateActionuser(last_data._id ,$scope.auth[0].user_id).then(function (response){});
-								
+
+                                //update action user
+                                DataServices.updateActionuser(last_data._id, $scope.auth[0].user_id).then(function (response) { });
+
                                 $scope.data = $scope.next_arr[$scope.index];
                                 //check comment after comment
                                 FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + accessToken, (response) => {
@@ -346,10 +345,10 @@ coupon
 
                             // function check face
                             var last_data = $scope.pre_data;
-							
-							//update action user
-							DataServices.updateActionuser(last_data._id ,$scope.auth[0].user_id).then(function (response){});
-									
+
+                            //update action user
+                            DataServices.updateActionuser(last_data._id, $scope.auth[0].user_id).then(function (response) { });
+
                             $scope.dialog = ngDialog.open({
                                 template:
                                     '<h4 class="flow-text center">Đang xử lý dữ liệu</h4>  <div class="progress"> <div class="indeterminate"></div> </div>',
@@ -438,6 +437,11 @@ coupon
                                     }
                                 });
                                 //END CHECK COMMENT
+
+                                // function update class user
+                                DataServices.updateClass($scope.auth[0]._id).then(function (response) {
+                                });
+                                // end function
                             }
 
                             check_face();
@@ -447,12 +451,7 @@ coupon
                                 $scope.dialog.close();
                                 $scope.com_ac = true;
                             }, 500)
-                            // function update class user
-                            DataServices.updateClass($scope.auth[0]._id).then(function (response) {
-                                console.log(response.data)
-                            });
-							
-                            // end function
+
                         }
                         // end show data
 
