@@ -179,14 +179,16 @@ coupon
                                                 }
                                             });
                                             //END CHECK COMMENT
-
-                                            // function update class user
-                                            DataServices.updateClass($scope.auth[0]._id).then(function (response) {
-                                            });
-                                            // end function
                                         }
 
                                         check_face();
+                                        // end function
+
+                                        // function update class user
+                                        $timeout(function () {
+                                            DataServices.updateClass($scope.auth[0]._id).then(function (response) {
+                                            });
+                                        }, 2000)
                                         // end function
 
                                         $scope.pre_data = $scope.next_arr[$scope.index - 1];
@@ -290,16 +292,17 @@ coupon
                                                 }
                                             });
                                             //END CHECK COMMENT
-
-                                            // function update class user
-                                            DataServices.updateClass($scope.auth[0]._id).then(function (response) {
-                                            });
-                                            // end function
                                         }
 
                                         check_face();
                                         // end function
 
+                                        // function update class user
+                                        $timeout(function () {
+                                            DataServices.updateClass($scope.auth[0]._id).then(function (response) {
+                                            });
+                                        }, 2000)
+                                        // end function
 
                                         $scope.pre_data = $scope.list_action_per_day[$scope.index];
 
@@ -437,11 +440,6 @@ coupon
                                     }
                                 });
                                 //END CHECK COMMENT
-
-                                // function update class user
-                                DataServices.updateClass($scope.auth[0]._id).then(function (response) {
-                                });
-                                // end function
                             }
 
                             check_face();
@@ -452,6 +450,12 @@ coupon
                                 $scope.com_ac = true;
                             }, 500)
 
+                            // function update class user
+                            $timeout(function () {
+                                DataServices.updateClass($scope.auth[0]._id).then(function (response) {
+                                });
+                            }, 2000)
+                            // end function
                         }
                         // end show data
 
