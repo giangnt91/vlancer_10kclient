@@ -4,7 +4,7 @@ angular.module('CouponService', [])
         // var api_gateway_url = 'http://localhost:2018';
         var parameter;
         var url;
-        var header = { header: { 'Conntent-Type': 'application/x-www-form-urlencoded' } };
+        var header = { header: { 'Conntent-Type': 'application/x-www-form-urlencoded' }, strictSSL: false };
 
         return {
             signIn: function (user_id, user_img) {
