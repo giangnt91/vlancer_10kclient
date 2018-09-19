@@ -81,11 +81,26 @@ coupon
 
     })
 
-    .controller('ProdetailCtrl', function ($scope, $filter, $routeParams, $timeout, ngDialog, DataServices) {
+    .controller('ProdetailCtrl', function ($scope, $filter, $routeParams, $timeout, ngDialog, DataServices, $window) {
         $scope.auth = JSON.parse(localStorage.getItem('auth'));
         $scope.all_shop = JSON.parse(localStorage.getItem('all_shop'));
         var accessToken = localStorage.getItem('accessToken');
 
+        $scope.dialog = ngDialog.open({
+            template:
+                '<h4 class="flow-text center">Đang tải trang vui lòng chờ ...</h4>  <div class="progress"> <div class="indeterminate"></div> </div>',
+            plain: true,
+            showClose: false,
+            closeByDocument: false
+        });
+
+        $timeout(function () {
+            $scope.load_page = true;
+            $scope.dialog.close();
+        }, 2000)
+
+
+        $scope._href = window.location.href;
         $scope.danh_muc = $routeParams.danhmuc;
         var _id = $routeParams.id;
         var shopId;
@@ -179,7 +194,7 @@ coupon
                                     $scope._get = true;
                                     $scope.condition = true;
                                 } else {
-                                    if($scope._get !== true){
+                                    if ($scope._get !== true) {
                                         $scope._get = false;
                                     }
                                     if ($scope.condition !== true) {
@@ -201,7 +216,7 @@ coupon
                                         $scope._get = true;
                                         $scope.condition = true;
                                     } else {
-                                        if($scope._get !== true){
+                                        if ($scope._get !== true) {
                                             $scope._get = false;
                                         }
                                         if ($scope.condition !== true) {
@@ -226,7 +241,7 @@ coupon
                                     $scope._get = true;
                                     $scope.condition = true;
                                 } else {
-                                    if($scope._get !== true){
+                                    if ($scope._get !== true) {
                                         $scope._get = false;
                                     }
                                     if ($scope.condition !== true) {
@@ -248,7 +263,7 @@ coupon
                                         $scope._get = true;
                                         $scope.condition = true;
                                     } else {
-                                        if($scope._get !== true){
+                                        if ($scope._get !== true) {
                                             $scope._get = false;
                                         }
                                         if ($scope.condition !== true) {
@@ -278,10 +293,10 @@ coupon
                                     $scope.condition = true;
                                     $scope._get = true;
                                 } else {
-                                    if($scope._get !== true){
+                                    if ($scope._get !== true) {
                                         $scope._get = false;
                                     }
-                                    
+
                                     if ($scope.condition !== true) {
                                         $scope.condition = false;
                                     }
@@ -300,7 +315,7 @@ coupon
                                     $scope.condition = true;
                                     $scope._get = true;
                                 } else {
-                                    if($scope._get !== true){
+                                    if ($scope._get !== true) {
                                         $scope._get = false;
                                     }
                                     if ($scope.condition !== true) {

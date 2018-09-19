@@ -498,6 +498,33 @@ blockquote {
     background-color: #EC407A !important;
 }
 
+.facecss {
+	color: #fff !important;
+	background: #4267B2 !important;
+	padding: 5px !important;
+    border-radius: 4px !important;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.ggcss {
+	color: #fff !important;
+	background: #DF4A32 !important;
+	padding: 5px !important;
+    border-radius: 4px !important;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.ttcss {
+	color: #fff !important;
+	background: #00ACED !important;
+	padding: 5px !important;
+    border-radius: 4px !important;
+    cursor: pointer;
+}
+
 @media only screen and (min-width: 601px) {
     .container_2 {
         width: 85% !important;
