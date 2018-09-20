@@ -11,35 +11,62 @@
         </div>
         <div class="row" style="margin-bottom: 30px !important">
             <div class="col s12">
-                <strong class="level" style="">
-                    Hạng {{auth[0].user_class[0].name}} - 
+                <strong class="level">
+                    Hạng {{auth[0].user_class[0].name}} -
                     <span ng-if="auth[0].user_class[0].id === 4">0</span>
                     <span ng-if="auth[0].user_class[0].id === 3">1000</span>
                     <span ng-if="auth[0].user_class[0].id === 2">1500</span>
                     <span ng-if="auth[0].user_class[0].id === 1">2000</span>
                     điểm
                 </strong>
-                <strong class="right level" style="padding-right: 10px" ng-if="auth[0].user_class[0].id === 4">Hạng Bạc - 1000 điểm</strong>
-                <strong class="right level" style="padding-right: 10px" ng-if="auth[0].user_class[0].id === 3">Hạng Vàng - 1500 điểm</strong>
-                <strong class="right level" style="padding-right: 10px" ng-if="auth[0].user_class[0].id === 2">Hạng Bạch Kim - 2000 điểm</strong>
-               
+                <strong class="right level" style="padding-right: 10px" ng-if="auth[0].user_class[0].id === 4">Hạng Bạc
+                    - 1000 điểm</strong>
+                <strong class="right level" style="padding-right: 10px" ng-if="auth[0].user_class[0].id === 3">Hạng
+                    Vàng - 1500 điểm</strong>
+                <strong class="right level" style="padding-right: 10px" ng-if="auth[0].user_class[0].id === 2">Hạng
+                    Bạch Kim - 2000 điểm</strong>
+
                 <div class="container_3">
-                    <div class="skills html" ng-if="auth[0].user_class[0].id === 4" style="width: {{(auth[0].point_plus/1000)*100}}%">
+
+                    <div class="skillbar" data-percent="{{(auth[0].point_plus/1000)*100}}%" ng-if="auth[0].user_class[0].id === 4">
+                        <div class="skillbar-bar skills html" data-percent="{{(auth[0].point_plus/1000)*100}}%">
+                            {{auth[0].point_plus}} điểm
+                        </div>
+                    </div> <!-- End Skill Bar -->
+
+                    <div class="skillbar" data-percent="{{(auth[0].point_plus/1000)*100}}%" ng-if="auth[0].user_class[0].id === 3">
+                        <div class="skillbar-bar skills html" data-percent="{{(auth[0].point_plus/1500)*100}}%">
+                            {{auth[0].point_plus}} điểm
+                        </div>
+                    </div> <!-- End Skill Bar -->
+
+                    <div class="skillbar" data-percent="{{(auth[0].point_plus/1000)*100}}%"  ng-if="auth[0].user_class[0].id === 2">
+                        <div class="skillbar-bar skills html" data-percent="{{(auth[0].point_plus/2000)*100}}%">
+                            {{auth[0].point_plus}} điểm
+                        </div>
+                    </div> <!-- End Skill Bar -->
+
+                    <div class="skillbar" data-percent="{{(auth[0].point_plus/1000)*100}}%" ng-if="auth[0].user_class[0].id === 1">
+                        <div class="skillbar-bar skills html" data-percent="100%">
+                            {{auth[0].point_plus}} điểm
+                        </div>
+                    </div> <!-- End Skill Bar -->
+
+                    <!-- <div class="skills html" ng-if="auth[0].user_class[0].id === 4" data-percent="{{(auth[0].point_plus/1000)*100}}%">
                         {{auth[0].point_plus}} điểm
-                        <!-- {{(auth[0].point_plus/1000)*100}}% -->
-                    </div>
-                    <div class="skills html" ng-if="auth[0].user_class[0].id === 3" style="width: {{(auth[0].point_plus/1500)*100}}%">
+                    </div> -->
+
+                    <!-- <div class="skills html" ng-if="auth[0].user_class[0].id === 3" style="width: {{(auth[0].point_plus/1500)*100}}%">
                         {{auth[0].point_plus}} điểm
-                        <!-- {{(auth[0].point_plus/1500)*100}}% -->
-                    </div>
-                    <div class="skills html" ng-if="auth[0].user_class[0].id === 2" style="width: {{(auth[0].point_plus/2000)*100}}%">
+                    </div> -->
+
+                    <!-- <div class="skills html" ng-if="auth[0].user_class[0].id === 2" style="width: {{(auth[0].point_plus/2000)*100}}%">
                         {{auth[0].point_plus}} điểm
-                        <!-- {{(auth[0].point_plus/2000)*100}}% -->
-                    </div>
-                    <div class="skills html" ng-if="auth[0].user_class[0].id === 1" style="width: 100%">
+                    </div> -->
+
+                    <!-- <div class="skills html" ng-if="auth[0].user_class[0].id === 1" style="width: 100%">
                         {{auth[0].point_plus}} điểm
-                        <!-- {{(auth[0].point_plus/2000)*100}}% -->
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
@@ -176,5 +203,14 @@
         });
 
         $('select').material_select();
+
+        $(document).ready(function () {
+            $('.skillbar').each(function () {
+                $(this).find('.skillbar-bar').animate({
+                    width: $(this).attr('data-percent')
+                }, 5000);
+            });
+        });
     });
+
 </script>

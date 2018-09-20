@@ -43,7 +43,7 @@
         <div class="col s12 m5 l5">
             <!-- <div id="thongtin" class="col s12"> -->
             <div class="person-info" style="padding-bottom: 0">
-                <h5 class="white-text shop_name_3" style="margin-top: 0px">{{shop.shop_info[0].shop_name}}
+                <h5 class="white-text shop_name_3" style="margin-top: 0px; text-transform: uppercase;">{{shop.shop_info[0].shop_name}}
                 </h5>
                 <h5 class="grey-text">
                     <!-- <i class="material-icons">extension</i> -->
@@ -58,15 +58,15 @@
                     <span>{{shop.shop_info[0].time}}</span>
                 </h5>
                 <h5 class="green-text">
-                    <i class="material-icons">account_balance_wallet</i>
+                    <!-- <i class="material-icons">account_balance_wallet</i> -->
                     <span>Còn {{total_coupon}} Coupon</span>
                 </h5>
                 <h5 class="pink-text" ng-if="show_like">
-                    <i class="material-icons">new_releases</i>
+                    <!-- <i class="material-icons">new_releases</i> -->
                     <span>Thích trang để nhận Coupon</span>
                 </h5>
                 <h5 class="red-text" ng-if="condition" style="border-bottom: none">
-                    <i class="material-icons">block</i>
+                    <!-- <i class="material-icons">block</i> -->
                     <span>Bạn chưa đủ điều kiện nhận Coupon</span>
                     <div ng-if="total_coupon === 0">
                         <br>
@@ -86,7 +86,7 @@
                         <br>
                         <span class="grey-text" style="padding-left: 27px">- Bạn đã hết slot.</span>
                     </div>
-                    <div ng-if="auth[0].loyal === 0">
+                    <div ng-if="auth[0].loyal[0].Loyal === 0">
                         <br>
                         <span class="grey-text" style="padding-left: 27px">- Bạn chưa phải khách hàng thân thiết.</span>
                     </div>
@@ -114,12 +114,9 @@
             <!-- </div> -->
         </div>
 
-        <div class="col s3">
-
-        </div>
-
-        <div class="col s9">
-            <div class="person-info" style="padding: 0">
+        <div class="col s12 m12 s12">
+            
+            <div class="person-info" style="padding: 0; margin-top: 30px">
                 <h5 style="border: none !important">
                     Chia sẻ: 
                     <a socialshare socialshare-provider="facebook" class="facecss" socialshare-text="Truy cập trang để nhận nhiều coupon khuyến mãi có giá trị"

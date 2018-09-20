@@ -13,10 +13,10 @@
             </blockquote>
 
             <blockquote ng-show="show_basic">
-                <h4 style="display: unset;">Mã Giảm Giá</h4>
+                <h4 style="display: unset;">Mã Giảm Giá Phổ Thông</h4>
             </blockquote>
 
-            <div class="row" ng-init="limit= 4" ng-show="!show_basic">
+            <div class="row" ng-init="limit= 12" ng-show="!show_basic">
 
                 <div class="col s6 m4 l3" ng-repeat="content in kind_1 | limitTo : limit" ng-show="show_kind_1">
                     <div class="card">
@@ -89,7 +89,7 @@
 
             </div>
 
-            <div class="row" ng-init="limit_basic= 4" ng-show="show_basic">
+            <div class="row" ng-init="limit_basic= 12" ng-show="show_basic">
 
                 <!-- Hide desktop -->
 

@@ -38,7 +38,7 @@
             </li>
             <li>
                 <a href="">
-                    <i class="material-icons">feedback</i> Cách thức hoạt động</a>
+                    <i class="material-icons">feedback</i> Hướng dẫn sử dụng</a>
             </li>
             <li>
                 <a href="" ng-click="go_account()">
@@ -65,7 +65,9 @@
                 <a href="" ng-click="go_action()">Thực hiện tác vụ</a>
             </li>
             <li class="tab">
-                <a href="">Cách thức hoạt động</a>
+                <a href="">
+                    <h5 class="hdsd">Hướng dẫn sử dụng</h5>
+                </a>
             </li>
             <li class="tab">
                 <a href="" ng-click="go_account()">Thông tin tài khoản</a>
@@ -80,7 +82,8 @@
 <div id="login" class="modal modal_2">
     <div class="modal-content">
         <h5>NHẬN MÃ GIẢM GIÁ</h5>
-        <p>Copy mã giảm giá phía dưới, sau đó nhập mã trước khi thanh toán để nhận ưu đãi giảm giá. Xin đọc kỹ quy định sử dụng.</p>
+        <p>Copy mã giảm giá phía dưới, sau đó nhập mã trước khi thanh toán để nhận ưu đãi giảm giá. Xin đọc kỹ quy định
+            sử dụng.</p>
         <div class="row">
             <div class="input-field col s12">
                 <input id="first_name" type="text" ng-model="detail_basic.code_coupon" class="validate">
@@ -88,7 +91,8 @@
         </div>
         <div class="row">
             <div class="col s12">
-                <button class="btn btn-coupon modal-close" type="submit" name="action" style="right: 35px; position: absolute;" ng-click="go_ma_giam_gia(detail_basic.shopUrl)">Đồng Ý
+                <button class="btn btn-coupon modal-close" type="submit" name="action" style="right: 35px; position: absolute;"
+                    ng-click="go_ma_giam_gia(detail_basic.shopUrl)">Đồng Ý
                 </button>
             </div>
         </div>

@@ -8,8 +8,12 @@
                 <a href="">
                     <img class="circle" src="{{auth[0].user_img}}">
                 </a>
+                <a href="" ng-show="auth[0].loyal[0].Loyal === 1">
+                    <span class="new badge pink lighten-1" style="float:none; margin: 0; padding: 4px; opacity: .9;"
+                        data-badge-caption="Khách Hàng Thân Thiết"></span>
+                </a>
                 <a class="white-text">
-                    <span class="name">{{auth[0].info[0].fulname}}</span>
+                    <span class="name" ng-class="{'vip': auth[0].loyal[0].Loyal === 1, 'nvip': auth[0].loyal[0].Loyal === 0}">{{auth[0].info[0].fulname}}</span>
                 </a>
                 <a href=""><span class="white-text email"></span></a>
             </div>
@@ -25,14 +29,14 @@
         <div class="divider"></div>
     </li> -->
     <li>
-        <a href="">Điểm Hôm Nay: {{auth[0].point_per_today}}</a>
+        <a href="">Điểm hôm nay: {{auth[0].point_per_today}}</a>
     </li>
     <li>
         <div class="divider"></div>
     </li>
-    <!-- <li>
-        <a class="">Slot Trống: {{auth[0].empty_slot}}</a>
-    </li> -->
+    <li>
+        <a class="">Số lượt truy cập trong tháng: {{auth[0].loyal[0].Point}}</a>
+    </li>
     <li>
         <a class="btn btn-coupon" style="box-shadow: none" ng-click="logout()">Đăng xuất</a>
     </li>

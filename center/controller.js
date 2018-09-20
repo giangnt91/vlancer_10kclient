@@ -47,7 +47,7 @@ coupon
                         id: 0,
                         name: "Active"
                     }
-                    
+
                     DataServices.signUp(userDetails.uid, Imgurl, JSON.stringify($scope.info), 0, 0, 5, JSON.stringify(_class), false, [], 0, 0, null, 5, [], null, JSON.stringify(_role), JSON.stringify(_status)).then(function (signup_res) {
                         var signup_result = signup_res.data;
                         if (signup_result.error_code === 0) {
@@ -68,6 +68,15 @@ coupon
                     DataServices.updateClass(signin_result.auth[0]._id).then(function (response) {
                     });
                     // end function
+
+                    // check in loyal
+                    DataServices.checkIn(signin_result.auth[0]._id).then(function (re) {
+                        if (re.data.error_code === 0) {
+                            localStorage.removeItem('auth');
+                            localStorage.setItem('auth', JSON.stringify([re.data.auth]));
+                        }
+                    });
+
                     DataServices.Upname(userDetails.uid, userDetails.name).then(function () { });
                     localStorage.setItem('auth', JSON.stringify(signin_result.auth));
                     // window.location.href = '#/';
@@ -96,14 +105,14 @@ coupon
                 // }				
             })
 
-            if($scope.auth[0].access_time_per_day[0].id === 1){
+            if ($scope.auth[0].access_time_per_day[0].id === 1) {
                 var $toastContent = $('<center>Bạn được cộng 50 điểm cho lần đầu đăng nhập trong ngày.</center>');
                 Materialize.toast($toastContent, 4500);
             }
         }
 
         $scope.auth = JSON.parse(localStorage.getItem('auth'));
-       
+
         DataServices.getshopvip().then(function (response) {
             if (response.data.error_code === 0) {
                 $scope.vip = response.data.vip;
@@ -182,7 +191,7 @@ coupon
         // auth
         $scope.login = function () {
             // window.location.href = '#/login';
-            FB.XFBML.parse();
+            // FB.XFBML.parse();
             $window.scrollTo(0, 0);
             $location.path('/dang-nhap');
             $timeout(function () {
@@ -262,9 +271,9 @@ coupon
                     }
                 }
 
-                $scope.kind_result_1 = $filter('orderBy')($scope.kind_result_1, ['server_coupon','shop_coupon'], true); 
-                $scope.kind_result_2 = $filter('orderBy')($scope.kind_result_2, ['server_coupon','shop_coupon'], true); 
-                $scope.kind_result_3 = $filter('orderBy')($scope.kind_result_3, ['server_coupon','shop_coupon'], true); 
+                $scope.kind_result_1 = $filter('orderBy')($scope.kind_result_1, ['server_coupon', 'shop_coupon'], true);
+                $scope.kind_result_2 = $filter('orderBy')($scope.kind_result_2, ['server_coupon', 'shop_coupon'], true);
+                $scope.kind_result_3 = $filter('orderBy')($scope.kind_result_3, ['server_coupon', 'shop_coupon'], true);
 
 
                 localStorage.setItem('kind_1', JSON.stringify($scope.kind_result_1));

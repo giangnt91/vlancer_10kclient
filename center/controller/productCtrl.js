@@ -165,6 +165,7 @@ coupon
                     DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (response) {
                         if (response.data.error_code === 0) {
                             localStorage.setItem('auth', JSON.stringify(response.data.auth));
+                            $scope.auth = response.data.auth;
                         }
                     });
 
@@ -378,7 +379,26 @@ coupon
                         }
                     }
 
-
+                    // check khách hàng thân thiết
+                    if ($scope.shop.shop_coupon !== null && $scope.shop.shop_coupon.length > 0) {
+                        if ($scope.shop.shop_coupon[0].coupon[0].loyal[0].id === 1 && $scope.auth[0].loyal[0].Loyal === 0) {
+                            $scope.condition = true;
+                        } else {
+                            if ($scope.condition !== true) {
+                                $scope.condition = false;
+                            }
+                        }
+                    } else {
+                        if ($scope.shop.server_coupon !== null && $scope.shop.server_coupon.length > 0) {
+                            if ($scope.shop.server_coupon[0].coupon[0].loyal[0].id === 1 && $scope.auth[0].loyal[0].Loyal === 0) {
+                                $scope.condition = true;
+                            } else {
+                                if ($scope.condition !== true) {
+                                    $scope.condition = false;
+                                }
+                            }
+                        }
+                    }
                 } else {
                     $scope.show_like = true;
                 }
