@@ -1,7 +1,7 @@
 angular.module('CouponService', [])
     .factory('DataServices', function ($http, $q) {
-        // var api_gateway_url = 'http://35.240.165.98:2018';
-        var api_gateway_url = 'http://localhost:2018';
+        var api_gateway_url = 'http://35.240.165.98:2018';
+        // var api_gateway_url = 'http://localhost:2018';
         var parameter;
         var url;
         var header = { header: { 'Conntent-Type': 'application/x-www-form-urlencoded' } };
