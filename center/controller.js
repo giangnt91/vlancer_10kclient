@@ -113,9 +113,9 @@ coupon
 
         $scope.auth = JSON.parse(localStorage.getItem('auth'));
 
-        DataServices.getshopvip().then(function (response) {
+        DataServices.GetSlider().then(function (response) {
             if (response.data.error_code === 0) {
-                $scope.vip = response.data.vip;
+                $scope.Sliders = response.data.sliders;
             }
         });
 
@@ -163,27 +163,32 @@ coupon
             return str;
         }
 
-        $scope.go_shop_by_id = function (id) {
-            $scope.all_shop.forEach(element => {
-                if (element._id === id) {
-                    var slug = bo_dau_tv(element.shop_info[0].shop_name).split(' ').join('-');
-                    var _id = element._id.slice(-5);
+        $scope.go_shop_by_id = function (data) {
+            if (data.ShopId === null) {
+                window.open(data.Url, '_blank');
+            } else {
+                $scope.all_shop.forEach(element => {
+                    if (element._id === data.ShopId) {
+                        var slug = bo_dau_tv(element.shop_info[0].shop_name).split(' ').join('-');
+                        var _id = element._id.slice(-5);
 
-                    if (element.shop_info[0].kind[0].id === 1) {
-                        $location.path('/an-uong/cua-hang/' + slug + '-' + _id);
-                        $window.scrollTo(0, 0);
-                        FB.XFBML.parse();
-                    } else if (element.shop_info[0].kind[0].id === 2) {
-                        $location.path('/mua-sam/cua-hang/' + slug + '-' + _id);
-                        $window.scrollTo(0, 0);
-                        FB.XFBML.parse();
-                    } else {
-                        $location.path('/du-lich/cua-hang/' + slug + '-' + _id);
-                        $window.scrollTo(0, 0);
-                        FB.XFBML.parse();
+                        if (element.shop_info[0].kind[0].id === 1) {
+                            $location.path('/an-uong/cua-hang/' + slug + '-' + _id);
+                            $window.scrollTo(0, 0);
+                            FB.XFBML.parse();
+                        } else if (element.shop_info[0].kind[0].id === 2) {
+                            $location.path('/mua-sam/cua-hang/' + slug + '-' + _id);
+                            $window.scrollTo(0, 0);
+                            FB.XFBML.parse();
+                        } else {
+                            $location.path('/du-lich/cua-hang/' + slug + '-' + _id);
+                            $window.scrollTo(0, 0);
+                            FB.XFBML.parse();
+                        }
                     }
-                }
-            });
+                });
+            }
+
         }
 
         // end go menu

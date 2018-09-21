@@ -158,6 +158,10 @@ angular.module('CouponService', [])
             getEmarket: function () {
                 url = api_gateway_url + '/getemarket';
                 return $http.post(url, parameter, header);
+            },
+            GetSlider: function () {
+                url = api_gateway_url + '/getslider';
+                return $http.post(url, parameter, header);
             }
         }
     })

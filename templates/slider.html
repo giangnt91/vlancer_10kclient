@@ -4,11 +4,11 @@
 					<div class="indeterminate"></div>
 			</div>
 		<ul class="slides" ng-if="loading">
-			<li ng-repeat="content in vip">
-				<img src="{{content.shop_info[0].shop_cover}}">
+			<li ng-repeat="content in Sliders">
+				<img src="{{content.Image}}">
 				<div class="caption center-align">
-					<h3>{{content.shop_info[0].shop_name}}</h3>
-					<a class="waves-effect waves-light btn btn-coupon" style="margin-bottom: 25px" ng-click="go_shop_by_id(content._id)">Nhận Coupon</a>
+					<!-- <h3>{{content.shop_info[0].shop_name}}</h3> -->
+					<a class="waves-effect waves-light btn btn-coupon" style="margin-bottom: 25px" ng-click="go_shop_by_id(content)">{{content.Button}}</a>
 				</div>
 			</li>
 

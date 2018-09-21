@@ -63,7 +63,6 @@ coupon
 
         $scope.open_getcode = function (data) {
             $scope.detail = data;
-            console.log(data)
             $('#mymodal').modal('open');
         }
 
