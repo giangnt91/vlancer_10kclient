@@ -163,7 +163,7 @@ coupon
             return str;
         }
 
-        $scope.go_shop_by_id = function (data) {
+        $scope.slider_go = function (data) {
             if (data.ShopId === null) {
                 window.open(data.Url, '_blank');
             } else {
@@ -188,7 +188,29 @@ coupon
                     }
                 });
             }
+        }
 
+        $scope.go_shop_by_id = function (id) {
+            $scope.all_shop.forEach(element => {
+                if (element._id === id) {
+                    var slug = bo_dau_tv(element.shop_info[0].shop_name).split(' ').join('-');
+                    var _id = element._id.slice(-5);
+
+                    if (element.shop_info[0].kind[0].id === 1) {
+                        $location.path('/an-uong/cua-hang/' + slug + '-' + _id);
+                        $window.scrollTo(0, 0);
+                        FB.XFBML.parse();
+                    } else if (element.shop_info[0].kind[0].id === 2) {
+                        $location.path('/mua-sam/cua-hang/' + slug + '-' + _id);
+                        $window.scrollTo(0, 0);
+                        FB.XFBML.parse();
+                    } else {
+                        $location.path('/du-lich/cua-hang/' + slug + '-' + _id);
+                        $window.scrollTo(0, 0);
+                        FB.XFBML.parse();
+                    }
+                }
+            });
         }
 
         // end go menu
