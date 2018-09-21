@@ -33,7 +33,7 @@
                                 <a href="" ng-if="(content.shop_coupon.length === 0 || content.shop_coupon[0].approved !== true) && content.server_coupon.length === 0">Comming
                                     soon</a>
                             </p>
-                            <a class="waves-effect waves-light btn btn-coupon" ng-click="go_shop_by_id(content._id)"
+                            <a class="waves-effect waves-light btn btn-coupon" ng-click="go_shop_by_id(content)"
                                 ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">Nhận
                                 Coupon</a>
                             <a class="waves-effect waves-light btn btn-coupon disabled" style="background-color: #F0F0F0 !important;"
