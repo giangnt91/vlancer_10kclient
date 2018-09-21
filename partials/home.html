@@ -2,20 +2,19 @@
 
 <div class="container_2">
 
-    <div class="row" id="thanthiet">
+    <div class="row" id="thanthiet" ng-show="kind_result_0.length > 0">
 
         <!-- detail product -->
         <div class="col s12 m12 l12">
             <blockquote>
                 <h5 style="display: unset;">Coupon Cho Khách Hàng Thân Thiết</h5>
-                <a class="right" href="" ng-click="detail_kind_1()">
+                <a class="right" href="" ng-click="detail_kind_0()">
                     <h6 style="font-size: 1.1rem; font-weight: 300">Xem tất cả</h6>
                 </a>
             </blockquote>
 
             <div class="row">
-
-                <div class="col s6 m4 l3" ng-repeat="content in kind_result_1 | limitTo : 4">
+                <div class="col s6 m4 l3" ng-repeat="content in kind_result_0 | limitTo : 4">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
                             <div class="price" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">
@@ -43,7 +42,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </div>
@@ -198,92 +196,29 @@
         <div class="col s12 m12 l12">
             <blockquote>
                 <h5 style="display: unset;">Mã Giảm Giá Phổ Thông</h5>
-                <a class="right" href="" ng-click="go_detail_basic()">
+                <!-- <a class="right" href="" ng-click="go_detail_basic()">
                     <h6 style="font-size: 1.1rem; font-weight: 300">Xem tất cả</h6>
-                </a>
+                </a> -->
             </blockquote>
-
-            <!-- Hide desktop -->
 
             <div class="row">
 
-                <div class="col s6 m4 l3" ng-repeat="content in basicResult | limitTo : 8">
+                <div class="col s6 m4 l3" ng-repeat="content in emarketResult | limitTo : 12">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
-                            <div class="price">
-                                Giảm
-                                <span ng-if="content.value[0].id === 1">{{content.value[0].value}}
-                                    {{content.value[0].name}}</span>
-                                <span ng-if="content.value[0].id === 2">{{content.value[0].value}}{{content.value[0].name}}</span>
-                            </div>
-                            <img class="activator" src="{{content.shopImg}}">
+                            <img class="activator" src="{{content.Eimg}}">
                         </div>
                         <div class="card-content center">
-                            <!-- <span class="card-title activator grey-text text-darken-4 shop_name">{{content.info_coupon}}</span> -->
                             <p class="info_code">
-                                {{content.info_coupon}}
+                                Mã giảm giá, cập nhật hàng ngày
                             </p>
-                            <a class="waves-effect waves-light btn btn-coupon modal-trigger" data-target="mymodal"
-                                ng-click="get_basic_detail(content._id)">Nhận Coupon</a>
+                            <a class="waves-effect waves-light btn btn-coupon"
+                                ng-click="go_detail_basic(content._id)">Nhận Coupon</a>
                         </div>
                     </div>
                 </div>
 
             </div>
-
-            <!-- <div class="row">
-
-                <div class="col s12 m4 l3" ng-repeat="content in basicResult">
-                    <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="{{content.shopImg}}">
-                        </div>
-                        <div class="card-content center">
-                            <span class="card-title activator grey-text text-darken-4"></span>
-                            <a class="waves-effect waves-light btn-large btn-coupon" href="{{content.shopUrl}}" target="blank">Mua Ngay</a>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">
-                                <i class="material-icons right">close</i>
-                                <b style="margin-right:5px">Mã:</b>
-                                <a class="code" style="padding-left:0px">{{content.code_coupon}}</a>
-                                <span class="expired">Hết hạn: {{content.expire_day}}</span>
-                                <br>
-                                <span class="black-text">{{content.info_coupon}}</span>
-                            </span>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div> -->
-
-
-
-
-            <!-- Show desktop -->
-            <!-- <div class="col s12 m12 offset-m2 l12 hide-on-med-and-down" style="padding:0">
-
-                <div class="card-panel grey lighten-5 z-depth-1" style="padding:0" ng-repeat="content in basicResult | limitTo : 4">
-                    <div class="row valign-wrapper">
-                        <div class="col s2">
-                            <img src="{{content.shopImg}}" alt="" class="responsive-img s2-img">
-                        </div>
-                        <div class="col s7 center">
-                            <h5 class="black-text shop_name_2" style="font-weight:300">{{content.info_coupon}}</h5>
-                            <br>
-                            <b>Mã:</b>
-                            <a class="code">{{content.code_coupon}}</a>
-                            <span class="expired">Hết hạn: {{content.expire_day}}</span>
-                        </div>
-                        <div class="col s3 center">
-                            <a class="waves-effect waves-light btn btn-coupon" href="{{content.shopUrl}}" target="blank">Mua Ngay</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div> -->
-
         </div>
     </div>
 </div>

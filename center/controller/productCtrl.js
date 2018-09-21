@@ -1,10 +1,12 @@
 coupon
     .controller('ProductCtrl', function ($scope, $location, $routeParams, $timeout, ngDialog, $window) {
+        $scope.kind_0 = JSON.parse(localStorage.getItem('kind_0'));
         $scope.kind_1 = JSON.parse(localStorage.getItem('kind_1'));
         $scope.kind_2 = JSON.parse(localStorage.getItem('kind_2'));
         $scope.kind_3 = JSON.parse(localStorage.getItem('kind_3'));
         $scope.basic = JSON.parse(localStorage.getItem('basic'));
         $scope.all_shop = JSON.parse(localStorage.getItem('all_shop'));
+
 
         function bo_dau_tv(key) {
             var str = key;
@@ -23,7 +25,9 @@ coupon
         }
 
         // find name in string
-        if ($routeParams.danhmuc === 'mua-sam') {
+        if ($routeParams.danhmuc === 'khach-hang-than-thiet') {
+            $scope.show_kind_0 = true;
+        } else if ($routeParams.danhmuc === 'mua-sam') {
             $scope.show_kind_1 = true;
         } else if ($routeParams.danhmuc === 'an-uong') {
             $scope.show_kind_2 = true;
@@ -55,6 +59,12 @@ coupon
                     }
                 }
             });
+        }
+
+        $scope.open_getcode = function (data) {
+            $scope.detail = data;
+            console.log(data)
+            $('#mymodal').modal('open');
         }
 
         $scope.get_basic_detail = function (id) {

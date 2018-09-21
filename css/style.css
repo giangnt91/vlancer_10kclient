@@ -110,48 +110,46 @@ body {
     background-color: rgba(240, 240, 240, .5);
 }
 
-
 .skillbar {
-	position:relative;
-	display:block;
-	margin-bottom:15px;
-	width:100%;
-	background:#eee;
-	height:30px;
-	border-radius:3px;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
-	-webkit-transition:0.4s linear;
-	-moz-transition:0.4s linear;
-	-ms-transition:0.4s linear;
-	-o-transition:0.4s linear;
-	transition:0.4s linear;
-	-webkit-transition-property:width, background-color;
-	-moz-transition-property:width, background-color;
-	-ms-transition-property:width, background-color;
-	-o-transition-property:width, background-color;
-	transition-property:width, background-color;
+    position: relative;
+    display: block;
+    margin-bottom: 15px;
+    width: 100%;
+    background: #eee;
+    height: 30px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -webkit-transition: 0.4s linear;
+    -moz-transition: 0.4s linear;
+    -ms-transition: 0.4s linear;
+    -o-transition: 0.4s linear;
+    transition: 0.4s linear;
+    -webkit-transition-property: width, background-color;
+    -moz-transition-property: width, background-color;
+    -ms-transition-property: width, background-color;
+    -o-transition-property: width, background-color;
+    transition-property: width, background-color;
 }
 
 .skillbar-bar {
-	height:30px;
-	width:0px;
-	background:#F3999D;
-	border-radius:3px;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
+    height: 30px;
+    width: 0px;
+    background: #F3999D;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
 }
 
-
 .skill-bar-percent {
-	position:absolute;
-	right:10px;
-	top:0;
-	font-size:11px;
-	height:30px;
-	line-height:30px;
-	color:#ffffff;
-	color:rgba(0, 0, 0, 0.4);
+    position: absolute;
+    right: 10px;
+    top: 0;
+    font-size: 11px;
+    height: 30px;
+    line-height: 30px;
+    color: #ffffff;
+    color: rgba(0, 0, 0, 0.4);
 }
 
 .container_4 {
@@ -435,8 +433,18 @@ nav {
 }
 
 .shop_name_2 {
-    color: #4A5459 !important;
-    font-size: 20px !important;
+    color: rgba(74, 84, 89, .6) !important;
+    font-size: 16px !important;
+    line-height: 20px;
+}
+.shop_name_3 {
+    color: rgba(74, 84, 89, .6) !important;
+    font-size: 16px !important;
+    text-align: left;
+}
+
+.coupon_price {
+    font-size: 1.4rem;
 }
 
 .like_button {
@@ -448,7 +456,7 @@ nav {
 }
 
 .info_code {
-    color: #B4B4B4 !important;
+    color: #68D44D !important;
     font-size: 15px !important;
     height: 60px;
     line-height: 20px !important;
@@ -582,11 +590,11 @@ blockquote {
     font-weight: 900 !important;
 }
 
-.vip{
+.vip {
     margin-top: 3px !important;
 }
 
-.nvip{
+.nvip {
     margin-top: 16px !important;
 }
 
@@ -619,9 +627,8 @@ blockquote {
     .fbspan>span:before, .fbspan>span:after {
         width: 110px !important
     }
-
-    .ttcss{
+    .ttcss {
         margin-top: 20px;
-    display: -webkit-inline-box;
+        display: -webkit-inline-box;
     }
 }

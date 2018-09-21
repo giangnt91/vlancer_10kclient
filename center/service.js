@@ -154,6 +154,10 @@ angular.module('CouponService', [])
                 });
                 url = api_gateway_url + '/creaction';
                 return $http.post(url, parameter, header);
+            },
+            getEmarket: function () {
+                url = api_gateway_url + '/getemarket';
+                return $http.post(url, parameter, header);
             }
         }
     })
