@@ -28,14 +28,22 @@
                     <i class="material-icons">attach_money</i>{{auth[0].point_plus}}đ</a>
                 <!-- <h6 style="padding-top: 7px; color:black; margin-left: 30px;"><i class="material-icons">attach_money</i> 300đ</h6> -->
             </li>
+			<li class="tab" ng-show="auth[0].role[0].id === 2 || auth[0].role[0].id === 3">
+					<a href="" ng-click="go_shop()">
+					<i class="material-icons">shop</i> Quản lý shop</a>
+			</li>
             <li>
                 <a href="" ng-click="go_home()">
                     <i class="material-icons">card_giftcard</i> Tặng Coupon</a>
             </li>
-            <li>
-                <a href="" ng-click="go_action()">
+            <li ng-show="auth[0].role[0].id !== 2 && auth[0].role[0].id !== 3">
+                <a href="" ng-click="auth[0].role[0].id !== 0 || go_action()">
                     <i class="material-icons">work</i> Thực hiện tác vụ</a>
             </li>
+			<!-- <li> -->
+                <!-- <a href="" ng-click="auth[0].role[0].id !== 0 || go_toshop()"> -->
+                    <!-- <i class="material-icons">work</i>Quản lý shop</a> -->
+            <!-- </li> -->
             <li>
                 <a href="">
                     <i class="material-icons">feedback</i> Hướng dẫn sử dụng</a>
@@ -58,11 +66,14 @@
     </div>
     <div class="nav-content">
         <ul id="nav-web" class="tabs center hide-on-med-and-down">
+			<li class="tab" ng-show="auth[0].role[0].id === 2 || auth[0].role[0].id === 3">
+					<a href="" ng-click="go_shop()">Quản lý shop</a>
+			</li>
             <li class="tab" ng-click="go_home()">
                 <a href="">Tặng Coupon</a>
             </li>
-            <li class="tab">
-                <a href="" ng-click="go_action()">Thực hiện tác vụ</a>
+            <li class="tab" ng-show="auth[0].role[0].id !== 2 && auth[0].role[0].id !== 3">
+                <a href="" ng-click="auth[0].role[0].id !== 0 || go_action()">Thực hiện tác vụ</a>
             </li>
             <li class="tab">
                 <a href="">

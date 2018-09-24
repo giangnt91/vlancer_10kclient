@@ -10,7 +10,7 @@
 
                 <!-- <a class="waves-effect waves-light right btn like-pro pulse"> </a> -->
                 <div ng-if="!condition && auth">
-                    <button class="btn waves-effect waves-light like-pro right modal-trigger" data-target="like" ng-if="show_like" ng-click="open_like()">Like
+                    <button class="btn waves-effect waves-light like-pro right modal-trigger" data-target="like" ng-if="show_like" ng-click="auth[0].role[0].id !== 0 || open_like()">Like
                         <i class="material-icons right">thumb_up</i>
                     </button>
                 </div>
@@ -93,7 +93,7 @@
                     <div ng-if="!condition">
                         <h5 ng-if="!show_like">
                             <center>
-                                <a class="waves-effect waves-light btn pulse" ng-click="get_coupon()" style="background:#EC407A; color:#fff">Nhận Coupon</a>
+                                <a class="waves-effect waves-light btn pulse" ng-click="auth[0].role[0].id !== 0 || get_coupon()" style="background:#EC407A; color:#fff">Nhận Coupon</a>
                             </center>
                         </h5>
                         <h5 ng-if="show_like">
