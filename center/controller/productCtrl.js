@@ -392,19 +392,23 @@ coupon
                     if ($scope.shop.shop_coupon !== null && $scope.shop.shop_coupon.length > 0) {
                         if ($scope.shop.shop_coupon[0].coupon[0].loyal[0].id === 1 && $scope.auth[0].loyal[0].Loyal === 0) {
                             $scope.condition = true;
+							$scope.loyal = true;
                         } else {
                             if ($scope.condition !== true) {
                                 $scope.condition = false;
                             }
+							$scope.loyal = false;
                         }
                     } else {
                         if ($scope.shop.server_coupon !== null && $scope.shop.server_coupon.length > 0) {
                             if ($scope.shop.server_coupon[0].coupon[0].loyal[0].id === 1 && $scope.auth[0].loyal[0].Loyal === 0) {
                                 $scope.condition = true;
+								$scope.loyal = true;
                             } else {
                                 if ($scope.condition !== true) {
                                     $scope.condition = false;
                                 }
+								$scope.loyal = false;
                             }
                         }
                     }
@@ -478,7 +482,7 @@ coupon
                             //update point bad for user
                             DataServices.Bad($scope.auth[0]._id).then(function (response) { });
                             $scope.dialog = ngDialog.open({
-                                template: '<h4 class="flow-text red-text center">Có lỗi trong quá trình sử lý <br> vui lòng thử lại</h4>',
+                                template: '<h4 class="flow-text red-text center">Lấy Coupon không thành công<br> vui lòng thử lại</h4>',
                                 plain: true,
                                 showClose: true
                             });

@@ -15,8 +15,7 @@
 <div class="container_5" ng-show="load_page" style="margin-bottom: 0">
     <div class="row card-panel" style="margin-top: 0; box-shadow: none; padding-left: 0; padding-right: 0">
 
-        <div class="col s12 m7 l7" style="height: 200px;">
-            <img class="responsive-img waves-effect waves-block waves-light" src="{{shop.shop_info[0].shop_cover}}">
+        <div class="col s12 m8 l8 pro-img waves-effect waves-block waves-light z-depth-5" style="background:url('{{shop.shop_info[0].shop_cover}}'); background-size: cover;">
             <div class="like_button">
                 <!-- <a class="waves-effect waves-light right btn like-pro pulse"> </a> -->
                 <div ng-if="!condition && auth">
@@ -40,7 +39,7 @@
             </div> -->
         </div>
 
-        <div class="col s12 m5 l5">
+        <div class="col s12 m4 l4 pro-info">
             <!-- <div id="thongtin" class="col s12"> -->
             <div class="person-info" style="padding-bottom: 0">
                 <h5 class="white-text shop_name_3" style="margin-top: 0px; text-transform: uppercase;">{{shop.shop_info[0].shop_name}}
@@ -86,9 +85,9 @@
                         <br>
                         <span class="grey-text" style="padding-left: 27px">- Bạn đã hết slot.</span>
                     </div>
-                    <div ng-if="auth[0].loyal[0].Loyal === 0">
+                    <div ng-if="loyal">
                         <br>
-                        <span class="grey-text" style="padding-left: 27px">- Bạn chưa phải khách hàng thân thiết.</span>
+                        <span class="grey-text language-markup" style="padding-left: 27px">- Bạn chưa phải khách hàng thân thiết.</span>
                     </div>
                     <div ng-if="_rank">
                         <br>
@@ -100,12 +99,12 @@
                 <div id="af2" ng-if="!condition" style="display:none">
                     <h5 ng-if="!show_like" style="border-bottom: none">
                         <center>
-                            <a class="waves-effect waves-light btn btn-coupon" ng-click="get_coupon()">Nhận Coupon</a>
+                            <a class="waves-effect waves-light btn btn-coupon btn-large" style="display:block" ng-click="get_coupon()">Nhận Coupon</a>
                         </center>
                     </h5>
                     <h5 ng-if="show_like" style="border-bottom: none">
                         <center>
-                            <a class="waves-effect waves-light btn disabled" style="background:#EC407A; color:#fff">Nhận
+                            <a class="waves-effect waves-light btn btn-large disabled" style="background:#EC407A; color:#fff; display: block">Nhận
                                 Coupon</a>
                         </center>
                     </h5>
@@ -196,7 +195,7 @@
                     </h5>
                     <h5>
                         <div ng-if="total_coupon > 0">
-                            <i class="material-icons">chevron_right</i>
+                            <i class="material-icons grey-text">chevron_right</i>
                             <span class="grey-text" ng-if="o_coupon.rfeedback[0].id === 1">
                                 Yêu cầu Feedback sau khi sử dụng dịch vụ (thực hiện trong app).
                             </span>
@@ -277,9 +276,9 @@
                     <h5>
                         <i class="material-icons blue-text">chevron_right</i>
                         <span>Nếu gặp lỗi
-                            <strong class="blue-text">Có lỗi trong quá trình sử lý</strong>, bạn vui lòng Unlike trang
-                            <a target="blank" href="https://www.facebook.com/{{shop.shopId}}">tại đây</a> sau đó quay
-                            lại và reload trang để thực hiện lại.</span>
+                            <strong class="blue-text">Like page không thành công</strong>, bạn vui lòng Unlike trang
+                            <a target="blank" href="https://www.facebook.com/{{shop.shopId}}">tại đây</a> sau đó đăng
+							nhập lại và thực hiện lại.</span>
                     </h5>
                 </div>
             </div>

@@ -231,7 +231,7 @@ nav {
 
 .s2-img {
     margin-bottom: -6px;
-    margin-left: -12px;
+    margin-left: 5px;
 }
 
 .row {
@@ -449,10 +449,20 @@ nav {
 
 .like_button {
     height: 50px;
-    position: relative;
-    bottom: 48px;
-    width: 96%;
+    position: absolute;
+    bottom: 3px;
+    width: 99%;
     /* background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1)); */
+}
+
+.btn-other{
+	position: absolute;
+    bottom: 15%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
 }
 
 .info_code {
@@ -467,10 +477,10 @@ blockquote {
 }
 
 .like-pro {
-    margin-right: 20px;
-    /* margin-top: 15px; */
-    background: rgba(236, 64, 122, .9) !important;
-    /* background: #4267B2; */
+margin-right: 20px;
+/* margin-top: 15px; */
+background: rgba(236, 64, 122, .9) !important;
+/* background: #4267B2; */
 }
 
 .info_tab {
@@ -598,16 +608,20 @@ blockquote {
     margin-top: 16px !important;
 }
 
+.pro-img{
+	height: 350px;
+}
+
 @media only screen and (min-width: 601px) {
     .container_2 {
         width: 85% !important;
-    }
+	}
 }
 
 @media only screen and (min-width: 993px) {
     .container_2 {
         width: 75% !important;
-    }
+	}
 }
 
 @media only screen and (max-width: 48em) {}
@@ -616,19 +630,32 @@ blockquote {
     /*************** ADD MOBILE ONLY CSS HERE  ***************/
     .carousel {
         height: 175px !important;
-    }
+	}
     .carousel-fixed-item h5 {
         margin-left: 5px !important;
-    }
+	}
     /* .like-pro {
         margin-top: 0px !important;
         margin-right: 5px !important;
-    } */
+	} */
     .fbspan>span:before, .fbspan>span:after {
         width: 110px !important
-    }
+	}
     .ttcss {
         margin-top: 20px;
         display: -webkit-inline-box;
-    }
+	}
+	
+	.pro-img{
+		height: 200px;
+	}
+	
+	.pro-info{
+		margin-top: 50px;
+		padding: 0 !important;
+	}
+	
+	.person-info{
+		padding: 0px;
+	}
 }
