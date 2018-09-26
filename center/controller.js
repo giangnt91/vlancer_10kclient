@@ -6,7 +6,7 @@ coupon
 	
 	$timeout(function () {
 		$scope.load_page = true;
-	}, 500)
+	}, 1500)
 	
 	$window.fbAsyncInit = function () {
 		FB.XFBML.parse();
@@ -214,86 +214,86 @@ coupon
 		str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
 		str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
 		str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
-	str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
-	str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
-	str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
-	str = str.replace(/đ/g, "d");
-	str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g, " ");
-	str = str.replace(/ + /g, " ");
-	str = str.trim();
-	return str;
+		str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+		str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+		str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+		str = str.replace(/đ/g, "d");
+		str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g, " ");
+		str = str.replace(/ + /g, " ");
+		str = str.trim();
+		return str;
 	}
 	
 	$scope.slider_go = function (data) {
-	if (data.ShopId === null) {
-	window.open(data.Url, '_blank');
-	} else {
-	$scope.all_shop.forEach(element => {
-	if (element._id === data.ShopId) {
-	var slug = bo_dau_tv(element.shop_info[0].shop_name).split(' ').join('-');
-	var _id = element._id.slice(-5);
-	
-	if (element.shop_info[0].kind[0].id === 1) {
-	$location.path('/an-uong/cua-hang/' + slug + '-' + _id);
-	$window.scrollTo(0, 0);
-	FB.XFBML.parse();
-	} else if (element.shop_info[0].kind[0].id === 2) {
-	$location.path('/mua-sam/cua-hang/' + slug + '-' + _id);
-	$window.scrollTo(0, 0);
-	FB.XFBML.parse();
-	} else {
-	$location.path('/du-lich/cua-hang/' + slug + '-' + _id);
-	$window.scrollTo(0, 0);
-	FB.XFBML.parse();
-	}
-	}
-	});
-	}
+		if (data.ShopId === null) {
+			window.open(data.Url, '_blank');
+			} else {
+			$scope.all_shop.forEach(element => {
+				if (element._id === data.ShopId) {
+					var slug = bo_dau_tv(element.shop_info[0].shop_name).split(' ').join('-');
+					var _id = element._id.slice(-5);
+					
+					if (element.shop_info[0].kind[0].id === 1) {
+						$location.path('/an-uong/cua-hang/' + slug + '-' + _id);
+						$window.scrollTo(0, 0);
+						FB.XFBML.parse();
+						} else if (element.shop_info[0].kind[0].id === 2) {
+						$location.path('/mua-sam/cua-hang/' + slug + '-' + _id);
+						$window.scrollTo(0, 0);
+						FB.XFBML.parse();
+						} else {
+						$location.path('/du-lich/cua-hang/' + slug + '-' + _id);
+						$window.scrollTo(0, 0);
+						FB.XFBML.parse();
+					}
+				}
+			});
+		}
 	}
 	
 	$scope.go_shop_by_id = function (id) {
-	$scope.all_shop.forEach(element => {
-	if (element._id === id) {
-	var slug = bo_dau_tv(element.shop_info[0].shop_name).split(' ').join('-');
-	var _id = element._id.slice(-5);
-	
-	if (element.shop_info[0].kind[0].id === 1) {
-	$location.path('/an-uong/cua-hang/' + slug + '-' + _id);
-	$window.scrollTo(0, 0);
-	FB.XFBML.parse();
-	} else if (element.shop_info[0].kind[0].id === 2) {
-	$location.path('/mua-sam/cua-hang/' + slug + '-' + _id);
-	$window.scrollTo(0, 0);
-	FB.XFBML.parse();
-	} else {
-	$location.path('/du-lich/cua-hang/' + slug + '-' + _id);
-	$window.scrollTo(0, 0);
-	FB.XFBML.parse();
-	}
-	}
-	});
+		$scope.all_shop.forEach(element => {
+			if (element._id === id) {
+				var slug = bo_dau_tv(element.shop_info[0].shop_name).split(' ').join('-');
+				var _id = element._id.slice(-5);
+				
+				if (element.shop_info[0].kind[0].id === 1) {
+					$location.path('/an-uong/cua-hang/' + slug + '-' + _id);
+					$window.scrollTo(0, 0);
+					FB.XFBML.parse();
+					} else if (element.shop_info[0].kind[0].id === 2) {
+					$location.path('/mua-sam/cua-hang/' + slug + '-' + _id);
+					$window.scrollTo(0, 0);
+					FB.XFBML.parse();
+					} else {
+					$location.path('/du-lich/cua-hang/' + slug + '-' + _id);
+					$window.scrollTo(0, 0);
+					FB.XFBML.parse();
+				}
+			}
+		});
 	}
 	
 	// end go menu
 	
 	// auth
 	$scope.login = function () {
-	// window.location.href = '#/login';
-	// FB.XFBML.parse();
-	$window.scrollTo(0, 0);
-	$location.path('/dang-nhap');
-	$timeout(function () {
-	window.location.reload(true);
-	}, 500);
+		// window.location.href = '#/login';
+		// FB.XFBML.parse();
+		$window.scrollTo(0, 0);
+		$location.path('/dang-nhap');
+		$timeout(function () {
+			window.location.reload(true);
+		}, 1000);
 	}
 	
 	$timeout(function () {
-	$scope.loading = true;
+		$scope.loading = true;
 	}, 2500)
 	
 	
 	$scope.logout = function () {
-	// window.location.href = '#/login';
+		// window.location.href = '#/login';
 	socialLoginService.logout();
 	$window.scrollTo(0, 0);
 	localStorage.clear();
@@ -436,4 +436,4 @@ coupon
 	}
 	// end get all shop
 	
-	})									
+	})										

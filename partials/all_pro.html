@@ -165,8 +165,56 @@
                         </div>
 
                     </div>
-
                 </div>
+				
+				
+				<div class="row hide-on-large-only">
+                    <div class="col s12 m4 l3" ng-repeat="content in basic | limitTo : limit_basic">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="{{content.Eimg}}">
+                            </div>
+                            <div class="card-content center">
+                                <span class="card-title activator grey-text text-darken-4"></span>
+                                <a class="waves-effect waves-light btn btn-coupon" ng-click="open_getcode(content)">Lấy Mã</a>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">
+                                    <i class="material-icons right">close</i>
+                                    <b>Mức giảm:</b> <a style="padding-left:0px">{{content.ValueC[0].value}}
+                                            {{content.ValueC[0].name}}</a> <br/> 
+									<!-- <span class="expired">Ngành hàng: {{content.Industry}} </span> -->
+                                    <span class="expired">Hết hạn: {{content.Expireday}}</span>
+                                    <br>
+                                    <span class="black-text">{{content.Info}}</span>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="col s12 m12 offset-m2 l12 hide-on-med-and-down" style="padding:0"> -->
+                    <!-- <div class="card-panel grey lighten-5 z-depth-1" style="padding:0" ng-repeat="content in basic | limitTo : limit_basic"> -->
+                        <!-- <div class="row valign-wrapper"> -->
+                            <!-- <div class="col s2"> -->
+                                <!-- <img src="{{content.shopImg}}" alt="" class="responsive-img s2-img" style="margin-left:0"> -->
+                            <!-- </div> -->
+                            <!-- <div class="col s7 center"> -->
+                                <!-- <h5 class="black-text shop_name" style="font-weight:300">{{content.info_coupon}}</h5> -->
+                                <!-- <br> -->
+                                <!-- <b>Mã:</b> -->
+                                <!-- <a class="code">{{content.code_coupon}}</a> -->
+                                <!-- <span class="expired">Hết hạn: {{content.expire_day}}</span> -->
+                            <!-- </div> -->
+                            <!-- <div class="col s3 center"> -->
+                                <!-- <a class="waves-effect waves-light btn btn-coupon" href="{{content.shopUrl}}" target="blank">Mua Ngay</a> -->
+                            <!-- </div> -->
+                        <!-- </div> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+				
+				
             </div>
 
         </div>
