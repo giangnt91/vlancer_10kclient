@@ -168,7 +168,7 @@
                             <!-- <i class="material-icons">chevron_right</i> -->
                             <span ng-bind-html="coupon_info | unsafe"></span>
 						</div>
-                        <div ng-if="total_coupon === 0">
+                        <div class="grey-text" ng-if="total_coupon === 0">
                             <i class="material-icons">chevron_right</i>
                             <span>Đang cập nhật.</span>
 						</div>
@@ -184,7 +184,7 @@
                             <span ng-if="rank_user.id === 1">Coupon này dành cho thành viên hạng Bạch Kim trở lên (
 							trên 2000 điểm)</span>
 						</div>
-                        <div ng-if="total_coupon === 0">
+                        <div class="grey-text" ng-if="total_coupon === 0">
                             <i class="material-icons">chevron_right</i>
                             <span>Đang cập nhật.</span>
 						</div>
@@ -194,7 +194,7 @@
                             <i class="material-icons">chevron_right</i>
                             <span>Hạn sử dụng: {{coupon_expire}} Tháng</span>
 						</div>
-                        <div ng-if="total_coupon === 0">
+                        <div class="grey-text" ng-if="total_coupon === 0">
                             <i class="material-icons">chevron_right</i>
                             <span>Đang cập nhật.</span>
 						</div>
@@ -219,7 +219,7 @@
                                 Coupon này không yêu cầu Feedback sau khi sử dụng.
 							</span>
 						</div>
-                        <div ng-if="total_coupon === 0">
+                        <div class="grey-text" ng-if="total_coupon === 0">
                             <i class="material-icons">chevron_right</i>
                             <span>Đang cập nhật.</span>
 						</div>
