@@ -1,7 +1,6 @@
 coupon
     .controller('ActionCtrl', function ($scope, $location, ngDialog, DataServices, $timeout, $filter, $window) {
         $scope.auth = JSON.parse(localStorage.getItem('auth'));
-        var accessToken = localStorage.getItem('accessToken');
         var date = new Date();
         var today = $filter('date')(new Date(), 'dd/MM/yyyy');
         //thay đổi điểm tại đây
@@ -83,7 +82,7 @@ coupon
                                     var last_data = $scope.data;
                                     $scope.data = $scope.next_arr[$scope.index];
                                     //check comment after comment
-                                    FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + accessToken, (response) => {
+                                    FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.auth[0].access_token, (response) => {
                                         var comment = response.summary;
                                         // if (comment.total_count) {
                                         $scope.pre_comment = comment.total_count;
@@ -104,7 +103,7 @@ coupon
 
                                         function check_face() {
                                             //CHECK LIKE
-                                            FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/reactions?summary=true&access_token=' + accessToken, (response) => {
+                                            FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/reactions?summary=true&access_token=' + $scope.auth[0].access_token, (response) => {
                                                 reaction_kind = {
                                                     id: 1,
                                                     name: 'like'
@@ -146,7 +145,7 @@ coupon
 
 
                                             //CHECK COMMENT
-                                            FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + accessToken, (response) => {
+                                            FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.auth[0].access_token, (response) => {
                                                 var comment = response.summary;
                                                 reaction_kind = {
                                                     id: 2,
@@ -195,7 +194,7 @@ coupon
                                         $scope.data = $scope.next_arr[$scope.index];
 
                                         //check comment after comment
-                                        FB.api('/' + $scope.pre_data.action_shop_id + '_' + $scope.pre_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + accessToken, (response) => {
+                                        FB.api('/' + $scope.pre_data.action_shop_id + '_' + $scope.pre_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.auth[0].access_token, (response) => {
                                             var comment = response.summary;
                                             // if (comment.total_count) {
                                             $scope.pre_comment_2 = comment.total_count;
@@ -214,7 +213,7 @@ coupon
 
                                         function check_face() {
                                             //CHECK LIKE
-                                            FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/reactions?summary=true&access_token=' + accessToken, (response) => {
+                                            FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/reactions?summary=true&access_token=' + $scope.auth[0].access_token, (response) => {
                                                 reaction_kind = {
                                                     id: 1,
                                                     name: 'like'
@@ -257,7 +256,7 @@ coupon
 
                                             //CHECK COMMENT
 
-                                            FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + accessToken, (response) => {
+                                            FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.auth[0].access_token, (response) => {
                                                 var comment = response.summary;
                                                 reaction_kind = {
                                                     id: 2,
@@ -307,7 +306,7 @@ coupon
                                         $scope.pre_data = $scope.list_action_per_day[$scope.index];
 
                                         //check comment after comment
-                                        FB.api('/' + $scope.pre_data.action_shop_id + '_' + $scope.pre_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + accessToken, (response) => {
+                                        FB.api('/' + $scope.pre_data.action_shop_id + '_' + $scope.pre_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.auth[0].access_token, (response) => {
                                             var comment = response.summary;
                                             // if (comment.total_count) {
                                             $scope.pre_comment_3 = comment.total_count;
@@ -325,7 +324,7 @@ coupon
 
                                 $scope.data = $scope.next_arr[$scope.index];
                                 //check comment after comment
-                                FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + accessToken, (response) => {
+                                FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.auth[0].access_token, (response) => {
                                     var comment = response.summary;
                                     // if (comment.total_count) {
                                     $scope.pre_comment = comment.total_count;
@@ -362,7 +361,7 @@ coupon
 
                             function check_face() {
                                 //CHECK LIKE
-                                FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/reactions?summary=true&access_token=' + accessToken, (response) => {
+                                FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/reactions?summary=true&access_token=' + $scope.auth[0].access_token, (response) => {
                                     reaction_kind = {
                                         id: 1,
                                         name: 'like'
@@ -405,7 +404,7 @@ coupon
 
                                 //CHECK COMMENT
 
-                                FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + accessToken, (response) => {
+                                FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.auth[0].access_token, (response) => {
                                     var comment = response.summary;
                                     reaction_kind = {
                                         id: 2,

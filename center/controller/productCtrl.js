@@ -93,7 +93,6 @@ coupon
     .controller('ProdetailCtrl', function ($scope, $filter, $routeParams, $timeout, ngDialog, DataServices, $window) {
         $scope.auth = JSON.parse(localStorage.getItem('auth'));
         $scope.all_shop = JSON.parse(localStorage.getItem('all_shop'));
-        var accessToken = localStorage.getItem('accessToken');
 
         $scope.dialog = ngDialog.open({
             template:
@@ -412,6 +411,34 @@ coupon
                             }
                         }
                     }
+					
+					// check điểm quy đổi 
+					if ($scope.shop.shop_coupon !== null && $scope.shop.shop_coupon.length > 0) {
+                        if ($scope.shop.shop_coupon[0].coupon[0].point !== 0 && ($scope.auth[0].point_plus <  $scope.shop.shop_coupon[0].coupon[0].point)) {
+                            $scope.condition = true;
+							$scope.Thepoint = true;
+							$scope.value_point = scope.shop.shop_coupon[0].coupon[0].point;
+                        } else {
+                            if ($scope.condition !== true) {
+                                $scope.condition = false;
+                            }
+							$scope.Thepoint = false;
+                        }
+                    } else {
+                        if ($scope.shop.server_coupon !== null && $scope.shop.server_coupon.length > 0) {
+                            if ($scope.shop.server_coupon[0].coupon[0].point !== 0 && ($scope.auth[0].point_plus <  $scope.shop.server_coupon[0].coupon[0].point)) {
+                                $scope.condition = true;
+								$scope.Thepoint = true;
+								$scope.value_point = scope.shop.server_coupon[0].coupon[0].point;
+                            } else {
+                                if ($scope.condition !== true) {
+                                    $scope.condition = false;
+                                }
+								$scope.Thepoint = false;
+                            }
+                        }
+                    }
+					
                 } else {
                     $scope.show_like = true;
                 }
@@ -424,15 +451,18 @@ coupon
                     $scope.coupon_info = $scope.shop.shop_coupon[0].coupon[0].coupon_info;
                     $scope.coupon_expire = $scope.shop.shop_coupon[0].coupon[0].time_expire;
                     $scope.rank_user = $scope.shop.shop_coupon[0].coupon[0].class_user[0];
+					$scope.value_point = $scope.shop.shop_coupon[0].coupon[0].point;
                 } else {
                     if ($scope.shop.server_coupon !== null && $scope.shop.server_coupon.length > 0) {
                         $scope.coupon_info = $scope.shop.server_coupon[0].coupon[0].coupon_info;
                         $scope.coupon_expire = $scope.shop.server_coupon[0].coupon[0].time_expire;
                         $scope.rank_user = $scope.shop.server_coupon[0].coupon[0].class_user[0];
+						$scope.value_point = $scope.shop.server_coupon[0].coupon[0].point;
                     } else {
                         $scope.coupon_info = "Đang cập nhật";
                         $scope.rank_user = "Đang cập nhật";
                         $scope.coupon_expire = "Đang cập nhật";
+						$scope.value_point = 0;
                     }
                 }
                 // end get coupon info
@@ -452,7 +482,7 @@ coupon
                 }
                 FB.Event.subscribe('xfbml.render', finished_rendering);
                 FB.XFBML.parse();
-                FB.api('/' + $scope.shop.shopId + '?access_token=' + accessToken, { fields: 'fan_count' }, (response) => {
+                FB.api('/' + $scope.shop.shopId + '?access_token=' + $scope.auth[0].access_token, { fields: 'fan_count' }, (response) => {
                     $scope.pre_fan_count = response.fan_count;
                 });
             }
@@ -467,7 +497,7 @@ coupon
                 });
 
                 $timeout(function () {
-                    FB.api('/' + $scope.shop.shopId + '?access_token=' + accessToken, { fields: 'fan_count' }, (response) => {
+                    FB.api('/' + $scope.shop.shopId + '?access_token=' + $scope.auth[0].access_token, { fields: 'fan_count' }, (response) => {
                         if ($scope.pre_fan_count < response.fan_count) {
                             $scope.show_like = false;
                             $scope.$apply();
@@ -530,7 +560,9 @@ coupon
                         shop_id: $scope.shop.shop_coupon[0].coupon[0].shop_id,
                         shop_avatar: $scope.shop.shop_coupon[0].coupon[0].shop_avatar,
                         shop_cover: $scope.shop.shop_coupon[0].coupon[0].shop_cover,
-                        shop_name: $scope.shop.shop_coupon[0].coupon[0].shop_name
+                        shop_name: $scope.shop.shop_coupon[0].coupon[0].shop_name,
+						loyal: $scope.shop.shop_coupon[0].coupon[0].loyal,
+						point: $scope.shop.shop_coupon[0].coupon[0].point
                     };
                     new_list = $scope.shop.shop_coupon[0].coupon.slice(1);
                     the_issuer = first_coupon.shop_id;
@@ -556,7 +588,9 @@ coupon
                             shop_id: $scope.shop.server_coupon[0].coupon[0].shop_id,
                             shop_avatar: $scope.shop.server_coupon[0].coupon[0].shop_avatar,
                             shop_cover: $scope.shop.server_coupon[0].coupon[0].shop_cover,
-                            shop_name: $scope.shop.server_coupon[0].coupon[0].shop_name
+                            shop_name: $scope.shop.server_coupon[0].coupon[0].shop_name,
+							loyal: $scope.shop.server_coupon[0].coupon[0].loyal,
+							point: $scope.shop.server_coupon[0].coupon[0].point
                         };
                         new_list = $scope.shop.server_coupon[0].coupon.slice(1);
                         the_issuer = 1;
@@ -568,6 +602,12 @@ coupon
 
                 DataServices.updateCoupon($scope.shop._id, the_issuer, JSON.stringify(new_list), JSON.stringify(first_coupon), $scope.auth[0]._id, new_slot).then(function (response) {
                     if (response.data.error_code === 0) {
+						// cập nhật điểm nếu mà có yêu cầu
+						if($scope.value_point > 0){
+						let tmp = $scope.auth[0].point_plus - $scope.value_point;
+							DataServices.Minuspoints($scope.auth[0]._id, tmp).then(function(res){})
+						}
+					
                         check_user_have_coupon();
                         $("#af2").hide();
                         $scope.dialog = ngDialog.openConfirm({
