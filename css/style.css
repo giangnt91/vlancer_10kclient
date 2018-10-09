@@ -499,8 +499,21 @@ background: rgba(236, 64, 122, .9) !important;
 }
 
 .span_account {
-    margin-left: 40px;
+    margin-left: 20px;
     font-size: 17px;
+}
+
+.modal-edit {
+     width: 100% !important;
+}
+
+.modal-edit .modal-content{
+	padding: 5px;
+	height: 380px;
+}
+
+.picker--opened .picker__frame{
+	top: 4% !important;
 }
 
 .alert {

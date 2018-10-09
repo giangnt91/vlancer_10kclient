@@ -112,6 +112,8 @@ coupon
 	})
 })
 .controller('HomeCtrl', function ($scope, $location, $window, $timeout, DataServices, socialLoginService, $filter) {
+	$scope.auth = JSON.parse(localStorage.getItem('auth'));
+
 	if ($scope.auth) {
 		// check access time per day
 		DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (response) {
@@ -124,13 +126,14 @@ coupon
 			// }				
 		})
 		
-		if ($scope.auth[0].access_time_per_day[0].id === 1) {
-			var $toastContent = $('<center>Bạn được cộng 50 điểm cho lần đầu đăng nhập trong ngày.</center>');
-			Materialize.toast($toastContent, 4500);
-		}
+		$timeout(function(){
+			if ($scope.auth[0].access_time_per_day[0].id === 1) {
+				var $toastContent = $('<center>Bạn được cộng 50 điểm cho lần đầu đăng nhập trong ngày.</center>');
+				Materialize.toast($toastContent, 4500);
+			}
+		}, 500)
+		
 	}
-	
-	$scope.auth = JSON.parse(localStorage.getItem('auth'));
 	
 	DataServices.GetSlider().then(function (response) {
 		if (response.data.error_code === 0) {

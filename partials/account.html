@@ -76,10 +76,10 @@
                 <center>
                     <img src="{{auth[0].user_img}}" alt="">
                 </center>
-                <div class="person-info">
+                <div class="person-info" style="padding: 10px">
                     <h5>
                         <i class="material-icons _i">stars</i>
-                        <span class="span_account">{{auth[0].user_class[0].name}}</span>
+                        <span class="span_account">Hạng {{auth[0].user_class[0].name}}</span>
                     </h5>
                 </div>
             </div>
@@ -130,6 +130,7 @@
 
 <!-- Modal Structure -->
 <div id="update" class="modal">
+	<div class="modal-dialog modal-edit">
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="about-subtitle center">Cập nhật thông tin</h5>
@@ -140,19 +141,19 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <!-- <i class="material-icons prefix">email</i> -->
-                        <input id="email" type="email" class="validate" ng-model="data.email">
+                        <input id="email" type="email" class="validate" ng-model="email">
                         <label for="email" data-error="Địa chỉ email không hợp lệ">Địa Chỉ Email</label>
                     </div>
                     <div class="input-field col s6">
                         <!-- <i class="material-icons prefix">phone_iphone</i> -->
-                        <input id="sdt" type="number" class="validate" ng-model="data.mobile">
+                        <input id="sdt" type="number" class="validate" ng-model="mobile">
                         <label for="sdt" data-error="Số điện thoại không hợp lệ">Số Điện Thoại</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <!-- <i class="material-icons prefix">work</i> -->
-                        <input id="work" type="text" class="validate" ng-model="data.work">
+                        <input id="work" type="text" class="validate" ng-model="work">
                         <label for="work">Công Việc</label>
                     </div>
                 </div>
@@ -168,7 +169,7 @@
                     </div>
                     <div class="input-field col s6">
                         <!-- <i class="material-icons prefix">cake</i> -->
-                        <input id="bday" type="text" class="datepicker" ng-model="data.bithday">
+                        <input id="bday" type="text" class="datepicker" ng-model="bithday">
                         <label for="bday">Ngày Sinh</label>
                     </div>
 
@@ -182,6 +183,7 @@
         <button class="btn waves-effect waves-light cyan modal-action modal-close">Hủy</button>
         <button class="btn waves-effect waves-light pink modal-action modal-close" ng-click="update(data)">Cập Nhật</button>
     </div>
+	</div>
 </div>
 
 <script>
