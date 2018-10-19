@@ -14,7 +14,7 @@
             </blockquote>
 
             <div class="row">
-                <div class="col s6 m4 l3" ng-repeat="content in kind_result_0 | limitTo : 4">
+                <div class="col s6 m4 l3" ng-repeat="content in kind_result_0 | limitTo : 8">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
                             <div class="price" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">
@@ -22,7 +22,7 @@
                                 <span ng-if="content.server_coupon.length > 0">{{content.server_coupon[0].coupon[0].value}}</span>
                                 VNĐ
                             </div>
-                            <img class="activator" src="{{content.shop_info[0].shop_avatar}}">
+                            <img class="activator" src="{{content.shop_info[0].shop_avatar}}" ng-click="go_shop_by_id(content._id)">
                         </div>
                         <div class="card-content center">
                             <span class="card-title activator shop_name"> {{content.shop_info[0].shop_name}}</span>
@@ -62,7 +62,7 @@
 
             <div class="row">
 
-                <div class="col s6 m4 l3" ng-repeat="content in kind_result_1 | limitTo : 4">
+                <div class="col s6 m4 l3" ng-repeat="content in kind_result_1 | limitTo : 8">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
                             <div class="price" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">
@@ -70,7 +70,7 @@
                                 <span ng-if="content.server_coupon.length > 0">{{content.server_coupon[0].coupon[0].value}}</span>
                                 VNĐ
                             </div>
-                            <img class="activator" src="{{content.shop_info[0].shop_avatar}}">
+                            <img class="activator" src="{{content.shop_info[0].shop_avatar}}" ng-click="go_shop_by_id(content._id)">
                         </div>
                         <div class="card-content center">
                             <span class="card-title activator shop_name"> {{content.shop_info[0].shop_name}}</span>
@@ -110,7 +110,7 @@
             </blockquote>
 
             <div class="row">
-                <div class="col s6 m4 l3" ng-repeat="content in kind_result_2 | limitTo : 4">
+                <div class="col s6 m4 l3" ng-repeat="content in kind_result_2 | limitTo : 8">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
                             <div class="price" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">
@@ -118,7 +118,7 @@
                                 <span ng-if="content.server_coupon.length > 0">{{content.server_coupon[0].coupon[0].value}}</span>
                                 VNĐ
                             </div>
-                            <img class="activator" src="{{content.shop_info[0].shop_avatar}}">
+                            <img class="activator" src="{{content.shop_info[0].shop_avatar}}" ng-click="go_shop_by_id(content._id)">
                         </div>
                         <div class="card-content center">
                             <span class="card-title activator grey-text text-darken-4 shop_name">{{content.shop_info[0].shop_name}}</span>
@@ -157,7 +157,7 @@
             </blockquote>
             <div class="row">
 
-                <div class="col s6 m4 l3" ng-repeat="content in kind_result_3 | limitTo : 4">
+                <div class="col s6 m4 l3" ng-repeat="content in kind_result_3 | limitTo : 8">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
                             <div class="price" ng-if="(content.shop_coupon.length > 0 && content.shop_coupon[0].approved === true) || content.server_coupon.length > 0">
@@ -165,7 +165,7 @@
                                 <span ng-if="content.server_coupon.length > 0">{{content.server_coupon[0].coupon[0].value}}</span>
                                 VNĐ
                             </div>
-                            <img class="activator" src="{{content.shop_info[0].shop_avatar}}">
+                            <img class="activator" src="{{content.shop_info[0].shop_avatar}}" ng-click="go_shop_by_id(content._id)">
                         </div>
                         <div class="card-content center">
                             <span class="card-title activator grey-text text-darken-4 shop_name">{{content.shop_info[0].shop_name}}</span>
@@ -206,7 +206,7 @@
                 <div class="col s6 m4 l3" ng-repeat="content in emarketResult | limitTo : 12">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="{{content.Eimg}}">
+                            <img class="activator" src="{{content.Eimg}}" ng-click="go_detail_basic(content._id)">
                         </div>
                         <div class="card-content center">
                             <p class="info_code">

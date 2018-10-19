@@ -113,7 +113,7 @@ coupon
 })
 .controller('HomeCtrl', function ($scope, $location, $window, $timeout, DataServices, socialLoginService, $filter) {
 	$scope.auth = JSON.parse(localStorage.getItem('auth'));
-
+	
 	if ($scope.auth) {
 		// check access time per day
 		DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (response) {
@@ -297,14 +297,14 @@ coupon
 	
 	$scope.logout = function () {
 		// window.location.href = '#/login';
-	socialLoginService.logout();
-	$window.scrollTo(0, 0);
-	localStorage.clear();
-	$location.path('/dang-nhap');
-	FB.XFBML.parse();
-	$timeout(function () {
-	window.location.reload(true);
-	}, 10);
+		socialLoginService.logout();
+		$window.scrollTo(0, 0);
+		localStorage.clear();
+		$location.path('/dang-nhap');
+		FB.XFBML.parse();
+		$timeout(function () {
+			window.location.reload(true);
+		}, 10);
 	}
 	// end auth
 	
@@ -312,103 +312,105 @@ coupon
 	
 	// lấy danh sách emarket
 	DataServices.getEmarket().then(function (response) {
-	if (response.data.error_code === 0) {
-	$scope.emarketResult = response.data.emarket;
-	}
+		if (response.data.error_code === 0) {
+			$scope.emarketResult = response.data.emarket;
+		}
 	})
 	
 	DataServices.getBasiccode().then(function (response) {
-	if (response.data.error_code === 0) {
-	$scope.basicResult = response.data.basic;
-	localStorage.setItem('basic', JSON.stringify($scope.basicResult));
-	}
+		if (response.data.error_code === 0) {
+			$scope.basicResult = response.data.basic;
+			localStorage.setItem('basic', JSON.stringify($scope.basicResult));
+		}
 	});
 	
 	$scope.get_basic_detail = function (id) {
-	$scope.basicResult.forEach(element => {
-	if (element._id === id) {
-	$scope.detail_basic = element;
-	}
-	});
+		$scope.basicResult.forEach(element => {
+			if (element._id === id) {
+				$scope.detail_basic = element;
+			}
+		});
 	}
 	
 	$scope.go_ma_giam_gia = function (url) {
-	window.open(url, '_blank');
+		window.open(url, '_blank');
 	}
 	
 	$scope.go_detail_basic = function (id) {
-	if ($scope.basicResult !== undefined) {
-	$scope.basicResult.forEach(element => {
-	if (id === element.Eid) {
-	var slug = bo_dau_tv(element.Ename).split(' ').join('-');
-	var _id = element.Eid.slice(-5);
-	
-	$location.path('/ma-giam-gia-pho-thong/' + slug + '-' + _id);
-	$window.scrollTo(0, 0);
-	FB.XFBML.parse();
-	}
-	});
-	}
+		if ($scope.basicResult !== undefined) {
+			$scope.basicResult.forEach(element => {
+				if (id === element.Eid) {
+					var slug = bo_dau_tv(element.Ename).split(' ').join('-');
+					var _id = element.Eid.slice(-5);
+					
+					$location.path('/ma-giam-gia-pho-thong/' + slug + '-' + _id);
+					$window.scrollTo(0, 0);
+					FB.XFBML.parse();
+				}
+			});
+		}
 	}
 	// end get all basic code
 	
 	// get all shop
 	DataServices.getAllshop().then(function (response) {
-	if (response.data.error_code === 0) {
-	$scope.all_shop = response.data.shop;
-	$scope.kind_result_1 = [];
-	$scope.kind_result_2 = [];
-	$scope.kind_result_3 = [];
-	$scope.kind_result_0 = [];
-	for (var i = 0; i < response.data.shop.length; i++) {
-	if (response.data.shop[i].server_coupon.length > 0) {
-	if (response.data.shop[i].server_coupon[0].coupon[0].loyal[0].id === 1) {
-	$scope.kind_result_0.push(response.data.shop[i]);
-	}
-	}
-	if (response.data.shop[i].shop_coupon.length > 0) {
-	if (response.data.shop[i].shop_coupon[0].coupon[0].loyal[0].id === 1) {
-	$scope.kind_result_0.push(response.data.shop[i]);
-	}
-	}
-	
-	
-	if (response.data.shop[i].shop_info[0].kind[0].id === 2) {
-	if (response.data.shop[i].shop_status[0].id === 1) {
-	$scope.kind_result_1.push(response.data.shop[i]);
-	}
-	} else if (response.data.shop[i].shop_info[0].kind[0].id === 1) {
-	if (response.data.shop[i].shop_status[0].id === 1) {
-	$scope.kind_result_2.push(response.data.shop[i]);
-	}
-	} else if (response.data.shop[i].shop_info[0].kind[0].id === 3) {
-	if (response.data.shop[i].shop_status[0].id === 1) {
-	$scope.kind_result_3.push(response.data.shop[i]);
-	}
-	}
-	}
-	
-	$scope.kind_result_0 = $filter('orderBy')($scope.kind_result_0, ['server_coupon', 'shop_coupon'], true);
-	$scope.kind_result_1 = $filter('orderBy')($scope.kind_result_1, ['server_coupon', 'shop_coupon'], true);
-	$scope.kind_result_2 = $filter('orderBy')($scope.kind_result_2, ['server_coupon', 'shop_coupon'], true);
-	$scope.kind_result_3 = $filter('orderBy')($scope.kind_result_3, ['server_coupon', 'shop_coupon'], true);
-	
-	
-	localStorage.setItem('kind_0', JSON.stringify($scope.kind_result_0));
-	localStorage.setItem('kind_1', JSON.stringify($scope.kind_result_1));
-	localStorage.setItem('kind_2', JSON.stringify($scope.kind_result_2));
-	localStorage.setItem('kind_3', JSON.stringify($scope.kind_result_3));
-	localStorage.setItem('all_shop', JSON.stringify($scope.all_shop));
-	}
+		if (response.data.error_code === 0) {
+			$scope.all_shop = response.data.shop;
+			$scope.kind_result_1 = [];
+			$scope.kind_result_2 = [];
+			$scope.kind_result_3 = [];
+			$scope.kind_result_0 = [];
+			for (var i = 0; i < response.data.shop.length; i++) {
+				if (response.data.shop[i].server_coupon.length > 0) {
+					if (response.data.shop[i].server_coupon[0].coupon[0].loyal[0].id === 1) {
+						$scope.kind_result_0.push(response.data.shop[i]);
+					}
+				}
+				if (response.data.shop[i].shop_coupon.length > 0) {
+					if(response.data.shop[i].shop_coupon[0].approved === true){
+						if (response.data.shop[i].shop_coupon[0].coupon[0].loyal[0].id === 1) {
+							$scope.kind_result_0.push(response.data.shop[i]);
+						}
+					}
+				}
+				
+				
+				if (response.data.shop[i].shop_info[0].kind[0].id === 2) {
+					if (response.data.shop[i].shop_status[0].id === 1) {
+						$scope.kind_result_1.push(response.data.shop[i]);
+					}
+					} else if (response.data.shop[i].shop_info[0].kind[0].id === 1) {
+					if (response.data.shop[i].shop_status[0].id === 1) {
+						$scope.kind_result_2.push(response.data.shop[i]);
+					}
+					} else if (response.data.shop[i].shop_info[0].kind[0].id === 3) {
+					if (response.data.shop[i].shop_status[0].id === 1) {
+						$scope.kind_result_3.push(response.data.shop[i]);
+					}
+				}
+			}
+			
+			$scope.kind_result_0 = $filter('orderBy')($scope.kind_result_0, ['server_coupon.length', 'shop_coupon.length'], true);
+			$scope.kind_result_1 = $filter('orderBy')($scope.kind_result_1, ['server_coupon.length', 'shop_coupon.length'], true);
+			$scope.kind_result_2 = $filter('orderBy')($scope.kind_result_2, ['server_coupon.length', 'shop_coupon.length'], true);
+			$scope.kind_result_3 = $filter('orderBy')($scope.kind_result_3, ['server_coupon.length', 'shop_coupon.length'], true);
+			
+			
+			localStorage.setItem('kind_0', JSON.stringify($scope.kind_result_0));
+			localStorage.setItem('kind_1', JSON.stringify($scope.kind_result_1));
+			localStorage.setItem('kind_2', JSON.stringify($scope.kind_result_2));
+			localStorage.setItem('kind_3', JSON.stringify($scope.kind_result_3));
+			localStorage.setItem('all_shop', JSON.stringify($scope.all_shop));
+		}
 	});
 	
 	$scope.detail_kind_0 = function () {
-	// window.location.href = '#/cua-hang/mua-sam';
-	$location.path('/khach-hang-than-thiet/danh-sach-cua-hang')
-	$window.scrollTo(0, 0);
-	$timeout(function () {
-	// window.location.reload(true);
-	}, 100);
+		// window.location.href = '#/cua-hang/mua-sam';
+		$location.path('/khach-hang-than-thiet/danh-sach-cua-hang')
+		$window.scrollTo(0, 0);
+		$timeout(function () {
+			// window.location.reload(true);
+		}, 100);
 	}
 	
 	$scope.detail_kind_1 = function () {
@@ -439,4 +441,4 @@ coupon
 	}
 	// end get all shop
 	
-	})										
+	})												
