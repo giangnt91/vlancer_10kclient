@@ -107,7 +107,7 @@ coupon
 											var compare_reaction = tmp_reaction.localeCompare(result_reaction);
 											
 											if (compare_reaction !== 0) {
-												DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, $scope.pre_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
+												DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, $scope.pre_data.action_shop_id, $scope.auth[0]._id, 1).then(function (response) {
 													if (response.data.error_code === 0) {
 														DataServices.Point($scope.auth[0]._id, action_point, 0).then(function (response) {
 															if (response.data.error_code === 0) {
@@ -124,7 +124,7 @@ coupon
 													id: 3,
 													name: 'skip'
 												}
-												DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, last_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
+												DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, last_data.action_shop_id, $scope.auth[0]._id, 0).then(function (response) {
 													if (response.data.error_code === 0) {
 														$scope.array_like_skip.push(last_data.action_url);
                                                         } else {
@@ -146,7 +146,7 @@ coupon
 											}
 											// console.log('binh luan 1 sau khi comment: ' + comment.total_count, 'shop id: ' + last_data.action_shop_id);
 											if (comment.total_count > $scope.pre_comment) {
-												DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, $scope.pre_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
+												DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, $scope.pre_data.action_shop_id, $scope.auth[0]._id, 2).then(function (response) {
 													if (response.data.error_code === 0) {
 														$scope.array_com.push(last_data.action_url);
 													}
@@ -217,7 +217,7 @@ coupon
 											var compare_reaction = tmp_reaction.localeCompare(result_reaction);
 											
 											if (compare_reaction !== 0) {
-												DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, $scope.pre_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
+												DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, $scope.pre_data.action_shop_id, $scope.auth[0]._id, 1).then(function (response) {
 													if (response.data.error_code === 0) {
 														DataServices.Point($scope.auth[0]._id, action_point, 0).then(function (response) {
 															if (response.data.error_code === 0) {
@@ -234,7 +234,7 @@ coupon
 													id: 3,
 													name: 'skip'
 												}
-												DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, last_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
+												DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, last_data.action_shop_id, $scope.auth[0]._id, 0).then(function (response) {
 													if (response.data.error_code === 0) {
 														$scope.array_like_skip.push(last_data.action_url);
                                                         } else {
@@ -257,7 +257,7 @@ coupon
 											}
 											// console.log('binh luan 2 sau khi comment: ' + comment.total_count, 'shop id: ' + last_data.action_shop_id);
 											if (comment.total_count > $scope.pre_comment) {
-												DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, $scope.pre_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
+												DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, $scope.pre_data.action_shop_id, $scope.auth[0]._id, 2).then(function (response) {
 													if (response.data.error_code === 0) {
 														$scope.array_com.push(last_data.action_url);
 													}
@@ -274,7 +274,7 @@ coupon
 													id: 3,
 													name: 'skip'
 												}
-												DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, last_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
+												DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, last_data.action_shop_id, $scope.auth[0]._id, 0).then(function (response) {
 													if (response.data.error_code === 0) {
 														$scope.array_com_skip.push(last_data.action_url);
                                                         } else {
@@ -356,7 +356,7 @@ coupon
 								var compare_reaction = tmp_reaction.localeCompare(result_reaction);
 								
 								if (compare_reaction !== 0) {
-									DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, $scope.pre_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
+									DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, $scope.pre_data.action_shop_id, $scope.auth[0]._id, 1).then(function (response) {
 										if (response.data.error_code === 0) {
 											DataServices.Point($scope.auth[0]._id, action_point, 0).then(function (response) {
 												if (response.data.error_code === 0) {
@@ -373,7 +373,7 @@ coupon
 										id: 3,
 										name: 'skip'
 									}
-									DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, last_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
+									DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, last_data.action_shop_id, $scope.auth[0]._id, 0).then(function (response) {
 										if (response.data.error_code === 0) {
 											$scope.array_like_skip.push(last_data.action_url);
                                             } else {
@@ -396,7 +396,7 @@ coupon
 								}
 								// console.log('binh luan 3 sau khi comment: ' + comment.total_count, 'shop id: ' + last_data.action_shop_id);
 								if (comment.total_count > $scope.pre_comment) {
-									DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, $scope.pre_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
+									DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, $scope.pre_data.action_shop_id, $scope.auth[0]._id, 2).then(function (response) {
 										if (response.data.error_code === 0) {
 											$scope.array_com.push(last_data.action_url);
 										}
@@ -413,7 +413,7 @@ coupon
 										id: 3,
 										name: 'skip'
 									}
-									DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, last_data.action_shop_id, $scope.auth[0]._id).then(function (response) {
+									DataServices.createReaction(JSON.stringify(reaction_kind), last_data.action_id, last_data.action_url, today, last_data.action_shop_id, $scope.auth[0]._id, 0).then(function (response) {
 										if (response.data.error_code === 0) {
 											$scope.array_com_skip.push(last_data.action_url);
                                             } else {

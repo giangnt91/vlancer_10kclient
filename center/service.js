@@ -1,8 +1,8 @@
 angular.module('CouponService', [])
 .factory('DataServices', function ($http, $q) {
-	var api_gateway_url = 'https://api.coupon10k.com';
+	// var api_gateway_url = 'https://api.coupon10k.com';
 	// var api_gateway_url = 'http://35.240.165.98:2018';
-	// var api_gateway_url = 'http://localhost:2018';
+	var api_gateway_url = 'http://localhost:2018';
 	var parameter;
 	var url;
 	var header = { header: { 'Conntent-Type': 'application/x-www-form-urlencoded' } };
@@ -161,14 +161,15 @@ angular.module('CouponService', [])
 			url = api_gateway_url + '/updateactionuser';
 			return $http.post(url, parameter, header);
 		},
-		createReaction: function (kind_reaction, id_post_reaction, url_post_reaction, click_reaction_day, id_shop, id_user) {
+		createReaction: function (kind_reaction, id_post_reaction, url_post_reaction, click_reaction_day, id_shop, id_user, _id) {
 			parameter = JSON.stringify({
 				kind_reaction: kind_reaction,
 				id_post_reaction: id_post_reaction,
 				url_post_reaction: url_post_reaction,
 				click_reaction_day: click_reaction_day,
 				id_shop: id_shop,
-				id_user: id_user
+				id_user: id_user,
+				_id: _id
 			});
 			url = api_gateway_url + '/creaction';
 			return $http.post(url, parameter, header);
