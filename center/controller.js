@@ -319,7 +319,15 @@ coupon
 	
 	DataServices.getBasiccode().then(function (response) {
 		if (response.data.error_code === 0) {
-			$scope.basicResult = response.data.basic;
+			var basics = [];
+			if(response.data.basic.length > 0){
+				response.data.basic.forEach( element => {
+					if(element._Status[0].id === 1){
+						basics.push(element);
+					}
+				})
+			}
+			$scope.basicResult = basics;
 			localStorage.setItem('basic', JSON.stringify($scope.basicResult));
 		}
 	});
