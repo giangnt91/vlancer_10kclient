@@ -90,7 +90,7 @@ coupon
 
     })
 
-    .controller('ProdetailCtrl', function ($scope, $filter, $routeParams, $timeout, ngDialog, DataServices, $window) {
+    .controller('ProdetailCtrl', function ($scope, $filter, $routeParams, $timeout, ngDialog, DataServices, $window, Thesocket) {
         $scope.auth = JSON.parse(localStorage.getItem('auth'));
         $scope.all_shop = JSON.parse(localStorage.getItem('all_shop'));
 
@@ -607,7 +607,7 @@ coupon
 						let tmp = $scope.auth[0].point_plus - $scope.value_point;
 							DataServices.Minuspoints($scope.auth[0]._id, tmp).then(function(res){})
 						}
-					
+						Thesocket.emit('user_get_coupon');
                         check_user_have_coupon();
                         $("#af2").hide();
                         $scope.dialog = ngDialog.openConfirm({
