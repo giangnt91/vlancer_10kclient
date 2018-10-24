@@ -103,7 +103,7 @@ coupon
 			// alert(uid);
 		// })
 		
-		Thesocket.on('api_user_mobile', function (api_user_mobile) {
+		Thesocket.on('api_user_mobile', function (uid) {
                     alert(uid);
                 })
 		
