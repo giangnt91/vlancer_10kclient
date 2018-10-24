@@ -96,11 +96,11 @@ coupon
 		
 		$scope.test = function(){
 			// Thesocket.emit('user_get_coupon', 123);
-			Thesocket.emit('get_coupon');
+			Thesocket.emit('user_get_coupon', "123");
 		}
 		
-		Thesocket.on('f5_mobile', function(){
-			alert('1');
+		Thesocket.on('user_mobile', function(uid){
+			alert(uid);
 		})
 		
         $scope.dialog = ngDialog.open({
