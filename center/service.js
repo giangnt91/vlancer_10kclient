@@ -184,3 +184,12 @@ angular.module('CouponService', [])
 		}
 	}
 })	
+
+.factory('Thesocket', function (socketFactory) {
+        var api_gateway_url = 'https://api.coupon10k.com';
+        var socketConnection = io.connect(api_gateway_url);
+        var socket = socketFactory({
+            ioSocket: socketConnection
+        });
+        return socket;
+    })

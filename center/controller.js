@@ -1,4 +1,4 @@
-var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSanitize', 'CouponService', 'ngDialog', 'socialLogin', '720kb.socialshare'])
+var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSanitize', 'CouponService', 'ngDialog', 'socialLogin', '720kb.socialshare', 'btford.socket-io'])
 coupon
 .filter('unsafe', function ($sce) { return $sce.trustAsHtml; })
 
