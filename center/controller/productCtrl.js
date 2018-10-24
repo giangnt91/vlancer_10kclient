@@ -96,7 +96,7 @@ coupon
 		
 		$scope.test = function(){
 			// Thesocket.emit('user_get_coupon', 123);
-			Thesocket.emit('user_get_coupon', "123");
+			Thesocket.emit('user_get_coupon', $scope.auth[0].user_id);
 		}
 		
 		Thesocket.on('user_mobile', function(uid){
