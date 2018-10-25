@@ -113,6 +113,7 @@ coupon
 })
 .controller('HomeCtrl', function ($scope, $location, $window, $timeout, DataServices, socialLoginService, $filter) {
 	$scope.auth = JSON.parse(localStorage.getItem('auth'));
+	localStorage.removeItem('alert');
 	
 	if ($scope.auth) {
 		// check access time per day
@@ -128,8 +129,12 @@ coupon
 		
 		$timeout(function(){
 			if ($scope.auth[0].access_time_per_day[0].id === 1) {
-				var $toastContent = $('<center>Bạn được cộng 50 điểm cho lần đầu đăng nhập trong ngày.</center>');
-				Materialize.toast($toastContent, 4500);
+				let _alert = localStorage.getItem('alert');
+				if(_alert === null){
+					localStorage.setItem('alert', 123);
+					var $toastContent = $('<center>Bạn được cộng 50 điểm cho lần đầu đăng nhập trong ngày.</center>');
+					Materialize.toast($toastContent, 4500);
+				}
 			}
 		}, 500)
 		

@@ -105,8 +105,7 @@ coupon
         $timeout(function () {
             $scope.load_page = true;
             $scope.dialog.close();
-        }, 2000)
-
+        }, 2000)		
 
         $scope._href = window.location.href;
         $scope.danh_muc = $routeParams.danhmuc;
