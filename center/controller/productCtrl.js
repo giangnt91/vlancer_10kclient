@@ -94,6 +94,15 @@ coupon
         $scope.auth = JSON.parse(localStorage.getItem('auth'));
         $scope.all_shop = JSON.parse(localStorage.getItem('all_shop'));
 		
+		$scope.test = function(){
+			Thesocket.emit('user_get_coupon', 123);
+		}
+		
+		Thesocket.on('user_mobile', function (uid) {
+            alert(uid)
+            console.log('guabg')
+        })
+		
         $scope.dialog = ngDialog.open({
             template:
                 '<h4 class="flow-text center">Đang tải trang vui lòng chờ ...</h4>  <div class="progress"> <div class="indeterminate"></div> </div>',
