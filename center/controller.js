@@ -173,7 +173,7 @@ coupon
 									localStorage.setItem('auth', JSON.stringify(signin_result_2.auth));
 									// window.location.href = '#/';
 									$location.path('/');
-									// window.location.reload(true);
+									window.location.reload(true);
 								}
 							});
 						}
@@ -205,7 +205,7 @@ coupon
 					localStorage.setItem('auth', JSON.stringify(signin_result.auth));
 					// window.location.href = '#/';
 					$location.path('/');
-					// window.location.reload(true);
+					window.location.reload(true);
 					} else if (signin_result.error_code === 5) {
 					$scope._error_login = true;
 					$timeout(function () {
