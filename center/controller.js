@@ -207,10 +207,12 @@ coupon
 					$location.path('/');
 					window.location.reload(true);
 					} else if (signin_result.error_code === 5) {
-					$scope._error_login = true;
-					$timeout(function () {
-						$scope._error_login = false;
-					}, 5000)
+					var $toastContent = $('<center>Tài khoản của bạn hiện đang bị khóa liên hệ Admin để được hỗ trợ!</center>');
+					Materialize.toast($toastContent, 5000);
+					// $scope._error_login = true;
+					// $timeout(function () {
+						// $scope._error_login = false;
+					// }, 5000)
 				}
 			});
 			
