@@ -408,11 +408,11 @@ coupon
 		socialLoginService.logout();
 		$window.scrollTo(0, 0);
 		localStorage.clear();
-		$location.path('/dang-nhap');
-		FB.XFBML.parse();
-		$timeout(function () {
-			window.location.reload(true);
-		}, 10);
+		// $location.path('/dang-nhap');
+		// FB.XFBML.parse();
+		// $timeout(function () {
+		window.location.reload(true);
+		// }, 10);
 	}
 	// end auth
 	
