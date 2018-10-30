@@ -3,16 +3,16 @@
 			<div class="progress" ng-if="!loading">
 					<div class="indeterminate"></div>
 			</div>
-		<ul class="slides" ng-if="loading">
+		<ul class="slides" ng-show="loading">
 			<li ng-repeat="content in Sliders">
 				<img src="{{content.Image}}">
 				<!-- <div class="caption center-align" ng-show="content.ShopId !== null"> -->
 					<!-- <!-- <h3>{{content.shop_info[0].shop_name}}</h3> --> -->
 					<!-- <a class="waves-effect waves-light btn btn-coupon" style="margin-bottom: 25px" ng-click="slider_go(content)">{{content.Button}}</a> -->
 				<!-- </div> -->
-				
-				<a class="waves-effect waves-light btn btn-coupon btn-other" ng-click="slider_go(content)">{{content.Button}}</a>
-				
+				<div class="caption center-align" style="bottom: 0; background: transparent">
+					<a class="waves-effect waves-light btn btn-coupon btn-other" ng-click="slider_go(content)">{{content.Button}}</a>
+				</div>
 			</li>
 
 		</ul>
@@ -27,6 +27,6 @@
 				indicators: true,
 				interval: 4000
 			});
-		}, 2500);
+		}, 500);
 	});
 </script>

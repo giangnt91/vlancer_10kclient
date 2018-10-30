@@ -12,6 +12,10 @@
     width: 50px;
 }
 
+.cl3{
+	width: 20% !important;
+}
+
 .side-nav li>a>i {
     margin-right: 20px !important;
 }
@@ -428,6 +432,7 @@ nav {
     font-size: 20px !important;
     height: 60px;
     line-height: 30px !important;
+	overflow: hidden;
 }
 
 .shop_name_3 {
@@ -637,7 +642,7 @@ background: rgba(236, 64, 122, .9) !important;
 
 @media only screen and (min-width: 993px) {
     .container_2 {
-        width: 75% !important;
+        width: 85% !important;
 	}
 }
 

@@ -27,6 +27,7 @@
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
   <link type="text/css" rel="stylesheet" href="css/style.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/material-scrolltop.css" />
   
   <script src="https://api.coupon10k.com/socket.io/socket.io.js"></script>
 
@@ -40,16 +41,20 @@
     }(document, 'script', 'facebook-jssdk'));</script> -->
 </head>
 
-<body ng-app="coupon10k">
+<body ng-app="coupon10k" id="root">
 
   <div ng-include='"templates/nav.html"'></div>
   <div ng-include='"templates/header.html"'></div>
   <div ng-view></div>
   <div ng-include='"templates/footer.html"'></div>
+  
+  <!-- Material button -->
+  <button class="material-scrolltop" type="button"></button>
 
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script src="css/material-scrolltop.js"></script>
 
   <!-- Angularjs Library -->
   <script src="js/angular-1-2-32.min.js"></script>
@@ -70,6 +75,19 @@
   <script src="center/controller/accountCtrl.js"></script>
   <script src="center/controller/productCtrl.js"></script>
   <script src="bower_components/angular-socket-io/socket.min.js"></script>
+  
+  <!-- Initialize -->
+    <script>
+        $(document).ready(function() {
+            $('body').materialScrollTop({
+                revealElement: '#root',
+                revealPosition: 'bottom',
+                onScrollEnd: function() {
+                    <!-- console.log('Scrolling End'); -->
+                }
+            });
+        });
+    </script>
 
 </body>
 

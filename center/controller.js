@@ -402,7 +402,7 @@ coupon
 	
 	$timeout(function () {
 		$scope.loading = true;
-	}, 2500)
+	}, 500)
 	
 	
 	$scope.logout = function () {
