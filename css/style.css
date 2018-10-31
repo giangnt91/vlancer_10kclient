@@ -2,6 +2,12 @@
     float: none !important;
 }
 
+.slider .slides li .caption{
+	position: relative !important;
+	top: 0;
+	margin-top: -70px;
+}
+
 .logoa {
     padding-top: 5px;
     margin-bottom: -20px;
@@ -465,13 +471,14 @@ nav {
 }
 
 .btn-other{
-	position: absolute;
-    bottom: 15%;
+	position: relative;
+    margin-top: -70px;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    width: 150px;
+    max-width: 50%;
+    min-width: 150px;
 }
 
 .info_code {
