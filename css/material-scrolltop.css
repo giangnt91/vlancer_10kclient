@@ -9,6 +9,7 @@
 */
 
 .material-scrolltop {
+	z-index: 99999999;
     display: block;
     position: fixed;
     width: 0;

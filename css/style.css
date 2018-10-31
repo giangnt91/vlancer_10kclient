@@ -646,10 +646,11 @@ background: rgba(236, 64, 122, .9) !important;
 	}
 }
 
-@media only screen and (max-width: 48em) {}
-
 @media only screen and (max-width: 48em) {
     /*************** ADD MOBILE ONLY CSS HERE  ***************/
+	.row .col.s6 {
+		width: 50% !important;
+	}
     .carousel {
         height: 175px !important;
 	}
