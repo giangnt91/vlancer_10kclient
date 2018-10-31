@@ -118,11 +118,11 @@ coupon
 	$window.fbAsyncInit = function () {
 		FB.XFBML.parse();
 		// check load facebook login button
-		var finished_rendering = function () {
-			$scope.load_f = true;
-			$scope.$apply();
-		}
-		FB.Event.subscribe('xfbml.render', finished_rendering);
+		// var finished_rendering = function () {
+			// $scope.load_f = true;
+			// $scope.$apply();
+		// }
+		// FB.Event.subscribe('xfbml.render', finished_rendering);
 	}
 	
 	$rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
