@@ -329,8 +329,16 @@ nav {
 }
 
 .page-footer {
-    background: #F4F4F4 !important;
+    background: #EA4177 !important;
     color: #727272 !important;
+	padding-top: 0px !important;
+}
+
+.page-footer .foothead{
+	padding-top: 5px;
+	min-height: 120px;
+	background: #F4F4F4;
+	margin-top: 50px;
 }
 
 .carousel {
@@ -592,30 +600,63 @@ background: rgba(236, 64, 122, .9) !important;
 }
 
 .facecss {
-    color: #fff !important;
-    background: #4267B2 !important;
-    padding: 5px !important;
-    border-radius: 4px !important;
-    cursor: pointer;
-    margin-left: 10px;
-    margin-right: 10px;
+	width: 40px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #4267B2;
+	border: 1px solid #4267B2;
+    color: #fff;
+    text-align: center;
+	margin-left: 2px;
+	margin-right: 2px;
+	cursor: pointer;
+}
+
+.facecss:hover{
+	background-color: transparent;
+	color: #4267B2;
 }
 
 .ggcss {
-    color: #fff !important;
-    background: #DF4A32 !important;
-    padding: 5px !important;
-    border-radius: 4px !important;
-    cursor: pointer;
-    margin-right: 10px;
+	width: 40px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #DF4A32;
+	border: 1px solid #DF4A32;
+    color: #fff;
+    text-align: center;
+	margin-left: 2px;
+	margin-right: 2px;
+	cursor: pointer;
+}
+
+.ggcss:hover{
+	background-color: transparent;
+	color: #DF4A32;
 }
 
 .ttcss {
-    color: #fff !important;
-    background: #00ACED !important;
-    padding: 5px !important;
-    border-radius: 4px !important;
-    cursor: pointer;
+	width: 40px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #00ACED;
+	border: 1px solid #00ACED;
+    color: #fff;
+    text-align: center;
+	margin-left: 2px;
+	margin-right: 2px;
+	cursor: pointer;
+}
+
+.ttcss:hover{
+	background-color: transparent;
+	color: #00ACED;
 }
 
 .tabs .tab a {

@@ -90,7 +90,7 @@ coupon
 
     })
 
-    .controller('ProdetailCtrl', function ($scope, $filter, $routeParams, $timeout, ngDialog, DataServices, $window, Thesocket) {
+    .controller('ProdetailCtrl', function ($scope, $filter, $routeParams, $timeout, ngDialog, DataServices, $window, Thesocket, $sce) {
         $scope.auth = JSON.parse(localStorage.getItem('auth'));
         $scope.all_shop = JSON.parse(localStorage.getItem('all_shop'));
 		
@@ -124,6 +124,8 @@ coupon
             DataServices.getByshopid(shopId).then(function (response) {
                 if (response.data.error_code === 0) {
                     $scope.shop = response.data.shop;
+					
+					$scope.shopAddress = $sce.trustAsResourceUrl("https://maps.google.com/maps?q="+$scope.shop.shop_info[0].address+"&t=&z=13&ie=UTF8&iwloc=&output=embed");
                     var tmp_shop;
                     var tmp_server;
                     $scope.all_feed = [];

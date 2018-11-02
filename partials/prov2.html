@@ -15,28 +15,51 @@
 <div class="container_5" ng-show="load_page" style="margin-bottom: 0">
     <div class="row card-panel" style="margin-top: 0; box-shadow: none; padding-left: 0; padding-right: 0">
 		
-        <div class="col s12 m8 l8 pro-img waves-effect waves-block waves-light z-depth-3" style="background:url('{{shop.shop_info[0].shop_cover}}'); background-size: cover;">
-            <div class="like_button">
-                <!-- <a class="waves-effect waves-light right btn like-pro pulse"> </a> -->
-                <div ng-if="!condition && auth">
-                    <button class="btn waves-effect waves-light like-pro right modal-trigger" data-target="like" ng-if="show_like"
-					ng-click="open_like()">Like
-                        <i class="material-icons right">thumb_up</i>
-					</button>
+        <div class="col s12 m8 l8">
+           <div class="row">
+			   <div class="col s12 m12 l12 pro-img waves-effect waves-block waves-light z-depth-3" style="background:url('{{shop.shop_info[0].shop_cover}}'); background-size: cover;">
+					 <div class="like_button">
+						<!-- <a class="waves-effect waves-light right btn like-pro pulse"> </a> -->
+						<div ng-if="!condition && auth">
+							<button class="btn waves-effect waves-light like-pro right modal-trigger" data-target="like" ng-if="show_like"
+							ng-click="open_like()">Like
+								<i class="material-icons right">thumb_up</i>
+							</button>
+						</div>
+						
+						<div ng-if="condition">
+							<button class="btn waves-effect waves-light like-pro right disabled">Like
+								<i class="material-icons right">thumb_up</i>
+							</button>
+						</div>
+					</div>
+			   </div>
+			   
+			   <div class="col s12 m12 s12" style="padding: 0px">
+            
+					<div class="person-info" style="padding: 0; margin: 0">
+						<h5 style="border: none !important">
+							Chia sẻ: 
+							<a socialshare socialshare-provider="facebook" class="facecss" socialshare-text="Truy cập trang để nhận nhiều coupon khuyến mãi có giá trị"
+							socialshare-hashtags="coupon10k, coupon10k.com" socialshare-media="{{shop.shop_info[0].shop_cover}}" socialshare-url="{{_href}}">
+								<i class="fa fa-facebook" aria-hidden="true"></i>
+								
+							</a>
+							<a socialshare socialshare-provider="google" class="ggcss" socialshare-text="Truy cập trang để nhận nhiều coupon khuyến mãi có giá trị"
+							socialshare-hashtags="coupon10k, coupon10k.com" socialshare-url="{{_href}}">
+								<i class="fa fa-google-plus" aria-hidden="true"></i>
+								
+							</a>
+							<a socialshare socialshare-provider="twitter" class="ttcss" socialshare-text="Truy cập trang để nhận nhiều coupon khuyến mãi có giá trị"
+							socialshare-hashtags="coupon10k, coupon10k.com" socialshare-url="{{_href}}">
+								<i class="fa fa-twitter" aria-hidden="true"></i>
+								
+							</a></h5>
+					</div>
+					
 				</div>
-				
-                <div ng-if="condition">
-                    <button class="btn waves-effect waves-light like-pro right disabled">Like
-                        <i class="material-icons right">thumb_up</i>
-					</button>
-				</div>
-			</div>
-            <!-- <div class="person-info" style="padding: 0; position: relative; bottom: 58px;" ng-if="show_like">
-                <h5 style="font-size: 18px; color: #EC407A; border: none">
-				<i class="material-icons" style="position: relative; top: 5px;">new_releases</i>
-				Thích trang để nhận Coupon
-                </h5>
-			</div> -->
+			   
+		   </div>
 		</div>
 		
         <div class="col s12 m4 l4 pro-info">
@@ -50,7 +73,7 @@
 				</h5>
                 <h5 class="grey-text">
                     <i class="material-icons">location_on</i>
-                    <span>{{shop.shop_info[0].address}}</span>
+                   <a class="grey-text" target="_blank" href="http://maps.google.com/?q={{shop.shop_info[0].address}}"> <span>{{shop.shop_info[0].address}}</span> </a>
 				</h5>
                 <h5 class="grey-text">
                     <i class="material-icons">access_time</i>
@@ -120,31 +143,29 @@
             <!-- </div> -->
 		</div>
 		
-        <div class="col s12 m12 s12" style="padding: 0px">
+        <!-- <div class="col s12 m12 s12" style="padding: 0px"> -->
             
-            <div class="person-info" style="padding: 0; margin-top: 30px">
-                <h5 style="border: none !important">
+            <!-- <div class="person-info" style="padding: 0; margin: 0"> -->
+                <!-- <h5 style="border: none !important"> -->
                     <!-- Chia sẻ:  -->
-                    <a socialshare socialshare-provider="facebook" class="facecss" socialshare-text="Truy cập trang để nhận nhiều coupon khuyến mãi có giá trị"
-					socialshare-hashtags="coupon10k, coupon10k.com" socialshare-media="{{shop.shop_info[0].shop_cover}}" socialshare-url="{{_href}}">
-                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                        Facebook
-					</a>
-                    <a socialshare socialshare-provider="google" class="ggcss" socialshare-text="Truy cập trang để nhận nhiều coupon khuyến mãi có giá trị"
-					socialshare-hashtags="coupon10k, coupon10k.com" socialshare-url="{{_href}}">
-                        <i class="fa fa-google-plus" aria-hidden="true"></i>
-                        Google
-					</a>
-                    <a socialshare socialshare-provider="twitter" class="ttcss" socialshare-text="Truy cập trang để nhận nhiều coupon khuyến mãi có giá trị"
-					socialshare-hashtags="coupon10k, coupon10k.com" socialshare-url="{{_href}}">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                        Twitter
-					</a></h5>
-					
-			</div>
+                    <!-- <a socialshare socialshare-provider="facebook" class="facecss" socialshare-text="Truy cập trang để nhận nhiều coupon khuyến mãi có giá trị" -->
+					<!-- socialshare-hashtags="coupon10k, coupon10k.com" socialshare-media="{{shop.shop_info[0].shop_cover}}" socialshare-url="{{_href}}"> -->
+                        <!-- <i class="fa fa-facebook" aria-hidden="true"></i> -->
+                        
+					<!-- </a> -->
+                    <!-- <a socialshare socialshare-provider="google" class="ggcss" socialshare-text="Truy cập trang để nhận nhiều coupon khuyến mãi có giá trị" -->
+					<!-- socialshare-hashtags="coupon10k, coupon10k.com" socialshare-url="{{_href}}"> -->
+                        <!-- <i class="fa fa-google-plus" aria-hidden="true"></i> -->
+                        
+					<!-- </a> -->
+                    <!-- <a socialshare socialshare-provider="twitter" class="ttcss" socialshare-text="Truy cập trang để nhận nhiều coupon khuyến mãi có giá trị" -->
+					<!-- socialshare-hashtags="coupon10k, coupon10k.com" socialshare-url="{{_href}}"> -->
+                        <!-- <i class="fa fa-twitter" aria-hidden="true"></i> -->
+                        
+					<!-- </a></h5> -->
+			<!-- </div> -->
 			
-			
-		</div>
+		<!-- </div> -->
 		
         <div class="col s12">
             <blockquote>
@@ -156,6 +177,9 @@
 				</li>
                 <li class="tab col s2">
                     <a href="#info" style="text-align: center;">Giới thiệu</a>
+				</li>
+				<li class="tab col s2">
+                    <a href="#map" style="text-align: center;">Bản đồ</a>
 				</li>
 			</ul>
 		</div>
@@ -230,6 +254,12 @@
             <div id="info" class="col s12 m8 l8">
                 <div class="person-info" style="padding: 0; min-height: 199px">
                     <p ng-bind-html="shop.shop_info[0].info | unsafe" style="margin-top: 10px"></p>
+				</div>
+			</div>
+			
+			<div id="map" class="col s12 m12 l12">
+                <div class="person-info" style="padding: 0; min-height: 199px">
+				<div class="mapouter"><div class="gmap_canvas"><iframe width="100%" height="400px" id="gmap_canvas" src="{{shopAddress}}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{text-align:right;height:400px;width:100%;}.gmap_canvas {overflow:hidden;background:none!important;height:400px;width:100%;}</style></div>
 				</div>
 			</div>
 		</div>

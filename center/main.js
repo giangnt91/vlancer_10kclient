@@ -12,7 +12,7 @@ angular.module('coupon10k', ['ngRoute', 'CouponController', 'CouponService'])
             .when("/quan-ly-tai-khoan", { templateUrl: "partials/account.html", controller: "AccountCtrl" })
 
             //Otherwise
-            .otherwise({ redirectTo: '/dang-nhap' });
+            .otherwise({ redirectTo: '/' });
 
             $locationProvider
             $locationProvider.html5Mode(true);
