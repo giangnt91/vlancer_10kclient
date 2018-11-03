@@ -2,6 +2,7 @@ coupon
 .controller('ActionCtrl', function ($scope, $location, ngDialog, DataServices, $timeout, $filter, $window) {
 	let Auth = localStorage.getItem('auth');
 	if(Auth !== "undefined" && Auth !== null){
+		Auth = JSON.parse(Auth);
 		DataServices.signIn(Auth[0].user_id, Auth[0].user_img).then(function (response) {
 			var signin_result = response.data;
 			if( signin_result.error_code === 5 || signin_result.error_code === 2){
