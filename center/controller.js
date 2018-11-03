@@ -112,8 +112,13 @@ coupon
 	})
 })
 .controller('HomeCtrl', function ($rootScope, $scope, $location, $window, $timeout, DataServices, socialLoginService, $filter) {
-	$scope.auth = JSON.parse(localStorage.getItem('auth'));
+	// $scope.auth = JSON.parse(localStorage.getItem('auth'));
+	let Auth = localStorage.getItem('auth');
+	if(Auth){
+		$scope.auth = JSON.parse(Auth);
+	}
 	localStorage.removeItem('alert');
+	localStorage.removeItem('alert2');
 	
 	$window.fbAsyncInit = function () {
 		FB.XFBML.parse();
@@ -207,8 +212,12 @@ coupon
 					$location.path('/');
 					window.location.reload(true);
 					} else if (signin_result.error_code === 5) {
-					var $toastContent = $('<center>Tài khoản của bạn hiện đang bị khóa liên hệ Admin để được hỗ trợ!</center>');
-					Materialize.toast($toastContent, 5000);
+						let _alert = localStorage.getItem('alert2');
+						if(_alert === null){
+							localStorage.setItem('alert2', 123);
+							var $toastContent = $('<center>Tài khoản của bạn hiện đang bị khóa liên hệ Admin để được hỗ trợ!</center>');
+							Materialize.toast($toastContent, 5000);
+						}
 					// $scope._error_login = true;
 					// $timeout(function () {
 						// $scope._error_login = false;

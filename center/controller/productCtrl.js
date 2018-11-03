@@ -91,7 +91,11 @@ coupon
     })
 
     .controller('ProdetailCtrl', function ($scope, $filter, $routeParams, $timeout, ngDialog, DataServices, $window, Thesocket, $sce) {
-        $scope.auth = JSON.parse(localStorage.getItem('auth'));
+        // $scope.auth = JSON.parse(localStorage.getItem('auth'));
+		let Auth = localStorage.getItem('auth');
+		if(Auth){
+			$scope.auth = JSON.parse(Auth);
+		}
         $scope.all_shop = JSON.parse(localStorage.getItem('all_shop'));
 		
         $scope.dialog = ngDialog.open({

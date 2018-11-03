@@ -1,6 +1,10 @@
 coupon
 .controller('ActionCtrl', function ($scope, $location, ngDialog, DataServices, $timeout, $filter, $window) {
-	$scope.auth = JSON.parse(localStorage.getItem('auth'));
+	let Auth = localStorage.getItem('auth');
+	if(Auth){
+		$scope.auth = JSON.parse(Auth);
+	}
+	
 	var date = new Date();
 	var today = $filter('date')(new Date(), 'dd/MM/yyyy');
 	//thay đổi điểm tại đây
