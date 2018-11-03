@@ -2,7 +2,7 @@ coupon
 .controller('ActionCtrl', function ($scope, $location, ngDialog, DataServices, $timeout, $filter, $window) {
 	let Auth = localStorage.getItem('auth');
 	if(Auth !== "undefined"){
-		DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (response) {
+		DataServices.signIn(Auth[0].user_id, Auth[0].user_img).then(function (response) {
 			var signin_result = response.data;
 			if( signin_result.error_code === 5){
 				$location.path('/');
