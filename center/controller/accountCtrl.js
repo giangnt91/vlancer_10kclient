@@ -1,7 +1,7 @@
 coupon
     .controller('AccountCtrl', function ($scope, $window, DataServices, $timeout, ngDialog) {
 		let Auth = localStorage.getItem('auth');
-		if(Auth){
+		if(Auth !== "undefined"){
 			$scope.auth = JSON.parse(Auth);
 		}
         // $scope.auth = JSON.parse(localStorage.getItem('auth'));

@@ -114,7 +114,7 @@ coupon
 .controller('HomeCtrl', function ($rootScope, $scope, $location, $window, $timeout, DataServices, socialLoginService, $filter) {
 	// $scope.auth = JSON.parse(localStorage.getItem('auth'));
 	let Auth = localStorage.getItem('auth');
-	if(Auth){
+	if(Auth !== "undefined"){
 		$scope.auth = JSON.parse(Auth);
 	}
 	localStorage.removeItem('alert');
