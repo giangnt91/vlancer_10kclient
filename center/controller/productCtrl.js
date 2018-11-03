@@ -93,7 +93,7 @@ coupon
     .controller('ProdetailCtrl', function ($scope, $filter, $routeParams, $timeout, ngDialog, DataServices, $window, Thesocket, $sce) {
         // $scope.auth = JSON.parse(localStorage.getItem('auth'));
 		let Auth = localStorage.getItem('auth');
-		if(Auth !== "undefined"){
+		if(Auth !== "undefined" && Auth !== null){
 			$scope.auth = JSON.parse(Auth);
 		}
         $scope.all_shop = JSON.parse(localStorage.getItem('all_shop'));
