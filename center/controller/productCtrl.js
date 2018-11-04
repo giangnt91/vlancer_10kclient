@@ -221,7 +221,7 @@ coupon
                             //check shop coupon
                             if ($scope.shop.shop_coupon.length > 0) {
                                 if ($scope.auth[0].total_list_coupon[i].release_day === $scope.shop.shop_coupon[0].coupon[0].release_day && $scope.auth[0].total_list_coupon[i].shop_id === $scope.shop.shop_coupon[0].coupon[0].shop_id) {
-									if(i <= $scope.auth[0].total_list_coupon.length){
+									if(i < $scope.auth[0].total_list_coupon.length){
 										if($scope.shop.user_get_coupon.contains($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
 											$scope._get = true;
 											$scope.condition = true;
@@ -263,7 +263,7 @@ coupon
                             } else if ($scope.shop.shop_coupon.length === 0) {
                                 for (var j = 0; j < $scope.shop.user_get_coupon.length; j++) {
                                     if ($scope.auth[0].total_list_coupon[i].release_day === $scope.shop.user_get_coupon[j].release_day && $scope.auth[0].total_list_coupon[i].shop_id === $scope.shop.user_get_coupon[j].shop_id) {
-										if(i <= $scope.auth[0].total_list_coupon.length){
+										if(i < $scope.auth[0].total_list_coupon.length){
 											if($scope.shop.user_get_coupon.contains($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
 												$scope._get = true;
 												$scope.condition = true;
@@ -308,7 +308,7 @@ coupon
                             // check server coupon 
                             else if ($scope.shop.server_coupon.length > 0) {
                                 if ($scope.auth[0].total_list_coupon[i].release_day === $scope.shop.server_coupon[0].coupon[0].release_day && $scope.auth[0].total_list_coupon[i].shop_id === $scope.shop.server_coupon[0].coupon[0].shop_id) {
-									if(i <= $scope.auth[0].total_list_coupon.length){	
+									if(i < $scope.auth[0].total_list_coupon.length){	
 										if($scope.shop.user_get_coupon.contains($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
 											$scope._get = true;
 											$scope.condition = true;
@@ -350,7 +350,7 @@ coupon
                             } else if ($scope.shop.server_coupon.length === 0) {
                                 for (var s = 0; s < $scope.shop.user_get_coupon.length; s++) {
                                     if ($scope.auth[0].total_list_coupon[i].release_day === $scope.shop.user_get_coupon[s].release_day && $scope.auth[0].total_list_coupon[i].shop_id === $scope.shop.user_get_coupon[s].shop_id) {
-                                       if(i <= $scope.auth[0].total_list_coupon.length){
+                                       if(i < $scope.auth[0].total_list_coupon.length){
 										   if($scope.shop.user_get_coupon.contains($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
 												$scope._get = true;
 												$scope.condition = true;
@@ -400,7 +400,7 @@ coupon
                         for (var i = 0; i < $scope.auth[0].use_coupon.length; i++) {
                             if ($scope.shop.shop_coupon.length > 0) {
                                 if ($scope.auth[0].use_coupon[i].release_day === $scope.shop.shop_coupon[0].coupon[0].release_day && $scope.auth[0].use_coupon[i].shop_id === $scope.shop.shop_coupon[0].coupon[0].shop_id) {
-                                   if(i <= $scope.auth[0].total_list_coupon.length){
+                                   if(i < $scope.auth[0].total_list_coupon.length){
 									   if($scope.shop.user_get_coupon.contains($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
 											$scope._get = true;
 											$scope.condition = true;
@@ -442,7 +442,7 @@ coupon
                                 }
                             } else if ($scope.shop.server_coupon.length > 0) {
                                 if ($scope.auth[0].use_coupon[i].release_day === $scope.shop.server_coupon[0].coupon[0].release_day && $scope.auth[0].use_coupon[i].shop_id === $scope.shop.server_coupon[0].coupon[0].shop_id) {
-									if(i <= $scope.auth[0].total_list_coupon.length){	
+									if(i < $scope.auth[0].total_list_coupon.length){	
 										if($scope.shop.user_get_coupon.contains($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
 											$scope._get = true;
 											$scope.condition = true;
