@@ -69,10 +69,10 @@ coupon
 							//check comment after comment
 							FB.api('/' + $scope.data.action_shop_id + '_' + $scope.data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.auth[0].access_token, (response) => {
 								var comment = response.summary;
-								// if (comment.total_count) {
-								$scope.pre_comment = comment.total_count;
-								// console.log('binh luan 1 truoc khi comment: ' + $scope.pre_comment, 'shop id: ' + last_data.action_shop_id);
-								// }
+								if (comment !== undefined) {
+									$scope.pre_comment = comment.total_count;
+									// console.log('binh luan 1 truoc khi comment: ' + $scope.pre_comment, 'shop id: ' + last_data.action_shop_id);
+								}
 							});
 						}, 100)
 						

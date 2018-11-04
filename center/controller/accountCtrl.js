@@ -4,9 +4,38 @@ coupon
 		if(Auth !== "undefined" && Auth !== null){
 			$scope.auth = JSON.parse(Auth);
 		}
+		
+
+		$scope.Sex = [{
+			id: null,
+			name: 'Chọn Giới Tính'
+			},{
+			id: 1,
+			name: 'Nam'
+		},{
+			id: 2,
+			name: 'Nữ'
+		},{
+			id: 3,
+			name: 'Khác'
+		}]	
+		
+		$scope.openUpdate = function(){
+			if($scope.auth[0].info[0].sex === 'Chưa cập nhật'){
+				$scope.selectSex = $scope.Sex[0];
+			}else if($scope.auth[0].info[0].sex === 'Nam'){
+				$scope.selectSex = $scope.Sex[1];
+			}else if($scope.auth[0].info[0].sex === 'Nữ'){
+				$scope.selectSex = $scope.Sex[2];
+			}else if($scope.auth[0].info[0].sex === 'Khác'){
+				$scope.selectSex = $scope.Sex[3];
+			}
+		}
         // $scope.auth = JSON.parse(localStorage.getItem('auth'));
         $scope.update = function (data) {
-
+		
+		console.log($scope.selectSex);
+		
             $scope.dialog = ngDialog.open({
                 template:
                     '<h4 class="flow-text center">Đang cập nhật dữ liệu</h4>  <div class="progress"> <div class="indeterminate"></div> </div>',
@@ -14,47 +43,54 @@ coupon
                 showClose: false,
                 closeByDocument: false
             });
-
-            var email;
-            var sex;
-            var mobile;
-            var work;
-            var bithday;
+			
+			var sex;
+            var email = data[0].info[0].email;
+			
+			if($scope.selectSex.value !== null){
+				sex = $scope.selectSex.name;
+			}else{
+				sex = data[0].info[0].sex;
+			}
+			
+            var mobile = data[0].info[0].mobile;
+            var work = data[0].info[0].work;
+            var bithday = data[0].info[0].bith_day;
             var full_update;
             var point = 500;
 
             //check data after update
             if (data !== undefined) {
 
-                if (data.email === undefined || data.email === null) {
-                    email = $scope.auth[0].info[0].email;
-                } else {
-                    email = data.email;
-                }
+                // if (data.email === undefined || data.email === null) {
+                    // email = $scope.auth[0].info[0].email;
+                // } else {
+                    // email = data.email;
+                // }
 
-                if (data.sex === undefined || data.sex === null) {
-                    sex = $scope.auth[0].info[0].sex;
-                } else {
-                    sex = data.sex;
-                }
+                // if (data.sex === undefined || data.sex === null) {
+                    // sex = $scope.auth[0].info[0].sex;
+                // } else {
+                    // sex = data.sex;
+                // }
 
-                if (data.mobile === undefined || data.mobile === null) {
-                    mobile = $scope.auth[0].info[0].mobile;
-                } else {
-                    mobile = "0" + data.mobile;
-                }
+                // if (data.mobile === undefined || data.mobile === null) {
+                    // mobile = $scope.auth[0].info[0].mobile;
+                // } else {
+                    // mobile = "0" + data.mobile;
+                // }
 
-                if (data.work === undefined || data.work === null) {
-                    work = $scope.auth[0].info[0].work;
-                } else {
-                    work = data.work;
-                }
+                // if (data.work === undefined || data.work === null) {
+                    // work = $scope.auth[0].info[0].work;
+                // } else {
+                    // work = data.work;
+                // }
 
-                if (data.bithday === undefined || data.bithday === null) {
-                    bithday = $scope.auth[0].info[0].bith_day;
-                } else {
-                    bithday = data.bithday;
-                }
+                // if (data.bithday === undefined || data.bithday === null) {
+                    // bithday = $scope.auth[0].info[0].bith_day;
+                // } else {
+                    // bithday = data.bithday;
+                // }
 
                 if ($scope.auth[0].info[0].full_update === 0) {
                     if (email === "Chưa cập nhật" || sex === "Chưa cập nhật" || mobile === "Chưa cập nhật" || work === "Chưa cập nhật" || bithday === "Chưa cập nhật") {

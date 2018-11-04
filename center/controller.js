@@ -130,6 +130,18 @@ coupon
 		// FB.Event.subscribe('xfbml.render', finished_rendering);
 	}
 	
+	// DataServices.signIn('167757230741160', 'https://graph.facebook.com/167757230741160/picture?width=180&height=180').then(function (signin_res) {
+				// var signin_result = signin_res.data;
+				// if (signin_result.error_code === 0) {
+				
+					
+					// localStorage.setItem('auth', JSON.stringify(signin_result.auth));
+					// // window.location.href = '#/';
+					// $location.path('/');
+					// window.location.reload(true);
+				// } 
+			// });
+	
 	$rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
 		Imgurl = "https://graph.facebook.com/" + userDetails.uid + "/picture?width=180&height=180";
 		// get long live access token
@@ -403,7 +415,7 @@ coupon
 		// window.location.href = '#/login';
 		// FB.XFBML.parse();
 		$window.scrollTo(0, 0);
-		$location.path('/dang-nhap');
+		$location.path('/');
 		$timeout(function () {
 			window.location.reload(true);
 		}, 1000);

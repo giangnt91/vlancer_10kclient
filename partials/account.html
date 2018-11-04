@@ -120,7 +120,7 @@
                     </h5>
                 </div>
                 <center>
-                    <a class="waves-effect waves-light btn btn-coupon modal-trigger" data-target="update">
+                    <a class="waves-effect waves-light btn btn-coupon modal-trigger" data-target="update" ng-click="openUpdate()">
                         <i class="material-icons left">border_color</i>Cập Nhật</a>
                 </center>
             </div>
@@ -140,37 +140,41 @@
             <form class="col s12">
                 <div class="row">
                     <div class="input-field col s6">
-                        <!-- <i class="material-icons prefix">email</i> -->
-                        <input id="email" type="email" class="validate" ng-model="email">
-                        <label for="email" data-error="Địa chỉ email không hợp lệ">Địa Chỉ Email</label>
+                        <i class="material-icons prefix">email</i>
+                        <input id="email" type="email" class="validate" ng-model="auth[0].info[0].email">
+                        <!-- <label for="email" data-error="Địa chỉ email không hợp lệ">Địa Chỉ Email</label> -->
                     </div>
                     <div class="input-field col s6">
-                        <!-- <i class="material-icons prefix">phone_iphone</i> -->
-                        <input id="sdt" type="number" class="validate" ng-model="mobile">
-                        <label for="sdt" data-error="Số điện thoại không hợp lệ">Số Điện Thoại</label>
+                        <i class="material-icons prefix">phone_iphone</i>
+                        <input id="sdt" type="text" class="validate" ng-model="auth[0].info[0].mobile">
+                        <!-- <label for="sdt" data-error="Số điện thoại không hợp lệ">Số Điện Thoại</label> -->
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <!-- <i class="material-icons prefix">work</i> -->
-                        <input id="work" type="text" class="validate" ng-model="work">
-                        <label for="work">Công Việc</label>
+                        <i class="material-icons prefix">work</i>
+                        <input id="work" type="text" class="validate" ng-model="auth[0].info[0].work">
+                        <!-- <label for="work">Công Việc</label> -->
                     </div>
                 </div>
                 <div class="row">
-
-                    <div class="input-field col s6">
-                        <select ng-model="data.sex">
-                            <option value="" disabled selected>Chọn Giới Tính</option>
-                            <option value="Nam">Nam</option>
-                            <option value="Nữ">Nữ</option>
-                            <option value="Khác">Khác</option>
+					<div  class="input-field col s6">
+					<i class="material-icons prefix">face</i>
+                        <select id="select5" style="background: transparent;
+    width: 85%;
+    padding: 5px;
+    border: 1px solid #f2f2f2;
+    border-radius: 2px;
+    height: 3rem; 
+    pointer-events: auto;
+	    opacity: 1;
+		margin-left: 14%;" class="form-control" ng-model="selectSex" ng-options="option.name for option in Sex">
                         </select>
                     </div>
                     <div class="input-field col s6">
-                        <!-- <i class="material-icons prefix">cake</i> -->
-                        <input id="bday" type="text" class="datepicker" ng-model="bithday">
-                        <label for="bday">Ngày Sinh</label>
+                        <i class="material-icons prefix">cake</i>
+                        <input id="bday" type="text" class="datepicker" ng-model="auth[0].info[0].bith_day">
+                        <!-- <label for="bday">Ngày Sinh</label> -->
                     </div>
 
                 </div>
@@ -181,12 +185,13 @@
     </div>
     <div class="modal-footer">
         <button class="btn waves-effect waves-light cyan modal-action modal-close">Hủy</button>
-        <button class="btn waves-effect waves-light pink modal-action modal-close" ng-click="update(data)">Cập Nhật</button>
+        <button class="btn waves-effect waves-light pink modal-action modal-close" ng-click="update(auth)">Cập Nhật</button>
     </div>
 	</div>
 </div>
 
 <script>
+
     $(document).ready(function () {
         $('.modal').modal({
             dismissible: false
@@ -203,8 +208,8 @@
             // closeOnSelect: false, // Close upon selecting a date,
             // container: undefined, // ex. 'body' will append picker to body
         });
-
-        $('select').material_select();
+		
+        <!-- $('select').material_select(); -->
 
         $(document).ready(function () {
             $('.skillbar').each(function () {

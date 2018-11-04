@@ -179,7 +179,7 @@
                     <a href="#info" style="text-align: center;">Giới thiệu</a>
 				</li>
 				<li class="tab col s2">
-                    <a href="#map" style="text-align: center;">Bản đồ</a>
+                    <a href="#map" style="text-align: center;">Địa chỉ cửa hàng</a>
 				</li>
 			</ul>
 		</div>
@@ -317,7 +317,7 @@
                         <span>Nếu Bạn đã like page này trước đây (không phải trên website của chúng tôi) vui lòng
                             Unlike
                             <a target="blank" href="https://www.facebook.com/{{shop.shopId}}">tại đây</a> sau đó quay
-						lại và reload trang để thực hiện like page. </span>
+						lại và bấm reload trang để thực hiện like page. </span>
 					</h5>
                     <h5>
                         <i class="material-icons blue-text">chevron_right</i>
@@ -331,6 +331,9 @@
 		</center>
 	</div>
     <div class="modal-footer">
+		<button class="btn waves-effect waves-light btn-default modal-action modal-close"
+		onClick="reloadPage()">Reload</button>
+		
         <button class="btn waves-effect waves-light btn-xt modal-action modal-close"
 		ng-click="close_like()">Xong</button>
 	</div>
@@ -378,4 +381,8 @@
 		}, 500);
         setTimeout(function () { $("#af2").show() }, 2000);
 	});
+	
+	function reloadPage(){
+		location.reload(true);
+	}
 </script>

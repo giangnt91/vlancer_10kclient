@@ -181,6 +181,11 @@ coupon
                             $scope.auth = response.data.auth;
                         }
                     });
+					
+					// check empty_slot
+                    if ($scope.auth[0].empty_slot === 0) {
+                       $scope.condition = true;
+                    }
 
                     // check feedback
                     if ($scope.auth[0].use_coupon.length > 0) {
@@ -199,14 +204,43 @@ coupon
                     }
 
                     // check user get coupon
+					
+					Array.prototype.contains = function(obj) {
+						var i = this.length;
+						while (i--) {
+							if (this[i]._id === obj) {
+								return true;
+							}
+						}
+						return false;
+					}
+					
                     if ($scope.auth[0].total_list_coupon.length > 0) {
                         for (var i = 0; i < $scope.auth[0].total_list_coupon.length; i++) {
 
                             //check shop coupon
                             if ($scope.shop.shop_coupon.length > 0) {
                                 if ($scope.auth[0].total_list_coupon[i].release_day === $scope.shop.shop_coupon[0].coupon[0].release_day && $scope.auth[0].total_list_coupon[i].shop_id === $scope.shop.shop_coupon[0].coupon[0].shop_id) {
-                                    $scope._get = true;
-                                    $scope.condition = true;
+									if($scope.shop.user_get_coupon.contains($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
+										$scope._get = true;
+										$scope.condition = true;
+									}else{
+										if ($scope._get !== true) {
+											$scope._get = false;
+										}
+										if ($scope.condition !== true) {
+											$scope.condition = false;
+										}
+										if ($scope.shop.user_like_shop.length > 0) {
+											$scope.shop.user_like_shop.forEach(element => {
+												if (element.id === $scope.auth[0].user_id) {
+													$scope.show_like = false;
+												} else {
+													$scope.show_like = true;
+												}
+											});
+										}
+									}
                                 } else {
                                     if ($scope._get !== true) {
                                         $scope._get = false;
@@ -227,8 +261,26 @@ coupon
                             } else if ($scope.shop.shop_coupon.length === 0) {
                                 for (var j = 0; j < $scope.shop.user_get_coupon.length; j++) {
                                     if ($scope.auth[0].total_list_coupon[i].release_day === $scope.shop.user_get_coupon[j].release_day && $scope.auth[0].total_list_coupon[i].shop_id === $scope.shop.user_get_coupon[j].shop_id) {
-                                        $scope._get = true;
-                                        $scope.condition = true;
+										if($scope.shop.user_get_coupon.contains($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
+											$scope._get = true;
+											$scope.condition = true;
+										}else{
+											if ($scope._get !== true) {
+												$scope._get = false;
+											}
+											if ($scope.condition !== true) {
+												$scope.condition = false;
+											}
+											if ($scope.shop.user_like_shop.length > 0) {
+												$scope.shop.user_like_shop.forEach(element => {
+													if (element.id === $scope.auth[0].user_id) {
+														$scope.show_like = false;
+													} else {
+														$scope.show_like = true;
+													}
+												});
+											}
+										}
                                     } else {
                                         if ($scope._get !== true) {
                                             $scope._get = false;
@@ -252,8 +304,26 @@ coupon
                             // check server coupon 
                             else if ($scope.shop.server_coupon.length > 0) {
                                 if ($scope.auth[0].total_list_coupon[i].release_day === $scope.shop.server_coupon[0].coupon[0].release_day && $scope.auth[0].total_list_coupon[i].shop_id === $scope.shop.server_coupon[0].coupon[0].shop_id) {
-                                    $scope._get = true;
-                                    $scope.condition = true;
+									if($scope.shop.user_get_coupon.contains($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
+											$scope._get = true;
+											$scope.condition = true;
+										}else{
+											if ($scope._get !== true) {
+												$scope._get = false;
+											}
+											if ($scope.condition !== true) {
+												$scope.condition = false;
+											}
+											if ($scope.shop.user_like_shop.length > 0) {
+												$scope.shop.user_like_shop.forEach(element => {
+													if (element.id === $scope.auth[0].user_id) {
+														$scope.show_like = false;
+													} else {
+														$scope.show_like = true;
+													}
+												});
+											}
+									}
                                 } else {
                                     if ($scope._get !== true) {
                                         $scope._get = false;
@@ -274,8 +344,26 @@ coupon
                             } else if ($scope.shop.server_coupon.length === 0) {
                                 for (var s = 0; s < $scope.shop.user_get_coupon.length; s++) {
                                     if ($scope.auth[0].total_list_coupon[i].release_day === $scope.shop.user_get_coupon[s].release_day && $scope.auth[0].total_list_coupon[i].shop_id === $scope.shop.user_get_coupon[s].shop_id) {
-                                        $scope._get = true;
-                                        $scope.condition = true;
+                                       if($scope.shop.user_get_coupon.contains($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
+											$scope._get = true;
+											$scope.condition = true;
+										}else{
+											if ($scope._get !== true) {
+												$scope._get = false;
+											}
+											if ($scope.condition !== true) {
+												$scope.condition = false;
+											}
+											if ($scope.shop.user_like_shop.length > 0) {
+												$scope.shop.user_like_shop.forEach(element => {
+													if (element.id === $scope.auth[0].user_id) {
+														$scope.show_like = false;
+													} else {
+														$scope.show_like = true;
+													}
+												});
+											}
+										}
                                     } else {
                                         if ($scope._get !== true) {
                                             $scope._get = false;
@@ -304,8 +392,26 @@ coupon
                         for (var i = 0; i < $scope.auth[0].use_coupon.length; i++) {
                             if ($scope.shop.shop_coupon.length > 0) {
                                 if ($scope.auth[0].use_coupon[i].release_day === $scope.shop.shop_coupon[0].coupon[0].release_day && $scope.auth[0].use_coupon[i].shop_id === $scope.shop.shop_coupon[0].coupon[0].shop_id) {
-                                    $scope.condition = true;
-                                    $scope._get = true;
+                                    if($scope.shop.user_get_coupon.contains($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
+											$scope._get = true;
+											$scope.condition = true;
+										}else{
+											if ($scope._get !== true) {
+												$scope._get = false;
+											}
+											if ($scope.condition !== true) {
+												$scope.condition = false;
+											}
+											if ($scope.shop.user_like_shop.length > 0) {
+												$scope.shop.user_like_shop.forEach(element => {
+													if (element.id === $scope.auth[0].user_id) {
+														$scope.show_like = false;
+													} else {
+														$scope.show_like = true;
+													}
+												});
+											}
+										}
                                 } else {
                                     if ($scope._get !== true) {
                                         $scope._get = false;
@@ -326,8 +432,26 @@ coupon
                                 }
                             } else if ($scope.shop.server_coupon.length > 0) {
                                 if ($scope.auth[0].use_coupon[i].release_day === $scope.shop.server_coupon[0].coupon[0].release_day && $scope.auth[0].use_coupon[i].shop_id === $scope.shop.server_coupon[0].coupon[0].shop_id) {
-                                    $scope.condition = true;
-                                    $scope._get = true;
+                                   if($scope.shop.user_get_coupon.contains($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
+											$scope._get = true;
+											$scope.condition = true;
+										}else{
+											if ($scope._get !== true) {
+												$scope._get = false;
+											}
+											if ($scope.condition !== true) {
+												$scope.condition = false;
+											}
+											if ($scope.shop.user_like_shop.length > 0) {
+												$scope.shop.user_like_shop.forEach(element => {
+													if (element.id === $scope.auth[0].user_id) {
+														$scope.show_like = false;
+													} else {
+														$scope.show_like = true;
+													}
+												});
+											}
+										}
                                 } else {
                                     if ($scope._get !== true) {
                                         $scope._get = false;
