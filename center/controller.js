@@ -431,7 +431,7 @@ coupon
 		socialLoginService.logout();
 		$window.scrollTo(0, 0);
 		localStorage.clear();
-		// $location.path('/dang-nhap');
+		$location.path('/');
 		// FB.XFBML.parse();
 		// $timeout(function () {
 		window.location.reload(true);
