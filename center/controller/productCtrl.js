@@ -173,7 +173,7 @@ coupon
             // check condition
             function check_user_have_coupon() {
 
-                if ($scope.auth !== null) {
+                if ($scope.auth !== null && $scope.auth !== undefined) {
                     // get new auth
                     DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (response) {
                         if (response.data.error_code === 0) {
