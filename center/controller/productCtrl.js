@@ -231,8 +231,8 @@ coupon
                             //check shop coupon
                             if ($scope.shop.shop_coupon.length > 0) {
                                 // if ($scope.auth[0].total_list_coupon[i].release_day === $scope.shop.shop_coupon[0].coupon[0].release_day && $scope.auth[0].total_list_coupon[i].shop_id === $scope.shop.shop_coupon[0].coupon[0].shop_id) {
-									if(i < $scope.auth[0].total_list_coupon.length){
-										if($scope.shop.user_get_coupon.contains1($scope.auth[0].total_list_coupon[i].checkId.toString()) === true) {
+									// if(i < $scope.auth[0].total_list_coupon.length){
+										if($scope.shop.shop_coupon.contains1($scope.auth[0].total_list_coupon[i].checkId.toString()) === true) {
 											$scope._get = true;
 											$scope.condition = true;
 										}else{
@@ -252,7 +252,7 @@ coupon
 												});
 											}
 										}
-									}
+									// }
                                 // } else {
                                     // if ($scope._get !== true) {
                                         // $scope._get = false;
@@ -319,8 +319,8 @@ coupon
                             // check server coupon 
                             else if ($scope.shop.server_coupon.length > 0) {
                                 // if ($scope.auth[0].total_list_coupon[i].release_day === $scope.shop.server_coupon[0].coupon[0].release_day && $scope.auth[0].total_list_coupon[i].shop_id === $scope.shop.server_coupon[0].coupon[0].shop_id) {
-									if(i < $scope.auth[0].total_list_coupon.length){	
-										if($scope.shop.user_get_coupon.contains1($scope.auth[0].total_list_coupon[i].checkId.toString()) === true) {
+									// if(i < $scope.auth[0].total_list_coupon.length){	
+										if($scope.shop.server_coupon.contains1($scope.auth[0].total_list_coupon[i].checkId.toString()) === true) {
 											$scope._get = true;
 											$scope.condition = true;
 										}else{
@@ -340,7 +340,7 @@ coupon
 												});
 											}
 										}
-									}
+									// }
                                 // } else {
                                     // if ($scope._get !== true) {
                                         // $scope._get = false;
@@ -412,7 +412,7 @@ coupon
                         for (var i = 0; i < $scope.auth[0].use_coupon.length; i++) {
                             if ($scope.shop.shop_coupon.length > 0) {
                                 // if ($scope.auth[0].use_coupon[i].release_day === $scope.shop.shop_coupon[0].coupon[0].release_day && $scope.auth[0].use_coupon[i].shop_id === $scope.shop.shop_coupon[0].coupon[0].shop_id) {
-									   if($scope.shop.shop_use_coupon.contains($scope.auth[0].use_coupon[i].checkId.toString()) === true) {
+									   if($scope.shop.shop_coupon.contains($scope.auth[0].use_coupon[i].checkId.toString()) === true) {
 											$scope._get = true;
 											$scope.condition = true;
 										}else{
@@ -452,7 +452,7 @@ coupon
                                 // }
                             } else if ($scope.shop.server_coupon.length > 0) {
                                 // if ($scope.auth[0].use_coupon[i].release_day === $scope.shop.server_coupon[0].coupon[0].release_day && $scope.auth[0].use_coupon[i].shop_id === $scope.shop.server_coupon[0].coupon[0].shop_id) {	
-										if($scope.shop.shop_use_coupon.contains($scope.auth[0].use_coupon[i].checkId.toString()) === true) {
+										if($scope.shop.server_coupon.contains($scope.auth[0].use_coupon[i].checkId.toString()) === true) {
 											$scope._get = true;
 											$scope.condition = true;
 										}else{
