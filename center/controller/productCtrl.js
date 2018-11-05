@@ -208,7 +208,7 @@ coupon
 					Array.prototype.contains = function(obj) {
 						var i = this.length;
 						while (i--) {
-							if (this[i]._id === obj) {
+							if (this[i].coupon._id === obj) {
 								return true;
 							}
 						}
