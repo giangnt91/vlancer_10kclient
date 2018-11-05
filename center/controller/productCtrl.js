@@ -208,7 +208,7 @@ coupon
 					Array.prototype.contains = function(obj) {
 						var i = this.length;
 						while (i--) {
-							if (this[i].coupon._id === obj) {
+							if (this[i].coupon.checkId === obj) {
 								return true;
 							}
 						}
@@ -218,7 +218,7 @@ coupon
 					Array.prototype.contains1 = function(obj) {
 						var i = this.length;
 						while (i--) {
-							if (this[i]._id === obj) {
+							if (this[i].checkId === obj) {
 								return true;
 							}
 						}
