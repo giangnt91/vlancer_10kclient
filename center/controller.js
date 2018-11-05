@@ -302,10 +302,10 @@ coupon
 	
 	$scope.go_shop = function(){
 		$scope.all_shop.forEach(element => {
+			var slug = bo_dau_tv(element.shop_info[0].shop_name).split(' ').join('-');
+			var _id = element._id.slice(-5);
+			
 			if(element.shop_boss === $scope.auth[0].user_id){
-				var slug = bo_dau_tv(element.shop_info[0].shop_name).split(' ').join('-');
-				var _id = element._id.slice(-5);
-				
 				if (element.shop_info[0].kind[0].id === 1) {
 					$location.path('/an-uong/cua-hang/' + slug + '-' + _id);
 					$window.scrollTo(0, 0);
