@@ -215,6 +215,16 @@ coupon
 						return false;
 					}
 					
+					Array.prototype.contains1 = function(obj) {
+						var i = this.length;
+						while (i--) {
+							if (this[i]._id === obj) {
+								return true;
+							}
+						}
+						return false;
+					}
+					
                     if ($scope.auth[0].total_list_coupon.length > 0) {
                         for (var i = 0; i < $scope.auth[0].total_list_coupon.length; i++) {
 
@@ -222,7 +232,7 @@ coupon
                             if ($scope.shop.shop_coupon.length > 0) {
                                 if ($scope.auth[0].total_list_coupon[i].release_day === $scope.shop.shop_coupon[0].coupon[0].release_day && $scope.auth[0].total_list_coupon[i].shop_id === $scope.shop.shop_coupon[0].coupon[0].shop_id) {
 									if(i < $scope.auth[0].total_list_coupon.length){
-										if($scope.shop.user_get_coupon.contains($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
+										if($scope.shop.user_get_coupon.contains1($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
 											$scope._get = true;
 											$scope.condition = true;
 										}else{
@@ -264,7 +274,7 @@ coupon
                                 for (var j = 0; j < $scope.shop.user_get_coupon.length; j++) {
                                     if ($scope.auth[0].total_list_coupon[i].release_day === $scope.shop.user_get_coupon[j].release_day && $scope.auth[0].total_list_coupon[i].shop_id === $scope.shop.user_get_coupon[j].shop_id) {
 										if(i < $scope.auth[0].total_list_coupon.length){
-											if($scope.shop.user_get_coupon.contains($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
+											if($scope.shop.user_get_coupon.contains1($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
 												$scope._get = true;
 												$scope.condition = true;
 											}else{
@@ -309,7 +319,7 @@ coupon
                             else if ($scope.shop.server_coupon.length > 0) {
                                 if ($scope.auth[0].total_list_coupon[i].release_day === $scope.shop.server_coupon[0].coupon[0].release_day && $scope.auth[0].total_list_coupon[i].shop_id === $scope.shop.server_coupon[0].coupon[0].shop_id) {
 									if(i < $scope.auth[0].total_list_coupon.length){	
-										if($scope.shop.user_get_coupon.contains($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
+										if($scope.shop.user_get_coupon.contains1($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
 											$scope._get = true;
 											$scope.condition = true;
 										}else{
@@ -351,7 +361,7 @@ coupon
                                 for (var s = 0; s < $scope.shop.user_get_coupon.length; s++) {
                                     if ($scope.auth[0].total_list_coupon[i].release_day === $scope.shop.user_get_coupon[s].release_day && $scope.auth[0].total_list_coupon[i].shop_id === $scope.shop.user_get_coupon[s].shop_id) {
                                        if(i < $scope.auth[0].total_list_coupon.length){
-										   if($scope.shop.user_get_coupon.contains($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
+										   if($scope.shop.user_get_coupon.contains1($scope.auth[0].total_list_coupon[i]._id.toString()) === true) {
 												$scope._get = true;
 												$scope.condition = true;
 											}else{
