@@ -690,6 +690,7 @@ coupon
                 // create new coupon for user and update list and check issuer
                 if ($scope.shop.shop_coupon !== null && $scope.shop.shop_coupon.length > 0) {
                     first_coupon = {
+						checkId: $scope.shop.shop_coupon[0].coupon[0].checkId,
                         _id: $scope.shop.shop_coupon[0].coupon[0]._id,
                         approved: $scope.shop.shop_coupon[0].coupon[0].approved,
                         rfeedback: $scope.shop.shop_coupon[0].coupon[0].rfeedback,
@@ -718,6 +719,7 @@ coupon
                 } else {
                     if ($scope.shop.server_coupon !== null && $scope.shop.server_coupon.length > 0) {
                         first_coupon = {
+							checkId: $scope.shop.server_coupon[0].coupon[0].checkId,
                             _id: $scope.shop.server_coupon[0].coupon[0]._id,
                             approved: $scope.shop.server_coupon[0].coupon[0].approved,
                             rfeedback: $scope.shop.server_coupon[0].coupon[0].rfeedback,
