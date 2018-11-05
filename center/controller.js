@@ -411,15 +411,15 @@ coupon
 	// end go menu
 	
 	// auth
-	$scope.login = function () {
-		// window.location.href = '#/login';
-		// FB.XFBML.parse();
-		$window.scrollTo(0, 0);
-		$location.path('/');
-		$timeout(function () {
-			window.location.reload(true);
-		}, 1000);
-	}
+	// $scope.login = function () {
+		// // window.location.href = '#/login';
+		// // FB.XFBML.parse();
+		// $window.scrollTo(0, 0);
+		// $location.path('/');
+		// $timeout(function () {
+			// window.location.reload(true);
+		// }, 1000);
+	// }
 	
 	$timeout(function () {
 		$scope.loading = true;
