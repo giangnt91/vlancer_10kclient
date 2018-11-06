@@ -94,7 +94,13 @@ coupon
         // $scope.auth = JSON.parse(localStorage.getItem('auth'));
 		let Auth = localStorage.getItem('auth');
 		if(Auth !== "undefined" && Auth !== null){
-			$scope.auth = JSON.parse(Auth);
+			let auth = JSON.parse(Auth);
+			
+			DataServices.signIn(auth[0].user_id, auth[0].user_img).then(function (response) {
+				var signin_result = response.data;
+				localStorage.setItem('auth', JSON.stringify(signin_result.auth));		
+				$scope.auth = signin_result.auth;
+			})
 		}
         $scope.all_shop = JSON.parse(localStorage.getItem('all_shop'));
 		
