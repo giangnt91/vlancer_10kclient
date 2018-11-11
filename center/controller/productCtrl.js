@@ -718,7 +718,8 @@ coupon
                         shop_cover: $scope.shop.shop_coupon[0].coupon[0].shop_cover,
                         shop_name: $scope.shop.shop_coupon[0].coupon[0].shop_name,
 						loyal: $scope.shop.shop_coupon[0].coupon[0].loyal,
-						point: $scope.shop.shop_coupon[0].coupon[0].point
+						point: $scope.shop.shop_coupon[0].coupon[0].point,
+						reviewedby: $scope.shop.shop_coupon[0].coupon[0].reviewedby
                     };
                     new_list = $scope.shop.shop_coupon[0].coupon.slice(1);
                     the_issuer = first_coupon.shop_id;
@@ -747,7 +748,8 @@ coupon
                             shop_cover: $scope.shop.server_coupon[0].coupon[0].shop_cover,
                             shop_name: $scope.shop.server_coupon[0].coupon[0].shop_name,
 							loyal: $scope.shop.server_coupon[0].coupon[0].loyal,
-							point: $scope.shop.server_coupon[0].coupon[0].point
+							point: $scope.shop.server_coupon[0].coupon[0].point,
+							reviewedby: $scope.shop.server_coupon[0].coupon[0].reviewedby
                         };
                         new_list = $scope.shop.server_coupon[0].coupon.slice(1);
                         the_issuer = 1;
