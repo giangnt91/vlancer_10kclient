@@ -16,8 +16,9 @@ coupon
 	
 	var date = new Date();
 	var today = $filter('date')(new Date(), 'dd/MM/yyyy');
+	
 	//thay đổi điểm tại đây
-	var action_point = 500;
+	var action_point = 2;
 	
 	$scope.xacnhan = function () {
 		DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (response) {

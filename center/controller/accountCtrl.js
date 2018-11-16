@@ -57,7 +57,7 @@ coupon
             var work = data[0].info[0].work;
             var bithday = data[0].info[0].bith_day;
             var full_update;
-            var point = 500;
+            var point = 10;
 
             //check data after update
             if (data !== undefined) {

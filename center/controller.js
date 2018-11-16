@@ -258,7 +258,7 @@ coupon
 				let _alert = localStorage.getItem('alert');
 				if(_alert === null){
 					localStorage.setItem('alert', 123);
-					var $toastContent = $('<center>Bạn được cộng 50 điểm cho lần đầu đăng nhập trong ngày.</center>');
+					var $toastContent = $('<center>Bạn được cộng 1 điểm cho lần đầu đăng nhập trong ngày.</center>');
 					Materialize.toast($toastContent, 4500);
 				}
 			}
