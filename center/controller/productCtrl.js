@@ -766,7 +766,7 @@ coupon
 						let tmp = $scope.auth[0].point_plus - $scope.value_point;
 							DataServices.Minuspoints($scope.auth[0]._id, tmp).then(function(res){})
 						}
-						Thesocket.emit('user_get_coupon', $scope.auth[0].user_id, $scope.shop._id);
+						Thesocket.emit('user_get_coupon', $scope.auth[0].user_id, $scope.shop._id, $scope.shop.shop_info[0].shop_name);
                         check_user_have_coupon();
                         $("#af2").hide();
                         $scope.dialog = ngDialog.openConfirm({
