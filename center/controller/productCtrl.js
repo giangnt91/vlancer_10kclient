@@ -171,7 +171,8 @@ coupon
                         $scope.show_like = true;
                     }
 					
-					// lấy danh sách comment.				
+					// lấy danh sách comment.
+					$scope.all_feed = $filter('orderBy')($scope.all_feed, ['coupon.time_user_use'], true);
 					var pagesShown = 1;
 					var pageSize = 5;
 					$scope.items =  $scope.all_feed;
