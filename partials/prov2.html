@@ -277,22 +277,50 @@
             <blockquote>
                 <h5 style="display: unset;">Đánh Giá Dịch Vụ ({{all_feed.length}})</h5>
 			</blockquote>
-            <div class="col s12">
-                <div class="person-info" style="padding: 0">
-                    <h5 ng-repeat="content in all_feed" ng-if="all_feed.length > 0">
-                        <div class="chip">
-                            <img src="{{content.coupon.userid_get_coupon[0].img}}">
-                            {{content.coupon.userid_get_coupon[0].name}}
+            <!-- <div class="col s12"> -->		
+
+				<div class="feedback-block" ng-repeat="content in all_feed | limitTo: itemsLimit()" ng-if="all_feed.length > 0">
+					<div class="row">
+						<div class="col s12 m6 l2 center">
+							<img src="{{content.coupon.userid_get_coupon[0].img}}" class="feedback-img z-depth-3">
+							<div class="feedback-name"><a href="">{{content.coupon.userid_get_coupon[0].name}}</a></div>
+							<div class="feedback-date">{{content.coupon.time_user_use}}</div>
 						</div>
-                        <div ng-include='"templates/rating.html"'></div>
-                        <span>{{content.coupon.feedback}}</span>
-					</h5>
-                    <h5 ng-if="all_feed.length === 0" style="border: none">Chưa có đánh giá nào về dịch vụ của cửa
-					hàng.</h5>
+						<div class="col s12 m6 l10">
+							<div class="review-block-rate">
+								<div ng-include='"templates/rating.html"'></div>
+								<p class="feedback-already"> <i class="material-icons">security</i> Đã sử dụng coupon của shop <b style="margin-left: 3px; text-transform: uppercase;">{{shop.shop_info[0].shop_name}}</b></p>
+							</div>
+							<div class="feedback">{{content.coupon.feedback}}</div>
+						</div>
+					</div>
 				</div>
+				
+					<center style="margin-bottom: 50px; margin-top:30px">
+						<div>
+							<a class="waves-effect waves-light btn btn-xt pulse" ng-show="hasMoreItemsToShow()" ng-click="showMoreItems()">Xem
+								Thêm</a>
+						</div>
+					</center>
+				
+				
+
+				
+                <!-- <div class="person-info" style="padding: 0"> -->
+                    <!-- <h5 ng-repeat="content in all_feed" ng-if="all_feed.length > 0"> -->
+                        <!-- <div class="chip"> -->
+                            <!-- <img src="{{content.coupon.userid_get_coupon[0].img}}"> -->
+                            <!-- {{content.coupon.userid_get_coupon[0].name}} -->
+						<!-- </div> -->
+                        <!-- <div ng-include='"templates/rating.html"'></div> -->
+                        <!-- <span>{{content.coupon.feedback}}</span> -->
+					<!-- </h5> -->
+                    <!-- <h5 ng-if="all_feed.length === 0" style="border: none">Chưa có đánh giá nào về dịch vụ của cửa -->
+					<!-- hàng.</h5> -->
+				<!-- </div> -->
 			</div>
 			
-		</div>
+		<!-- </div> -->
 	</div>
 </div>
 

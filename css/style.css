@@ -389,7 +389,7 @@ nav {
     left: 0;
     height: 100%;
     cursor: pointer;
-    font-size: 25px;
+    font-size: 40px;
 }
 
 .rating label:last-child {
@@ -432,7 +432,7 @@ nav {
     color: #000;
 }
 
-.rating:not(:hover) label input:checked~.icon, .rating:hover label:hover input~.icon {
+.rating label input:checked~.icon, input~.icon {
     color: #FFCA00;
 }
 
@@ -441,6 +441,46 @@ nav {
     text-shadow: 0 0 5px #FFCA00;
 }
 
+.feedback-img{
+	width: 100px;
+    border-radius: 10px;
+}
+
+.feedback-already{
+	font-size: 12px;
+    padding: 0;
+    color: #22b345;
+    font-weight: 400;
+	display: flex;
+	margin-top: -4px;
+}
+
+.feedback{
+	color: #727272;
+}
+
+.feedback-block{
+	margin-top: 15px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.feedback-already i{
+	line-height: 0.8;
+	padding-right: 7px;
+    font-size: 20px;
+}
+.feedback-name{
+	font-size: 14px;
+    margin: 7px 0 5px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+.feedback-date{
+	font-size: 12px;
+    color: #999;
+    margin: -2px 0 0;
+    text-align: center;
+}
 .shop_name {
     color: #4A5459 !important;
     font-size: 20px !important;

@@ -91,6 +91,7 @@ coupon
     })
 
     .controller('ProdetailCtrl', function ($scope, $filter, $routeParams, $timeout, ngDialog, DataServices, $window, Thesocket, $sce) {
+
         // $scope.auth = JSON.parse(localStorage.getItem('auth'));
 		let Auth = localStorage.getItem('auth');
 		if(Auth !== "undefined" && Auth !== null){
@@ -169,6 +170,21 @@ coupon
                         $scope.condition = true;
                         $scope.show_like = true;
                     }
+					
+					// lấy danh sách comment.				
+					var pagesShown = 1;
+					var pageSize = 5;
+					$scope.items =  $scope.all_feed;
+					$scope.itemsLimit = function() {
+						return pageSize * pagesShown;
+					};
+					$scope.hasMoreItemsToShow = function() {
+						return pagesShown < ($scope.items.length / pageSize);
+					};
+					$scope.showMoreItems = function() {
+						pagesShown = pagesShown + 1;         
+					};
+					// end
 
                     check_user_have_coupon();
 
@@ -296,7 +312,7 @@ coupon
 														// if (element.id === $scope.auth[0].user_id) {
 															// $scope.show_like = false;
 														// } else {
-															// $scope.show_like = true;
+														// $scope.show_like = true;
 														// }
 													// });
 												// }
