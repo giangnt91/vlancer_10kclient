@@ -143,9 +143,9 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 		// }
 		// });
 		
-		$scope.testFCM = function(){
-			Thesocket.emit('user_get_coupon', $scope.auth[0].user_id, '715850078748189', 'Trà Sữa KOI');
-		}
+		// $scope.testFCM = function(){
+			// Thesocket.emit('user_get_coupon', '974804119351311', '715850078748189', 'Trà Sữa KOI');
+		// }
 
 		$rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
 			Imgurl = "https://graph.facebook.com/" + userDetails.uid + "/picture?width=180&height=180";
