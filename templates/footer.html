@@ -1,4 +1,4 @@
-<footer class="page-footer">
+<footer class="page-footer" ng-controller="HomeCtrl">
 	<div class="foothead">
         <div class="container_2 black-text">
             <div class="row">
@@ -8,7 +8,7 @@
 					<a href="" target="_blank"><img width="126px" src="img/apple.png" alt="" class="responsive-img"></a>
 				</div>
 				<div class="col l4 s12">
-					<p>Chia sẻ</p>
+					<p>Chia Sẻ</p>
 					<!-- Chia sẻ:  -->
                     <a socialshare socialshare-provider="facebook" class="facecss" socialshare-text="Truy cập trang để nhận nhiều coupon khuyến mãi có giá trị"
 					socialshare-hashtags="coupon10k, coupon10k.com" socialshare-media="{{shop.shop_info[0].shop_cover}}" socialshare-url="{{_href}}">
@@ -38,15 +38,15 @@
                     <a class="white-text" href="mailto:kiennt.gm@gmail.com">Email: kiennt.gm@gmail.com</a>
 
                 </p>
-                <p>Mã số thuế: 0342342534</p>
+                <p>Mã Số Thuế: 0342342534</p>
 				
-                <p> <a class="white-text" target="_blank" href="http://maps.google.com/?q=Số 1 Thành Thái, Quận 10, Tp.HCM">Địa chỉ: Số 1 Thành Thái, Quận 10, Tp.HCM</a> </p>
+                <p> <a class="white-text" target="_blank" href="http://maps.google.com/?q=Số 1 Thành Thái, Quận 10, Tp.HCM">Địa Chỉ: Số 1 Thành Thái, Quận 10, Tp.HCM</a> </p>
             </div>
             <div class="col l3 s12">
 				<h5>THÔNG TIN</h5>
-				<p> <a class="white-text" href="">Hướng dẫn sử dụng</a> </p>
-                <p> <a class="white-text" href="">Liên hệ</a> </p>
-                <p> <a class="white-text" href="">Chính sách bảo mật</a> </p>
+				<p> <a class="white-text" href="" ng-click="go_tutorial()">Hướng Dẫn Sử Dụng</a> </p>
+                <p> <a class="white-text" href="" ng-click="go_contact()">Liên Hệ</a> </p>
+                <!-- <p> <a class="white-text" href="">Chính sách bảo mật</a> </p> -->
 
             </div>
             <div class="col l4 s12 center">

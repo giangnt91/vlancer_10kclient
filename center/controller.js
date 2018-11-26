@@ -4,114 +4,6 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 		return $sce.trustAsHtml;
 	})
 
-	.controller('LoginCtrl', function ($scope, $location, $rootScope, $window, DataServices, ngDialog, $timeout) {
-
-		$timeout(function () {
-			$scope.load_page = true;
-		}, 1500)
-
-		$window.fbAsyncInit = function () {
-			FB.XFBML.parse();
-			// check load facebook login button
-			var finished_rendering = function () {
-				$scope.load_f = true;
-				$scope.$apply();
-			}
-			FB.Event.subscribe('xfbml.render', finished_rendering);
-		}
-
-		$rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
-			Imgurl = "https://graph.facebook.com/" + userDetails.uid + "/picture?width=180&height=180";
-			// get long live access token
-			FB.api('/oauth/access_token?grant_type=fb_exchange_token&client_id=1946240225621730&client_secret=15ecc2d337244c224a6497f9b91931f1&fb_exchange_token=' + userDetails.token, function (res) {
-				// localStorage.setItem('accessToken', res.access_token);
-				$scope.access_token = res.access_token;
-			});
-
-			$timeout(function () {
-
-				DataServices.signIn(userDetails.uid, Imgurl).then(function (signin_res) {
-					var signin_result = signin_res.data;
-					if (signin_result.error_code === 2) {
-
-						$scope.info = [{
-								fulname : userDetails.name,
-								bith_day : 'Chưa cập nhật',
-								sex : 'Chưa cập nhật',
-								work : 'Chưa cập nhật',
-								mobile : 'Chưa cập nhật',
-								email : 'Chưa cập nhật',
-								full_update : 0
-							}
-						];
-						var _class = {
-							id : 4,
-							name : "Thường"
-						}
-
-						var _role = {
-							id : 0,
-							name : "Thường"
-						}
-
-						var _status = {
-							id : 0,
-							name : "Active"
-						}
-
-						DataServices.signUp(userDetails.uid, Imgurl, JSON.stringify($scope.info), 0, 0, 5, JSON.stringify(_class), false, [], 0, 0, null, 5, [], null, JSON.stringify(_role), $scope.access_token, JSON.stringify(_status)).then(function (signup_res) {
-							var signup_result = signup_res.data;
-							if (signup_result.error_code === 0) {
-								DataServices.signIn(userDetails.uid, Imgurl).then(function (signin_res_2) {
-									var signin_result_2 = signin_res_2.data;
-									if (signin_result_2.error_code === 0) {
-										localStorage.setItem('auth', JSON.stringify(signin_result_2.auth));
-										// window.location.href = '#/';
-										$location.path('/');
-										window.location.reload(true);
-									}
-								});
-							}
-						});
-					}
-					if (signin_result.error_code === 0) {
-						// function update class user
-						DataServices.updateClass(signin_result.auth[0]._id).then(function (response) {});
-						// end function
-
-						// check in loyal
-						DataServices.checkIn(signin_result.auth[0]._id).then(function (re) {
-							if (re.data.error_code === 0) {
-								localStorage.removeItem('auth');
-								localStorage.setItem('auth', JSON.stringify([re.data.auth]));
-							}
-						});
-
-						// update accessToken
-						DataServices.AccessToken(signin_result.auth[0]._id, $scope.access_token).then(function (are) {
-							if (are.data.error_code === 0) {
-								localStorage.removeItem('auth');
-								localStorage.setItem('auth', JSON.stringify([are.data.auth]));
-							}
-						})
-
-						DataServices.Upname(userDetails.uid, userDetails.name).then(function () {});
-						localStorage.setItem('auth', JSON.stringify(signin_result.auth));
-						// window.location.href = '#/';
-						$location.path('/');
-						window.location.reload(true);
-					} else if (signin_result.error_code === 5) {
-						$scope._error_login = true;
-						$timeout(function () {
-							$scope._error_login = false;
-						}, 5000)
-					}
-				});
-
-			}, 500);
-
-		})
-	})
 	.controller('HomeCtrl', function ($rootScope, $scope, $location, Thesocket, $window, $timeout, DataServices, socialLoginService, $filter) {
 		// $scope.auth = JSON.parse(localStorage.getItem('auth'));
 		let Auth = localStorage.getItem('auth');
@@ -142,9 +34,9 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 		// window.location.reload(true);
 		// }
 		// });
-		
+
 		// $scope.testFCM = function(){
-			// Thesocket.emit('user_get_coupon', '974804119351311', '715850078748189', 'Trà Sữa KOI');
+		// Thesocket.emit('user_get_coupon', '974804119351311', '715850078748189', 'Trà Sữa KOI');
 		// }
 
 		$rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
@@ -281,18 +173,22 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 			// window.location.href = '#/action';
 			$location.path('/thuc-hien-tac-vu');
 			$window.scrollTo(0, 0);
-			$timeout(function () {
-				// window.location.reload(true);
-			}, 100);
 		}
 
 		$scope.go_account = function () {
 			// window.location.href = '#/account';
 			$location.path('/quan-ly-tai-khoan');
 			$window.scrollTo(0, 0);
-			$timeout(function () {
-				// window.location.reload(true);
-			}, 100);
+		}
+
+		$scope.go_tutorial = function () {
+			$location.path('/huong-dan-su-dung');
+			$window.scrollTo(0, 0);
+		}
+		
+		$scope.go_contact = function () {
+			$location.path('/lien-he');
+			$window.scrollTo(0, 0);
 		}
 
 		$scope.go_home = function () {
@@ -414,30 +310,16 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 		// end go menu
 
 		// auth
-		// $scope.login = function () {
-		// // window.location.href = '#/login';
-		// // FB.XFBML.parse();
-		// $window.scrollTo(0, 0);
-		// $location.path('/');
-		// $timeout(function () {
-		// window.location.reload(true);
-		// }, 1000);
-		// }
-
 		$timeout(function () {
 			$scope.loading = true;
 		}, 500)
 
 		$scope.logout = function () {
-			// window.location.href = '#/login';
 			socialLoginService.logout();
 			$window.scrollTo(0, 0);
 			localStorage.clear();
 			$location.path('/');
-			// FB.XFBML.parse();
-			// $timeout(function () {
 			window.location.reload(true);
-			// }, 10);
 		}
 		// end auth
 
@@ -544,39 +426,23 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 		});
 
 		$scope.detail_kind_0 = function () {
-			// window.location.href = '#/cua-hang/mua-sam';
 			$location.path('/khach-hang-than-thiet/danh-sach-cua-hang')
 			$window.scrollTo(0, 0);
-			$timeout(function () {
-				// window.location.reload(true);
-			}, 100);
 		}
 
 		$scope.detail_kind_1 = function () {
-			// window.location.href = '#/cua-hang/mua-sam';
 			$location.path('/mua-sam/danh-sach-cua-hang')
 			$window.scrollTo(0, 0);
-			$timeout(function () {
-				// window.location.reload(true);
-			}, 100);
 		}
 
 		$scope.detail_kind_2 = function () {
-			// window.location.href = '#/cua-hang/an-uong';
 			$location.path('/an-uong/danh-sach-cua-hang');
 			$window.scrollTo(0, 0);
-			$timeout(function () {
-				// window.location.reload(true);
-			}, 100);
 		}
 
 		$scope.detail_kind_3 = function () {
-			// window.location.href = '#/cua-hang/du-lich';
 			$location.path('/du-lich/danh-sach-cua-hang');
 			$window.scrollTo(0, 0);
-			$timeout(function () {
-				// window.location.reload(true);
-			}, 100);
 		}
 		// end get all shop
 
