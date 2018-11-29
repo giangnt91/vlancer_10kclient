@@ -129,7 +129,7 @@
                             <a class="waves-effect waves-light btn btn-coupon btn-large modal-trigger" data-target="comfirm" style="display:block">Nhận Coupon</a>
 						</center>
 						<center ng-show="value_point === 0">
-                            <a class="waves-effect waves-light btn btn-coupon btn-large" ng-click="get_coupon()" style="display:block">Nhận Coupon</a>
+                            <a class="waves-effect waves-light btn btn-coupon btn-large" ng-disabled="isDisabled" ng-click="get_coupon()" style="display:block">Nhận Coupon</a>
 						</center>
 					</h5>
                     <h5 ng-if="show_like" style="border-bottom: none">

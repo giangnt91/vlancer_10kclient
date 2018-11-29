@@ -707,7 +707,9 @@ coupon
 
 
             // get coupon 
+			$scope.isDisabled = false;
             $scope.get_coupon = function () {
+				$scope.isDisabled = true;
                 var the_issuer;
                 var first_coupon;
                 var new_list = [];
