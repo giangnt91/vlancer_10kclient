@@ -36,6 +36,16 @@ coupon
         }
         if ($routeParams.danhmuc === 'ma-giam-gia-pho-thong') {
             $scope.show_basic = true;
+			let slugId = $routeParams.cuahang;
+			var allBasic = [];
+			$scope.basic.forEach(element => {
+				let _id = element.Eid.slice(-5);
+				if(slugId.indexOf(_id) !== -1){
+					allBasic.push(element);
+				}
+			})
+			
+			$scope.basic = allBasic;
         }
 
         $scope.go_shop_by_id = function (id) {

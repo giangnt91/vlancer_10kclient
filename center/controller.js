@@ -54,28 +54,28 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 					if (signin_result.error_code === 2) {
 
 						$scope.info = [{
-								fulname : userDetails.name,
-								bith_day : 'Chưa cập nhật',
-								sex : 'Chưa cập nhật',
-								work : 'Chưa cập nhật',
-								mobile : 'Chưa cập nhật',
-								email : 'Chưa cập nhật',
-								full_update : 0
+								fulname: userDetails.name,
+								bith_day: 'Chưa cập nhật',
+								sex: 'Chưa cập nhật',
+								work: 'Chưa cập nhật',
+								mobile: 'Chưa cập nhật',
+								email: 'Chưa cập nhật',
+								full_update: 0
 							}
 						];
 						var _class = {
-							id : 4,
-							name : "Thường"
+							id: 4,
+							name: "Thường"
 						}
 
 						var _role = {
-							id : 0,
-							name : "Thường"
+							id: 0,
+							name: "Thường"
 						}
 
 						var _status = {
-							id : 0,
-							name : "Active"
+							id: 0,
+							name: "Active"
 						}
 
 						DataServices.signUp(userDetails.uid, Imgurl, JSON.stringify($scope.info), 0, 0, 5, JSON.stringify(_class), false, [], 0, 0, null, 5, [], null, JSON.stringify(_role), $scope.access_token, JSON.stringify(_status)).then(function (signup_res) {
@@ -185,7 +185,7 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 			$location.path('/huong-dan-su-dung');
 			$window.scrollTo(0, 0);
 		}
-		
+
 		$scope.go_contact = function () {
 			$location.path('/lien-he');
 			$window.scrollTo(0, 0);
@@ -326,12 +326,6 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 		// get all basic code
 
 		// lấy danh sách emarket
-		DataServices.getEmarket().then(function (response) {
-			if (response.data.error_code === 0) {
-				$scope.emarketResult = response.data.emarket;
-			}
-		})
-
 		DataServices.getBasiccode().then(function (response) {
 			if (response.data.error_code === 0) {
 				var basics = [];
@@ -346,6 +340,35 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 				localStorage.setItem('basic', JSON.stringify($scope.basicResult));
 			}
 		});
+
+		Array.prototype.contains = function (_id) {
+			var i = this.length;
+			while (i--) {
+				if (this[i].Eid === _id) {
+					return true;
+				}
+			}
+			return false;
+		}
+
+		$timeout(function () {
+			DataServices.getEmarket().then(function (response) {
+				if (response.data.error_code === 0) {
+					var resultEmarket = response.data.emarket;
+
+					for(let i = 0; i< resultEmarket.length; i ++){
+						if($scope.basicResult.contains(resultEmarket[i]._id) === false){
+							resultEmarket[i].Total = 0;
+						}else{
+							resultEmarket[i].Total = 1;
+						}
+					}
+
+					
+					$scope.emarketResult = resultEmarket;
+				}
+			})
+		}, 500);
 
 		$scope.get_basic_detail = function (id) {
 			$scope.basicResult.forEach(element => {
@@ -363,6 +386,7 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 			if ($scope.basicResult !== undefined) {
 				$scope.basicResult.forEach(element => {
 					if (id === element.Eid) {
+						insideOf = true;
 						var slug = bo_dau_tv(element.Ename).split(' ').join('-');
 						var _id = element.Eid.slice(-5);
 
