@@ -32,8 +32,12 @@
                 <!-- <h6 style="padding-top: 7px; color:black; margin-left: 30px;"><i class="material-icons">attach_money</i> 300đ</h6> -->
             </li>
 			<li class="tab" ng-show="auth[0].role[0].id === 2 || auth[0].role[0].id === 3">
+					<a href="https://shop.coupon10k.com" target="blank">
+					<i class="material-icons">flag</i>My Admin</a>
+			</li>
+			<li class="tab" ng-show="auth[0].role[0].id === 2 || auth[0].role[0].id === 3">
 					<a href="" ng-click="go_shop()">
-					<i class="material-icons">shop</i> Quản lý shop</a>
+					<i class="material-icons">shop</i>My Shop</a>
 			</li>
             <li>
                 <a href="" ng-click="go_home()">
@@ -70,7 +74,10 @@
     <div class="nav-content">
         <ul id="nav-web" class="tabs center hide-on-med-and-down">
 			<li class="tab" ng-show="auth[0].role[0].id === 2 || auth[0].role[0].id === 3">
-					<a href="" ng-click="go_shop()">Quản lý shop</a>
+					<a href="https://shop.coupon10k.com" target="blank">My Admin</a>
+			</li>
+			<li class="tab" ng-show="auth[0].role[0].id === 2 || auth[0].role[0].id === 3">
+					<a href="" ng-click="go_shop()">My shop</a>
 			</li>
             <li class="tab" ng-click="go_home()">
                 <a href="">Tặng Coupon</a>
