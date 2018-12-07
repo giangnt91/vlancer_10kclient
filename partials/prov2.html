@@ -128,7 +128,7 @@
 					
 				</h5>
                 <div id="af2" ng-if="!condition" style="display:none">
-                    <h5 ng-if="!show_like && auth[0].role[0].id !== 0" style="border-bottom: none">
+                    <h5 ng-if="!show_like && auth[0].role[0].id === 0" style="border-bottom: none">
                         <center ng-show="value_point > 0">
                             <a class="waves-effect waves-light btn btn-coupon btn-large modal-trigger" data-target="comfirm" style="display:block">Nhận Coupon</a>
 						</center>
