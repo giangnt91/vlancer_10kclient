@@ -160,14 +160,14 @@ coupon
                         });
                     }
 
-                    if ($scope.shop.shop_coupon.length > 0) {
+                    if ($scope.shop.shop_coupon.length > 0 && approved === true) {
                         tmp_shop = $scope.shop.shop_coupon[0].coupon.length;
                         $scope.o_coupon = $scope.shop.shop_coupon[0].coupon[0];
                     } else {
                         tmp_shop = 0;
                     }
 
-                    if ($scope.shop.server_coupon.length > 0) {
+                    if ($scope.shop.server_coupon.length > 0 && approved === true) {
                         $scope.o_coupon = "";
                         tmp_server = $scope.shop.server_coupon[0].coupon.length;
                         $scope.o_coupon = $scope.shop.server_coupon[0].coupon[0];
