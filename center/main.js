@@ -8,7 +8,7 @@ angular.module('coupon10k', ['ngRoute', 'CouponController', 'CouponService'])
             .when("/:danhmuc/:cuahang/:slug-:id", { templateUrl: "partials/prov2.html", controller: "ProdetailCtrl" })
             .when("/thuc-hien-tac-vu", { templateUrl: "partials/action.html", controller: "ActionCtrl" })
             .when("/quan-ly-tai-khoan", { templateUrl: "partials/account.html", controller: "AccountCtrl" })
-			.when("/huong-dan-su-dung", { templateUrl: "partials/tutorial.html"})
+			.when("/huong-dan-su-dung", { templateUrl: "partials/tutorial.html", controller: "HomeCtrl"})
 			.when("/lien-he", { templateUrl: "partials/contact.html"})
 
             //Otherwise

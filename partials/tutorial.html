@@ -24,10 +24,11 @@
 			<div class="row">
 			<div class="col s12 m7 l7">
 			   <div class="col s12 m12 l12 pro-img z-depth-1" style="padding: 0px">
-					<video width="100%" height="100%" controls>
-					  <source src="img/2.mp4" type="video/mp4">
-					  Your browser does not support HTML5 video.
-					</video>
+					<!-- <video width="100%" height="100%" controls> -->
+					  <!-- <source src="img/2.mp4" type="video/mp4"> -->
+					  <!-- Your browser does not support HTML5 video. -->
+					<!-- </video> -->
+					<iframe width="100%" height="100%" src="https://www.youtube.com/embed/zUQjcXksndA?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allow="autoplay" allowfullscreen></iframe>
 			   </div>
 		   </div>
 		   
@@ -75,10 +76,11 @@
 			<div class="row">
 			<div class="col s12 m7 l7">
 			   <div class="col s12 m12 l12 pro-img z-depth-1" style="padding: 0px">
-					<video width="100%" height="100%" controls>
-					  <source src="img/2.mp4" type="video/mp4">
-					  Your browser does not support HTML5 video.
-					</video>
+					<!-- <video width="100%" height="100%" controls> -->
+					  <!-- <source src="img/2.mp4" type="video/mp4"> -->
+					  <!-- Your browser does not support HTML5 video. -->
+					<!-- </video> -->
+					<iframe width="100%" height="100%" src="https://www.youtube.com/embed/ggNQtnMzR74?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allow="autoplay" allowfullscreen></iframe>
 			   </div>
 		   </div>
 		   
@@ -126,10 +128,11 @@
 			<div class="row">
 			<div class="col s12 m7 l7">
 			   <div class="col s12 m12 l12 pro-img z-depth-1" style="padding: 0px">
-					<video width="100%" height="100%" controls>
-					  <source src="img/2.mp4" type="video/mp4">
-					  Your browser does not support HTML5 video.
-					</video>
+					<!-- <video width="100%" height="100%" controls> -->
+					  <!-- <source src="img/2.mp4" type="video/mp4"> -->
+					  <!-- Your browser does not support HTML5 video. -->
+					<!-- </video> -->
+					<iframe width="100%" height="100%" src="https://www.youtube.com/embed/T_EeokUyWuo?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allow="autoplay" allowfullscreen></iframe>
 			   </div>
 		   </div>
 		   
@@ -167,7 +170,7 @@
 			</div>
 		  </div>
 
-		  <div id="approved" class="section scrollspy">
+		  <div id="approved" class="section scrollspy" ng-if="auth && auth[0].role[0].id !== 0">
 			<div class="col s12">
 				<blockquote>
 				  <h5>Cửa Hàng Duyệt Coupon</h5>
@@ -177,10 +180,11 @@
 			<div class="row">
 			<div class="col s12 m7 l7">
 			   <div class="col s12 m12 l12 pro-img z-depth-1" style="padding: 0px">
-					<video width="100%" height="100%" controls>
-					  <source src="img/1.mp4" type="video/mp4">
-					  Your browser does not support HTML5 video.
-					</video>
+					<!-- <video width="100%" height="100%" controls> -->
+					  <!-- <source src="img/1.mp4" type="video/mp4"> -->
+					  <!-- Your browser does not support HTML5 video. -->
+					<!-- </video> -->
+					<iframe width="100%" height="100%" src="https://www.youtube.com/embed/MCt8Ts6ooLw?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allow="autoplay" allowfullscreen></iframe>
 			   </div>
 		   </div>
 		   
@@ -213,13 +217,63 @@
 				</div>
 			</div>
 		  </div>
+		  
+		  <div id="shop" class="section scrollspy" ng-if="auth && auth[0].role[0].id !== 0">
+			<div class="col s12">
+				<blockquote>
+				  <h5>Cửa Hàng Tạo Coupon</h5>
+				</blockquote>
+			</div>
+			
+			<div class="row">
+			<div class="col s12 m7 l7">
+			   <div class="col s12 m12 l12 pro-img z-depth-1" style="padding: 0px">
+					<!-- <video width="100%" height="100%" controls> -->
+					  <!-- <source src="img/1.mp4" type="video/mp4"> -->
+					  <!-- Your browser does not support HTML5 video. -->
+					<!-- </video> -->
+					<iframe width="100%" height="100%" src="https://www.youtube.com/embed/9upayMSqJqg?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+			   </div>
+		   </div>
+		   
+			   <div class="col s12 m5 l5 pro-info">
+					<div class="person-info" style="padding-bottom: 0">
+						<h5 class="grey-text">
+						   <i class="material-icons">chevron_right</i>
+							<span>Đăng nhập web bằng tài khoản facebook</span>
+						</h5>
+						<h5 class="grey-text">
+							<i class="material-icons">chevron_right</i>
+							<span>Chọn quản lý Coupon từ menu trái để vào trang quản lý</span>
+						</h5>
+						<h5 class="grey-text">
+							<i class="material-icons">chevron_right</i>
+							<span>Chọn create vào nhập đầy đủ thông tin để tạo Coupon</span>
+						</h5>
+						<h5 class="green-text">
+							<i class="material-icons">device_hub</i>
+							<span>Những trường hợp khi Shop tạo Coupon và chờ duyệt bởi Administrator</span>
+							<div>
+								<span class="grey-text" style="padding-left: 27px">- Coupon được duyệt và sẵn sàng cho khách hàng nhận.</span>
+							</div>
+							
+							<div>
+								<span class="grey-text" style="padding-left: 27px">- Coupon không được duyệt vì lý do nào đó Administrator sẽ liên hệ với shop để trao đổi chi tiết.</span>
+							</div>		
+						</h5>
+					</div>
+				</div>
+			</div>
+		  </div>
+		  
 		</div>
 		<div class="col hide-on-small-only m3 l2">
 		  <ul class="section table-of-contents">
 			<li><a href="#action">Thực Hiện Tác Vụ</a></li>
 			<li><a href="#getcoupon">Hướng Dẫn Lấy Coupon</a></li>
 			<li><a href="#usecoupon">Hướng Dẫn Sử Dụng</a></li>
-			<li><a href="#approved">Hướng Dẫn Duyệt Coupon</a></li>
+			<li><a href="#approved"  ng-if="auth && auth[0].role[0].id !== 0">Hướng Dẫn Duyệt Coupon</a></li>
+			<li><a href="#shop"  ng-if="auth && auth[0].role[0].id !== 0">Hướng Dẫn Tạo Coupon</a></li>
 		  </ul>
 		</div>
 	</div>
