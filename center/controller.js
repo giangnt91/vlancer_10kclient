@@ -47,7 +47,7 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 			}
 			
 			// get long live access token
-			if(userDetails.product === 'facebook')
+			if(userDetails.product === 'facebook'){
 				FB.api('/oauth/access_token?grant_type=fb_exchange_token&client_id=1946240225621730&client_secret=15ecc2d337244c224a6497f9b91931f1&fb_exchange_token=' + userDetails.token, function (res) {
 					// localStorage.setItem('accessToken', res.access_token);
 					$scope.access_token = res.access_token;
