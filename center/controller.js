@@ -40,12 +40,21 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 		// }
 
 		$rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
-			Imgurl = "https://graph.facebook.com/" + userDetails.uid + "/picture?width=180&height=180";
+			if(userDetails.provider === 'google'){
+				Imgurl = userDetails.imageUrl;
+			}else{
+				Imgurl = "https://graph.facebook.com/" + userDetails.uid + "/picture?width=180&height=180";
+			}
+			
 			// get long live access token
-			FB.api('/oauth/access_token?grant_type=fb_exchange_token&client_id=1946240225621730&client_secret=15ecc2d337244c224a6497f9b91931f1&fb_exchange_token=' + userDetails.token, function (res) {
-				// localStorage.setItem('accessToken', res.access_token);
-				$scope.access_token = res.access_token;
-			});
+			if(userDetails.product === 'facebook')
+				FB.api('/oauth/access_token?grant_type=fb_exchange_token&client_id=1946240225621730&client_secret=15ecc2d337244c224a6497f9b91931f1&fb_exchange_token=' + userDetails.token, function (res) {
+					// localStorage.setItem('accessToken', res.access_token);
+					$scope.access_token = res.access_token;
+				});
+			}else{
+				$scope.access_token = null;			
+			}
 
 			$timeout(function () {
 
@@ -59,8 +68,9 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 								sex: 'Chưa cập nhật',
 								work: 'Chưa cập nhật',
 								mobile: 'Chưa cập nhật',
-								email: 'Chưa cập nhật',
-								full_update: 0
+								email: userDetails.email,
+								full_update: 0,
+								provider: userDetails.provider
 							}
 						];
 						var _class = {

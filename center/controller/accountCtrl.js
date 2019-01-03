@@ -34,8 +34,6 @@ coupon
         // $scope.auth = JSON.parse(localStorage.getItem('auth'));
         $scope.update = function (data) {
 		
-		console.log($scope.selectSex);
-		
             $scope.dialog = ngDialog.open({
                 template:
                     '<h4 class="flow-text center">Đang cập nhật dữ liệu</h4>  <div class="progress"> <div class="indeterminate"></div> </div>',

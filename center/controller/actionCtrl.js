@@ -3,6 +3,7 @@ coupon
 	let Auth = localStorage.getItem('auth');
 	if (Auth !== "undefined" && Auth !== null) {
 		Auth = JSON.parse(Auth);
+		
 		DataServices.signIn(Auth[0].user_id, Auth[0].user_img).then(function (response) {
 			var signin_result = response.data;
 			if (signin_result.error_code === 5 || signin_result.error_code === 2) {
@@ -12,6 +13,10 @@ coupon
 				$scope.auth = signin_result.auth;
 			}
 		});
+		
+		DataServices.getAuthToken().then(function(response){
+			$scope.authToken = response.data.Token;
+		})
 	}
 
 	var date = new Date();
@@ -66,7 +71,7 @@ coupon
 
 						$timeout(function () {
 							//check comment after comment
-							FB.api('/' + $scope.data.action_shop_id + '_' + $scope.data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.auth[0].access_token, (response) => {
+							FB.api('/' + $scope.data.action_shop_id + '_' + $scope.data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.authToken, (response) => {
 								var comment = response.summary;
 								if (comment !== undefined) {
 									$scope.pre_comment = comment.total_count;
@@ -86,7 +91,7 @@ coupon
 									var last_data = $scope.data;
 									$scope.data = $scope.next_arr[$scope.index];
 									//check comment after comment
-									FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.auth[0].access_token, (response) => {
+									FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.authToken, (response) => {
 										var comment = response.summary;
 										// if (comment.total_count) {
 										$scope.pre_comment = comment.total_count;
@@ -107,7 +112,7 @@ coupon
 
 										function check_face() {
 											//CHECK LIKE
-											FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/reactions?summary=true&access_token=' + $scope.auth[0].access_token, (response) => {
+											FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/reactions?summary=true&access_token=' + $scope.authToken, (response) => {
 												reaction_kind = {
 													id : 1,
 													name : 'like'
@@ -149,7 +154,7 @@ coupon
 
 
 											//CHECK COMMENT
-											FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.auth[0].access_token, (response) => {
+											FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.authToken, (response) => {
 												var comment = response.summary;
 												reaction_kind = {
 													id : 2,
@@ -197,7 +202,7 @@ coupon
 										$scope.data = $scope.next_arr[$scope.index];
 
 										//check comment after comment
-										FB.api('/' + $scope.pre_data.action_shop_id + '_' + $scope.pre_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.auth[0].access_token, (response) => {
+										FB.api('/' + $scope.pre_data.action_shop_id + '_' + $scope.pre_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.authToken, (response) => {
 											var comment = response.summary;
 											// if (comment.total_count) {
 											$scope.pre_comment = comment.total_count;
@@ -216,7 +221,7 @@ coupon
 
 										function check_face() {
 											//CHECK LIKE
-											FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/reactions?summary=true&access_token=' + $scope.auth[0].access_token, (response) => {
+											FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/reactions?summary=true&access_token=' + $scope.authToken, (response) => {
 												reaction_kind = {
 													id : 1,
 													name : 'like'
@@ -259,7 +264,7 @@ coupon
 
 											//CHECK COMMENT
 
-											FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.auth[0].access_token, (response) => {
+											FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.authToken, (response) => {
 												var comment = response.summary;
 												reaction_kind = {
 													id : 2,
@@ -308,7 +313,7 @@ coupon
 										$scope.pre_data = $scope.list_action_per_day[$scope.index];
 
 										//check comment after comment
-										FB.api('/' + $scope.pre_data.action_shop_id + '_' + $scope.pre_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.auth[0].access_token, (response) => {
+										FB.api('/' + $scope.pre_data.action_shop_id + '_' + $scope.pre_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.authToken, (response) => {
 											var comment = response.summary;
 											$scope.pre_comment = comment.total_count;
 
@@ -324,7 +329,7 @@ coupon
 
 								$scope.data = $scope.next_arr[$scope.index];
 								//check comment after comment
-								FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.auth[0].access_token, (response) => {
+								FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.authToken, (response) => {
 									var comment = response.summary;
 									$scope.pre_comment = comment.total_count;
 								});
@@ -354,7 +359,7 @@ coupon
 
 							function check_face() {
 								//CHECK LIKE
-								FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/reactions?summary=true&access_token=' + $scope.auth[0].access_token, (response) => {
+								FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/reactions?summary=true&access_token=' + $scope.authToken, (response) => {
 									reaction_kind = {
 										id : 1,
 										name : 'like'
@@ -397,7 +402,7 @@ coupon
 
 								//CHECK COMMENT
 
-								FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.auth[0].access_token, (response) => {
+								FB.api('/' + last_data.action_shop_id + '_' + last_data.action_id + '/comments?summary=true&order=reverse_chronological&access_token=' + $scope.authToken, (response) => {
 									var comment = response.summary;
 									reaction_kind = {
 										id : 2,

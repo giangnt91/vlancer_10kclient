@@ -14,10 +14,7 @@
                 </a>
             </li>
             <li ng-if="!auth">
-                <a class="waves-effect waves-light btn btn-login" fb-login style="margin-bottom:0"> <i class="fa fa-facebook-official left" style="line-height: 37px;"></i> Đăng Nhập</a>
-				<!-- <button class="btn btn-coupon" fb-login type="button" style="line-height: 0.428571;"> -->
-						<!-- <i class="fa fa-facebook" aria-hidden="true" style="font-size: 2rem;"></i> -->
-						<!-- Login With Facebook</button> -->
+				<a class="waves-effect waves-light btn btn-coupon modal-trigger" data-target="modal1">Đăng Nhập</a>
             </li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
@@ -119,6 +116,41 @@
         </div>
     </div>
 </div>
+
+ <!-- Modal Structure -->
+  <div id="modal1" class="modal modal_2">
+		<div class="modal-content" style="padding: 15px;">
+		  <blockquote>
+			 <h5>Đăng Nhập</h5>
+		 </blockquote>
+			 <div class="row">
+				  <div class="col s8 offset-s2" style="margin-top: 30px">
+					
+					<div id="customBtn" class="customGPlusSignIn">
+					  <span class="icon"></span>
+					   <a class="buttonText" g-login type="button">
+					   Sign in with Google
+					   </a>
+					</div>
+				  
+				  </div>
+				  
+				  <div class="col s8 offset-s2">
+					
+					<div id="customBtn2" class="customGPlusSignIn">
+					  <i class="fa fa-facebook icon2 fa-2x" aria-hidden="true"></i>
+					   <a class="buttonText2" fb-login type="button">
+					   Login with Facebook
+					   </a>
+					</div>
+
+				  </div>
+			 </div>
+		</div>
+		<div class="modal-footer">
+		  <a href="" class="modal-close waves-effect waves-green btn-flat">Đóng</a>
+		</div>
+  </div>
 
 <script>
     $(document).ready(function () {

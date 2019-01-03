@@ -111,6 +111,10 @@ coupon
 			localStorage.setItem('auth', JSON.stringify(signin_result.auth));
 			$scope.auth = signin_result.auth;
 		})
+		
+		DataServices.getAuthToken().then(function(response){
+			$scope.authToken = response.data.Token;
+		})
 	}
 	$scope.all_shop = JSON.parse(localStorage.getItem('all_shop'));
 
@@ -665,7 +669,7 @@ coupon
 			}
 			FB.Event.subscribe('xfbml.render', finished_rendering);
 			FB.XFBML.parse();
-			FB.api('/' + $scope.shop.shopId + '?access_token=' + $scope.auth[0].access_token, {
+			FB.api('/' + $scope.shop.shopId + '?access_token=' + $scope.authToken, {
 				fields: 'fan_count'
 			}, (response) => {
 				$scope.pre_fan_count = response.fan_count;
@@ -682,7 +686,7 @@ coupon
 				});
 
 			$timeout(function () {
-				FB.api('/' + $scope.shop.shopId + '?access_token=' + $scope.auth[0].access_token, {
+				FB.api('/' + $scope.shop.shopId + '?access_token=' + $scope.authToken, {
 					fields: 'fan_count'
 				}, (response) => {
 					if ($scope.pre_fan_count < response.fan_count) {

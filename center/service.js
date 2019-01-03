@@ -8,6 +8,10 @@ angular.module('CouponService', [])
 	var header = { header: { 'Conntent-Type': 'application/x-www-form-urlencoded' } };
 	
 	return {
+		getAuthToken: function(){
+			url = api_gateway_url + '/authtoken';
+			return $http.post(url, parameter, header);
+		},
 		checkIn: function (_id) {
 			parameter = JSON.stringify({
 				_id: _id
