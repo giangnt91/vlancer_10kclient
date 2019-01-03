@@ -61,7 +61,21 @@
                     <i class="material-icons">add_location</i> Liên hệ</a>
             </li>
             <li ng-if="!auth">
-                <a class="waves-effect waves-light btn" style="background:#0084FF; box-shadow: none" fb-login>Login</a>
+                <!-- <a class="waves-effect waves-light btn" style="background:#0084FF; box-shadow: none" fb-login>Login</a> -->
+				<div id="customBtn" style="width: 90%; margin: 10px 15px;">
+					  <span class="icon" style="height: 48px"></span>
+					   <a class="buttonText" g-login type="button">
+					   Sign in with Google
+					   </a>
+				</div>
+				
+				<div id="customBtn2" style="width: 90%; margin: 10px 15px;">
+					  <i class="fa fa-facebook icon2 fa-2x" aria-hidden="true"></i>
+					   <a class="buttonText2" fb-login type="button">
+					   Login with Facebook
+					   </a>
+				</div>
+				
             </li>
             <li ng-if="auth">
                 <a class="waves-effect waves-light btn" style="background:#EC407A; box-shadow: none" ng-click="logout()">Logout</a>
