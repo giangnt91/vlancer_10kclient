@@ -6,6 +6,7 @@ coupon
 	$scope.kind_3 = JSON.parse(localStorage.getItem('kind_3'));
 	$scope.basic = JSON.parse(localStorage.getItem('basic'));
 	$scope.all_shop = JSON.parse(localStorage.getItem('all_shop'));
+	let Auth = JSON.parse(localStorage.getItem('auth'));
 
 	function bo_dau_tv(key) {
 		var str = key;
@@ -69,8 +70,13 @@ coupon
 			}
 		});
 	}
-
+	
 	$scope.open_getcode = function (data) {
+		if (Auth !== "undefined" && Auth !== null) {
+			data.Url = data.Url.replace("USERID", Auth[0].user_id);
+		}else{
+			data.Url = data.Url.replace("USERID", 'NOAUTH');
+		}
 		$scope.detail = data;
 		$('#mymodal').modal('open');
 	}
