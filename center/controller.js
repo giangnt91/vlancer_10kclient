@@ -1,5 +1,5 @@
 var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSanitize', 'CouponService', 'ngDialog', 'socialLogin', '720kb.socialshare', 'btford.socket-io'])
-	coupon
+coupon
 	.filter('unsafe', function ($sce) {
 		return $sce.trustAsHtml;
 	})
@@ -40,20 +40,20 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 		// }
 
 		$rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
-			if(userDetails.provider === 'google'){
+			if (userDetails.provider === 'google') {
 				Imgurl = userDetails.imageUrl;
-			}else{
+			} else {
 				Imgurl = "https://graph.facebook.com/" + userDetails.uid + "/picture?width=180&height=180";
 			}
-			
+
 			// get long live access token
-			if(userDetails.product === 'facebook'){
+			if (userDetails.product === 'facebook') {
 				FB.api('/oauth/access_token?grant_type=fb_exchange_token&client_id=1946240225621730&client_secret=15ecc2d337244c224a6497f9b91931f1&fb_exchange_token=' + userDetails.token, function (res) {
 					// localStorage.setItem('accessToken', res.access_token);
 					$scope.access_token = res.access_token;
 				});
-			}else{
-				$scope.access_token = null;			
+			} else {
+				$scope.access_token = null;
 			}
 
 			$timeout(function () {
@@ -63,15 +63,15 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 					if (signin_result.error_code === 2) {
 
 						$scope.info = [{
-								fulname: userDetails.name,
-								bith_day: 'Chưa cập nhật',
-								sex: 'Chưa cập nhật',
-								work: 'Chưa cập nhật',
-								mobile: 'Chưa cập nhật',
-								email: userDetails.email,
-								full_update: 0,
-								provider: userDetails.provider
-							}
+							fulname: userDetails.name,
+							bith_day: 'Chưa cập nhật',
+							sex: 'Chưa cập nhật',
+							work: 'Chưa cập nhật',
+							mobile: 'Chưa cập nhật',
+							email: userDetails.email,
+							full_update: 0,
+							provider: userDetails.provider
+						}
 						];
 						var _class = {
 							id: 4,
@@ -105,7 +105,7 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 					}
 					if (signin_result.error_code === 0) {
 						// function update class user
-						DataServices.updateClass(signin_result.auth[0]._id).then(function (response) {});
+						DataServices.updateClass(signin_result.auth[0]._id).then(function (response) { });
 						// end function
 
 						// check in loyal
@@ -124,7 +124,7 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 							}
 						})
 
-						DataServices.Upname(userDetails.uid, userDetails.name).then(function () {});
+						DataServices.Upname(userDetails.uid, userDetails.name).then(function () { });
 						localStorage.setItem('auth', JSON.stringify(signin_result.auth));
 						// window.location.href = '#/';
 						$location.path('/');
@@ -366,15 +366,14 @@ var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSani
 				if (response.data.error_code === 0) {
 					var resultEmarket = response.data.emarket;
 
-					for(let i = 0; i< resultEmarket.length; i ++){
-						if($scope.basicResult.contains(resultEmarket[i]._id) === false){
+					for (let i = 0; i < resultEmarket.length; i++) {
+						if ($scope.basicResult.contains(resultEmarket[i]._id) === false) {
 							resultEmarket[i].Total = 0;
-						}else{
+						} else {
 							resultEmarket[i].Total = 1;
 						}
 					}
 
-					
 					$scope.emarketResult = resultEmarket;
 				}
 			})
