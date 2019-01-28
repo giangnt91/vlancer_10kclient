@@ -95,7 +95,7 @@ body {
 
 #customBtn {
       display: inline-block;
-      background: #4285F4;
+      background: #E94341;
       color: white !important;
       width: 100%;
 	  border-radius: 3px;
@@ -120,7 +120,7 @@ body {
 		display: inline-block;
 		vertical-align: middle;
 		width: 50px;
-		height: 42px;
+		height: 38px;
     }
     a.buttonText {
       display: inline-block;
@@ -175,8 +175,8 @@ body {
     }
 
 .modal_2 {
-    width: 40% !important;
-    height: 50% !important;
+    width: 35% !important;
+    height: 45% !important;
 }
 
 /* .modal_3{
