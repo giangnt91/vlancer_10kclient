@@ -15,8 +15,18 @@ coupon
 
 		$window.fbAsyncInit = function () {
 
-			// In your onload method:
-			FB.Event.subscribe('auth.login', function (fbres) {
+			// login with facebook
+			FB.getLoginStatus(function (fbres) {
+				if (fbres.status === 'connected') {
+					faceLogin(fbres);
+				}else{
+					FB.Event.subscribe('auth.login', function (fbres) {
+						faceLogin(fbres);
+					})
+				}
+			})
+
+			faceLogin = (fbres) => {
 				if (!$scope.auth) {
 					FB.api('/me', (rs) => {
 						$scope.fbName = rs.name;
@@ -118,7 +128,7 @@ coupon
 
 					}, 500);
 				}
-			});
+			}
 
 		}
 
@@ -430,8 +440,10 @@ coupon
 			});
 			$window.scrollTo(0, 0);
 			localStorage.clear();
-			$location.path('/');
-			window.location.reload(true);
+			$timeout(()=>{
+				$location.path('/');
+				window.location.reload(true);
+			}, 500)
 		}
 		// end auth
 
