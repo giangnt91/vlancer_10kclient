@@ -14,6 +14,7 @@ coupon
 		localStorage.removeItem('alert2');
 
 		$window.fbAsyncInit = function () {
+			FB.XFBML.parse();
 
 			// login with facebook
 			FB.getLoginStatus(function (fbres) {
