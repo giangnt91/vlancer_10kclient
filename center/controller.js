@@ -15,109 +15,111 @@ coupon
 
 		$window.fbAsyncInit = function () {
 
-			// login with facebook
-			FB.login(function(fbres){
-				FB.api('/me', (rs) =>{
-					$scope.fbName = rs.name;
-				})
-				// get long access token
-				FB.api('/oauth/access_token?grant_type=fb_exchange_token&client_id=1946240225621730&client_secret=15ecc2d337244c224a6497f9b91931f1&fb_exchange_token=' + fbres.accessToken, function (res) {
-					$scope.access_token = res.access_token;
-				});
-
-				// get image avatar
-				Imgurl = "https://graph.facebook.com/" + fbres.userID + "/picture?width=180&height=180";
-				
-				$timeout(function () {
-
-					DataServices.signIn(fbres.userID, Imgurl).then(function (signin_res) {
-						var signin_result = signin_res.data;
-						if (signin_result.error_code === 2) {
-	
-							$scope.info = [{
-								fulname: $scope.fbName,
-								bith_day: 'Chưa cập nhật',
-								sex: 'Chưa cập nhật',
-								work: 'Chưa cập nhật',
-								mobile: 'Chưa cập nhật',
-								email: 'Chưa cập nhật',
-								full_update: 0,
-								provider: 'facebook'
-							}
-							];
-							var _class = {
-								id: 4,
-								name: "Thường"
-							}
-	
-							var _role = {
-								id: 0,
-								name: "Thường"
-							}
-	
-							var _status = {
-								id: 0,
-								name: "Active"
-							}
-	
-							DataServices.signUp(fbres.userID, Imgurl, JSON.stringify($scope.info), 0, 0, 5, JSON.stringify(_class), false, [], 0, 0, null, 5, [], null, JSON.stringify(_role), $scope.access_token, JSON.stringify(_status)).then(function (signup_res) {
-								var signup_result = signup_res.data;
-								if (signup_result.error_code === 0) {
-									DataServices.signIn(fbres.userID, Imgurl).then(function (signin_res_2) {
-										var signin_result_2 = signin_res_2.data;
-										if (signin_result_2.error_code === 0) {
-											localStorage.setItem('auth', JSON.stringify(signin_result_2.auth));
-											// window.location.href = '#/';
-											$location.path('/');
-											window.location.reload(true);
-										}
-									});
-								}
-							});
-						}
-						if (signin_result.error_code === 0) {
-							// function update class user
-							DataServices.updateClass(signin_result.auth[0]._id).then(function (response) { });
-							// end function
-	
-							// check in loyal
-							DataServices.checkIn(signin_result.auth[0]._id).then(function (re) {
-								if (re.data.error_code === 0) {
-									localStorage.removeItem('auth');
-									localStorage.setItem('auth', JSON.stringify([re.data.auth]));
-								}
-							});
-	
-							// update accessToken
-							DataServices.AccessToken(signin_result.auth[0]._id, $scope.access_token).then(function (are) {
-								if (are.data.error_code === 0) {
-									localStorage.removeItem('auth');
-									localStorage.setItem('auth', JSON.stringify([are.data.auth]));
-								}
-							})
-	
-							DataServices.Upname(fbres.userID, $scope.fbName).then(function () { });
-							localStorage.setItem('auth', JSON.stringify(signin_result.auth));
-							// window.location.href = '#/';
-							$location.path('/');
-							window.location.reload(true);
-						} else if (signin_result.error_code === 5) {
-							let _alert = localStorage.getItem('alert2');
-							if (_alert === null) {
-								localStorage.setItem('alert2', 123);
-								var $toastContent = $('<center>Tài khoản của bạn hiện đang bị khóa liên hệ Admin để được hỗ trợ!</center>');
-								Materialize.toast($toastContent, 5000);
-							}
-							// $scope._error_login = true;
-							// $timeout(function () {
-							// $scope._error_login = false;
-							// }, 5000)
-						}
+			// In your onload method:
+			FB.Event.subscribe('auth.login', function (fbres) {
+				if (!$scope.auth) {
+					FB.api('/me', (rs) => {
+						$scope.fbName = rs.name;
+					})
+					// get long access token
+					FB.api('/oauth/access_token?grant_type=fb_exchange_token&client_id=1946240225621730&client_secret=15ecc2d337244c224a6497f9b91931f1&fb_exchange_token=' + fbres.accessToken, function (res) {
+						$scope.access_token = res.access_token;
 					});
-	
-				}, 500);
 
+					// get image avatar
+					Imgurl = "https://graph.facebook.com/" + fbres.authResponse.userID + "/picture?width=180&height=180";
+
+					$timeout(function () {
+
+						DataServices.signIn(fbres.authResponse.userID, Imgurl).then(function (signin_res) {
+							var signin_result = signin_res.data;
+							if (signin_result.error_code === 2) {
+
+								$scope.info = [{
+									fulname: $scope.fbName,
+									bith_day: 'Chưa cập nhật',
+									sex: 'Chưa cập nhật',
+									work: 'Chưa cập nhật',
+									mobile: 'Chưa cập nhật',
+									email: 'Chưa cập nhật',
+									full_update: 0,
+									provider: 'facebook'
+								}
+								];
+								var _class = {
+									id: 4,
+									name: "Thường"
+								}
+
+								var _role = {
+									id: 0,
+									name: "Thường"
+								}
+
+								var _status = {
+									id: 0,
+									name: "Active"
+								}
+
+								DataServices.signUp(fbres.userID, Imgurl, JSON.stringify($scope.info), 0, 0, 5, JSON.stringify(_class), false, [], 0, 0, null, 5, [], null, JSON.stringify(_role), $scope.access_token, JSON.stringify(_status)).then(function (signup_res) {
+									var signup_result = signup_res.data;
+									if (signup_result.error_code === 0) {
+										DataServices.signIn(fbres.userID, Imgurl).then(function (signin_res_2) {
+											var signin_result_2 = signin_res_2.data;
+											if (signin_result_2.error_code === 0) {
+												localStorage.setItem('auth', JSON.stringify(signin_result_2.auth));
+												// window.location.href = '#/';
+												$location.path('/');
+												window.location.reload(true);
+											}
+										});
+									}
+								});
+							}
+							if (signin_result.error_code === 0) {
+								// function update class user
+								DataServices.updateClass(signin_result.auth[0]._id).then(function (response) { });
+								// end function
+
+								// check in loyal
+								DataServices.checkIn(signin_result.auth[0]._id).then(function (re) {
+									if (re.data.error_code === 0) {
+										localStorage.removeItem('auth');
+										localStorage.setItem('auth', JSON.stringify([re.data.auth]));
+									}
+								});
+
+								// update accessToken
+								DataServices.AccessToken(signin_result.auth[0]._id, $scope.access_token).then(function (are) {
+									if (are.data.error_code === 0) {
+										localStorage.removeItem('auth');
+										localStorage.setItem('auth', JSON.stringify([are.data.auth]));
+									}
+								})
+
+								DataServices.Upname(fbres.authResponse.userID, $scope.fbName).then(function () { });
+								localStorage.setItem('auth', JSON.stringify(signin_result.auth));
+								// window.location.href = '#/';
+								$location.path('/');
+								window.location.reload(true);
+							} else if (signin_result.error_code === 5) {
+								let _alert = localStorage.getItem('alert2');
+								if (_alert === null) {
+									localStorage.setItem('alert2', 123);
+									var $toastContent = $('<center>Tài khoản của bạn hiện đang bị khóa liên hệ Admin để được hỗ trợ!</center>');
+									Materialize.toast($toastContent, 5000);
+								}
+								// $scope._error_login = true;
+								// $timeout(function () {
+								// $scope._error_login = false;
+								// }, 5000)
+							}
+						});
+
+					}, 500);
+				}
 			});
+
 		}
 
 		// DataServices.signIn('167757230741160', 'https://graph.facebook.com/167757230741160/picture?width=180&height=180').then(function (signin_res) {
@@ -424,6 +426,8 @@ coupon
 
 		$scope.logout = function () {
 			socialLoginService.logout();
+			FB.logout(function(response) {
+			});
 			$window.scrollTo(0, 0);
 			localStorage.clear();
 			$location.path('/');
