@@ -1,8 +1,8 @@
 angular.module('CouponService', [])
 	.factory('DataServices', function ($http, $q) {
-		var api_gateway_url = 'https://api.coupon10k.com';
+		// var api_gateway_url = 'https://api.coupon10k.com';
 		// var api_gateway_url = 'http://35.244.36.175:2018';
-		// var api_gateway_url = 'http://localhost:2018';
+		var api_gateway_url = 'http://localhost:2018';
 		var parameter;
 		var url;
 		var header = { header: { 'Conntent-Type': 'application/x-www-form-urlencoded' } };
@@ -185,6 +185,11 @@ angular.module('CouponService', [])
 			GetSlider: function () {
 				url = api_gateway_url + '/getslider';
 				return $http.post(url, parameter, header);
+			},
+
+			TransactionGetByUserId: (userId) => {
+				url = api_gateway_url + '/transactiongetbyuser?userid=' + userId;
+				return $http.get(url, header);
 			}
 		}
 	})

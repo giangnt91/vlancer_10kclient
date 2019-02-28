@@ -2,89 +2,97 @@
 <html>
 
 <head>
-  <!-- <base href="/dev/Coupon/client/"> -->
-  <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <link rel="shortcut icon" href="assets/images/icon.png" type="image/x-icon">
+    <!-- <base href="/dev/Coupon/client/"> -->
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="shortcut icon" href="assets/images/icon.png" type="image/x-icon">
 
-  <meta property="og:url" content="https://www.coupon10k.com" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Coupon 10K" />
-  <meta property="og:description" content="Thế giới Coupon khuyến mãi giảm giá với giá trị hấp dẫn" />
-  <meta property="og:image" content="assets/images/icon.png" />
+    <meta property="og:url" content="https://www.coupon10k.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Coupon 10K" />
+    <meta property="og:description" content="Thế giới Coupon khuyến mãi giảm giá với giá trị hấp dẫn" />
+    <meta property="og:image" content="assets/images/icon.png" />
 
-  <!-- <base href="/dev/The_new_coupon/vlancer_10kclient/"> -->
-  <base href="/">
+    <base href="/dev/The_new_coupon/vlancer_10kclient/">
+    <!-- <base href="/"> -->
 
-  <title>Coupon 10K - Thế giới Coupon khuyến mãi giảm giá với giá trị hấp dẫn</title>
+    <title>Coupon 10K - Thế giới Coupon khuyến mãi giảm giá với giá trị hấp dẫn</title>
 
-  <!--Import Google Icon Font-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-  <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-  <!-- <script defer src="js/fontawesome.js"></script> -->
-  <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-  <link type="text/css" rel="stylesheet" href="css/style.css" media="screen,projection" />
-  <link type="text/css" rel="stylesheet" href="css/material-scrolltop.css" />
-  
-  <script src="https://api.coupon10k.com/socket.io/socket.io.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!-- <script defer src="js/fontawesome.js"></script> -->
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/material-scrolltop.css" />
 
-  <div id="fb-root"></div>
-  <script>(function (d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=1946240225621730';
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    <!-- DataTable -->
+    <link type="text/css" rel="stylesheet" href="js/theme-default/libs/DataTables/jquery.dataTables.css">
+    <link type="text/css" rel="stylesheet" href="js/theme-default/libs/DataTables/TableTools.css">
+
+    <script src="https://api.coupon10k.com/socket.io/socket.io.js"></script>
+
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=1946240225621730';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 </head>
 
 <body ng-app="coupon10k" id="root">
 
-  <div ng-include='"templates/nav.html"'></div>
-  <div ng-include='"templates/header.html"'></div>
-  <div ng-view></div>
-  <div ng-include='"templates/footer.html"'></div>
-  
-  <!-- Material button -->
-  <button class="material-scrolltop" type="button"></button>
+    <div ng-include='"templates/nav.html"'></div>
+    <div ng-include='"templates/header.html"'></div>
+    <div ng-view></div>
+    <div ng-include='"templates/footer.html"'></div>
 
-  <!--Import jQuery before materialize.js-->
-  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="js/materialize.min.js"></script>
-  <script src="css/material-scrolltop.js"></script>
-  <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsPli1AMY7DOi01G7z0xq_h3K5s0B4Gqc&callback=initMap"> -->
-  <!-- </script> -->
+    <!-- Material button -->
+    <button class="material-scrolltop" type="button"></button>
 
-  <!-- Angularjs Library -->
-  <script src="js/angular-1-2-32.min.js"></script>
-  <script src="js/angular-route-1-2-18.min.js"></script>
-  <script src="node_modules/angular-sanitize/angular-sanitize.js"></script>
-  <script src="node_modules/ngstorage/ngStorage.min.js"></script>
-  <link rel="stylesheet" href="node_modules/ng-dialog/css/ngDialog.min.css">
-  <link rel="stylesheet" href="node_modules/ng-dialog/css/ngDialog-theme-default.min.css">
-  <script src="node_modules/ng-dialog/js/ngDialog.min.js"></script>
-  <script src="node_modules/angularjs-social-login/angularjs-social-login.js"></script>
-  <script src="node_modules/angular-socialshare/dist/angular-socialshare.min.js"></script>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script src="css/material-scrolltop.js"></script>
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsPli1AMY7DOi01G7z0xq_h3K5s0B4Gqc&callback=initMap"> -->
+    <!-- </script> -->
 
-  <!-- Angularjs Module -->
-  <script src="center/service.js"></script>
-  <script src="center/main.js"></script>
-  <script src="center/controller.js"></script>
-  <script src="center/controller/actionCtrl.js"></script>
-  <script src="center/controller/accountCtrl.js"></script>
-  <script src="center/controller/productCtrl.js"></script>
-  <script src="bower_components/angular-socket-io/socket.min.js"></script>
-  
-  <!-- Initialize -->
+    <!-- Angularjs Library -->
+    <script src="js/angular-1-2-32.min.js"></script>
+    <script src="js/angular-route-1-2-18.min.js"></script>
+    <script src="node_modules/angular-sanitize/angular-sanitize.js"></script>
+    <script src="node_modules/ngstorage/ngStorage.min.js"></script>
+    <link rel="stylesheet" href="node_modules/ng-dialog/css/ngDialog.min.css">
+    <link rel="stylesheet" href="node_modules/ng-dialog/css/ngDialog-theme-default.min.css">
+    <script src="node_modules/ng-dialog/js/ngDialog.min.js"></script>
+    <script src="node_modules/angularjs-social-login/angularjs-social-login.js"></script>
+    <script src="node_modules/angular-socialshare/dist/angular-socialshare.min.js"></script>
+
+    <!-- DataTable -->
+    <script src="js/angular-datatables.min.js"></script>
+    <script src="js/DataTables/jquery.dataTables.min.js"></script>
+
+    <!-- Angularjs Module -->
+    <script src="center/service.js"></script>
+    <script src="center/main.js"></script>
+    <script src="center/controller.js"></script>
+    <script src="center/controller/actionCtrl.js"></script>
+    <script src="center/controller/accountCtrl.js"></script>
+    <script src="center/controller/productCtrl.js"></script>
+    <script src="bower_components/angular-socket-io/socket.min.js"></script>
+
+    <!-- Initialize -->
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('body').materialScrollTop({
                 revealElement: '#root',
                 revealPosition: 'bottom',
-                onScrollEnd: function() {
+                onScrollEnd: function () {
                     // <!-- console.log('Scrolling End'); -->
                 }
             });

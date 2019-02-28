@@ -1,4 +1,4 @@
-var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSanitize', 'CouponService', 'ngDialog', 'socialLogin', '720kb.socialshare', 'btford.socket-io'])
+var coupon = angular.module('CouponController', ['ngRoute', 'ngStorage', 'ngSanitize', 'datatables', 'CouponService', 'ngDialog', 'socialLogin', '720kb.socialshare', 'btford.socket-io'])
 coupon
 	.filter('unsafe', function ($sce) {
 		return $sce.trustAsHtml;
@@ -492,7 +492,7 @@ coupon
 					$scope.emarketResult = resultEmarket;
 				}
 			})
-		}, 500);
+		}, 1000);
 
 		$scope.get_basic_detail = function (id) {
 			$scope.basicResult.forEach(element => {
