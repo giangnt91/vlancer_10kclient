@@ -20,7 +20,7 @@ coupon
 			FB.getLoginStatus(function (fbres) {
 				if (fbres.status === 'connected') {
 					faceLogin(fbres);
-				}else{
+				} else {
 					FB.Event.subscribe('auth.login', function (fbres) {
 						faceLogin(fbres);
 					})
@@ -437,11 +437,11 @@ coupon
 
 		$scope.logout = function () {
 			socialLoginService.logout();
-			FB.logout(function(response) {
+			FB.logout(function (response) {
 			});
 			$window.scrollTo(0, 0);
 			localStorage.clear();
-			$timeout(()=>{
+			$timeout(() => {
 				$location.path('/');
 				window.location.reload(true);
 			}, 500)
@@ -522,6 +522,29 @@ coupon
 			}
 		}
 		// end get all basic code
+
+		// lấy danh sách hot deal
+		DataServices.hotDealGetAll().then(response => {
+			if (response.data.error_code === 0) {
+				$scope.listHotDeal = response.data.hots;
+
+				var pagesShown = 1;
+				var pageSize = 10;
+				$scope.items = $scope.listHotDeal;
+				$scope.itemsLimit = function () {
+					return pageSize * pagesShown;
+				};
+				$scope.hasMoreItemsToShow = function () {
+					return pagesShown < ($scope.items.length / pageSize);
+				};
+				$scope.showMoreItems = function () {
+					pagesShown = pagesShown + 1;
+				};
+			}
+		})
+		// end
+
+
 
 		// get all shop
 		DataServices.getAllshop().then(function (response) {

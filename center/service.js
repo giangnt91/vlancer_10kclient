@@ -190,6 +190,11 @@ angular.module('CouponService', [])
 			TransactionGetByUserId: (userId) => {
 				url = api_gateway_url + '/transactiongetbyuser?userid=' + userId;
 				return $http.get(url, header);
+			},
+
+			hotDealGetAll: () => {
+				url = api_gateway_url + '/gethotdeal';
+				return $http.get(url, header);
 			}
 		}
 	})
