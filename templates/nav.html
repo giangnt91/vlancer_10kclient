@@ -8,10 +8,10 @@
                 <a href="">
                     <img class="circle" src="{{auth[0].user_img}}">
                 </a>
-                <a href="" ng-show="auth[0].loyal[0].Loyal === 1">
+                <!-- <a href="" ng-show="auth[0].loyal[0].Loyal === 1">
                     <span class="new badge pink lighten-1" style="float:none; margin: 0; padding: 4px; opacity: .9;"
                         data-badge-caption="Khách Hàng Thân Thiết"></span>
-                </a>
+                </a> -->
                 <a class="white-text">
                     <span class="name" ng-class="{'vip': auth[0].loyal[0].Loyal === 1, 'nvip': auth[0].loyal[0].Loyal === 0}">{{auth[0].info[0].fulname}}</span>
                 </a>

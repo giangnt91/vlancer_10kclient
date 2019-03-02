@@ -257,6 +257,9 @@
         <div class="col s12 m12 l12">
             <blockquote>
                 <h5 style="display: unset;">Khuyến Mãi Hot</h5>
+                <a class="right" href="" ng-click="go_tutorial()">
+                    <h6 style="font-size: 1.1rem; font-weight: 300">Hướng dẫn tích điểm đổi quà</h6>
+                </a>
             </blockquote>
 
 
@@ -276,7 +279,8 @@
                                     {{content.Info}}</h5> <br>
                             </div>
                             <div class="col s3 center">
-                                <a class="waves-effect waves-light btn btn-coupon" ng-click="open_getcode(content)">Mua
+                                <a class="waves-effect waves-light btn btn-coupon modal-trigger" data-target="mymodal"
+                                    ng-click="openHotDeal(content.urlCommission)">Mua
                                     ngay</a> <br>
                                 <span class="expired">Hết hạn: {{content.expiredDay}}</span>
                             </div>
@@ -304,7 +308,8 @@
                         </div>
                         <div class="card-content center">
                             <span class="card-title activator grey-text text-darken-4"></span>
-                            <a class="waves-effect waves-light btn btn-coupon" ng-click="open_getcode(content)">Mua
+                            <a class="waves-effect waves-light btn btn-coupon modal-trigger" data-target="mymodal"
+                                ng-click="openHotDeal(content.urlCommission)">Mua
                                 ngay</a>
                         </div>
                         <div class="card-reveal">
@@ -328,21 +333,23 @@
 
 
 <!-- Modal Structure -->
-<div id="mymodal" class="modal modal_2">
+<div id="mymodal" class="modal modal_3">
     <div class="modal-content">
-        <h5>NHẬN MÃ GIẢM GIÁ</h5>
-        <p>Copy mã giảm giá phía dưới, sau đó nhập mã trước khi thanh toán để nhận ưu đãi giảm giá. Xin đọc kỹ quy định
-            sử dụng.</p>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="first_name" type="text" ng-model="detail_basic.code_coupon" class="validate">
-            </div>
+        <blockquote>
+            <h5>NHẬN KHUYẾN MÃI HOT</h5>
+        </blockquote>
+
+        <p>Sử dụng trình duyệt Chrome hoặc các trình duyệt khác ngoài Cốc Cốc, sau khi lấy mã giảm giá thì hãy mua hàng
+            ngay. Nếu không sẽ cần phải quay lại trang lấy mã để click thêm lần nữa.</p>
+        <div class="row center">
+            <span>Hệ thống đang xử lý dữ liệu, bạn sẽ được chuyển trang sau ít giây</span> <br>
+            <progress value="0" max="5" id="progressBar" style="margin-top:15px"></progress>
         </div>
         <div class="row">
             <div class="col s12">
-                <button class="btn btn-coupon modal-close" type="submit" name="action"
-                    style="right: 35px; position: absolute;" ng-click="go_ma_giam_gia(detail_basic.shopUrl)">Đồng Ý
-                </button>
+                <a href="{{hotDealUrl}}" class="btn btn-coupon modal-close" type="submit" name="action"
+                    style="right: 35px; position: absolute;" target="_blank">Đồng Ý
+                </a>
             </div>
         </div>
     </div>

@@ -125,9 +125,13 @@
                             <img src="{{auth[0].user_img}}" alt="">
                         </center>
                         <div class="person-info" style="padding: 10px">
-                            <h5>
+                            <h5 style="display:none">
                                 <i class="material-icons _i">stars</i>
                                 <span class="span_account">Hạng {{auth[0].user_class[0].name}}</span>
+                            </h5>
+                            <h5>
+                                <i class="material-icons _i">assignment_turned_in</i>
+                                <span class="span_account">{{auth[0].total_list_coupon.length}} Coupon đã lấy</span>
                             </h5>
                         </div>
                     </div>
@@ -157,10 +161,6 @@
                             <h5>
                                 <i class="material-icons _i">cake</i>
                                 <span class="span_account">{{auth[0].info[0].bith_day}}</span>
-                            </h5>
-                            <h5>
-                                <i class="material-icons _i">assignment_turned_in</i>
-                                <span class="span_account">{{auth[0].total_list_coupon.length}} Coupon đã lấy</span>
                             </h5>
                             <h5>
                                 <i class="material-icons _i">assignment_returned</i>

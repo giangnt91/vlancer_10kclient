@@ -184,10 +184,10 @@ body {
     height: 43% !important;
 }
 
-/* .modal_3{
-    width: 70% !important;
-    height: 100% !important;
-} */
+.modal_3{
+    width: 55% !important;
+    height: 45% !important;
+}
 
 .level {
     color: rgba(238, 110, 115, 0.7);

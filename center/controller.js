@@ -93,12 +93,12 @@ coupon
 								// end function
 
 								// check in loyal
-								DataServices.checkIn(signin_result.auth[0]._id).then(function (re) {
-									if (re.data.error_code === 0) {
-										localStorage.removeItem('auth');
-										localStorage.setItem('auth', JSON.stringify([re.data.auth]));
-									}
-								});
+								// DataServices.checkIn(signin_result.auth[0]._id).then(function (re) {
+								// 	if (re.data.error_code === 0) {
+								// 		localStorage.removeItem('auth');
+								// 		localStorage.setItem('auth', JSON.stringify([re.data.auth]));
+								// 	}
+								// });
 
 								// update accessToken
 								DataServices.AccessToken(signin_result.auth[0]._id, $scope.access_token).then(function (are) {
@@ -220,12 +220,12 @@ coupon
 						// end function
 
 						// check in loyal
-						DataServices.checkIn(signin_result.auth[0]._id).then(function (re) {
-							if (re.data.error_code === 0) {
-								localStorage.removeItem('auth');
-								localStorage.setItem('auth', JSON.stringify([re.data.auth]));
-							}
-						});
+						// DataServices.checkIn(signin_result.auth[0]._id).then(function (re) {
+						// 	if (re.data.error_code === 0) {
+						// 		localStorage.removeItem('auth');
+						// 		localStorage.setItem('auth', JSON.stringify([re.data.auth]));
+						// 	}
+						// });
 
 						// update accessToken
 						DataServices.AccessToken(signin_result.auth[0]._id, $scope.access_token).then(function (are) {
@@ -542,6 +542,24 @@ coupon
 				};
 			}
 		})
+
+		$scope.openHotDeal = (url) => {
+			$scope.hotDealUrl = url;
+
+			// waiting
+			var timeleft = 5;
+			var downloadTimer = setInterval(function () {
+				document.getElementById("progressBar").value = 5 - timeleft;
+
+				timeleft -= 1;
+				if (timeleft < 0)
+					var win = window.open(url, '_blank');
+					win.focus();
+					clearInterval(downloadTimer);
+					$('#mymodal').modal('close');
+			}, 1000);
+		}
+
 		// end
 
 
