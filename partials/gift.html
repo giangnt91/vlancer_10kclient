@@ -1,0 +1,36 @@
+<div ng-include='"templates/slider.html"'></div>
+
+<div class="container_2">
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <div class="row">
+        <div class="col s6 m4 cl3" ng-repeat="content in gifts | limitTo: itemsLimit()">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <div class="price">
+                {{content.giftPrice}} VNĐ
+              </div>
+              <img class="activator" src="{{content.giftImages[0]}}" ng-click="goGiftDetail(content._id)">
+            </div>
+            <div class="card-content center">
+              <span class="card-title activator grey-text text-darken-4 shop_name">
+                {{content.giftShop[0].name}}</span>
+              <p>
+                <a href="" ng-show="(content.giftTotal > content.giftUserHasTaken)">Còn
+                  {{content.giftTotal - content.giftUserHasTaken}} Quà</a>
+              </p>
+              <a class="waves-effect waves-light btn btn-coupon" ng-click="goGiftDetail(content._id)">Nhận Quà</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <center style="margin-bottom: 50px; margin-top:30px">
+        <div>
+          <a class="waves-effect waves-light btn btn-xt pulse" ng-show="hasMoreItemsToShow()"
+            ng-click="showMoreItems()">Xem
+            Thêm</a>
+        </div>
+      </center>
+    </div>
+  </div>
+</div>

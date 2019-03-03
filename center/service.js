@@ -1,8 +1,8 @@
 angular.module('CouponService', [])
 	.factory('DataServices', function ($http, $q) {
-		// var api_gateway_url = 'https://api.coupon10k.com';
+		var api_gateway_url = 'https://api.coupon10k.com';
 		// var api_gateway_url = 'http://35.244.36.175:2018';
-		var api_gateway_url = 'http://localhost:2018';
+		// var api_gateway_url = 'http://localhost:2018';
 		var parameter;
 		var url;
 		var header = { header: { 'Conntent-Type': 'application/x-www-form-urlencoded' } };
@@ -195,6 +195,32 @@ angular.module('CouponService', [])
 			hotDealGetAll: () => {
 				url = api_gateway_url + '/gethotdeal';
 				return $http.get(url, header);
+			},
+
+			giftGetAll: () => {
+				url = api_gateway_url + '/getgifts';
+				return $http.get(url, header);
+			},
+
+			giftGetDetail: (_id) => {
+				url = api_gateway_url + '/getgift?_id=' + _id;
+				return $http.get(url, header);
+			},
+
+			giftEdit: (gift) => {
+				url = api_gateway_url + '/editgift';
+				parameter = JSON.stringify({
+					gift: gift
+				})
+				return $http.post(url, parameter, header);
+			},
+
+			giftUpdateUserGet: (auth) => {
+				url = api_gateway_url + '/updateusergetgift';
+				parameter = JSON.stringify({
+					auth: auth
+				})
+				return $http.post(url, parameter, header);
 			}
 		}
 	})

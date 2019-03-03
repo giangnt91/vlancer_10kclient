@@ -1,0 +1,146 @@
+<div class="container_4" style="margin-bottom: 0">
+  <div class="row" style="margin-bottom: 0px !important">
+    <nav class="brum">
+      <div class="nav-wrapper">
+        <div class="col s10 push-s1">
+          <a href="/" class="breadcrumb">Trang Chủ</a>
+          <a class="breadcrumb">{{giftDetail.giftShop[0].name}}</a>
+          <a href="" class="breadcrumb">{{giftDetail.giftName}}</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container_5" style="margin-bottom: 0">
+  <div class="row card-panel" style="margin-top: 0; box-shadow: none; padding-left: 0; padding-right: 0">
+
+    <div class="col s12 m7 l7">
+      <div class="row">
+        <center>
+          <ul id="lightSlider" ng-if="giftDetail">
+            <li ng-repeat="content in giftDetail.giftImages" data-thumb="{{content}}">
+              <img src="{{content}}" alt="" width="100%">
+            </li>
+          </ul>
+        </center>
+      </div>
+    </div>
+
+    <div class="col s12 m5 l5 pro-info">
+      <!-- <div id="thongtin" class="col s12"> -->
+      <div class="person-info" style="padding-bottom: 0">
+        <h5 class="white-text shop_name_3" style="margin-top: 0px; text-transform: uppercase; font-weight: 600;">
+          {{giftDetail.giftName}}
+        </h5>
+        <h5 class="grey-text">
+          <span> <b>Giá Trị:</b> <b class="green-text">{{giftDetail.giftPrice}} VNĐ ( {{giftDetail.giftPoint}} điểm
+              )</b></span>
+        </h5>
+        <h5 class="grey-text">
+          <span><b>Mô tả:</b> {{giftDetail.giftInfo}}</span>
+        </h5>
+        <h5 class="grey-text">
+          <span><b>Hạn sử dụng: </b> {{giftDetail.giftExpiredDay}}</span>
+        </h5>
+        <h5 class="grey-text">
+          <span> <b>Địa điểm nhận quà: </b> {{giftDetail.giftAddress}}</span>
+        </h5>
+        <h5 class="grey-text">
+          <span><b>Số lượng còn lại: </b> <b
+              class="green-text">{{giftDetail.giftTotal - giftDetail.giftUserHasTaken}}</b></span>
+        </h5>
+        <h5 class="red-text" ng-if="!isGetGift" style="border-bottom: none">
+          <!-- <i class="material-icons">block</i> -->
+          <span>Bạn chưa đủ điều kiện nhận Quà</span>
+
+          <div ng-if="!auth">
+            <span class="grey-text" style="padding-left: 27px;">- Bạn chưa đăng nhập.</span>
+          </div>
+
+          <div ng-if="!isGiftTaken && auth">
+            <span class="grey-text" style="padding-left: 27px">- Bạn đã nhận quà này rồi.</span>
+          </div>
+
+          <div ng-if="!isShop && auth">
+              <span class="grey-text" style="padding-left: 27px">- Chủ shop và quản lý không được nhận quà.</span>
+            </div>
+
+          <div ng-if="!isPoint && auth">
+            <span class="grey-text" style="padding-left: 27px">- Bạn chưa đủ điểm để nhận quà.</span>
+          </div>
+
+          <div ng-if="feedback_count > 0">
+            <span class="grey-text" style="padding-left: 27px">- Bạn chưa thực hiện feedback.</span>
+          </div>
+
+        </h5>
+
+        <div>
+          <h5>
+            <center>
+              <a class="waves-effect waves-light btn btn-gift btn-large modal-trigger" ng-if="isGiftTaken && isGetGift && auth" data-target="comfirm"
+                style="display:block">Nhận Quà</a>
+            </center>
+            <center>
+              <a class="waves-effect waves-light btn btn-gift btn-large" style="display:block" ng-if="!isGetGift || !isGiftTaken " disabled>Nhận Quà</a>
+            </center>
+          </h5>
+        </div>
+
+      </div>
+      <!-- </div> -->
+    </div>
+
+    <body>
+
+  </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="comfirm" class="modal">
+  <div class="modal-content" style="padding-bottom: 0; padding-top: 10px;">
+    <center>
+      <div>
+        <div class="person-info" style="padding: 0; text-align: left">
+          <h5>
+            <i class="material-icons blue-text">chevron_right</i>
+            <span>Món quà yêu cầu điểm quy đổi là <b class="green-text">{{giftDetail.giftPoint}}</b>.</span>
+          </h5>
+          <h5>
+            <i class="material-icons blue-text">chevron_right</i>
+            <span>Bạn sẽ bị trừ <b class="green-text">{{giftDetail.giftPoint}}</b> điểm trong tổng số điểm hiện
+              có.</span>
+          </h5>
+          <h5>
+            <i class="material-icons blue-text">chevron_right</i>
+            <span>Bạn có chắn chắn muốn nhận Món quà này không ?</span>
+          </h5>
+        </div>
+      </div>
+    </center>
+  </div>
+  <div class="modal-footer">
+    <button class="btn waves-effect waves-light btn-xg modal-action modal-close">Hủy</button>
+    <button class="btn waves-effect waves-light btn-xg modal-action modal-close" ng-click="getGift()">Đồng Ý</button>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $('.modal').modal({
+      dismissible: false
+    });
+
+    setTimeout(() => {
+      $('#lightSlider').lightSlider({
+        gallery: true,
+        item: 1,
+        loop: true,
+        slideMargin: 0,
+        thumbItem: 9
+      });
+    }, 100)
+
+  });
+</script>

@@ -290,30 +290,41 @@ coupon
 		});
 
 		// go menu
+		$scope.go_gift = () => {
+			$location.url('id', null);
+			$location.path('/doi-qua');
+			$window.scrollTo(0, 0);
+		}
+
 		$scope.go_action = function () {
 			// window.location.href = '#/action';
+			$location.url('id', null);
 			$location.path('/thuc-hien-tac-vu');
 			$window.scrollTo(0, 0);
 		}
 
 		$scope.go_account = function () {
 			// window.location.href = '#/account';
+			$location.url('id', null);
 			$location.path('/quan-ly-tai-khoan');
 			$window.scrollTo(0, 0);
 		}
 
 		$scope.go_tutorial = function () {
+			$location.url('id', null);
 			$location.path('/huong-dan-su-dung');
 			$window.scrollTo(0, 0);
 		}
 
 		$scope.go_contact = function () {
+			$location.url('id', null);
 			$location.path('/lien-he');
 			$window.scrollTo(0, 0);
 		}
 
 		$scope.go_home = function () {
 			// window.location.href = '#/';
+			$location.url('id', null);
 			$location.path('/');
 			$window.scrollTo(0, 0);
 			$timeout(function () {
@@ -328,14 +339,17 @@ coupon
 
 				if (element.shop_boss === $scope.auth[0].user_id) {
 					if (element.shop_info[0].kind[0].id === 1) {
+						$location.url('id', null);
 						$location.path('/an-uong/cua-hang/' + slug + '-' + _id);
 						$window.scrollTo(0, 0);
 						FB.XFBML.parse();
 					} else if (element.shop_info[0].kind[0].id === 2) {
+						$location.url('id', null);
 						$location.path('/mua-sam/cua-hang/' + slug + '-' + _id);
 						$window.scrollTo(0, 0);
 						FB.XFBML.parse();
 					} else {
+						$location.url('id', null);
 						$location.path('/du-lich/cua-hang/' + slug + '-' + _id);
 						$window.scrollTo(0, 0);
 						FB.XFBML.parse();
@@ -344,14 +358,17 @@ coupon
 					if (element.shop_manager !== null && element.shop_manager.length > 0) {
 						element.shop_manager.forEach(el => {
 							if (el.text === $scope.auth[0].user_id) {
+								$location.url('id', null);
 								$location.path('/an-uong/cua-hang/' + slug + '-' + _id);
 								$window.scrollTo(0, 0);
 								FB.XFBML.parse();
 							} else if (element.shop_info[0].kind[0].id === 2) {
+								$location.url('id', null);
 								$location.path('/mua-sam/cua-hang/' + slug + '-' + _id);
 								$window.scrollTo(0, 0);
 								FB.XFBML.parse();
 							} else {
+								$location.url('id', null);
 								$location.path('/du-lich/cua-hang/' + slug + '-' + _id);
 								$window.scrollTo(0, 0);
 								FB.XFBML.parse();
@@ -615,21 +632,25 @@ coupon
 		});
 
 		$scope.detail_kind_0 = function () {
+			$location.url('id', null);
 			$location.path('/khach-hang-than-thiet/danh-sach-cua-hang')
 			$window.scrollTo(0, 0);
 		}
 
 		$scope.detail_kind_1 = function () {
+			$location.url('id', null);
 			$location.path('/mua-sam/danh-sach-cua-hang')
 			$window.scrollTo(0, 0);
 		}
 
 		$scope.detail_kind_2 = function () {
+			$location.url('id', null);
 			$location.path('/an-uong/danh-sach-cua-hang');
 			$window.scrollTo(0, 0);
 		}
 
 		$scope.detail_kind_3 = function () {
+			$location.url('id', null);
 			$location.path('/du-lich/danh-sach-cua-hang');
 			$window.scrollTo(0, 0);
 		}
