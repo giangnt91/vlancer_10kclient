@@ -6,7 +6,7 @@ coupon
       if (response.data.error_code === 0) {
         $scope.gifts = response.data.gifts;
         var pagesShown = 1;
-        var pageSize = 1;
+        var pageSize = 12;
         $scope.items = $scope.gifts;
         $scope.itemsLimit = function () {
           return pageSize * pagesShown;
