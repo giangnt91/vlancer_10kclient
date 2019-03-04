@@ -20,7 +20,7 @@
         <center>
           <ul id="lightSlider" ng-if="giftDetail">
             <li ng-repeat="content in giftDetail.giftImages" data-thumb="{{content}}">
-              <img src="{{content}}" alt="" width="100%">
+              <img src="{{content}}" alt="" width="75%">
             </li>
           </ul>
         </center>
@@ -138,9 +138,9 @@
         item: 1,
         loop: true,
         slideMargin: 0,
-        thumbItem: 9
+        thumbItem: 10
       });
-    }, 100)
+    }, 500)
 
   });
 </script>
