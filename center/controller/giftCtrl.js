@@ -144,7 +144,8 @@ coupon
         giftImages: $scope.giftDetail.giftImages,
         giftTurn: $scope.giftDetail.giftTurn,
         giftGetDay: today,
-        giftUse: false
+        giftUse: false,
+        giftDisable: false
       }
 
       if ($scope.auth[0].gifts.length > 0) {
