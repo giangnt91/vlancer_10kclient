@@ -130,6 +130,7 @@ coupon
 
       // cập nhật danh sách quà và điểm của user
       let newGift = {
+        _id: $scope.giftDetail._id,
         giftShop: $scope.giftDetail.giftShop,
         giftName: $scope.giftDetail.giftName,
         giftPrice: $scope.giftDetail.giftPrice,
