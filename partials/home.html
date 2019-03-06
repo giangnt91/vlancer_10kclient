@@ -275,8 +275,10 @@
                                 <img src="{{content.urlImage}}" alt="" class="responsive-img s2-img">
                             </div>
                             <div class="col s7">
-                                <h5 class="black-text shop_name_2 white-space-pre-line" style="padding: 5px">
-                                    {{content.Info}}</h5> <br>
+                                <!-- <h5 ng-bind-html="content.Info" class="black-text shop_name_2 white-space-pre-line" style="padding: 5px">
+                                </h5>   -->
+                                <p class="white-space-pre-line" style="padding-top: 10px;" ng-bind-html="content.Info | unsafe"></p>
+                                <br>
                             </div>
                             <div class="col s3 center">
                                 <a class="waves-effect waves-light btn btn-coupon modal-trigger" data-target="mymodal"
