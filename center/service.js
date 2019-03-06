@@ -226,8 +226,9 @@ angular.module('CouponService', [])
 	})
 
 	.factory('Thesocket', function (socketFactory) {
-		var api_gateway_url = 'https://api.coupon10k.com';
+		// var api_gateway_url = 'https://api.coupon10k.com';
 		// var api_gateway_url = 'http://35.244.36.175:2018';
+		var api_gateway_url = 'http://localhost:2018';
 		var socketConnection = io.connect(api_gateway_url);
 		var socket = socketFactory({
 			ioSocket: socketConnection
