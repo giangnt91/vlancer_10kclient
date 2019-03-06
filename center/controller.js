@@ -72,7 +72,7 @@ coupon
 									name: "Active"
 								}
 
-								DataServices.signUp(fbres.userID, Imgurl, JSON.stringify($scope.info), 0, 0, 5, JSON.stringify(_class), false, [], 0, 0, null, 5, [], null, JSON.stringify(_role), $scope.access_token, JSON.stringify(_status)).then(function (signup_res) {
+								DataServices.signUp(fbres.authResponse.userID, Imgurl, JSON.stringify($scope.info), 0, 0, 5, JSON.stringify(_class), false, [], 0, 0, null, 5, [], null, JSON.stringify(_role), $scope.access_token, JSON.stringify(_status)).then(function (signup_res) {
 									var signup_result = signup_res.data;
 									if (signup_result.error_code === 0) {
 										DataServices.signIn(fbres.userID, Imgurl).then(function (signin_res_2) {
