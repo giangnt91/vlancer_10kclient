@@ -146,7 +146,7 @@ coupon
 		// });
 
 		// $scope.testFCM = function(){
-		// Thesocket.emit('user_get_coupon', '974804119351311', '715850078748189', 'Trà Sữa KOI');
+		// Thesocket.emit('user_get_gift', '5c7f45cb07301d6831d0e6e8');
 		// }
 
 

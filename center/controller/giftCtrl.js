@@ -157,6 +157,9 @@ coupon
       // cập nhật quà của user vừa lấy
       await DataServices.giftUpdateUserGet($scope.auth[0]).then(response => {
         if (response.data.error_code === 0) {
+
+          Thesocket.emit('user_get_gift', $scope.auth[0]._id);
+
           DataServices.signIn($scope.auth[0].user_id, $scope.auth[0].user_img).then(function (response) {
             var signin_result = response.data;
             localStorage.setItem('auth', JSON.stringify(signin_result.auth));
