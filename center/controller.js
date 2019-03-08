@@ -561,7 +561,11 @@ coupon
 		})
 
 		$scope.openHotDeal = (url) => {
-			$scope.hotDealUrl = url;
+			if (Auth !== "undefined" && Auth !== null) {
+				$scope.hotDealUrl = url.replace("USERID", Auth[0].user_id);
+			} else {
+				$scope.hotDealUrl = url.replace("USERID", 'NOAUTH');
+			}
 
 			// waiting
 			var timeleft = 5;
@@ -571,9 +575,9 @@ coupon
 				timeleft -= 1;
 				if (timeleft < 0)
 					var win = window.open(url, '_blank');
-					win.focus();
-					clearInterval(downloadTimer);
-					$('#mymodal').modal('close');
+				win.focus();
+				clearInterval(downloadTimer);
+				$('#mymodal').modal('close');
 			}, 1000);
 		}
 
