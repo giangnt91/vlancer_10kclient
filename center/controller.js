@@ -561,7 +561,7 @@ coupon
 		})
 
 		$scope.openHotDeal = (url) => {
-			if ($scope.auth !== "undefined" && $scope.auth !== null) {
+			if ($scope.auth !== undefined && $scope.auth !== null) {
 				$scope.hotDealUrl = url.replace("utm_source=USERID", 'utm_source=' +$scope.auth[0].user_id);
 			} else {
 				$scope.hotDealUrl = url.replace("utm_source=USERID", 'utm_source=NOAUTH');
