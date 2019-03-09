@@ -33,7 +33,7 @@ coupon
 						$scope.fbName = rs.name;
 					})
 					// get long access token
-					FB.api('/oauth/access_token?grant_type=fb_exchange_token&client_id=1946240225621730&client_secret=15ecc2d337244c224a6497f9b91931f1&fb_exchange_token=' + fbres.accessToken, function (res) {
+					FB.api('/oauth/access_token?grant_type=fb_exchange_token&client_id=1946240225621730&client_secret=15ecc2d337244c224a6497f9b91931f1&fb_exchange_token=' + fbres.authResponse.accessToken, function (res) {
 						$scope.access_token = res.access_token;
 					});
 
