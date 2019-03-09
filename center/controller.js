@@ -561,27 +561,27 @@ coupon
 		})
 
 		$scope.openHotDeal = (url) => {
-			$timeout(() => {
+			// $timeout(() => {
 				if ($scope.auth !== undefined && $scope.auth !== null) {
 					$scope.hotDealUrl = url.replace("utm_source=USERID", 'utm_source=' + $scope.auth[0].user_id);
 				} else {
 					$scope.hotDealUrl = url.replace("utm_source=USERID", 'utm_source=NOAUTH');
 				}
-			}, 1000);
+			// }, 1000);
 
 
 			// waiting
-			var timeleft = 5;
-			var downloadTimer = setInterval(function () {
-				document.getElementById("progressBar").value = 5 - timeleft;
+			// var timeleft = 5;
+			// var downloadTimer = setInterval(function () {
+			// 	document.getElementById("progressBar").value = 5 - timeleft;
 
-				timeleft -= 1;
-				if (timeleft < 0)
-					var win = window.open(url, '_blank');
-				win.focus();
-				clearInterval(downloadTimer);
-				$('#mymodal').modal('close');
-			}, 1000);
+			// 	timeleft -= 1;
+			// 	if (timeleft < 0)
+			// 		var win = window.open(url, '_blank');
+			// 	win.focus();
+			// 	clearInterval(downloadTimer);
+			// 	$('#mymodal').modal('close');
+			// }, 1000);
 		}
 
 		// end
