@@ -411,6 +411,11 @@ nav {
     padding-top: 0;
 }
 
+.acctab a :active{
+    font-weight: bold;
+    color: #EA4177;
+}
+
 .lSSlideOuter .lSPager.lSGallery li.active, .lSSlideOuter .lSPager.lSGallery li:hover{
     border-radius: 3px !important;
     border: 1px solid green;

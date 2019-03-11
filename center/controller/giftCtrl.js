@@ -27,7 +27,7 @@ coupon
     }
   })
 
-  .controller('GiftCtrl', function ($scope, DataServices, $location, $filter, $timeout, $routeParams) {
+  .controller('GiftCtrl', function ($scope, DataServices, $location, $filter, $timeout, $routeParams, Thesocket) {
     $scope.auth = JSON.parse(localStorage.getItem('auth'));
     $scope.isLoading = false;
     $timeout(() => {
