@@ -112,15 +112,15 @@
                         <br>
                         <span class="grey-text" style="padding-left: 27px">- Bạn không đủ điểm để lấy coupon.</span>
 					</div>
-                    <div ng-if="loyal">
+                    <!-- <div ng-if="loyal">
                         <br>
                         <span class="grey-text language-markup" style="padding-left: 27px">- Bạn chưa phải khách hàng thân thiết.</span>
-					</div>
-                    <div ng-if="_rank">
+					</div> -->
+                    <!-- <div ng-if="_rank">
                         <br>
                         <span class="grey-text" style="padding-left: 27px">- Yêu cầu thành viên {{rank_user.name}} trở
 						lên để nhận coupon này.</span>
-					</div>
+					</div> -->
 					<div ng-if="auth[0].role[0].id !== 0">
                         <br>
                         <span class="grey-text" style="padding-left: 27px">- Chủ Shop và Quản Lý sẽ không được nhận Coupon.</span>
@@ -201,7 +201,7 @@
                             <span>Đang cập nhật.</span>
 						</div>
 					</h5>
-                    <h5 class="grey-text">
+                    <!-- <h5 class="grey-text">
                         <div ng-if="total_coupon > 0">
                             <i class="material-icons">chevron_right</i>
                             <span ng-if="rank_user.id === 4">Coupon này dành cho mọi thành viên</span>
@@ -216,11 +216,11 @@
                             <i class="material-icons">chevron_right</i>
                             <span>Đang cập nhật.</span>
 						</div>
-					</h5>
+					</h5> -->
                     <h5 class="grey-text">
                         <div ng-if="total_coupon > 0">
                             <i class="material-icons">chevron_right</i>
-                            <span>Hạn sử dụng: {{coupon_expire}} Tháng</span>
+                            <span>Hạn sử dụng: {{coupon_expire}}</span>
 						</div>
                         <div class="grey-text" ng-if="total_coupon === 0">
                             <i class="material-icons">chevron_right</i>

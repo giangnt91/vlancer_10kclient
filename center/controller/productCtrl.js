@@ -556,58 +556,58 @@ coupon
 					}
 
 					// check rank
-					if ($scope.shop.shop_coupon !== null && $scope.shop.shop_coupon.length > 0) {
-						if ($scope.auth[0].user_class[0].id > $scope.shop.shop_coupon[0].coupon[0].class_user[0].id) {
-							$scope._rank = true;
-							$scope.condition = true;
-						} else {
-							// $scope.condition = false;
-							if ($scope.condition !== true) {
-								$scope.condition = false;
-							}
-							$scope._rank = false;
-							// $scope.show_like = true;
-						}
-					} else {
-						if ($scope.shop.server_coupon !== null && $scope.shop.server_coupon.length > 0) {
-							if ($scope.auth[0].user_class[0].id > $scope.shop.server_coupon[0].coupon[0].class_user[0].id) {
-								$scope._rank = true;
-								$scope.condition = true;
-							} else {
-								// $scope.condition = false;
-								if ($scope.condition !== true) {
-									$scope.condition = false;
-								}
-								$scope._rank = false;
-								// $scope.show_like = true;
-							}
-						}
-					}
+					// if ($scope.shop.shop_coupon !== null && $scope.shop.shop_coupon.length > 0) {
+					// 	if ($scope.auth[0].user_class[0].id > $scope.shop.shop_coupon[0].coupon[0].class_user[0].id) {
+					// 		$scope._rank = true;
+					// 		$scope.condition = true;
+					// 	} else {
+					// 		// $scope.condition = false;
+					// 		if ($scope.condition !== true) {
+					// 			$scope.condition = false;
+					// 		}
+					// 		$scope._rank = false;
+					// 		// $scope.show_like = true;
+					// 	}
+					// } else {
+					// 	if ($scope.shop.server_coupon !== null && $scope.shop.server_coupon.length > 0) {
+					// 		if ($scope.auth[0].user_class[0].id > $scope.shop.server_coupon[0].coupon[0].class_user[0].id) {
+					// 			$scope._rank = true;
+					// 			$scope.condition = true;
+					// 		} else {
+					// 			// $scope.condition = false;
+					// 			if ($scope.condition !== true) {
+					// 				$scope.condition = false;
+					// 			}
+					// 			$scope._rank = false;
+					// 			// $scope.show_like = true;
+					// 		}
+					// 	}
+					// }
 
 					// check khách hàng thân thiết
-					if ($scope.shop.shop_coupon !== null && $scope.shop.shop_coupon.length > 0) {
-						if ($scope.shop.shop_coupon[0].coupon[0].loyal[0].id === 1 && $scope.auth[0].loyal[0].Loyal === 0) {
-							$scope.condition = true;
-							$scope.loyal = true;
-						} else {
-							if ($scope.condition !== true) {
-								$scope.condition = false;
-							}
-							$scope.loyal = false;
-						}
-					} else {
-						if ($scope.shop.server_coupon !== null && $scope.shop.server_coupon.length > 0) {
-							if ($scope.shop.server_coupon[0].coupon[0].loyal[0].id === 1 && $scope.auth[0].loyal[0].Loyal === 0) {
-								$scope.condition = true;
-								$scope.loyal = true;
-							} else {
-								if ($scope.condition !== true) {
-									$scope.condition = false;
-								}
-								$scope.loyal = false;
-							}
-						}
-					}
+					// if ($scope.shop.shop_coupon !== null && $scope.shop.shop_coupon.length > 0) {
+					// 	if ($scope.shop.shop_coupon[0].coupon[0].loyal[0].id === 1 && $scope.auth[0].loyal[0].Loyal === 0) {
+					// 		$scope.condition = true;
+					// 		$scope.loyal = true;
+					// 	} else {
+					// 		if ($scope.condition !== true) {
+					// 			$scope.condition = false;
+					// 		}
+					// 		$scope.loyal = false;
+					// 	}
+					// } else {
+					// 	if ($scope.shop.server_coupon !== null && $scope.shop.server_coupon.length > 0) {
+					// 		if ($scope.shop.server_coupon[0].coupon[0].loyal[0].id === 1 && $scope.auth[0].loyal[0].Loyal === 0) {
+					// 			$scope.condition = true;
+					// 			$scope.loyal = true;
+					// 		} else {
+					// 			if ($scope.condition !== true) {
+					// 				$scope.condition = false;
+					// 			}
+					// 			$scope.loyal = false;
+					// 		}
+					// 	}
+					// }
 
 					// check điểm quy đổi
 					if ($scope.shop.shop_coupon !== null && $scope.shop.shop_coupon.length > 0) {
@@ -643,13 +643,13 @@ coupon
 				// get coupon info
 				if ($scope.shop.shop_coupon !== null && $scope.shop.shop_coupon.length > 0) {
 					$scope.coupon_info = $scope.shop.shop_coupon[0].coupon[0].coupon_info;
-					$scope.coupon_expire = $scope.shop.shop_coupon[0].coupon[0].time_expire;
+					$scope.coupon_expire = $scope.shop.shop_coupon[0].coupon[0].limit_time;
 					$scope.rank_user = $scope.shop.shop_coupon[0].coupon[0].class_user[0];
 					$scope.value_point = $scope.shop.shop_coupon[0].coupon[0].point;
 				} else {
 					if ($scope.shop.server_coupon !== null && $scope.shop.server_coupon.length > 0) {
 						$scope.coupon_info = $scope.shop.server_coupon[0].coupon[0].coupon_info;
-						$scope.coupon_expire = $scope.shop.server_coupon[0].coupon[0].time_expire;
+						$scope.coupon_expire = $scope.shop.server_coupon[0].coupon[0].limit_time;
 						$scope.rank_user = $scope.shop.server_coupon[0].coupon[0].class_user[0];
 						$scope.value_point = $scope.shop.server_coupon[0].coupon[0].point;
 					} else {
