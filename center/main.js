@@ -1,6 +1,6 @@
 angular.module('coupon10k', ['ngRoute', 'CouponController', 'CouponService'])
-    .config(['$routeProvider', '$locationProvider', 'socialProvider', function ($routeProvider, $locationProvider, socialProvider) {
-        $routeProvider
+.config(['$routeProvider', '$locationProvider', 'socialProvider', function ($routeProvider, $locationProvider, socialProvider) {
+    $routeProvider
 
             //Url
             .when('/', { templateUrl: 'partials/home.html', controller: 'HomeCtrl' })
@@ -12,12 +12,13 @@ angular.module('coupon10k', ['ngRoute', 'CouponController', 'CouponService'])
             .when("/lien-he", { templateUrl: "partials/contact.html" })
             .when("/doi-qua", { templateUrl: "partials/gift.html", controller: "GiftsCtrl" })
             .when("/qua?:key", { templateUrl: "partials/detailgift.html", controller: "GiftCtrl" })
+            .when("/policy", {templateUrl:"partials/policy.html"})
 
             //Otherwise
             .otherwise({ redirectTo: '/' });
 
-        $locationProvider
-        $locationProvider.html5Mode(true);
+            $locationProvider
+            $locationProvider.html5Mode(true);
 
         // socialProvider.setFbKey({ appId: "1781038452116644", apiVersion: "v3.2"})
         socialProvider.setGoogleKey("1026230976029-cja0blpg6q54tq9pr6rru5rq9c6pducu.apps.googleusercontent.com");
