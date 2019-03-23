@@ -24,6 +24,23 @@
         width: 70% !important;
         margin-top: -11px !important;
     }
+
+    .tabs2 .tab2 a {
+        color: #EE6E73 !important;
+        font-size: 16px;
+    }
+
+    .tabs2 .tab2 a:hover,
+    .tabs2 .tab2 a.active {
+        border-bottom: 1px solid rgba(238, 110, 115, 0.2);
+        background-color: rgba(238, 110, 115, 0.2);
+    }
+
+    /* .tabs2 .tab2 a:active,
+    .tabs2 .tab2 aactive {
+        background-color: rgba(238, 110, 115, 0.2);
+        outline: none;
+    } */
 </style>
 <div class="container" style="margin-top: 30px">
     <div class="card-panel" ng-if="!auth">
@@ -35,18 +52,18 @@
     <div class="card-panel" ng-if="auth">
 
         <div class="col s12">
-            <ul class="tabs">
-                <li class="tab acctab col s2">
+            <ul class="tabs tabs2 tabs-fixed-width tab-demo">
+                <li class="tab tab2 acctab col s2">
                     <a class="active" href="#info" style="text-align: center;">Thông tin tài khoản</a>
                 </li>
-                <li class="tab col s2">
+                <li class="tab tab2 col s2">
                     <a href="#history" style="text-align: center;">Lịch sử mua hàng</a>
                 </li>
             </ul>
         </div>
 
         <!-- Thông tin tài khoản -->
-        <div class="row">
+        <div class="row" style="margin-top: 30px">
             <div id="info">
                 <div class="card-panel alert" ng-if="auth[0].info[0].full_update === 0">
                     <span class="text-darken-2">Cập nhật đầy đủ thông tin để nhận 10 điểm</span>
@@ -277,7 +294,6 @@
 </div>
 
 <script>
-
     $(document).ready(function () {
         $('.modal').modal({
             dismissible: false
@@ -290,7 +306,9 @@
             clear: false,
             close: 'Chọn',
             format: 'dd/mm/yyyy',
-            monthsFull: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12']
+            monthsFull: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7',
+                'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'
+            ]
             // closeOnSelect: false, // Close upon selecting a date,
             // container: undefined, // ex. 'body' will append picker to body
         });
@@ -305,5 +323,4 @@
             });
         });
     });
-
 </script>
