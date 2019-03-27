@@ -586,6 +586,7 @@ nav {
 .rating label input:checked~.icon,
 input~.icon {
     color: #FFCA00;
+    background: none !important;
 }
 
 .rating label input:focus:not(:checked)~.icon:last-child {
