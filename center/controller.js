@@ -14,6 +14,11 @@ coupon
 		localStorage.removeItem('alert2');
 
 		$window.fbAsyncInit = function () {
+
+			$scope.loadFace = function () {
+				FB.XFBML.parse();
+			}
+
 			FB.XFBML.parse();
 
 			// login with facebook
@@ -55,8 +60,7 @@ coupon
 									email: 'Chưa cập nhật',
 									full_update: 0,
 									provider: 'facebook'
-								}
-								];
+								}];
 								var _class = {
 									id: 4,
 									name: "Thường"
@@ -89,7 +93,7 @@ coupon
 							}
 							if (signin_result.error_code === 0) {
 								// function update class user
-								DataServices.updateClass(signin_result.auth[0]._id).then(function (response) { });
+								DataServices.updateClass(signin_result.auth[0]._id).then(function (response) {});
 								// end function
 
 								// check in loyal
@@ -108,7 +112,7 @@ coupon
 									}
 								})
 
-								DataServices.Upname(fbres.authResponse.userID, $scope.fbName).then(function () { });
+								DataServices.Upname(fbres.authResponse.userID, $scope.fbName).then(function () {});
 								localStorage.setItem('auth', JSON.stringify(signin_result.auth));
 								// window.location.href = '#/';
 								$location.path('/');
@@ -182,8 +186,7 @@ coupon
 							email: userDetails.email,
 							full_update: 0,
 							provider: userDetails.provider
-						}
-						];
+						}];
 						var _class = {
 							id: 4,
 							name: "Thường"
@@ -216,7 +219,7 @@ coupon
 					}
 					if (signin_result.error_code === 0) {
 						// function update class user
-						DataServices.updateClass(signin_result.auth[0]._id).then(function (response) { });
+						DataServices.updateClass(signin_result.auth[0]._id).then(function (response) {});
 						// end function
 
 						// check in loyal
@@ -235,7 +238,7 @@ coupon
 							}
 						})
 
-						DataServices.Upname(userDetails.uid, userDetails.name).then(function () { });
+						DataServices.Upname(userDetails.uid, userDetails.name).then(function () {});
 						localStorage.setItem('auth', JSON.stringify(signin_result.auth));
 						// window.location.href = '#/';
 						$location.path('/');
@@ -454,8 +457,7 @@ coupon
 
 		$scope.logout = function () {
 			socialLoginService.logout();
-			FB.logout(function (response) {
-			});
+			FB.logout(function (response) {});
 			$window.scrollTo(0, 0);
 			localStorage.clear();
 			$timeout(() => {
@@ -562,11 +564,11 @@ coupon
 
 		$scope.openHotDeal = (url) => {
 			// $timeout(() => {
-				if ($scope.auth !== undefined && $scope.auth !== null) {
-					$scope.hotDealUrl = url.replace("utm_source=USERID", 'utm_source=' + $scope.auth[0].user_id);
-				} else {
-					$scope.hotDealUrl = url.replace("utm_source=USERID", 'utm_source=NOAUTH');
-				}
+			if ($scope.auth !== undefined && $scope.auth !== null) {
+				$scope.hotDealUrl = url.replace("utm_source=USERID", 'utm_source=' + $scope.auth[0].user_id);
+			} else {
+				$scope.hotDealUrl = url.replace("utm_source=USERID", 'utm_source=NOAUTH');
+			}
 			// }, 1000);
 
 
